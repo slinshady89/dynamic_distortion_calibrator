@@ -11,8 +11,10 @@ void ofApp::update(){
 }
 
 //--------------------------------------------------------------
-void ofApp::draw(){
-
+// Draw a red circle that's center is at the position of the Cursor
+void ofApp::draw() {
+  ofSetColor(255, 0, 0);
+  ofDrawSphere(ofGetMouseX(), ofGetMouseY(), 50);
 }
 
 //--------------------------------------------------------------
