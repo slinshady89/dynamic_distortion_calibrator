@@ -5,8 +5,9 @@ void ofApp::setup(){
   // frame in which the camera signal will be shown
   //cam.setup(320, 240);
   ofBackground(ofColor::white);
+  //set framerate (speed) of the travelling pixel
   ofSetFrameRate(60);
-  x = 100;
+  x = 0;
   y = 0;
 
 }
@@ -15,6 +16,8 @@ void ofApp::setup(){
 void ofApp::update(){
   // stetic update of the received Signal
   //cam.update();
+
+  // update the coordinates of the pixel with every new frame
   x += 1;
   if (ofGetWindowWidth() < x)
   {
@@ -40,11 +43,11 @@ void ofApp::draw() {
   //int horizon = ofGetWindowWidth();
   // vert = ofGetWindowHeight();
 
-
   // output of screen resolution for testing
   //string text = "width " + to_string(horizon) + " height " + to_string(vert);
   //ofDrawBitmapStringHighlight(text,ofPoint(10,10,0.0),ofColor::white,ofColor::black );
 
+  // draw the travelling pixel
   ofSetColor(ofColor::red);
   ofDrawSphere(x, y, 1);
 
