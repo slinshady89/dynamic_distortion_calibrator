@@ -3,7 +3,18 @@
 
 //========================================================================
 int main( ){
+
+  int horizon = 0;
+  int vert = 0;
+
+
   ofSetupOpenGL(1024, 768, OF_WINDOW);
+
+  horizon = ofGetWindowWidth();
+  vert = ofGetWindowHeight();
+
+  cout << "width" << horizon << "height" << vert;
+
 
   //ofSetupOpenGL(1920, 1080, OF_FULLSCREEN);// <-------- setup the GL context
 
