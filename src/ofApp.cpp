@@ -49,7 +49,7 @@ void ofApp::draw() {
 
   // draw the travelling pixel
   ofSetColor(ofColor::red);
-  ofDrawSphere(x, y, 1);
+  ofDrawRectangle(x, y,1, 1);
 
   // finaly draw the camera frame 
   //cam.draw(0, 0);
