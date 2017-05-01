@@ -21,9 +21,7 @@ class ofApp : public ofBaseApp{
 		void mouseExited(int x, int y);
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
-		void gotMessage(ofMessage msg);
-    
-		
+		void gotMessage(ofMessage msg);		
 
     // Object for camera signal
     ofVideoGrabber cam;
@@ -31,5 +29,13 @@ class ofApp : public ofBaseApp{
     ofxPanel gui;
     ofParameter<int> x, y;
 
+	private:
+		int pixelSize;
+		int windowHeight;
+		int windowWidth;
+		int spiralSize;
+		int startX;
+		int startY;
+		int spiralDirection; // 0 -> up; 1 -> left; 2 -> down; 3 -> right
 
 };
