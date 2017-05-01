@@ -26,7 +26,7 @@ class ofApp : public ofBaseApp{
 		
 
     // Object for camera signal
-    //ofVideoGrabber cam;
+    ofVideoGrabber cam;
 
     ofxPanel gui;
     ofParameter<int> x, y;

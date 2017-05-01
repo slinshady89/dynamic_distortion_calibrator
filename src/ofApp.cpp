@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
   // frame in which the camera signal will be shown
-  //cam.setup(320, 240);
+  cam.setup(320,240);
   ofBackground(ofColor::white);
   //set framerate (speed) of the travelling pixel
   ofSetFrameRate(60);
@@ -15,7 +15,9 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
   // stetic update of the received Signal
-  //cam.update();
+  cam.update();
+  //cam.getPixels();
+
 
   // update the coordinates of the pixel with every new frame
   x += 1;
@@ -50,6 +52,9 @@ void ofApp::draw() {
   // draw the travelling pixel
   ofSetColor(ofColor::red);
   ofDrawRectangle(x, y,1, 1);
+
+  string text = "breite" + to_string(cam.getWidth()) + "hoehe" + to_string(cam.getHeight());
+  ofDrawBitmapStringHighlight(text,ofPoint(10,10,0.0),ofColor::white,ofColor::black );
 
   // finaly draw the camera frame 
   //cam.draw(0, 0);
