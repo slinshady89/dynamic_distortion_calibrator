@@ -7,9 +7,15 @@ void ofApp::setup(){
   ofBackground(ofColor::white);
   //set framerate (speed) of the travelling pixel
   ofSetFrameRate(60);
-  x = 0;
-  y = 0;
-
+  windowHeight = ofGetWindowHeight();
+  windowWidth = ofGetWindowWidth();
+  startX = round(windowWidth / 2.0);
+  startY = round(windowHeight / 2.0);
+  x = startX;
+  y = startY;
+  pixelSize = 10;
+  spiralSize = pixelSize;
+  spiralDirection = 0;
 }
 
 //--------------------------------------------------------------
@@ -18,7 +24,7 @@ void ofApp::update(){
   //cam.update();
 
   // update the coordinates of the pixel with every new frame
-  x += 1;
+  /*x += 1;
   if (ofGetWindowWidth() < x)
   {
     x = 0;
@@ -27,7 +33,37 @@ void ofApp::update(){
   if (ofGetWindowHeight() < y && ofGetWindowWidth() < x) {
     x = 0;
     y = 0;
-  }
+  }*/
+
+  // attempting to spiral pixel from middle point
+  /*switch (spiralDirection) {
+	case 0: std::cout << "in case 0\n";
+		y--;
+		if (y == startY - spiralSize) {
+			spiralDirection = 1; // change direction to left
+		};
+		break;
+	case 1: std::cout << "in case 1\n";
+		x--;
+		if (x == startX - spiralSize) {
+			spiralDirection = 2; // change direction to left
+			spiralSize += pixelSize;
+		};
+		break;
+	case 2: std::cout << "in case 2\n";
+		  y++;
+		  if (y == startY + spiralSize) {
+			  spiralDirection = 3; // change direction to left
+		  };
+		  break;
+	case 3: std::cout << "in case 3\n";
+		  x++;
+		  if (x == startX + spiralSize) {
+			  spiralDirection = 0; // change direction to left
+			  spiralSize += pixelSize;
+		  };
+		  break;
+	}*/
 
 }
 
@@ -49,7 +85,7 @@ void ofApp::draw() {
 
   // draw the travelling pixel
   ofSetColor(ofColor::red);
-  ofDrawRectangle(x, y,1, 1);
+  ofDrawRectangle(x, y, pixelSize, pixelSize);
 
   // finaly draw the camera frame 
   //cam.draw(0, 0);
