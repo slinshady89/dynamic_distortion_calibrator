@@ -6,7 +6,7 @@ void ofApp::setup(){
   cam.setup(320,240);
   ofBackground(ofColor::white);
   //set framerate (speed) of the travelling pixel
-  ofSetFrameRate(60);
+  ofSetFrameRate(240);
   windowHeight = ofGetWindowHeight();
   windowWidth = ofGetWindowWidth();
   startX = round(windowWidth / 2.0);
@@ -38,7 +38,7 @@ void ofApp::update(){
   }*/
 
   // attempting to spiral pixel from middle point
-  /*switch (spiralDirection) {
+  switch (spiralDirection) {
 	case 0: std::cout << "in case 0\n";
 		y--;
 		if (y == startY - spiralSize) {
@@ -65,7 +65,7 @@ void ofApp::update(){
 			  spiralSize += pixelSize;
 		  };
 		  break;
-	}*/
+	}
 
 }
 
