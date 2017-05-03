@@ -13,7 +13,7 @@ void ofApp::setup() {
 	startY = floor(windowHeight / 2.0);
 	x = startX;
 	y = startY;
-	pixelSize = 10;
+	pixelSize = 5;
 	spiralSize = pixelSize;
 	spiralDirection = 0;
 }
@@ -23,7 +23,11 @@ void ofApp::update() {
 	// stetic update of the received Signal
 	cam.update();
 	colorImage = cam.getPixels();
-  grayImage.clone(colorImage.setImageType(OF_IMAGE_GRAYSCALE));
+  
+
+  // Two variantes to copy the colored image into a grayscale one
+  //grayImage.setFromColorImage(colorImage);
+  colorImage.convertToGrayscalePlanarImage(grayImage,1);
 
 	// attempting to spiral pixel from middle point
 	switch (spiralDirection) {
@@ -75,9 +79,10 @@ void ofApp::update() {
 //--------------------------------------------------------------
 // Make a white plane on which one or more Pixel(s) are travelling 
 void ofApp::draw() {
-	// finaly draw the camera frame 
+	// finaly draw the camera frames 
 	colorImage.draw(0, 0);
-  grayImage.draw(400, 340);
+	grayImage.draw(320, 240);
+
 	// get screen resolution
 	// horizon = ofGetWindowWidth();
 	// vert = ofGetWindowHeight();

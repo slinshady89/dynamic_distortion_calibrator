@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxGui.h"
+#include "ofxOpenCv.h"
 
 
 class ofApp : public ofBaseApp{
@@ -23,19 +24,19 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);		
 
-    // Object for camera signal
-    ofVideoGrabber cam;
+		// Object for camera signal
+		ofVideoGrabber cam;
+		ofxCvColorImage colorImage;
+		ofxCvGrayscaleImage grayImage;
+		
 
-    ofxPanel gui;
-    ofParameter<int> x, y;
+		//ofxPanel gui;
+		ofParameter<int> x, y;
+
 
 	private:
-		int pixelSize;
-		int windowHeight;
-		int windowWidth;
-		int spiralSize;
-		int startX;
-		int startY;
+		int pixelSize, windowHeight, windowWidth, spiralSize, startX, startY;
 		int spiralDirection; // 0 -> up; 1 -> left; 2 -> down; 3 -> right
+
 
 };
