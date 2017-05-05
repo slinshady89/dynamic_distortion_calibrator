@@ -136,7 +136,7 @@ void ofApp::draw() {
 	ofDrawRectangle(x, y, pixelSize, pixelSize);
 	ofSetColor(ofColor::white);
 
-  pixels = grayImage.getPixels()[100 * grayImage.getWidth() + 500];
+	pixels = grayImage.getPixels()[100 * grayImage.getWidth() + 500];
 
 }
 
