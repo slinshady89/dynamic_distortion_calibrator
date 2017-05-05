@@ -28,15 +28,26 @@ class ofApp : public ofBaseApp{
 		ofVideoGrabber cam;
 		ofxCvColorImage colorImage;
 		ofxCvGrayscaleImage grayImage;
-		
+    ofImage img;
+    ofPixels pix;
+
+
 
 		//ofxPanel gui;
 		ofParameter<int> x, y;
 
+    
+
 
 	private:
-		int pixelSize, windowHeight, windowWidth, spiralSize, startX, startY;
+		int pixelSize, windowHeight, windowWidth, spiralSize, startX, startY, i, j;
 		int spiralDirection; // 0 -> up; 1 -> left; 2 -> down; 3 -> right
+    bool recog;
+    unsigned char pixels;
+
+
+
+
 
 
 };
