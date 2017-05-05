@@ -74,7 +74,7 @@ void ofApp::update() {
 		case 0: std::cout << "in case 0\n";
 			if (y < 0) {                        // reaching upper windowborder
 				x = startX - spiralSize;          // change x to left spiral side
-				spiralDirection = 2;              // -> 180° turn of direction
+				spiralDirection = 2;              // -> 180?turn of direction
 			}
 			y--;
 			if (y <= startY - spiralSize) {     // dy > spiralsize will lead to 
@@ -84,7 +84,7 @@ void ofApp::update() {
 		case 1: std::cout << "in case 1\n";
 			if (x < 0) {                        // reaching left windowborder
 				y = startY + spiralSize;          // change x to upper spiral side
-				spiralDirection = 3;              // -> 180° turn of direction
+				spiralDirection = 3;              // -> 180?turn of direction
 			}
 			x--;
 			if (x <= startX - spiralSize) {     // dx < spiralsize will lead to 
