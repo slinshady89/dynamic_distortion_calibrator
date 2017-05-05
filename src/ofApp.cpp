@@ -60,11 +60,11 @@ void ofApp::update() {
 			recog = true;
 		}
 		else {
-			pixelSize++;
+			//pixelSize++;
 		}
 		
 	}
-
+  
 
 
 
