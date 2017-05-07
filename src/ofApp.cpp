@@ -9,19 +9,28 @@ void ofApp::setup() {
 	ofSetFrameRate(60);
 	windowHeight = ofGetWindowHeight();
 	windowWidth = ofGetWindowWidth();
-	startX = floor(windowWidth / 2.0);
-	startY = floor(windowHeight / 2.0);
-	x = startX;
-	y = startY;
 	pixelSize = 1;
 	spiralSize = pixelSize;
 	spiralDirection = 0;
+	startX = ceil(windowWidth / 2.0);
+	startY = ceil(windowHeight / 2.0);
 
+	// find minimal recognized pixel size
+	cam.update();
+	img = cam.getPixels();
+	colorImage = cam.getPixels();
+	pix = img.getPixels();
+	detectPixelSize();
+	startX -= ceil(pixelSize / 2.0);
+	startY -= ceil(pixelSize / 2.0);
+	x = startX;
+	y = startY;
+	std::cout << "done with setup.\n";
 }
 
 //--------------------------------------------------------------
 void ofApp::update() {
-	// stetic update of the received Signal
+	// static update of the received Signal
 	cam.update();
 	img = cam.getPixels();
 	colorImage = cam.getPixels();
@@ -36,12 +45,12 @@ void ofApp::update() {
 	img.setImageType(OF_IMAGE_GRAYSCALE);
 
 	// Loop to control if the drawn pixel is recognized
-	for (i = 0; i <= img.getHeight(); i++) {
-		for (j = 0; j <= img.getWidth(); j++) {
+	/*for (int i = 0; i <= img.getHeight(); i++) {
+		for (int j = 0; j <= img.getWidth(); j++) {
 			pixels = grayImage.getPixels()[i*grayImage.getWidth() + j];
 				
 		}
-	}
+	}*/
 
 
 
@@ -52,69 +61,79 @@ void ofApp::update() {
 
 
 
-	pix = img.getPixels();
+	/*pix = img.getPixels();
 	for (auto & pixel : pix.getPixelsIter()) {
 
 		pixel.getColor();
 		if (!(pixel.getColor() == ofColor::white)) {
 			recog = true;
+			startX = startX - ceil(pixelSize / 2.0);
+			startY = startY - ceil(pixelSize / 2.0);
+			x = startX;
+			y = startY;
 		}
 		else {
 			pixelSize++;
 		}
 		
 	}
+	*/
 
 
 
-
-	if (recog) {
-		// attempting to spiral pixel from middle point
-		switch (spiralDirection) {
-		case 0: std::cout << "in case 0\n";
-			if (y < 0) {                        // reaching upper windowborder
-				x = startX - spiralSize;          // change x to left spiral side
-				spiralDirection = 2;              // -> 180° turn of direction
-			}
-			y--;
-			if (y <= startY - spiralSize) {     // dy > spiralsize will lead to 
-				spiralDirection = 1;              // change of direction to left
-			};
-			break;
-		case 1: std::cout << "in case 1\n";
-			if (x < 0) {                        // reaching left windowborder
-				y = startY + spiralSize;          // change x to upper spiral side
-				spiralDirection = 3;              // -> 180° turn of direction
-			}
-			x--;
-			if (x <= startX - spiralSize) {     // dx < spiralsize will lead to 
-				spiralDirection = 2;              // change of direction to left
-				spiralSize += pixelSize;
-			};
-			break;
-		case 2: std::cout << "in case 2\n";
-			if (y > ofGetWindowHeight()) {
-				x = startX + spiralSize;
-				spiralDirection = 0;
-			}
-			y++;
-			if (y >= startY + spiralSize) {
-				spiralDirection = 3; // change direction to left
-			};
-			break;
-		case 3: std::cout << "in case 3\n";
-			if (x > ofGetWindowWidth()) {
-				y = startY - spiralSize;
-				spiralDirection = 1;
-			}
-			x++;
-			if (x >= startX + spiralSize) {
-				spiralDirection = 0; // change direction to left
-				spiralSize += pixelSize;
-			};
-			break;
+	//if (recog) {
+	// attempting to spiral pixel from middle point
+	switch (spiralDirection) {
+	case 0: std::cout << "in case 0\n";
+		if (y < 0) {                        // reaching upper windowborder
+			x = startX - spiralSize;          // change x to left spiral side
+			spiralDirection = 2;              // -> 180° turn of direction
 		}
+		y--;
+		if (y <= startY - spiralSize) {     // dy > spiralsize will lead to 
+			spiralDirection = 1;              // change of direction to left
+		};
+		break;
+	case 1: std::cout << "in case 1\n";
+		if (x < 0) {                        // reaching left windowborder
+			y = startY + spiralSize;          // change x to upper spiral side
+			spiralDirection = 3;              // -> 180° turn of direction
+		}
+		x--;
+		if (x <= startX - spiralSize) {     // dx < spiralsize will lead to 
+			spiralDirection = 2;              // change of direction to left
+			spiralSize += pixelSize;
+		};
+		break;
+	case 2: std::cout << "in case 2\n";
+		if (y > ofGetWindowHeight()) {
+			x = startX + spiralSize;
+			spiralDirection = 0;
+		}
+		y++;
+		if (y >= startY + spiralSize) {
+			spiralDirection = 3; // change direction to left
+		};
+		break;
+	case 3: std::cout << "in case 3\n";
+		if (x > ofGetWindowWidth()) {
+			y = startY - spiralSize;
+			spiralDirection = 1;
+		}
+		x++;
+		if (x >= startX + spiralSize) {
+			spiralDirection = 0; // change direction to left
+			spiralSize += pixelSize;
+		};
+		break;
 	}
+	if (x > windowWidth) {
+		std::cout << "reseting spiral\n";
+		x = startX;
+		y = startY;
+		spiralSize = pixelSize;
+	}
+	//}
 }
 
 //--------------------------------------------------------------
@@ -194,4 +213,29 @@ void ofApp::gotMessage(ofMessage msg) {
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo) {
 
+}
+
+//--------------------------------------------------------------
+void ofApp::detectPixelSize() {
+	// go over all pixels
+	for (auto & pixel : pix.getPixelsIter()) {
+		// and detect their colour
+		pixel.getColor();
+		// for debug purposes: if the colour is white something was detected
+		// later: if a black pixel was recognized on a white screen
+		if ((pixel.getColor() == ofColor::white)) {
+			recog = true;
+		}
+		else {
+			// else increase the pixel size by one
+			pixelSize++;
+		}
+	}
+	// check for pixelSize exceeding the window size
+	if (pixelSize >= windowHeight || pixelSize >= windowWidth) {
+		std::cout << "Error! pixelSize exceeds the size of the window!\n";
+		std::cout << "Setting pixelSize to the smaller dimension / 2.0. \n";
+		pixelSize = windowHeight > windowWidth ? ceil(windowWidth / 2.0) : ceil(windowHeight / 2.0);
+	}
+	std::cout << "Found pixelSize = " << pixelSize << ".\n";
 }

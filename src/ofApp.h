@@ -42,9 +42,11 @@ class ofApp : public ofBaseApp{
 	private:
 		int pixelSize, windowHeight, windowWidth, spiralSize, startX, startY, i, j;
 		int spiralDirection; // 0 -> up; 1 -> left; 2 -> down; 3 -> right
-    bool recog;
-    unsigned char pixels;
+		bool recog;
+		unsigned char pixels;
 
+		// detects the minimal size a square must have to be seen by the camera
+		void detectPixelSize(); 
 
 
 
