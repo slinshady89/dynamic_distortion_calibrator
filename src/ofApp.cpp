@@ -1,4 +1,7 @@
 #include "ofApp.h"
+#include "opencv2/objdetect/objdetect.hpp"
+
+using namespace cv;
 
 //--------------------------------------------------------------
 void ofApp::setup() {
@@ -34,57 +37,18 @@ void ofApp::update() {
 	cam.update();
 	img = cam.getPixels();
 	colorImage = cam.getPixels();
-
 	
 	
-
 	// Two variantes to copy the colored image into a grayscale one
 	//grayImage.setFromimg(img);
 	colorImage.convertToGrayscalePlanarImage(grayImage,1);
 
 	img.setImageType(OF_IMAGE_GRAYSCALE);
 
-	// Loop to control if the drawn pixel is recognized
-	/*for (int i = 0; i <= img.getHeight(); i++) {
-		for (int j = 0; j <= img.getWidth(); j++) {
-			pixels = grayImage.getPixels()[i*grayImage.getWidth() + j];
-				
-		}
-	}*/
-
-
-
-
-
-
-
-
-
-
-	/*pix = img.getPixels();
-	for (auto & pixel : pix.getPixelsIter()) {
-
-		pixel.getColor();
-		if (!(pixel.getColor() == ofColor::white)) {
-			recog = true;
-			startX = startX - ceil(pixelSize / 2.0);
-			startY = startY - ceil(pixelSize / 2.0);
-			x = startX;
-			y = startY;
-		}
-		else {
-			//pixelSize++;
-		}
-		
-	}
-<<<<<<< HEAD
-	*/
-
-
-
+	
 	//if (recog) {
 	// attempting to spiral pixel from middle point
-	switch (spiralDirection) {
+	/*switch (spiralDirection) {
 	case 0: std::cout << "in case 0\n";
 		if (y < 0) {                        // reaching upper windowborder
 			x = startX - spiralSize;          // change x to left spiral side
@@ -133,15 +97,48 @@ void ofApp::update() {
 		x = startX;
 		y = startY;
 		spiralSize = pixelSize;
-	}
+	}*/
 	//}
 }
 
 //--------------------------------------------------------------
 // Make a white plane on which one or more Pixel(s) are travelling 
 void ofApp::draw() {
+	// draw the grayscale image in the upper left corner of the window
+	grayImage.draw(0, 0);
+
+	// Detect the square in the image
+	// for debug: used a sheet of paper with a black square drawn on it
+	// TODO: find way to detect the blob in update() function instead of in draw()
+
+	// copy the gray image so that it can be pre-processed before trying to find
+	// the pixel in it
+	ofxCvGrayscaleImage contourImage = grayImage;
+	ofxCvContourFinder contourFinder;
+	// first blur the image and threshold it, to get a real black & white image
+	// for easier processing; thresholding inverts colours:
+	//square -> white, background -> black, needed to find blob
+	contourImage.blurGaussian();
+	contourImage.threshold(50, true); // threshold chosen arbitrarily
+
+	// for debug purposes: draw the blurred and thresholded image roughly in the
+	// middle of the screen; delete later
+	contourImage.draw(300, 300);
+
+	//TODO: not quite stable yet, vulnerable to scale of square and surrounding lightning
+	contourFinder.findContours(contourImage, floor(pixelSize / 2.0),
+		ceil(pixelSize * 1.5), 1, false, true);
+	cout << "Found " << contourFinder.nBlobs << " blobs. \n";
+	// if a blob was found, draw its bounding box
+	if (contourFinder.nBlobs != 0) {
+		ofxCvBlob blob = contourFinder.blobs.at(0);
+		ofSetColor(ofColor::yellow);
+		contourFinder.draw();
+
+	}
+	//contourFinder.draw();
 	// finaly draw the camera frames 
-	img.draw(0, 0);
+	
 
 	// get screen resolution
 	// horizon = ofGetWindowWidth();
@@ -152,10 +149,10 @@ void ofApp::draw() {
 	//ofDrawBitmapStringHighlight(text,ofPoint(10,10,0.0),ofColor::white,ofColor::black );
 
 	// draw the travelling pixel
-	ofSetColor(ofColor::black);
-	ofDrawRectangle(x, y, pixelSize, pixelSize);
+	/*ofSetColor(ofColor::black);
+	ofDrawRectangle(x, y, pixelSize, pixelSize);*/
 	ofSetColor(ofColor::white);
-
+	
 	pixels = grayImage.getPixels()[100 * grayImage.getWidth() + 500];
 
 }

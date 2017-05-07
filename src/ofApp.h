@@ -26,30 +26,22 @@ class ofApp : public ofBaseApp{
 
 		// Object for camera signal
 		ofVideoGrabber cam;
-		ofxCvColorImage colorImage;
-		ofxCvGrayscaleImage grayImage;
-    ofImage img;
-    ofPixels pix;
-
-
+		ofxCvColorImage colorImage; // color image as seen by camera
+		ofxCvGrayscaleImage grayImage; // grayscale image from camera
+		ofImage img;
+		ofPixels pix;
 
 		//ofxPanel gui;
 		ofParameter<int> x, y;
-
-    
 
 
 	private:
 		int pixelSize, windowHeight, windowWidth, spiralSize, startX, startY, i, j;
 		int spiralDirection; // 0 -> up; 1 -> left; 2 -> down; 3 -> right
-		bool recog;
+		bool recog; // recognized a rectangle in the image
 		unsigned char pixels;
+		ofxCvContourFinder contourFinder;
 
 		// detects the minimal size a square must have to be seen by the camera
 		void detectPixelSize(); 
-
-
-
-
-
 };
