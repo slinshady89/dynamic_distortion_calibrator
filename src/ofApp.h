@@ -43,5 +43,7 @@ class ofApp : public ofBaseApp{
 		ofxCvContourFinder contourFinder;
 
 		// detects the minimal size a square must have to be seen by the camera
-		void detectPixelSize(); 
+		void detectPixelSize();
+		// calculates the next x & y values for the spiral
+		void calculateNextSpiralPosition(); 
 };

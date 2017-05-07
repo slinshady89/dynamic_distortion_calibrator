@@ -45,60 +45,8 @@ void ofApp::update() {
 
 	img.setImageType(OF_IMAGE_GRAYSCALE);
 
-	
-	//if (recog) {
-	// attempting to spiral pixel from middle point
-	/*switch (spiralDirection) {
-	case 0: std::cout << "in case 0\n";
-		if (y < 0) {                        // reaching upper windowborder
-			x = startX - spiralSize;          // change x to left spiral side
-			spiralDirection = 2;              // -> 180° turn of direction
-		}
-		y--;
-		if (y <= startY - spiralSize) {     // dy > spiralsize will lead to 
-			spiralDirection = 1;              // change of direction to left
-		};
-		break;
-	case 1: std::cout << "in case 1\n";
-		if (x < 0) {                        // reaching left windowborder
-			y = startY + spiralSize;          // change x to upper spiral side
-			spiralDirection = 3;              // -> 180° turn of direction
-		}
-		x--;
-		if (x <= startX - spiralSize) {     // dx < spiralsize will lead to 
-			spiralDirection = 2;              // change of direction to left
-			spiralSize += pixelSize;
-		};
-		break;
-	case 2: std::cout << "in case 2\n";
-		if (y > ofGetWindowHeight()) {
-			x = startX + spiralSize;
-			spiralDirection = 0;
-		}
-		y++;
-		if (y >= startY + spiralSize) {
-			spiralDirection = 3; // change direction to left
-		};
-		break;
-	case 3: std::cout << "in case 3\n";
-		if (x > ofGetWindowWidth()) {
-			y = startY - spiralSize;
-			spiralDirection = 1;
-		}
-		x++;
-		if (x >= startX + spiralSize) {
-			spiralDirection = 0; // change direction to left
-			spiralSize += pixelSize;
-		};
-		break;
-	}
-	if (x > windowWidth) {
-		std::cout << "reseting spiral\n";
-		x = startX;
-		y = startY;
-		spiralSize = pixelSize;
-	}*/
-	//}
+	calculateNextSpiralPosition();
+
 }
 
 //--------------------------------------------------------------
@@ -136,9 +84,6 @@ void ofApp::draw() {
 		contourFinder.draw();
 
 	}
-	//contourFinder.draw();
-	// finaly draw the camera frames 
-	
 
 	// get screen resolution
 	// horizon = ofGetWindowWidth();
@@ -149,8 +94,8 @@ void ofApp::draw() {
 	//ofDrawBitmapStringHighlight(text,ofPoint(10,10,0.0),ofColor::white,ofColor::black );
 
 	// draw the travelling pixel
-	/*ofSetColor(ofColor::black);
-	ofDrawRectangle(x, y, pixelSize, pixelSize);*/
+	ofSetColor(ofColor::black);
+	ofDrawRectangle(x, y, pixelSize, pixelSize);
 	ofSetColor(ofColor::white);
 	
 	pixels = grayImage.getPixels()[100 * grayImage.getWidth() + 500];
@@ -236,4 +181,58 @@ void ofApp::detectPixelSize() {
 		pixelSize = windowHeight > windowWidth ? ceil(windowWidth / 2.0) : ceil(windowHeight / 2.0);
 	}
 	std::cout << "Found pixelSize = " << pixelSize << ".\n";
+}
+
+//--------------------------------------------------------------
+void ofApp::calculateNextSpiralPosition() {
+	switch (spiralDirection) {
+		case 0: std::cout << "in case 0\n";
+			if (y < 0) {                        // reaching upper windowborder
+				x = startX - spiralSize;          // change x to left spiral side
+				spiralDirection = 2;              // -> 180° turn of direction
+			}
+			y--;
+			if (y <= startY - spiralSize) {     // dy > spiralsize will lead to 
+				spiralDirection = 1;              // change of direction to left
+			};
+			break;
+		case 1: std::cout << "in case 1\n";
+			if (x < 0) {                        // reaching left windowborder
+				y = startY + spiralSize;          // change x to upper spiral side
+				spiralDirection = 3;              // -> 180° turn of direction
+			}
+			x--;
+			if (x <= startX - spiralSize) {     // dx < spiralsize will lead to 
+				spiralDirection = 2;              // change of direction to left
+				spiralSize += pixelSize;
+			};
+			break;
+		case 2: std::cout << "in case 2\n";
+			if (y > ofGetWindowHeight()) {
+				x = startX + spiralSize;
+				spiralDirection = 0;
+			}
+			y++;
+			if (y >= startY + spiralSize) {
+				spiralDirection = 3; // change direction to left
+			};
+			break;
+		case 3: std::cout << "in case 3\n";
+			if (x > ofGetWindowWidth()) {
+				y = startY - spiralSize;
+				spiralDirection = 1;
+			}
+			x++;
+			if (x >= startX + spiralSize) {
+				spiralDirection = 0; // change direction to left
+				spiralSize += pixelSize;
+			};
+			break;
+	}
+	if (x > windowWidth) {
+		std::cout << "reseting spiral\n";
+		x = startX;
+		y = startY;
+		spiralSize = pixelSize;
+	}
 }
