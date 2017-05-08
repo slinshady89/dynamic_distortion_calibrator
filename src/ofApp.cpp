@@ -29,6 +29,8 @@ void ofApp::setup() {
 	x = startX;
 	y = startY;
 	std::cout << "done with setup.\n";
+
+  maxSize = max(ofGetWindowHeight(), ofGetWindowWidth());
 }
 
 //--------------------------------------------------------------
@@ -98,7 +100,6 @@ void ofApp::draw() {
 	ofDrawRectangle(x, y, pixelSize, pixelSize);
 	ofSetColor(ofColor::white);
 	
-	pixels = grayImage.getPixels()[100 * grayImage.getWidth() + 500];
 
 }
 
@@ -175,10 +176,10 @@ void ofApp::detectPixelSize() {
 		}
 	}
 	// check for pixelSize exceeding the window size
-	if (pixelSize >= windowHeight || pixelSize >= windowWidth) {
+	if (pixelSize >= maxSize/10) {
 		std::cout << "Error! pixelSize exceeds the size of the window!\n";
-		std::cout << "Setting pixelSize to the smaller dimension / 2.0. \n";
-		pixelSize = windowHeight > windowWidth ? ceil(windowWidth / 2.0) : ceil(windowHeight / 2.0);
+		pixelSize = ceil(maxSize / 10.0) ;
+    std::cout << "Setting pixelSize to the maxSize: " << pixelSize;
 	}
 	std::cout << "Found pixelSize = " << pixelSize << ".\n";
 }

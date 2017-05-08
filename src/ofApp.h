@@ -36,7 +36,7 @@ class ofApp : public ofBaseApp{
 
 
 	private:
-		int pixelSize, windowHeight, windowWidth, spiralSize, startX, startY, i, j;
+		int pixelSize, windowHeight, windowWidth, spiralSize, startX, startY, i, j,maxSize;
 		int spiralDirection; // 0 -> up; 1 -> left; 2 -> down; 3 -> right
 		bool recog; // recognized a rectangle in the image
 		unsigned char pixels;
