@@ -46,9 +46,9 @@ void ofApp::update() {
 	colorImage.convertToGrayscalePlanarImage(grayImage,1);
 
 	img.setImageType(OF_IMAGE_GRAYSCALE);
-
-	calculateNextSpiralPosition();
-
+  if (cam.isFrameNew()) {
+    calculateNextSpiralPosition();
+  }
 }
 
 //--------------------------------------------------------------
