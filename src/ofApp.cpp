@@ -46,9 +46,29 @@ void ofApp::update() {
 	colorImage.convertToGrayscalePlanarImage(grayImage,1);
 
 	img.setImageType(OF_IMAGE_GRAYSCALE);
-  if (cam.isFrameNew()) {
+
+
+
+  if(!cam.isFrameNew()){
+    detectPixelSize();
+   }
+  else {
     calculateNextSpiralPosition();
   }
+
+
+  // Detect the square in the image
+  // for debug: used a sheet of paper with a black square drawn on it
+  // TODO: find way to detect the blob in update() function instead of in draw()
+
+  // copy the gray image so that it can be pre-processed before trying to find
+  // the pixel in its
+  contourImage = grayImage;
+  // first blur the image and threshold it, to get a real black & white image
+  // for easier processing; thresholding inverts colours:
+  //square -> white, background -> black, needed to find blob
+  contourImage.blurGaussian();
+  contourImage.threshold(50, true); // threshold chosen arbitrarily
 }
 
 //--------------------------------------------------------------
@@ -56,27 +76,14 @@ void ofApp::update() {
 void ofApp::draw() {
 	// draw the grayscale image in the upper left corner of the window
 	grayImage.draw(0, 0);
-
-	// Detect the square in the image
-	// for debug: used a sheet of paper with a black square drawn on it
-	// TODO: find way to detect the blob in update() function instead of in draw()
-
-	// copy the gray image so that it can be pre-processed before trying to find
-	// the pixel in it
-	ofxCvGrayscaleImage contourImage = grayImage;
-	ofxCvContourFinder contourFinder;
-	// first blur the image and threshold it, to get a real black & white image
-	// for easier processing; thresholding inverts colours:
-	//square -> white, background -> black, needed to find blob
-	contourImage.blurGaussian();
-	contourImage.threshold(50, true); // threshold chosen arbitrarily
+  
 
 	// for debug purposes: draw the blurred and thresholded image roughly in the
 	// middle of the screen; delete later
 	contourImage.draw(300, 300);
 
 	//TODO: not quite stable yet, vulnerable to scale of square and surrounding lightning
-	contourFinder.findContours(contourImage, floor(pixelSize / 2.0),
+	contourFinder.findContours(contourImage, floor(pixelSize / 1.5),
 		ceil(pixelSize * 1.5), 1, false, true);
 	cout << "Found " << contourFinder.nBlobs << " blobs. \n";
 	// if a blob was found, draw its bounding box
@@ -84,7 +91,6 @@ void ofApp::draw() {
 		ofxCvBlob blob = contourFinder.blobs.at(0);
 		ofSetColor(ofColor::yellow);
 		contourFinder.draw();
-
 	}
 
 	// get screen resolution

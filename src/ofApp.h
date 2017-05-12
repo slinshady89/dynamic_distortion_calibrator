@@ -41,6 +41,7 @@ class ofApp : public ofBaseApp{
 		bool recog; // recognized a rectangle in the image
 		unsigned char pixels;
 		ofxCvContourFinder contourFinder;
+    ofxCvGrayscaleImage contourImage;
 
 		// detects the minimal size a square must have to be seen by the camera
 		void detectPixelSize();
