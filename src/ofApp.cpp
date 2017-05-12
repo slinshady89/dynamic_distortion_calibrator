@@ -8,6 +8,16 @@ void ofApp::setup() {
 	// frame in which the camera signal will be shown
 	cam.setup(320, 240);
 	ofBackground(ofColor::white);
+
+
+
+  colorImage.allocate(320, 240);
+  grayImage.allocate(320, 240);
+  grayBg.allocate(320, 240);
+  grayDiff.allocate(320, 240);
+
+
+
 	//set framerate (speed) of the travelling pixel
 	ofSetFrameRate(60);
 	windowHeight = ofGetWindowHeight();
@@ -22,15 +32,19 @@ void ofApp::setup() {
 	cam.update();
 	img = cam.getPixels();
 	colorImage = cam.getPixels();
-	pix = img.getPixels();
-	detectPixelSize();
+  colorImage.convertToGrayscalePlanarImage(grayBg, 1);
+
+	detectPixelSize(colorImage);
 	startX -= ceil(pixelSize / 2.0);
 	startY -= ceil(pixelSize / 2.0);
 	x = startX;
 	y = startY;
 	std::cout << "done with setup.\n";
 
-  maxSize = max(ofGetWindowHeight(), ofGetWindowWidth());
+	maxSize = max(ofGetWindowHeight(), ofGetWindowWidth());
+
+
+	
 }
 
 //--------------------------------------------------------------
@@ -39,7 +53,8 @@ void ofApp::update() {
 	cam.update();
 	img = cam.getPixels();
 	colorImage = cam.getPixels();
-	
+
+  
 	
 	// Two variantes to copy the colored image into a grayscale one
 	//grayImage.setFromimg(img);
@@ -49,49 +64,78 @@ void ofApp::update() {
 
 
 
-  if(!cam.isFrameNew()){
-    detectPixelSize();
-   }
-  else {
-    calculateNextSpiralPosition();
-  }
+	if (!cam.isFrameNew()) {
+		detectPixelSize(colorImage);
+	}
+	else {
+		calculateNextSpiralPosition();
+	}
 
 
-  // Detect the square in the image
-  // for debug: used a sheet of paper with a black square drawn on it
-  // TODO: find way to detect the blob in update() function instead of in draw()
+	// Detect the square in the image
+	// for debug: used a sheet of paper with a black square drawn on it
+	// TODO: find way to detect the blob in update() function instead of in draw()
 
-  // copy the gray image so that it can be pre-processed before trying to find
-  // the pixel in its
-  contourImage = grayImage;
-  // first blur the image and threshold it, to get a real black & white image
-  // for easier processing; thresholding inverts colours:
-  //square -> white, background -> black, needed to find blob
-  contourImage.blurGaussian();
-  contourImage.threshold(50, true); // threshold chosen arbitrarily
+	// copy the gray image so that it can be pre-processed before trying to find
+	//// the pixel in its
+	//contourImage = grayImage;
+	//// first blur the image and threshold it, to get a real black & white image
+	//// for easier processing; thresholding inverts colours:
+	////square -> white, background -> black, needed to find blob
+	//contourImage.blurGaussian();
+	//contourImage.threshold(50, true); // threshold chosen arbitrarily
+
+  // Take the absolute value of the difference 
+  // between the background and incoming images.
+  grayDiff.absDiff(grayBg, grayImage);
+
+  // Perform an in-place thresholding of the difference image.
+  grayDiff.threshold(80);
+
+  // Find contours whose areas are betweeen 20 and 25000 pixels.
+  // "Find holes" is true, so we'll also get interior contours.
+  contourFinder.findContours(grayDiff, 20, 500, 10, true);
+
 }
 
 //--------------------------------------------------------------
 // Make a white plane on which one or more Pixel(s) are travelling 
 void ofApp::draw() {
+
+  colorImage.draw(20, 20);    // The incoming color image
+  grayImage.draw(360, 20);  // A gray version of the incoming video
+  grayBg.draw(20, 280);     // The stored background image
+  grayDiff.draw(360, 280);  // The thresholded difference image
+
+
+
 	// draw the grayscale image in the upper left corner of the window
-	grayImage.draw(0, 0);
-  
+	//grayImage.draw(0, 0);
+	
 
 	// for debug purposes: draw the blurred and thresholded image roughly in the
 	// middle of the screen; delete later
-	contourImage.draw(300, 300);
+	//contourImage.draw(810, 0);
 
-	//TODO: not quite stable yet, vulnerable to scale of square and surrounding lightning
-	contourFinder.findContours(contourImage, floor(pixelSize / 1.5),
-		ceil(pixelSize * 1.5), 1, false, true);
+	////TODO: not quite stable yet, vulnerable to scale of square and surrounding lightning
+
+	//contourFinder.findContours(contourImage, 1,
+		//100, 1, false, true);
 	cout << "Found " << contourFinder.nBlobs << " blobs. \n";
 	// if a blob was found, draw its bounding box
-	if (contourFinder.nBlobs != 0) {
-		ofxCvBlob blob = contourFinder.blobs.at(0);
+	/*if (contourFinder.nBlobs != 0) {
+		blob = contourFinder.blobs.at(0);
 		ofSetColor(ofColor::yellow);
 		contourFinder.draw();
-	}
+	}*/
+
+  
+
+  // Draw each blob individually from the blobs vector
+  int numBlobs = contourFinder.nBlobs;
+  for (int i = 0; i<numBlobs; i++) {
+    contourFinder.blobs[i].draw(20, 20);
+  }
 
 	// get screen resolution
 	// horizon = ofGetWindowWidth();
@@ -166,7 +210,9 @@ void ofApp::dragEvent(ofDragInfo dragInfo) {
 }
 
 //--------------------------------------------------------------
-void ofApp::detectPixelSize() {
+void ofApp::detectPixelSize(ofxCvColorImage &image) {
+
+  ofPixels pix= image.getPixels();
 	// go over all pixels
 	for (auto & pixel : pix.getPixelsIter()) {
 		// and detect their colour
@@ -185,7 +231,7 @@ void ofApp::detectPixelSize() {
 	if (pixelSize >= maxSize/10) {
 		std::cout << "Error! pixelSize exceeds the size of the window!\n";
 		pixelSize = ceil(maxSize / 10.0) ;
-    std::cout << "Setting pixelSize to the maxSize: " << pixelSize;
+		std::cout << "Setting pixelSize to the maxSize: " << pixelSize;
 	}
 	std::cout << "Found pixelSize = " << pixelSize << ".\n";
 }

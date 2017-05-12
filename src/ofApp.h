@@ -24,12 +24,7 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);		
 
-		// Object for camera signal
-		ofVideoGrabber cam;
-		ofxCvColorImage colorImage; // color image as seen by camera
-		ofxCvGrayscaleImage grayImage; // grayscale image from camera
-		ofImage img;
-		ofPixels pix;
+		
 
 		//ofxPanel gui;
 		ofParameter<int> x, y;
@@ -39,12 +34,16 @@ class ofApp : public ofBaseApp{
 		int pixelSize, windowHeight, windowWidth, spiralSize, startX, startY, i, j,maxSize;
 		int spiralDirection; // 0 -> up; 1 -> left; 2 -> down; 3 -> right
 		bool recog; // recognized a rectangle in the image
-		unsigned char pixels;
+		ofVideoGrabber cam;
 		ofxCvContourFinder contourFinder;
-    ofxCvGrayscaleImage contourImage;
+		ofxCvColorImage colorImage; // color image as seen by camera
+		ofxCvGrayscaleImage contourImage, grayImage, grayBg, grayDiff;
+		ofxCvBlob blob;
+		// Object for camera signal
+		ofImage img;
 
 		// detects the minimal size a square must have to be seen by the camera
-		void detectPixelSize();
+		void detectPixelSize(ofxCvColorImage &image);
 		// calculates the next x & y values for the spiral
 		void calculateNextSpiralPosition(); 
 };
