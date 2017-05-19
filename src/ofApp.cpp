@@ -1,5 +1,6 @@
 #include "ofApp.h"
 #include "opencv2/objdetect/objdetect.hpp"
+#include "blobDetector.h"
 
 using namespace cv;
 
@@ -69,6 +70,8 @@ void ofApp::update() {
   //square -> white, background -> black, needed to find blob
   contourImage.blurGaussian();
   contourImage.threshold(50, true); // threshold chosen arbitrarily
+  contourFinder = blobDetector::detectBlob(colorImage, 50, 1);
+  
 }
 
 //--------------------------------------------------------------
@@ -82,10 +85,10 @@ void ofApp::draw() {
 	// middle of the screen; delete later
 	contourImage.draw(300, 300);
 
-	//TODO: not quite stable yet, vulnerable to scale of square and surrounding lightning
+	/*//TODO: not quite stable yet, vulnerable to scale of square and surrounding lightning
 	contourFinder.findContours(contourImage, floor(pixelSize / 1.5),
 		ceil(pixelSize * 1.5), 1, false, true);
-	cout << "Found " << contourFinder.nBlobs << " blobs. \n";
+	cout << "Found " << contourFinder.nBlobs << " blobs. \n";*/
 	// if a blob was found, draw its bounding box
 	if (contourFinder.nBlobs != 0) {
 		ofxCvBlob blob = contourFinder.blobs.at(0);
