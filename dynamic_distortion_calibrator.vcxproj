@@ -171,7 +171,7 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="blobDetector.cpp" />
+    <ClCompile Include="src\blobDetector.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="..\..\Libraries\openframeworks_v0.9.8_vs_release\addons\ofxGui\src\ofxBaseGui.cpp" />
