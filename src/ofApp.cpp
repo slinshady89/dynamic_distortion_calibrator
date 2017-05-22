@@ -6,11 +6,13 @@ using namespace cv;
 //--------------------------------------------------------------
 void ofApp::setup() {
 	// frame in which the camera signal will be shown
+  if (cam.listDevices().size() >= 1)    cam.setDeviceID(1);
+  else    cam.setDeviceID(0); 
 	cam.setup(320, 240);
-	ofBackground(ofColor::white);
-
-
-
+	ofBackground(ofColor::black);
+  framerate = 5;
+  recog = false;
+  
   colorImage.allocate(320, 240);
   grayImage.allocate(320, 240);
   grayBg.allocate(320, 240);
@@ -19,7 +21,7 @@ void ofApp::setup() {
 
 
 	//set framerate (speed) of the travelling pixel
-	ofSetFrameRate(60);
+	ofSetFrameRate(framerate);
 	windowHeight = ofGetWindowHeight();
 	windowWidth = ofGetWindowWidth();
 	pixelSize = 1;
@@ -28,13 +30,7 @@ void ofApp::setup() {
 	startX = ceil(windowWidth / 2.0);
 	startY = ceil(windowHeight / 2.0);
 
-	// find minimal recognized pixel size
-	cam.update();
-	img = cam.getPixels();
-	colorImage = cam.getPixels();
-  colorImage.convertToGrayscalePlanarImage(grayBg, 1);
-
-	detectPixelSize(colorImage);
+  
 	startX -= ceil(pixelSize / 2.0);
 	startY -= ceil(pixelSize / 2.0);
 	x = startX;
@@ -53,6 +49,9 @@ void ofApp::update() {
 	cam.update();
 	img = cam.getPixels();
 	colorImage = cam.getPixels();
+  colorImage.convertToGrayscalePlanarImage(grayBg, 1);
+
+  //detectPixelSize(colorImage);
 
   
 	
@@ -64,7 +63,7 @@ void ofApp::update() {
 
 
 
-	if (!cam.isFrameNew()) {
+	if (!recog) {
 		detectPixelSize(colorImage);
 	}
 	else {
@@ -77,11 +76,11 @@ void ofApp::update() {
 	// TODO: find way to detect the blob in update() function instead of in draw()
 
 	// copy the gray image so that it can be pre-processed before trying to find
-	//// the pixel in its
+	// the pixel in its
 	//contourImage = grayImage;
-	//// first blur the image and threshold it, to get a real black & white image
-	//// for easier processing; thresholding inverts colours:
-	////square -> white, background -> black, needed to find blob
+	// first blur the image and threshold it, to get a real black & white image
+	// for easier processing; thresholding inverts colours:
+	// square -> white, background -> black, needed to find blob
 	//contourImage.blurGaussian();
 	//contourImage.threshold(50, true); // threshold chosen arbitrarily
 
@@ -119,118 +118,61 @@ void ofApp::draw() {
 
 	////TODO: not quite stable yet, vulnerable to scale of square and surrounding lightning
 
-	//contourFinder.findContours(contourImage, 1,
-		//100, 1, false, true);
+	//contourFinder.findContours(contourImage, 1, 100, 1, false, true);
 	cout << "Found " << contourFinder.nBlobs << " blobs. \n";
-	// if a blob was found, draw its bounding box
-	/*if (contourFinder.nBlobs != 0) {
-		blob = contourFinder.blobs.at(0);
-		ofSetColor(ofColor::yellow);
-		contourFinder.draw();
-	}*/
-
-  
 
   // Draw each blob individually from the blobs vector
   int numBlobs = contourFinder.nBlobs;
   for (int i = 0; i<numBlobs; i++) {
-    contourFinder.blobs[i].draw(20, 20);
+    contourFinder.blobs[i].draw(360, 280);
   }
 
-	// get screen resolution
-	// horizon = ofGetWindowWidth();
-	// vert = ofGetWindowHeight();
-
-	// output of screen resolution for testing
-	//string text = "width " + to_string(horizon) + " height " + to_string(vert);
-	//ofDrawBitmapStringHighlight(text,ofPoint(10,10,0.0),ofColor::white,ofColor::black );
-
 	// draw the travelling pixel
-	ofSetColor(ofColor::black);
-	ofDrawRectangle(x, y, pixelSize, pixelSize);
 	ofSetColor(ofColor::white);
+	ofDrawRectangle(x, y, pixelSize, pixelSize);
+	ofSetColor(ofColor::black);
 	
-
 }
 
-//--------------------------------------------------------------
-void ofApp::keyPressed(int key) {
 
-}
-
-//--------------------------------------------------------------
-void ofApp::keyReleased(int key) {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseMoved(int x, int y) {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseDragged(int x, int y, int button) {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mousePressed(int x, int y, int button) {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseReleased(int x, int y, int button) {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseEntered(int x, int y) {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseExited(int x, int y) {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::windowResized(int w, int h) {
-
-
-}
-
-//--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg) {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo) {
-
-}
 
 //--------------------------------------------------------------
 void ofApp::detectPixelSize(ofxCvColorImage &image) {
 
-  ofPixels pix= image.getPixels();
+  /*int width = image.getWidth();
+  int height = image.getHeight();
+
+  for (int i = 0; i < width; ) {
+    for (int j = 0; j < height; ) {
+      ofRect(i, j, pixelSize, pixelSize);
+      j += height / 10;
+    }
+    i += width / 10;
+  }*/
+
+
+  pix = image.getPixels();
 	// go over all pixels
 	for (auto & pixel : pix.getPixelsIter()) {
 		// and detect their colour
 		pixel.getColor();
 		// for debug purposes: if the colour is white something was detected
 		// later: if a black pixel was recognized on a white screen
-		if ((pixel.getColor() == ofColor::white)) {
+		if (!(pixel.getColor() == ofColor::black)) {
 			recog = true;
+      framerate = 30;
 		}
 		else {
 			// else increase the pixel size by one
 			pixelSize++;
+      detectPixelSize(image);
 		}
 	}
+
 	// check for pixelSize exceeding the window size
-	if (pixelSize >= maxSize/10) {
+	if (pixelSize >=/* maxSize/*/10) {
 		std::cout << "Error! pixelSize exceeds the size of the window!\n";
-		pixelSize = ceil(maxSize / 10.0) ;
+		pixelSize = ceil(/*maxSize /*/ 10.0) ;
 		std::cout << "Setting pixelSize to the maxSize: " << pixelSize;
 	}
 	std::cout << "Found pixelSize = " << pixelSize << ".\n";
@@ -288,4 +230,61 @@ void ofApp::calculateNextSpiralPosition() {
 		y = startY;
 		spiralSize = pixelSize;
 	}
+}
+
+
+
+//--------------------------------------------------------------
+void ofApp::keyPressed(int key) {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::keyReleased(int key) {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::mouseMoved(int x, int y) {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::mouseDragged(int x, int y, int button) {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::mousePressed(int x, int y, int button) {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::mouseReleased(int x, int y, int button) {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::mouseEntered(int x, int y) {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::mouseExited(int x, int y) {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::windowResized(int w, int h) {
+  
+}
+
+//--------------------------------------------------------------
+void ofApp::gotMessage(ofMessage msg) {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::dragEvent(ofDragInfo dragInfo) {
+
 }

@@ -32,6 +32,7 @@ class ofApp : public ofBaseApp{
 
 	private:
 		int pixelSize, windowHeight, windowWidth, spiralSize, startX, startY, i, j,maxSize;
+    int framerate;
 		int spiralDirection; // 0 -> up; 1 -> left; 2 -> down; 3 -> right
 		bool recog; // recognized a rectangle in the image
 		ofVideoGrabber cam;
@@ -41,7 +42,7 @@ class ofApp : public ofBaseApp{
 		ofxCvBlob blob;
 		// Object for camera signal
 		ofImage img;
-
+    ofPixels pix;
 		// detects the minimal size a square must have to be seen by the camera
 		void detectPixelSize(ofxCvColorImage &image);
 		// calculates the next x & y values for the spiral
