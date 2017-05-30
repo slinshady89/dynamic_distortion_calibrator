@@ -12,18 +12,6 @@ class ofApp : public ofBaseApp{
 		void update();
 		void draw();
 
-		void keyPressed(int key);
-		void keyReleased(int key);
-		void mouseMoved(int x, int y );
-		void mouseDragged(int x, int y, int button);
-		void mousePressed(int x, int y, int button);
-		void mouseReleased(int x, int y, int button);
-		void mouseEntered(int x, int y);
-		void mouseExited(int x, int y);
-		void windowResized(int w, int h);
-		void dragEvent(ofDragInfo dragInfo);
-		void gotMessage(ofMessage msg);		
-
 		
 
 		//ofxPanel gui;
@@ -47,4 +35,15 @@ class ofApp : public ofBaseApp{
 		void detectPixelSize(ofxCvColorImage &image);
 		// calculates the next x & y values for the spiral
 		void calculateNextSpiralPosition(); 
+
+
+    // Replace this ofImage with live video, eventually
+    ofImage laserTagImage;
+
+    vector<string> strings;
+    vector < string > linesOfTheFile;
+    ofstream file;
+    ifstream screen;
+
+    int camHeight, camWidth;
 };
