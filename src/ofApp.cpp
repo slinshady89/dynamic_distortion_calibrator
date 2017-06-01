@@ -36,67 +36,17 @@ void ofApp::setup() {
 
 	maxSize = max(ofGetWindowHeight(), ofGetWindowWidth());
 
-  file.open("text.txt");
-  screen.open("screen.txt");
-
-  //auto strings = ofSplitString(ofBufferFromFile("C:\\Users\\hamac\\Documents\\Visual Studio 2015\\Projects\\dynamic_distortion_calibrator\\bin\\screen.txt").getText(), ",\n",true,true);
-  
-  //ofBuffer buffer = ofBufferFromFile("C:\\Users\\hamac\\Documents\\Visual Studio 2015\\Projects\\dynamic_distortion_calibrator\\bin\\screen.txt");
-  //for (auto line : buffer.getLines()) {
-  //  linesOfTheFile.push_back(line);
-  //}
-  //
-  //camHeight = linesOfTheFile.size();
-  //camWidth = (ofSplitString(linesOfTheFile[0].c_str(), ",", true, true)).size();
-
-  //strings.reserve(camHeight*camWidth);
-
-  //for (auto it : linesOfTheFile) {
-  //  vector<string> buff = ofSplitString(it.c_str(), ",", true, true);
-  //  //strings.insert(strings.end(), buff.begin(), buff.end());
-  //  for (auto itIt : buff) {
-  //    strings.push_back(itIt.c_str());
-  //  }
-  //}
 }
 
 //--------------------------------------------------------------
 void ofApp::update() {
 	// static update of the received Signal
 	cam.update();
-	/*img = cam.getPixels();
-	colorImage = cam.getPixels();
-	colorImage.convertToGrayscalePlanarImage(grayBg, 1);*/
-
-	//detectPixelSize(colorImage);
-
-	
-	
-	// Two variantes to copy the colored image into a grayscale one
-	//grayImage.setFromimg(img);
-	//colorImage.convertToGrayscalePlanarImage(grayImage,1);
-
-	//img.setImageType(OF_IMAGE_GRAYSCALE);
 
 
-	/*if (!recog) {
-		detectPixelSize(colorImage);
-	}
-	else {*/
-		calculateNextSpiralPosition();
-	//}
+	calculateNextSpiralPosition();
 
 
-	//// Take the absolute value of the difference 
-	//// between the background and incoming images.
-	//grayDiff.absDiff(grayBg, grayImage);
-
-	//// Perform an in-place thresholding of the difference image.
-	//grayDiff.threshold(80);
-
-	//// Find contours whose areas are betweeen 20 and 25000 pixels.
-	//// "Find holes" is true, so we'll also get interior contours.
-	//contourFinder.findContours(grayDiff, 20, 500, 10, true);
 
 }
 
@@ -104,32 +54,7 @@ void ofApp::update() {
 // Make a white plane on which one or more Pixel(s) are travelling 
 void ofApp::draw() {
 
-	//colorImage.draw(20, 20);    // The incoming color image
-	//grayImage.draw(360, 20);  // A gray version of the incoming video
-	//grayBg.draw(20, 280);     // The stored background image
-	//grayDiff.draw(360, 280);  // The thresholded difference image
 
-
-
-	// draw the grayscale image in the upper left corner of the window
-	//grayImage.draw(0, 0);
-	
-
-	// for debug purposes: draw the blurred and thresholded image roughly in the
-	// middle of the screen; delete later
-	//contourImage.draw(810, 0);
-
-	////TODO: not quite stable yet, vulnerable to scale of square and surrounding lightning
-
-	//contourFinder.findContours(contourImage, 1, 100, 1, false, true);
-	//cout << "Found " << contourFinder.nBlobs << " blobs. \n";
-
-	// Draw each blob individually from the blobs vector
- /* int numBlobs = contourFinder.nBlobs;
-	for (int i = 0; i<numBlobs; i++) {
-		contourFinder.blobs[i].draw(360, 280);
-	}
-*/
 	// draw the travelling pixel
 	ofSetColor(ofColor::white);
 	ofDrawRectangle(x, y, pixelSize, pixelSize);
@@ -158,11 +83,11 @@ void ofApp::draw() {
 				maxBrightnessX = x;
 				maxBrightnessY = y;
 			}
-			file << brightnessOfColorAtXY << " ; ";
+			//file << brightnessOfColorAtXY << " ; ";
 		}
-		file << endl;
+		//file << endl;
 	}
-  file << endl << endl << "newLine" << endl << endl;
+  //file << endl << endl << "newLine" << endl << endl;
 
 	// Draw the image.
 	ofSetColor(255);
@@ -185,6 +110,10 @@ void ofApp::draw() {
 
 //--------------------------------------------------------------
 void ofApp::detectPixelSize(ofxCvColorImage &image) {
+
+
+  // to find the minimum size of a pixel
+
 
 	/*int width = image.getWidth();
 	int height = image.getHeight();

@@ -45,5 +45,5 @@ class ofApp : public ofBaseApp{
     ofstream file;
     ifstream screen;
 
-    int camHeight, camWidth;
+    int camHeight, camWidth, maxBrightnessX, maxBrightnessY;
 };
