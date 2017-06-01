@@ -1,26 +1,20 @@
 #include "ofMain.h"
 #include "ofApp.h"
+#include "PixelSizeDetector.h"
 
 //========================================================================
 int main( ){
+	ofSetupOpenGL(1920, 1080, OF_FULLSCREEN);// <-------- setup the GL context
 
+	// set up pixelSize and pointer to pixelSize
+	int pixelSize = 0;
+	int *pixelSizePointer = &pixelSize;
 
-
-  ofSetupOpenGL(800 , 600, OF_WINDOW);
-
-  //ofSetupOpenGL(1920, 1080, OF_WINDOW);// <-------- setup the GL context
-
-  int horizon = ofGetWindowWidth();
-  int vert = ofGetWindowHeight();
-
-  cout << "width " << horizon << " height " << vert <<"\n";
-
-
-  //ofSetupOpenGL(1920, 1080, OF_FULLSCREEN);// <-------- setup the GL context
-
-	// this kicks off the running of my app
-	// can be OF_WINDOW or OF_FULLSCREEN
-	// pass in width and height too:
-	ofRunApp(new ofApp());
-
+	// create app for pixel size detection
+	auto app = make_shared<PixelSizeDetector>();
+	// set the app's pointer to the outside pixelSize variable
+	app->setPixelSizePointer(pixelSizePointer);
+	ofRunApp(app); // run app, closes once pixel found
+	// print pixel size to screen (start programm with Strg + F5)
+	std::cout << "pixelSize = " << pixelSize << "\n";	
 }
