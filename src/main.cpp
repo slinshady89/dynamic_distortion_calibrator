@@ -1,20 +1,34 @@
 #include "ofMain.h"
-#include "ofApp.h"
 #include "PixelSizeDetector.h"
+#include "CameraAreaDetector.h"
+#include "cameraArea.h"
 
 //========================================================================
 int main( ){
-	ofSetupOpenGL(1920, 1080, OF_FULLSCREEN);// <-------- setup the GL context
+	//_________________ Detect minimal pixel size _____________________________
+	/*ofSetupOpenGL(1920, 1080, OF_FULLSCREEN);// <-------- setup the GL context
 
 	// set up pixelSize and pointer to pixelSize
 	int pixelSize = 0;
 	int *pixelSizePointer = &pixelSize;
 
 	// create app for pixel size detection
-	auto app = make_shared<PixelSizeDetector>();
+	auto pixelSizeDetector = make_shared<PixelSizeDetector>();
 	// set the app's pointer to the outside pixelSize variable
-	app->setPixelSizePointer(pixelSizePointer);
-	ofRunApp(app); // run app, closes once pixel found
+	pixelSizeDetector->setPixelSizePointer(pixelSizePointer);
+	ofRunApp(pixelSizeDetector); // run app, closes once pixel found
 	// print pixel size to screen (start programm with Strg + F5)
-	std::cout << "pixelSize = " << pixelSize << "\n";	
+	std::cout << "found pixelSize = " << pixelSize << "\n";
+	*/
+	int pixelSize = 10; //TODO delete, debug only
+	//_________________ Detect camera area ____________________________________
+	ofSetupOpenGL(1920, 1080, OF_FULLSCREEN);// <-------- setup the GL context
+	cameraArea area;
+	cameraArea *areaPointer = &area;
+	auto cameraAreaDetector = make_shared<CameraAreaDetector>();
+	// set the app's pointer
+	cameraAreaDetector->setCameraAreaPointerAndPixelSize(areaPointer, pixelSize);
+	ofRunApp(cameraAreaDetector);
+	std::cout << "found area \n";
+
 }

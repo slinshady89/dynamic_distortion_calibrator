@@ -1,10 +1,9 @@
 #include "PixelSizeDetector.h"
 
-
 //_____________________________________________________________________________
 void PixelSizeDetector::setup() {
 	// set framerate
-	ofSetFrameRate(60);
+	ofSetFrameRate(20);
 	// arbitrary value, gets actually "rounded" down to 48
 	_noSquaresDrawn = 50;
 	// pixelSize not found yet
@@ -12,6 +11,13 @@ void PixelSizeDetector::setup() {
 	// set maximal brightness to 0
 	_maxBrightness = 0;
 
+	// check for external webcam and use taht if possible
+	if (_cam.listDevices().size() > 1) {
+		_cam.setDeviceID(1);
+	}
+	else {
+		_cam.setDeviceID(0);
+	}
 	// setup camera
 	_cam.setup(320, 240);
 
@@ -28,6 +34,10 @@ void PixelSizeDetector::setup() {
 	_cam.update();
 	_beginDetection = false;
 	
+	_img = _cam.getPixels();
+	_imageHeight = _img.getHeight();
+	_imageWidth = _img.getWidth();
+
 	std::cout << "pixelSizeDetector done setting up\n";
 }
 
@@ -39,12 +49,14 @@ void PixelSizeDetector::update() {
 	_img = _cam.getPixels();
 	_imgPixels = _img.getPixels();
 
-	detectBrightness();
+	subtractBackground();
 
+	detectBrightness();
+	/*
 	// if the seen screen is completly black (i.e. brightness < 10) begin square detection
 	if (_maxBrightness < 10) {
 		_beginDetection = true;
-	}
+	}*/
 
 	// Code for pixel size detection goes here
 	if (_beginDetection == true) {
@@ -87,7 +99,7 @@ void PixelSizeDetector::draw() {
 	// get a black background with white squares on them
 	ofBackground(ofColor::black);
 	ofSetColor(ofColor::white);
-
+	ofFill();
 	// actually draw the squares
 	for (int i = 0; i < squaresWidth; i++) {
 		for (int j = 0; j < squaresHeight; j++) {
@@ -96,7 +108,11 @@ void PixelSizeDetector::draw() {
 	}
 	
 	// debug
-	_img.draw(0, 0);
+	_cam.draw(0, 0);
+	_diff.draw(0, 240);
+	ofImage img;
+	img = _background;
+	img.draw(0, 480);
 	ofNoFill();
 
 	ofSetColor(ofColor::red);
@@ -105,9 +121,35 @@ void PixelSizeDetector::draw() {
 	ofSetColor(ofColor::black);
 }
 
+
+//_____________________________________________________________________________
+void PixelSizeDetector::mousePressed(int x, int y, int button) {
+	_cam.update();
+	_background = _cam.getPixels();
+	_beginDetection = true;
+}
+
 //_____________________________________________________________________________
 void PixelSizeDetector::setPixelSizePointer(int *&pixelSize) {
 	_pixelSize = pixelSize;
+}
+
+//_____________________________________________________________________________
+void PixelSizeDetector::subtractBackground() {
+	if (_background.isAllocated()) {
+		// iterate over all pixels and set the new colour for the difference image
+		for (int y = 0; y < _imageHeight; y++) {
+			for (int x = 0; x < _imageWidth; x++) {
+				ofColor color = _imgPixels.getColor(x, y) - _background.getColor(x, y);
+				_diff.setColor(x, y, color);
+			}
+		}
+		_imgPixels = _diff.getPixels();
+	}
+	else {
+		_diff = _img.getPixels();
+	}
+
 }
 
 //_____________________________________________________________________________
@@ -115,13 +157,9 @@ void PixelSizeDetector::detectBrightness() {
 	_maxBrightness = 0;
 	std::cout << "beginning pixel detection\n";
 
-	// get dimensions of image
-	int w = _imgPixels.getWidth();
-	int h = _imgPixels.getHeight();
-
 	// iterate and find brightest pixel
-	for (int y = 0; y < h; y++) {
-		for (int x = 0; x < w; x++) {
+	for (int y = 0; y < _imageHeight; y++) {
+		for (int x = 0; x < _imageWidth; x++) {
 			_colorAtXY = _imgPixels.getColor(x, y);
 			_brightnessAtXY = _colorAtXY.getBrightness();
 			if (_brightnessAtXY > _maxBrightness) {
