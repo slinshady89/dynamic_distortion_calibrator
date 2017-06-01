@@ -52,8 +52,8 @@ void CameraAreaDetector::setup()
 
 	_beginDetection = false;
 
-	//_vis.allocate(_screenWidth, _screenHeight, _img.);
-	//_vis.setColor(ofColor::black);
+	_vis.allocate(_screenWidth, _screenHeight, OF_IMAGE_COLOR);
+	_vis.setColor(ofColor::black);
 }
 
 //_____________________________________________________________________________
@@ -85,9 +85,12 @@ void CameraAreaDetector::update()
 
 //_____________________________________________________________________________
 void CameraAreaDetector::draw()
-{
+{	
+	//_vis.draw(0, 0);
+	//ofColor::white;
 	ofDrawRectangle(_screenX, _screenY, _pixelSize, _pixelSize);
-	
+	//ofColor::black;
+
 	// move the pixel along the screen
 	if (_beginDetection) {
 		_screenX++;
