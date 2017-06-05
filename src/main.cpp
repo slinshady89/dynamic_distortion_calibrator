@@ -1,7 +1,10 @@
-#include "ofMain.h"
+/*#include "ofMain.h"
 #include "PixelSizeDetector.h"
 #include "CameraAreaDetector.h"
-#include "cameraArea.h"
+#include "cameraArea.h"*/
+#include "DynamicDistortionCalibrator.h"
+
+extern int WHITEVALUE = 200;
 
 //========================================================================
 int main( ){
@@ -20,7 +23,7 @@ int main( ){
 	// print pixel size to screen (start programm with Strg + F5)
 	std::cout << "found pixelSize = " << pixelSize << "\n";
 	*/
-	int pixelSize = 10; //TODO delete, debug only
+	/*int pixelSize = 10; //TODO delete, debug only
 	//_________________ Detect camera area ____________________________________
 	ofSetupOpenGL(1920, 1080, OF_FULLSCREEN);// <-------- setup the GL context
 	cameraArea area;
@@ -30,5 +33,8 @@ int main( ){
 	cameraAreaDetector->setCameraAreaPointerAndPixelSize(areaPointer, pixelSize);
 	ofRunApp(cameraAreaDetector);
 	std::cout << "found area \n";
+	*/
 
+	DynamicDistortionCalibrator dynDistCal(1080, 1920);
+	dynDistCal.findRawDistortion();
 }
