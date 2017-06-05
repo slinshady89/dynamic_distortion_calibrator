@@ -1,3 +1,5 @@
+#pragma warning(disable: 4996)
+
 #include "ofMain.h"
 #include "PixelSizeDetector.h"
 #include "CameraAreaDetector.h"
