@@ -111,7 +111,7 @@ void PixelSizeDetector::draw() {
 	_cam.draw(0, 0);
 	_diff.draw(0, 240);
 	ofImage img;
-	img = _background;
+	img = _imgPixels;//_background;
 	img.draw(0, 480);
 	ofNoFill();
 
@@ -136,9 +136,9 @@ void PixelSizeDetector::setPixelSizePointer(int *&pixelSize) {
 
 //_____________________________________________________________________________
 void PixelSizeDetector::subtractBackground() {
-	ofxCvGrayscaleImage img;
-	_img.convertToGrayscalePlanarImage(img, 1);
-	CvMat mat = img.getCvImage();
+	//ofxCvGrayscaleImage img;
+	//_img.convertToGrayscalePlanarImage(img, 1);
+	//CvMat mat = img.getCvImage().;
 
 
 	if (_background.isAllocated()) {
