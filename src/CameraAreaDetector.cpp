@@ -29,6 +29,8 @@ void CameraAreaDetector::setup()
 	_img = _cam.getPixels();
 	_imageHeight = _img.getHeight();
 	_imageWidth = _img.getWidth();
+	_area->_sizeImageX = _imageWidth;
+	_area->_sizeImageY = _imageHeight;
 	
 	// allocate storage for the screen coordinates
 	_area->_imageX = new int*[_imageWidth];

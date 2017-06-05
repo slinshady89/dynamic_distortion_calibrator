@@ -136,6 +136,11 @@ void PixelSizeDetector::setPixelSizePointer(int *&pixelSize) {
 
 //_____________________________________________________________________________
 void PixelSizeDetector::subtractBackground() {
+	ofxCvGrayscaleImage img;
+	_img.convertToGrayscalePlanarImage(img, 1);
+	CvMat mat = img.getCvImage();
+
+
 	if (_background.isAllocated()) {
 		// iterate over all pixels and set the new colour for the difference image
 		for (int y = 0; y < _imageHeight; y++) {
