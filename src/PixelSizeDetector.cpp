@@ -64,7 +64,7 @@ void PixelSizeDetector::draw() {
 
 	bool debug = true;
 	if (_state == -1) { // setup state
-		// ensure that
+		// ensure that instructions don't mess with camera setup
 		if (_mousePressedOnce == false) {
 			ofClear(0);
 			ofSetColor(ofColor::white);
@@ -127,7 +127,7 @@ void PixelSizeDetector::draw() {
 		//TODO: currently just a claim, need to verify!!
 		// if the maximal found brightness is over 150 we have found our white square
 		if (_maxBrightness >= 150) {
-			// if the pixelSize remained the same count it, else reset the counter
+			// if the pixelSize remained the same count it, else reset the counter and set new oldPixelSize
 			if (_oldPixelSize == *_pixelSize) {
 				_foundPixelSizeCounter++;
 			}
@@ -136,7 +136,7 @@ void PixelSizeDetector::draw() {
 				_foundPixelSizeCounter = 0;
 			}
 			// if the same pixelSize was found 5 times, we assume the pixelSize was found
-			if (_foundPixelSizeCounter == 5) {
+			if (_foundPixelSizeCounter == 2) {
 				_foundPixelSize = true;
 			}
 		}
