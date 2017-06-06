@@ -68,9 +68,11 @@ void PixelSizeDetector::draw() {
 		if (_mousePressedOnce == false) {
 			ofClear(0);
 			ofSetColor(ofColor::white);
-			ofDrawBitmapString("Please set up your camera, so that it only 'sees' the screen and nothing else. \n", 0, 10);
-			ofDrawBitmapString("If you're done setting up your camera, right click once with your mouse.\n", 0, 20);
-			ofDrawBitmapString("To begin, right click once with your mouse.", 0, 30);
+			int posX = (int)round(((float)_screenWidth / 3.0));
+			int posY = (int)round(((float)_screenHeight / 2.0));
+			ofDrawBitmapString("Please set up your camera, so that it only 'sees' the screen and nothing else. \n", posX, posY - 10);
+			ofDrawBitmapString("If you're done setting up your camera, right click once with your mouse.\n", posX, posY);
+			ofDrawBitmapString("To begin, right click once with your mouse.", posX, posY + 10);
 		} else {
 			// draw the camera image on screen
 			_cam.update();
