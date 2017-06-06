@@ -19,10 +19,10 @@ void DynamicDistortionCalibrator::findRawDistortion()
 	int pixelSize = findPixelSize();
 
 	// find cameraArea
-	_area = findCameraArea(pixelSize);
+	//_area = findCameraArea(pixelSize);
 
 	// calculate the global offset from screen coordinates to image coordinates
-	calculateOffset();
+	//calculateOffset();
 
 	// correct for that offset, the values that remain in _area._distortionX/Y
 	// are the local distortions
@@ -43,7 +43,7 @@ void DynamicDistortionCalibrator::loadRawDistortion()
 int DynamicDistortionCalibrator::findPixelSize()
 {
 	// initialize pixelSize and pointer to pixelsize
-	int pixelSize = 1;
+	int pixelSize = 0;
 	int *pixelSizePointer = &pixelSize;
 
 	ofSetupOpenGL(_windowWidth, _windowHeight, OF_FULLSCREEN);// <-------- setup the GL context
@@ -53,7 +53,7 @@ int DynamicDistortionCalibrator::findPixelSize()
 	pixelSizeDetector->setPixelSizePointer(pixelSizePointer);
 	ofRunApp(pixelSizeDetector); // run app, closes once pixel found
 	// print pixel size to screen
-	std::cout << "found pixelSize = " << pixelSize << "\n";
+	std::cout << "DynDistCal: found pixelSize = " << pixelSize << "\n";
 
 	return pixelSize;
 }
