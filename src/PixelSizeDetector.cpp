@@ -136,15 +136,21 @@ void PixelSizeDetector::draw() {
 				_foundPixelSizeCounter = 0;
 			}
 			// if the same pixelSize was found 5 times, we assume the pixelSize was found
-			if (_foundPixelSizeCounter == 2) {
+			if (_foundPixelSizeCounter == 5) {
 				_foundPixelSize = true;
 			}
 		}
 		else {
 			// if not increase the pixelSize and better luck next time
 			// needs to be += not ++, because of pointer/reference stuff
-			_oldPixelSize = *_pixelSize;
-			*_pixelSize += 1;
+			if (_oldPixelSize == 0) { // repeat pixelSize = 1 once
+				_oldPixelSize = *_pixelSize;
+				*_pixelSize = 1;
+			}
+			else {
+				_oldPixelSize = *_pixelSize;
+				*_pixelSize += 1;
+			}
 		}
 
 		// if the pixel is found exit the app
