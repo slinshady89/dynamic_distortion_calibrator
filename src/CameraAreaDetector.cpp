@@ -54,6 +54,8 @@ void CameraAreaDetector::setup()
 
 	_beginDetection = false;
 
+	_state = 0;
+
 	_vis.allocate(_screenWidth, _screenHeight, OF_IMAGE_COLOR);
 	_vis.setColor(ofColor::black);
 }
@@ -88,10 +90,51 @@ void CameraAreaDetector::update()
 //_____________________________________________________________________________
 void CameraAreaDetector::draw()
 {	
-	//_vis.draw(0, 0);
-	//ofColor::white;
+	bool debug = true;
+
+	if (_state == 0) {
+		// entered drawing state
+
+		// next call capturing state
+		_state = 1;
+
+	} else if(_state == 1) {
+		// entered capturing state
+
+		// next call calculation state
+		_state = 2;
+	}
+	else if (_state == 2) {
+		// entered calculation state
+
+		// next call drawing state
+		_state = 0;
+	}
+	else {
+		// something went wrong
+		std::cout << "Something went wrong, unreachable state reached. Quitting now.\n";
+		ofGetWindowPtr()->setWindowShouldClose();
+	}
+}
+
+void CameraAreaDetector::mousePressed(int x, int y, int button) {
+	_beginDetection = true;
+}
+
+//_____________________________________________________________________________
+void CameraAreaDetector::setCameraAreaPointerAndPixelSize(cameraArea *& area, int pixelSize)
+{	
+	_pixelSize = pixelSize;
+	_area = area;
+}
+
+//_____________________________________________________________________________
+void CameraAreaDetector::drawPixel()
+{
+	// determines whether what the camera sees gets drawn in upper left corner
+	bool debug = true;
+
 	ofDrawRectangle(_screenX, _screenY, _pixelSize, _pixelSize);
-	//ofColor::black;
 
 	// move the pixel along the screen
 	if (_beginDetection) {
@@ -107,21 +150,9 @@ void CameraAreaDetector::draw()
 	}
 
 	// for debug purposes; allows to adjust the camera to see screen only
-	if (!_beginDetection) {
+	if (debug) {
 		_img.draw(0, 0);
 	}
-
-}
-
-void CameraAreaDetector::mousePressed(int x, int y, int button) {
-	_beginDetection = true;
-}
-
-//_____________________________________________________________________________
-void CameraAreaDetector::setCameraAreaPointerAndPixelSize(cameraArea *& area, int pixelSize)
-{	
-	_pixelSize = pixelSize;
-	_area = area;
 }
 
 //_____________________________________________________________________________

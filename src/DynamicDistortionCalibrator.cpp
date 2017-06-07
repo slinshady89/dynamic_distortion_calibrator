@@ -19,7 +19,7 @@ void DynamicDistortionCalibrator::findRawDistortion()
 	int pixelSize = findPixelSize();
 
 	// find cameraArea
-	//_area = findCameraArea(pixelSize);
+	_area = findCameraArea(pixelSize);
 
 	// calculate the global offset from screen coordinates to image coordinates
 	//calculateOffset();

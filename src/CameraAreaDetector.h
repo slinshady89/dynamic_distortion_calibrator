@@ -24,6 +24,9 @@ class CameraAreaDetector : public ofBaseApp {
 		// allows detection to start
 		bool _beginDetection;
 
+		// keeps track of the state in draw() function
+		int _state;
+
 		// pixelSize
 		int _pixelSize;
 		// x position of drawing the pixel
@@ -58,6 +61,8 @@ class CameraAreaDetector : public ofBaseApp {
 		// y position fo brightest pixel
 		int _maxBrightnessY;
 
+		// function to draw the pixel on screen at specific positions
+		void drawPixel();
 		// function to detect the brightness in the image
 		void detectBrightness();
 		// returns true if all places in the image have been detected

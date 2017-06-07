@@ -61,6 +61,9 @@
     <ClCompile Include="src\DynamicDistortionCalibrator.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\commonFunctions.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -705,6 +708,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\DynamicDistortionCalibrator.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\commonFunctions.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

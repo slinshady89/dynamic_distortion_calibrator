@@ -3,6 +3,7 @@
 #include "ofxGui.h"
 #include "ofxOpenCv.h"
 #include "ofMain.h"
+#include "commonFunctions.h"
 
 class PixelSizeDetector : public ofBaseApp {
 	public:
@@ -85,10 +86,6 @@ class PixelSizeDetector : public ofBaseApp {
 		// oldPixelSize
 		int _oldPixelSize;
 
-		// function to detect the brightness in the image
-		void detectBrightness();
-		// subtract the background from the image to avoid detection ofreflections
-		void subtractBackground();
 		// function that draws roughly the amount of _noSquaresDrawn on the screen
 		void drawRectangles();
 		// draws the current camera frame, the set background, & the remaining differenece

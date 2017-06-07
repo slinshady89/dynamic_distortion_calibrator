@@ -172,6 +172,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\CameraAreaDetector.cpp" />
+    <ClCompile Include="src\commonFunctions.cpp" />
     <ClCompile Include="src\DynamicDistortionCalibrator.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="..\..\Libraries\openframeworks_v0.9.8_vs_release\addons\ofxGui\src\ofxBaseGui.cpp" />
@@ -372,6 +373,7 @@
     <ClInclude Include="..\..\Libraries\openframeworks_v0.9.8_vs_release\addons\ofxOpenCv\libs\opencv\include\opencv2\videostab\videostab.hpp" />
     <ClInclude Include="src\cameraArea.h" />
     <ClInclude Include="src\CameraAreaDetector.h" />
+    <ClInclude Include="src\commonFunctions.h" />
     <ClInclude Include="src\DynamicDistortionCalibrator.h" />
     <ClInclude Include="src\PixelSizeDetector.h" />
   </ItemGroup>

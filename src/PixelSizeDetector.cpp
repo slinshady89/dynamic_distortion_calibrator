@@ -3,7 +3,7 @@
 //_____________________________________________________________________________
 void PixelSizeDetector::setup() {
 	// set framerate
-	ofSetFrameRate(10);
+	ofSetFrameRate(20);
 	// arbitrary value, gets actually "rounded" down to 48
 	_noSquaresDrawn = 50;
 	// pixelSize not found yet
@@ -32,7 +32,7 @@ void PixelSizeDetector::setup() {
 
 	_cam.update();
 	
-	// initial state is draw
+	// initial state is setup
 	_state = -1;
 	_drawCount = 0;
 	_setupDone = false;
@@ -61,7 +61,7 @@ void PixelSizeDetector::update() {
 //_____________________________________________________________________________
 void PixelSizeDetector::draw() {
 	std::cout << "beginning draw function in state " << _state << " with pixelSize: " << *_pixelSize << "\n";
-
+	
 	bool debug = true;
 	if (_state == -1) { // setup state
 		// ensure that instructions don't mess with camera setup
@@ -120,10 +120,12 @@ void PixelSizeDetector::draw() {
 		// reset the maximally found brightness
 		_maxBrightness = 0;
 		// subtract the background
-		subtractBackground();
+		_diffPixels = commonFunctions::subtractBackground(_img.getPixels(), _background);
 		// and finally detect the position of the brightest pixel
-		detectBrightness();
-
+		tuple<int, int, int> bright = commonFunctions::detectBrightness(_diffPixels);
+		_maxBrightnessX = std::get<0>(bright);
+		_maxBrightnessY = std::get<1>(bright);
+		_maxBrightness = std::get<2>(bright);
 		//TODO: currently just a claim, need to verify!!
 		// if the maximal found brightness is over 150 we have found our white square
 		if (_maxBrightness >= 150) {
@@ -186,45 +188,6 @@ void PixelSizeDetector::mousePressed(int x, int y, int button) {
 //_____________________________________________________________________________
 void PixelSizeDetector::setPixelSizePointer(int *&pixelSize) {
 	_pixelSize = pixelSize;
-}
-
-//_____________________________________________________________________________
-void PixelSizeDetector::subtractBackground() {
-	if (_background.isAllocated()) {
-		// iterate over all pixels and set the new colour for the difference image
-		for (int y = 0; y < _imageHeight; y++) {
-			for (int x = 0; x < _imageWidth; x++) {
-				ofColor color = _imgPixels.getColor(x, y) - _background.getColor(x, y);
-				_diff.setColor(x, y, color);
-			}
-		}
-		_diffPixels = _diff.getPixels();
-	}
-	else {
-		_diff = _img.getPixels();
-		_diffPixels = _diff.getPixels();
-	}
-
-}
-
-//_____________________________________________________________________________
-void PixelSizeDetector::detectBrightness() {
-	_maxBrightness = 0;
-	std::cout << "beginning pixel detection\n";
-
-	// iterate and find brightest pixel
-	for (int y = 0; y < _imageHeight; y++) {
-		for (int x = 0; x < _imageWidth; x++) {
-			_colorAtXY = _diffPixels.getColor(x, y);
-			_brightnessAtXY = _colorAtXY.getBrightness();
-			if (_brightnessAtXY > _maxBrightness) {
-				_maxBrightness = _brightnessAtXY;
-				_maxBrightnessX = x;
-				_maxBrightnessY = y;
-				std::cout << "maxBrightness: " << _maxBrightness << "\n";
-			}
-		}
-	}
 }
 
 //_____________________________________________________________________________
