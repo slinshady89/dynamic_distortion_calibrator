@@ -117,12 +117,10 @@ void PixelSizeDetector::draw() {
 	}
 	else if (_state == 2) { // actual calculation state
 		std::cout << "beginning pixel detection\n";
-		// reset the maximally found brightness
-		_maxBrightness = 0;
 		// subtract the background
 		_diffPixels = commonFunctions::subtractBackground(_img.getPixels(), _background);
 		// and finally detect the position of the brightest pixel
-		tuple<int, int, int> bright = commonFunctions::detectBrightness(_diffPixels);
+		tuple<int, int, float> bright = commonFunctions::detectBrightness(_diffPixels);
 		_maxBrightnessX = std::get<0>(bright);
 		_maxBrightnessY = std::get<1>(bright);
 		_maxBrightness = std::get<2>(bright);

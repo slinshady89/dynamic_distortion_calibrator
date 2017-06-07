@@ -2,6 +2,7 @@
 #include "ofxOpenCv.h"
 #include "ofMain.h"
 #include "cameraArea.h"
+#include "commonFunctions.h"
 
 class CameraAreaDetector : public ofBaseApp {
 	public:
@@ -26,6 +27,8 @@ class CameraAreaDetector : public ofBaseApp {
 
 		// keeps track of the state in draw() function
 		int _state;
+		// keeps track of how often the screen was drawn
+		int _drawCount;
 
 		// pixelSize
 		int _pixelSize;
@@ -47,8 +50,15 @@ class CameraAreaDetector : public ofBaseApp {
 		ofxCvColorImage _img;
 		// pixels of image
 		ofPixels _imgPixels;
+		// background
+		ofPixels _background;
+		// difference between image and background
+		ofPixels _diffPixels;
+		// background set
+		bool _backgroundSet;
 		// image drawn as background for visualisation purposes
-		ofImage _vis;
+		ofPixels _vis;
+		bool _visDrawn;
 
 		// color at a given pixel
 		ofColor _colorAtXY;
@@ -61,11 +71,13 @@ class CameraAreaDetector : public ofBaseApp {
 		// y position fo brightest pixel
 		int _maxBrightnessY;
 
-		// function to draw the pixel on screen at specific positions
-		void drawPixel();
-		// function to detect the brightness in the image
-		void detectBrightness();
 		// returns true if all places in the image have been detected
 		// otherwise it returns false
 		bool allPlacesSeen();
+		// debug function
+		void drawDebug();
+		// set the currently brightest spot seen on the camera in the cameraArea
+		void determineAndSetPosition();
+		// calculate the next position for the pixel
+		void calculateNextPosition();
 };

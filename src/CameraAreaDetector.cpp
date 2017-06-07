@@ -20,13 +20,13 @@ void CameraAreaDetector::setup()
 	_screenHeight = ofGetWindowHeight();
 	_screenWidth = ofGetWindowWidth();
 
-	ofBackground(ofColor::black);
+	std::cout << "_screenHeight " << _screenHeight << " _screenWidth " << _screenWidth << "\n";
 
-	draw();
 	_cam.update();
 
 	// get image dimensions
 	_img = _cam.getPixels();
+	_imgPixels = _img.getPixels();
 	_imageHeight = _img.getHeight();
 	_imageWidth = _img.getWidth();
 	_area->_sizeImageX = _imageWidth;
@@ -48,58 +48,87 @@ void CameraAreaDetector::setup()
 		}
 	}
 
-	// start drawing at (0, 0)
-	_screenX = 0;
-	_screenY = 0;
+	// start drawing at middle of screen
+	_screenX = _screenWidth / 2;
+	_screenY = _screenHeight / 2;
 
-	_beginDetection = false;
+	ofBackground(ofColor::black);
+	ofSetColor(ofColor::white);
 
-	_state = 0;
+	_state = -1;
+	_drawCount = 0;
+	_maxBrightness = 0;
 
+	_backgroundSet = false;
+	_background = _img.getPixels();
 	_vis.allocate(_screenWidth, _screenHeight, OF_IMAGE_COLOR);
-	_vis.setColor(ofColor::black);
+	std::cout << "_vis height " << _vis.getHeight() << " width" << _vis.getWidth()<< "\n";
+	for (int x = 0; x < _vis.getWidth(); x++) {
+		for (int y = 0; y < _vis.getHeight(); y++) {
+			_vis.setColor(x, y, ofColor::black);
+		}
+	}
+	_visDrawn = false;
 }
 
 //_____________________________________________________________________________
 void CameraAreaDetector::update()
 {
-	// static update of camera
-	_cam.update();
-
-	// get image from camera
-	_img = _cam.getPixels();
-	_imgPixels = _img.getPixels();
-
-	//TODO add in background subtraction once it works
-
-	// detect brightestPixel
-	detectBrightness();
-
-	// assumed as white
-	if (_maxBrightness > 200) {
-		_area->_imageX[_maxBrightnessX][_maxBrightnessY] = _screenX;
-		_area->_imageY[_maxBrightnessX][_maxBrightnessY] = _screenY;
-		_vis.setColor(_screenX, _screenY, ofColor::darkBlue);
-	}
-
-	if (allPlacesSeen()) {
-		ofGetWindowPtr()->setWindowShouldClose();
-	}
+	
 }
 
 //_____________________________________________________________________________
 void CameraAreaDetector::draw()
-{	
+{
 	bool debug = true;
 
-	if (_state == 0) {
+	if (_state == -1) {
+		_drawCount++;
+		
+		_cam.update();
+		_img = _cam.getPixels();
+		drawDebug();
+		if (_drawCount == 50) {
+			_drawCount = 0;
+			_cam.update();
+			_backgroundSet = true;
+			_background = _cam.getPixels();
+			_state = 0;
+		}
+	} else if (_state == 0) {
 		// entered drawing state
+		_drawCount++;
+
+		if (_visDrawn == false) {
+			ofImage vis;
+			vis = _vis;
+			vis.draw(0, 0);
+			_visDrawn = true;
+		}
+
+		// debug; draws the camera frame as seen, 
+		if (debug == true) {
+			drawDebug();
+		}
+
+		ofDrawRectangle(_screenX, _screenY, _pixelSize, _pixelSize);
 
 		// next call capturing state
-		_state = 1;
+		if (_drawCount == 10) {
+			_drawCount = 0;
+			_visDrawn = false;
+			_state = 1;
+		}
 
 	} else if(_state == 1) {
 		// entered capturing state
+
+		// static update of camera
+		_cam.update();
+
+		// get image from camera
+		_img = _cam.getPixels();
+		_imgPixels = _img.getPixels();
 
 		// next call calculation state
 		_state = 2;
@@ -107,6 +136,14 @@ void CameraAreaDetector::draw()
 	else if (_state == 2) {
 		// entered calculation state
 
+		determineAndSetPosition();
+
+		calculateNextPosition();
+
+		if (allPlacesSeen()) {
+			ofGetWindowPtr()->setWindowShouldClose();
+		}
+		
 		// next call drawing state
 		_state = 0;
 	}
@@ -118,7 +155,7 @@ void CameraAreaDetector::draw()
 }
 
 void CameraAreaDetector::mousePressed(int x, int y, int button) {
-	_beginDetection = true;
+	
 }
 
 //_____________________________________________________________________________
@@ -129,49 +166,53 @@ void CameraAreaDetector::setCameraAreaPointerAndPixelSize(cameraArea *& area, in
 }
 
 //_____________________________________________________________________________
-void CameraAreaDetector::drawPixel()
+void CameraAreaDetector::drawDebug()
 {
-	// determines whether what the camera sees gets drawn in upper left corner
-	bool debug = true;
+	ofImage img;
+	img = _diffPixels;// difference between _cam;
+	img.draw(0, 0);
+	_cam.draw(0, 240);
+	ofImage background;
+	background = _background;
+	background.draw(0, 480);
 
-	ofDrawRectangle(_screenX, _screenY, _pixelSize, _pixelSize);
-
-	// move the pixel along the screen
-	if (_beginDetection) {
-		_screenX++;
-		if (_screenX == _screenWidth) {
-			_screenX = 0;
-			_screenY++;
-		}
-		if (_screenY == _screenHeight) {
-			_screenX = 0;
-			_screenY = 0;
-		}
-	}
-
-	// for debug purposes; allows to adjust the camera to see screen only
-	if (debug) {
-		_img.draw(0, 0);
+	ofNoFill();
+	if (_maxBrightness > 130) {
+		ofSetColor(ofColor::red);
+		ofDrawEllipse(_maxBrightnessX, _maxBrightnessY, 40, 40);
+		ofSetColor(ofColor::white);
 	}
 }
 
 //_____________________________________________________________________________
-void CameraAreaDetector::detectBrightness() {
-	_maxBrightness = 0;
-	std::cout << "beginning pixel detection\n";
+void CameraAreaDetector::determineAndSetPosition()
+{
+	// subtract the background
+	_diffPixels = commonFunctions::subtractBackground(_img.getPixels(), _background);
+	// and finally detect the position of the brightest pixel
+	tuple<int, int, float> bright = commonFunctions::detectBrightness(_diffPixels);
+	_maxBrightnessX = std::get<0>(bright);
+	_maxBrightnessY = std::get<1>(bright);
+	_maxBrightness = std::get<2>(bright);
+	std::cout << "max brightness: " << _maxBrightness << "\n";
+	// assumed as white
+	if (_maxBrightness > 130) {
+		_area->_imageX[_maxBrightnessX][_maxBrightnessY] = _screenX;
+		_area->_imageY[_maxBrightnessX][_maxBrightnessY] = _screenY;
+		_vis.setColor((size_t)_screenX, (size_t)_screenY, ofColor::darkOliveGreen);
+	}
+}
 
-	// iterate and find brightest pixel
-	for (int y = 0; y < _imageHeight; y++) {
-		for (int x = 0; x < _imageWidth; x++) {
-			_colorAtXY = _imgPixels.getColor(x, y);
-			_brightnessAtXY = _colorAtXY.getBrightness();
-			if (_brightnessAtXY > _maxBrightness) {
-				_maxBrightness = _brightnessAtXY;
-				_maxBrightnessX = x;
-				_maxBrightnessY = y;
-				std::cout << "maxBrightness: " << _maxBrightness << "\n";
-			}
-		}
+//_____________________________________________________________________________
+void CameraAreaDetector::calculateNextPosition()
+{
+	_screenX++;
+	if (_screenX > _screenWidth) {
+		_screenX = 0;
+		_screenY++;
+	}
+	if (_screenY > _screenHeight) {
+		_screenY = 0;
 	}
 }
 

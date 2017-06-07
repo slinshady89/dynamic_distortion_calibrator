@@ -76,7 +76,7 @@ class PixelSizeDetector : public ofBaseApp {
 		// pixel array of the difference image
 		ofPixels _diffPixels;
 		// color at a given pixel
-		ofColor _colorAtXY;
+		//ofColor _colorAtXY;
 		// brightness of color at a given pixel
 		float _brightnessAtXY;
 		// maximal brightness found
