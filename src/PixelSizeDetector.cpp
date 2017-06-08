@@ -229,6 +229,6 @@ void PixelSizeDetector::drawDebug()
 
 	ofSetColor(ofColor::red);
 	ofDrawEllipse(_maxBrightnessX, _maxBrightnessY, 40, 40);
-
+	ofFill();
 	ofSetColor(ofColor::black);
 }

@@ -5,7 +5,8 @@ void CameraAreaDetector::setup()
 {
 	// set framerate
 	ofSetFrameRate(20);
-
+	_nonVisCount = 0;
+  pxSeenOnce = false;
 	// check for external webcam and use taht if possible
 	if (_cam.listDevices().size() > 1) {
 		_cam.setDeviceID(1);
@@ -69,6 +70,10 @@ void CameraAreaDetector::setup()
 		}
 	}
 	_visDrawn = false;
+  _initPos = false;
+  _cumulativeX = 0;
+  _cumulativeY = 0;
+  _seenCount = 0;
 }
 
 //_____________________________________________________________________________
@@ -111,10 +116,11 @@ void CameraAreaDetector::draw()
 			drawDebug();
 		}
 
+		ofFill();
 		ofDrawRectangle(_screenX, _screenY, _pixelSize, _pixelSize);
 
 		// next call capturing state
-		if (_drawCount == 10) {
+		if (_drawCount == 4) {  // minimum 4 for Nils' pc check all if you need higher timer!
 			_drawCount = 0;
 			_visDrawn = false;
 			_state = 1;
@@ -135,15 +141,20 @@ void CameraAreaDetector::draw()
 	}
 	else if (_state == 2) {
 		// entered calculation state
+    if (_initPos == false) {
+      determineAndSetPosition();
 
-		determineAndSetPosition();
+      // find next square position
+      findInitialPosition();
+    } else {
+      determineAndSetPosition();
 
-		calculateNextPosition();
+      calculateNextPosition();
 
-		if (allPlacesSeen()) {
-			ofGetWindowPtr()->setWindowShouldClose();
-		}
-		
+      if (allPlacesSeen()) {
+        ofGetWindowPtr()->setWindowShouldClose();
+      }
+    }
 		// next call drawing state
 		_state = 0;
 	}
@@ -177,7 +188,7 @@ void CameraAreaDetector::drawDebug()
 	background.draw(0, 480);
 
 	ofNoFill();
-	if (_maxBrightness > 130) {
+	if (_maxBrightness > 100) {
 		ofSetColor(ofColor::red);
 		ofDrawEllipse(_maxBrightnessX, _maxBrightnessY, 40, 40);
 		ofSetColor(ofColor::white);
@@ -196,24 +207,89 @@ void CameraAreaDetector::determineAndSetPosition()
 	_maxBrightness = std::get<2>(bright);
 	std::cout << "max brightness: " << _maxBrightness << "\n";
 	// assumed as white
-	if (_maxBrightness > 130) {
-		_area->_imageX[_maxBrightnessX][_maxBrightnessY] = _screenX;
-		_area->_imageY[_maxBrightnessX][_maxBrightnessY] = _screenY;
-		_vis.setColor((size_t)_screenX, (size_t)_screenY, ofColor::darkOliveGreen);
+	if (_maxBrightness > 100) {
+    if (_initPos == false) {
+      _cumulativeX += _screenX;
+      _cumulativeY += _screenY;
+      _seenCount++;
+    }
+    else {
+      _area->_imageX[_maxBrightnessX][_maxBrightnessY] = _screenX;
+      _area->_imageY[_maxBrightnessX][_maxBrightnessY] = _screenY;
+      _vis.setColor((size_t)_screenX, (size_t)_screenY, ofColor::darkOliveGreen);
+      _lastSeenPos = bright;
+      _nonVisCount = 0;
+    }
 	}
 }
 
 //_____________________________________________________________________________
 void CameraAreaDetector::calculateNextPosition()
 {
-	_screenX++;
-	if (_screenX > _screenWidth) {
-		_screenX = 0;
-		_screenY++;
-	}
-	if (_screenY > _screenHeight) {
-		_screenY = 0;
-	}
+  if (false) {
+    _screenX++;
+    if (_screenX > _screenWidth) {
+      _screenX = 0;
+      _screenY++;
+    }
+    if (_screenY > _screenHeight) {
+      _screenY = 0;
+    }
+  }
+  else {// spiral
+    switch (_dirMovement) {
+    case 0:
+      if (_screenY < 0) {                        // reaching upper windowborder
+        _screenX = _startX - _spiralSize;          // change x to left spiral side
+        _dirMovement = 2;              // -> 180° turn of direction
+      }
+      _screenY--;
+      if (_screenY <= _startY - _spiralSize) {     // dy > _spiralSize will lead to
+        _dirMovement = 1;              // change of direction to left
+      };
+      break;
+    case 1:
+      if (_screenX < 0) {                        // reaching left windowborder
+        _screenY = _startY + _spiralSize;          // change x to upper spiral side
+        _dirMovement = 3;              // -> 180° turn of direction
+      }
+      _screenX--;
+      if (_screenX <= _startX - _spiralSize) {     // dx < _spiralSize will lead to
+        _dirMovement = 2;              // change of direction to left
+        _spiralSize++;
+      };
+      break;
+    case 2:
+      if (_screenY > ofGetWindowHeight()) {
+        _screenX = _startX + _spiralSize;
+        _dirMovement = 0;
+      }
+      _screenY++;
+      if (_screenY >= _startY + _spiralSize) {
+        _dirMovement = 3; // change direction to left
+      };
+      break;
+    case 3:
+      if (_screenX > ofGetWindowWidth()) {
+        _screenY = _startY - _spiralSize;
+        _dirMovement = 1;
+      }
+      _screenX++;
+      if (_screenX >= _startX + _spiralSize) {
+        _dirMovement = 0; // change direction to left
+        _spiralSize++;
+      };
+      break;
+    }
+    if (_screenX > _screenWidth) {
+      std::cout << "reseting spiral\n";
+      _screenX = _startX;
+      _screenY = _startY;
+      _spiralSize = 1;
+    }
+
+  }
+  
 }
 
 //_____________________________________________________________________________
@@ -228,3 +304,20 @@ bool CameraAreaDetector::allPlacesSeen() {
 	}
 	return true;
 }
+
+void CameraAreaDetector::findInitialPosition() {
+  int spacing = 100; //arbitratily chosen
+  _screenX += spacing;
+  if (_screenX > _screenWidth) {
+    _screenX = 0;
+    _screenY += spacing;
+  }
+  if (_screenY > _screenHeight) {
+    _startX = ceil((float)_cumulativeX / (float)_seenCount);
+    _startY = ceil((float)_cumulativeY / (float)_seenCount);
+    _screenX = _startX;
+    _screenY = _startY;
+    _initPos = true;
+  }
+}
+

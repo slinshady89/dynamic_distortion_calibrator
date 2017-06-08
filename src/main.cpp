@@ -2,6 +2,8 @@
 #include "PixelSizeDetector.h"
 #include "CameraAreaDetector.h"
 #include "cameraArea.h"*/
+#pragma warning(disable: 4996)
+
 #include "DynamicDistortionCalibrator.h"
 
 extern int WHITEVALUE = 200;

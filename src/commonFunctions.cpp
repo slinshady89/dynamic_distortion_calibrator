@@ -44,6 +44,7 @@ tuple<int, int, float> commonFunctions::detectBrightness(ofPixels img)
 		for (int x = 0; x < width; x++) {
 			color = img.getColor(x, y);
 			brightness = color.getBrightness();
+      //brightness = color.getLightness();  // maybe useful for further experiments -> check definition of functions
 			if (brightness > maxBrightness) {
 				maxBrightness = brightness;
 				brightCoord = std::make_tuple(x, y, maxBrightness);
