@@ -31,17 +31,17 @@ class CameraAreaDetector : public ofBaseApp {
 		int _drawCount;
 		// counts for how many steps we didn't see the drawn pixel
 		int _nonVisCount;
-    // true if moving pixel was seen for the first time
-    bool pxSeenOnce;
-    // state for direction of movement 0 right 1 up 2 left 3 down;
-    int _dirMovement;
-    // size of the spiral atm 
-    int _spiralSize;
+		// true if moving pixel was seen for the first time
+		bool pxSeenOnce;
+		// state for direction of movement 0 right 1 up 2 left 3 down;
+		int _dirMovement;
+		// size of the spiral atm 
+		int _spiralSize;
 
 
 
-    // last seen pixel position
-    tuple<int, int, float> _lastSeenPos;
+		// last seen pixel position
+		tuple<int, int, float> _lastSeenPos;
 
 
 		// pixelSize
@@ -75,13 +75,13 @@ class CameraAreaDetector : public ofBaseApp {
 		// image drawn as background for visualisation purposes
 		ofPixels _vis;
 		bool _visDrawn;
-    // finished finding initial spiral position
-    bool _initPos;
-    int _cumulativeX;
-    int _cumulativeY;
-    int _seenCount;
-    int _startX;
-    int _startY;
+		// finished finding initial spiral position
+		bool _initPos;
+		int _cumulativeX;
+		int _cumulativeY;
+		int _seenCount;
+		int _startX;
+		int _startY;
 
 		// color at a given pixel
 		ofColor _colorAtXY;
@@ -103,6 +103,12 @@ class CameraAreaDetector : public ofBaseApp {
 		void determineAndSetPosition();
 		// calculate the next position for the pixel
 		void calculateNextPosition();
-    // find initial spiral position
-    void findInitialPosition();
+		// find initial spiral position
+		void findInitialPosition();
+		// detect the right,left,upper and lower border of the seen camera frame
+		void CameraAreaDetector::detectBordersOfFrame();
+		// borders of the camera frame
+		int minY, minX, maxY, maxX;
+
+
 };
