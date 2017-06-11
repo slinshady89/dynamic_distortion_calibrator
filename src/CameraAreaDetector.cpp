@@ -34,10 +34,10 @@ void CameraAreaDetector::setup()
 	_area->_sizeImageY = _imageHeight;
 	
 
-	_minX = _imageWidth;
-	_minY = _imageHeight;
-	_maxX = 0;
-	_maxY = 0;
+	_minX = make_tuple (_imageWidth,0);
+	_minY = make_tuple(0,_imageHeight);
+	_maxX = make_tuple(0,0);
+	_maxY = make_tuple(0,0);
 
 
 	// allocate storage for the screen coordinates
