@@ -333,17 +333,17 @@ void CameraAreaDetector::detectBordersOfFrame() {
 		for (int y = 0; y < _vis.getHeight(); y++) {			
 			// if a pixel is detected the brightness should be higher than 1
 			if (_vis.getColor(x, y).getBrightness() > 1) {
-				if (y < _minY) {
-					_minY = y;
+				if (y <= get<1>(_minY)) {
+					_minY = make_tuple(x, y);
 				}
-				else if (x < _minX) {
-					_minX = x;
+				else if (x <= get<0>(_minX)) {
+					_minX = make_tuple(x, y);
 				}
-				else if (y > _maxY) {
-					_maxY = y;
+				else if (y >= get<1>(_maxY)) {
+					_maxY = make_tuple(x, y);
 				}
-				else if (x > _maxX) {
-					_maxX = x;
+				else if (x >= get<0>(_maxX)) {
+					_maxX = make_tuple(x, y);
 				}
 			}
 		}

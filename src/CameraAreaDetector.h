@@ -108,7 +108,7 @@ class CameraAreaDetector : public ofBaseApp {
 		// detect the right,left,upper and lower border of the seen camera frame
 		void CameraAreaDetector::detectBordersOfFrame();
 		// borders of the camera frame
-		int minY, minX, maxY, maxX;
+		tuple<int,int> _minY, _minX, _maxY, _maxX;
 
 
 };
