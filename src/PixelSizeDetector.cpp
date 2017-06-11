@@ -24,7 +24,7 @@ void PixelSizeDetector::setup() {
 	// get screen dimensions
 	_screenHeight = ofGetWindowHeight(); 
 	_screenWidth = ofGetWindowWidth();
-	_ratio = (float)_screenHeight / (float)_screenWidth;
+	_ratio =  (float)_screenWidth / (float)_screenHeight;
 
 	// calculate _maxPixelSize as the hundredth of the smaller screen size
 	_maxPixelSize = (int) floor(min(_screenHeight, _screenWidth) / 100);
@@ -192,15 +192,15 @@ void PixelSizeDetector::setPixelSizePointer(int *&pixelSize) {
 void PixelSizeDetector::drawRectangles()
 {
 	// calculates the number of square drawn on the screen
-	int squaresWidth = floor(sqrt((float)_noSquaresDrawn / _ratio));
-	int squaresHeight = floor(sqrt((float)_noSquaresDrawn * _ratio));
+	int squaresWidth = floor(sqrt((float)_noSquaresDrawn * _ratio));
+	int squaresHeight = floor(sqrt((float)_noSquaresDrawn / _ratio));
 
 	// calculates the neccessary spacing between the spares
 	// and the offset from (0, 0) position to get an even spacing
-	int spacingWidth = _screenWidth / squaresWidth;
-	int spacingHeight = _screenHeight / squaresHeight;
-	int offsetWidth = spacingWidth / 2;
-	int offsetHeight = spacingHeight / 2;
+	int nuOfSquaresInWidth = _screenWidth / squaresWidth;
+	int nuOfSquaresInHight = _screenHeight / squaresHeight;
+	int offsetWidth = nuOfSquaresInWidth / 2;
+	int offsetHeight = nuOfSquaresInHight / 2;
 
 	// get a black background with white squares on them
 	ofBackground(ofColor::black);
@@ -209,7 +209,7 @@ void PixelSizeDetector::drawRectangles()
 	// actually draw the squares
 	for (int i = 0; i < squaresWidth; i++) {
 		for (int j = 0; j < squaresHeight; j++) {
-			ofDrawRectangle(spacingWidth * i + offsetWidth, spacingHeight * j + offsetHeight, *_pixelSize, *_pixelSize);
+			ofDrawRectangle(nuOfSquaresInWidth * i + offsetWidth, nuOfSquaresInHight * j + offsetHeight, *_pixelSize, *_pixelSize);
 		}
 	}
 }
