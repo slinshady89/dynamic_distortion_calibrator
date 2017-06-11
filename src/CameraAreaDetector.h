@@ -38,7 +38,7 @@ class CameraAreaDetector : public ofBaseApp {
 		// size of the spiral atm 
 		int _spiralSize;
 
-
+		int _minX, _minY, _maxX, _maxY;
 
 		// last seen pixel position
 		tuple<int, int, float> _lastSeenPos;
