@@ -18,7 +18,7 @@ void CameraAreaDetector::setup()
 	_cam.setup(320, 240);
 
 	// get screen dimensions
-  _screenHeight = 0; // ofGetWindowHeight();
+	_screenHeight = 0; // ofGetWindowHeight();
 	_screenWidth = 0; // ofGetWindowWidth();
 
 	std::cout << "_screenHeight " << _screenHeight << " _screenWidth " << _screenWidth << "\n";
@@ -81,6 +81,8 @@ void CameraAreaDetector::setup()
 	_cumulativeX = 0;
 	_cumulativeY = 0;
 	_seenCount = 0;
+  _pixelSeen = true;
+  _borderDetected = false;
 }
 
 //_____________________________________________________________________________
@@ -209,10 +211,10 @@ void CameraAreaDetector::determineAndSetPosition()
 	_diffPixels = commonFunctions::subtractBackground(_img.getPixels(), _background);
 	// and finally detect the position of the brightest pixel
 	tuple<int, int, float> bright = commonFunctions::detectBrightness(_diffPixels);
-	_maxBrightnessX = std::get<0>(bright);
-	_maxBrightnessY = std::get<1>(bright);
-	_maxBrightness = std::get<2>(bright);
-	std::cout << "max brightness: " << _maxBrightness << "\n";
+	_maxBrightnessX = get<0>(bright);
+	_maxBrightnessY = get<1>(bright);
+	_maxBrightness = get<2>(bright);
+	cout << "max brightness: " << _maxBrightness << "\n";
 	// assumed as white
 	if (_maxBrightness > 100) {
 		if (_initPos == false) {
@@ -233,70 +235,15 @@ void CameraAreaDetector::determineAndSetPosition()
 //_____________________________________________________________________________
 void CameraAreaDetector::calculateNextPosition()
 {
-	if (false) {
-		_screenX++;
-		if (_screenX > _screenWidth) {
-			_screenX = 0;
-			_screenY++;
-		}
-		if (_screenY > _screenHeight) {
-			_screenY = 0;
-		}
-	}
-	else {// spiral
-		switch (_dirMovement) {
-		case 0:
-			if (_screenY < 0) {                        // reaching upper windowborder
-				_screenX = _startX - _spiralSize;          // change x to left spiral side
-				_dirMovement = 2;              // -> 180° turn of direction
-			}
-			_screenY--;
-			if (_screenY <= _startY - _spiralSize) {     // dy > _spiralSize will lead to
-				_dirMovement = 1;              // change of direction to left
-			};
-			break;
-		case 1:
-			if (_screenX < 0) {                        // reaching left windowborder
-				_screenY = _startY + _spiralSize;          // change x to upper spiral side
-				_dirMovement = 3;              // -> 180° turn of direction
-			}
-			_screenX--;
-			if (_screenX <= _startX - _spiralSize) {     // dx < _spiralSize will lead to
-				_dirMovement = 2;              // change of direction to left
-				_spiralSize++;
-			};
-			break;
-		case 2:
-			if (_screenY > ofGetWindowHeight()) {
-				_screenX = _startX + _spiralSize;
-				_dirMovement = 0;
-			}
-			_screenY++;
-			if (_screenY >= _startY + _spiralSize) {
-				_dirMovement = 3; // change direction to left
-			};
-			break;
-		case 3:
-			if (_screenX > ofGetWindowWidth()) {
-				_screenY = _startY - _spiralSize;
-				_dirMovement = 1;
-			}
-			_screenX++;
-			if (_screenX >= _startX + _spiralSize) {
-				_dirMovement = 0; // change direction to left
-				_spiralSize++;
-			};
-			break;
-		}
-		if (_screenX > _screenWidth) {
-			std::cout << "reseting spiral\n";
-			_screenX = _startX;
-			_screenY = _startY;
-			_spiralSize = 1;
-		}
+  // detection of a the right border of the camera frame
+  if (!_borderDetected) {
+    // binary search algorithm
+    if (_pixelSeen) {
+      // _actualPos = make_tuple< _screenX , _screenY >; // failure with expression? 
+    }
+  }
 
-	}
-	
+
 }
 
 //_____________________________________________________________________________
@@ -313,7 +260,7 @@ bool CameraAreaDetector::allPlacesSeen() {
 }
 
 void CameraAreaDetector::findInitialPosition() {
-	int spacing = 100; //arbitratily chosen
+	int spacing = _screenHeight/11; //to get at least 10 different rows of pixels
 	_screenX += spacing;
 	if (_screenX > _screenWidth) {
 		_screenX = 0;
@@ -326,7 +273,10 @@ void CameraAreaDetector::findInitialPosition() {
 		_screenY = _startY;
 		_initPos = true;
 	}
+	
 }
+
+
 
 void CameraAreaDetector::detectBordersOfFrame() {
 	for (int x = 0; x < _vis.getWidth(); x++) {

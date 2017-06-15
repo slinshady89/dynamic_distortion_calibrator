@@ -71,7 +71,7 @@ class CameraAreaDetector : public ofBaseApp {
 		ofPixels _diffPixels;
 		// background set
 		bool _backgroundSet;
-		// image drawn as background for visualisation purposes
+		// image drawn as background for visualization purposes
 		ofPixels _vis;
 		bool _visDrawn;
 		// finished finding initial spiral position
@@ -90,7 +90,7 @@ class CameraAreaDetector : public ofBaseApp {
 		float _maxBrightness;
 		// x position of brightest pixel
 		int _maxBrightnessX;
-		// y position fo brightest pixel
+		// y position of brightest pixel
 		int _maxBrightnessY;
 
 		// returns true if all places in the image have been detected
@@ -109,5 +109,17 @@ class CameraAreaDetector : public ofBaseApp {
 		// borders of the camera frame
 		tuple<int,int> _minY, _minX, _maxY, _maxX;
 
+		// structure in which all necessary things could be saved
+		struct _pos 
+		{
+			int x;
+			int y;
+			// brightness of the pixel at this position
+			float b;
+		};
+
+		bool _pixelSeen, _borderDetected;
+		// for binary search
+		tuple<int, int> _lastSeenPos, _actualPos, _nextPos;
 
 };
