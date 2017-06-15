@@ -18,8 +18,8 @@ void CameraAreaDetector::setup()
 	_cam.setup(320, 240);
 
 	// get screen dimensions
-	_screenHeight = ofGetWindowHeight();
-	_screenWidth = ofGetWindowWidth();
+  _screenHeight = 0; // ofGetWindowHeight();
+	_screenWidth = 0; // ofGetWindowWidth();
 
 	std::cout << "_screenHeight " << _screenHeight << " _screenWidth " << _screenWidth << "\n";
 
