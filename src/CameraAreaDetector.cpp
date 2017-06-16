@@ -18,8 +18,8 @@ void CameraAreaDetector::setup()
 	_cam.setup(320, 240);
 
 	// get screen dimensions
-  _screenHeight = 0; // ofGetWindowHeight();
-	_screenWidth = 0; // ofGetWindowWidth();
+  _screenHeight = ofGetWindowHeight();
+	_screenWidth =  ofGetWindowWidth();
 
 	std::cout << "_screenHeight " << _screenHeight << " _screenWidth " << _screenWidth << "\n";
 
@@ -57,8 +57,8 @@ void CameraAreaDetector::setup()
 	}
 
 	// start drawing at middle of screen
-	_screenX = _screenWidth / 2;
-	_screenY = _screenHeight / 2;
+  _screenX = 0;// _screenWidth / 2;
+	_screenY = 0;//_screenHeight / 2;
 
 	ofBackground(ofColor::black);
 	ofSetColor(ofColor::white);
