@@ -7,7 +7,7 @@
 class DynamicDistortionCalibrator {
 	public:
 		// constructor
-		DynamicDistortionCalibrator(int windowHeight, int windowWidth);
+		DynamicDistortionCalibrator(int windowWidth , int windowHeight);
 		// destructor
 		~DynamicDistortionCalibrator();
 

@@ -37,6 +37,6 @@ int main( ){
 	std::cout << "found area \n";
 	*/
 
-	DynamicDistortionCalibrator dynDistCal(1080, 1920);
+	DynamicDistortionCalibrator dynDistCal(1920, 1080);
 	dynDistCal.findRawDistortion();
 }

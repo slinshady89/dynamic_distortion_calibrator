@@ -1,7 +1,7 @@
 #include "DynamicDistortionCalibrator.h"
 
 //_____________________________________________________________________________
-DynamicDistortionCalibrator::DynamicDistortionCalibrator(int windowHeight, int windowWidth)
+DynamicDistortionCalibrator::DynamicDistortionCalibrator(int windowWidth , int windowHeight)
 {
 	_windowWidth = windowWidth;
 	_windowHeight = windowHeight;
