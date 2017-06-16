@@ -7,7 +7,7 @@ void CameraAreaDetector::setup()
 	ofSetFrameRate(20);
 	_nonVisCount = 0;
 	pxSeenOnce = false;
-	// check for external webcam and use taht if possible
+	// check for external web cam and use that if possible
 	if (_cam.listDevices().size() > 1) {
 		_cam.setDeviceID(1);
 	}
@@ -33,13 +33,6 @@ void CameraAreaDetector::setup()
 	_area->_sizeImageX = _imageWidth;
 	_area->_sizeImageY = _imageHeight;
 	
-
-	_minX = make_tuple (_imageWidth,0);
-	_minY = make_tuple(0,_imageHeight);
-	_maxX = make_tuple(0,0);
-	_maxY = make_tuple(0,0);
-
-
 	// allocate storage for the screen coordinates
 	_area->_imageX = new int*[_imageWidth];
 	_area->_imageY = new int*[_imageWidth];
@@ -57,8 +50,8 @@ void CameraAreaDetector::setup()
 	}
 
 	// start drawing at middle of screen
-	_screenX = _screenWidth / 2;
-	_screenY = _screenHeight / 2;
+  _screenX = 0; // _screenWidth / 2;
+	_screenY = 0; // _screenHeight / 2;
 
 	ofBackground(ofColor::black);
 	ofSetColor(ofColor::white);
@@ -81,8 +74,10 @@ void CameraAreaDetector::setup()
 	_cumulativeX = 0;
 	_cumulativeY = 0;
 	_seenCount = 0;
-  _pixelSeen = true;
-  _borderDetected = false;
+
+
+	_pixelSeen = true;
+	_borderDetected = false;
 }
 
 //_____________________________________________________________________________
@@ -155,11 +150,18 @@ void CameraAreaDetector::draw()
 
 			// find next square position
 			findInitialPosition();
+
+			_lastSeen = make_tuple(_screenX, _screenY);
+      _nextPos = make_tuple(_screenWidth, _screenY);
+      _lastNotSeen = _nextPos;
 		} else {
 			determineAndSetPosition();
-
-			calculateNextPosition();
-
+      if (!_borderDetected) {
+        //binarySearch();
+      }
+      else {
+        // find borders
+      }
 			if (allPlacesSeen()) {
 				ofGetWindowPtr()->setWindowShouldClose();
 			}
@@ -233,15 +235,30 @@ void CameraAreaDetector::determineAndSetPosition()
 }
 
 //_____________________________________________________________________________
-void CameraAreaDetector::calculateNextPosition()
+void CameraAreaDetector::binarySearch()
 {
-  // detection of a the right border of the camera frame
-  if (!_borderDetected) {
-    // binary search algorithm
-    if (_pixelSeen) {
-      // _actualPos = make_tuple< _screenX , _screenY >; // failure with expression? 
-    }
-  }
+	// detection of a the right border of the camera frame
+	if (_nextPos == _lastSeen) {
+		_borderDetected = true;
+	}
+	if (!_borderDetected) {
+		// binary search algorithm
+		if (_pixelSeen) {
+			 _lastSeen = _nextPos; 
+		}
+		else {
+			_lastNotSeen = _nextPos;
+		}
+		int nextX = (get<0>(_lastSeen) + get<0>(_lastNotSeen)) / 2;
+		int nextY = (get<1>(_lastSeen) + get<1>(_lastNotSeen)) / 2;
+		_nextPos = make_tuple(nextX, nextY);
+	}
+}
+
+
+
+void borderWalker() {
+
 
 
 }
@@ -273,29 +290,9 @@ void CameraAreaDetector::findInitialPosition() {
 		_screenY = _startY;
 		_initPos = true;
 	}
-	
 }
 
-
-
-void CameraAreaDetector::detectBordersOfFrame() {
-	for (int x = 0; x < _vis.getWidth(); x++) {
-		for (int y = 0; y < _vis.getHeight(); y++) {			
-			// if a pixel is detected the brightness should be higher than 1
-			if (_vis.getColor(x, y).getBrightness() > 1) {
-				if (y <= get<1>(_minY)) {
-					_minY = make_tuple(x, y);
-				}
-				else if (x <= get<0>(_minX)) {
-					_minX = make_tuple(x, y);
-				}
-				else if (y >= get<1>(_maxY)) {
-					_maxY = make_tuple(x, y);
-				}
-				else if (x >= get<0>(_maxX)) {
-					_maxX = make_tuple(x, y);
-				}
-			}
-		}
-	}
+void CameraAreaDetector::borderWalker()
+{
 }
+

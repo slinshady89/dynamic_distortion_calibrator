@@ -100,14 +100,15 @@ class CameraAreaDetector : public ofBaseApp {
 		void drawDebug();
 		// set the currently brightest spot seen on the camera in the cameraArea
 		void determineAndSetPosition();
-		// calculate the next position for the pixel
-		void calculateNextPosition();
+		// find the right border of the camera frame
+		void binarySearch();
 		// find initial spiral position
 		void findInitialPosition();
-		// detect the right,left,upper and lower border of the seen camera frame
-		void CameraAreaDetector::detectBordersOfFrame();
-		// borders of the camera frame
-		tuple<int,int> _minY, _minX, _maxY, _maxX;
+		// walk along the borders of the camera frame
+		void borderWalker();
+		
+
+
 
 		// structure in which all necessary things could be saved
 		struct _pos 
@@ -120,6 +121,5 @@ class CameraAreaDetector : public ofBaseApp {
 
 		bool _pixelSeen, _borderDetected;
 		// for binary search
-		tuple<int, int> _lastSeenPos, _actualPos, _nextPos;
-
+		tuple<int, int> _lastSeen, _lastNotSeen, _nextPos;
 };
