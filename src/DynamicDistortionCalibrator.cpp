@@ -68,7 +68,7 @@ cameraArea DynamicDistortionCalibrator::findCameraArea(int pixelSize)
 	ofSetupOpenGL(_windowWidth, _windowHeight, OF_FULLSCREEN);// <-------- setup the GL context
 	
 	// create the app for camera area detection
-	auto cameraAreaDetector = make_shared<CameraAreaDetector>();
+	auto cameraAreaDetector = make_shared<CameraBorderDetector>();
 	// set the app's pointer
 	cameraAreaDetector->setCameraAreaPointerAndPixelSize(areaPointer, pixelSize);
 	ofRunApp(cameraAreaDetector);

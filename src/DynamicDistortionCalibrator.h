@@ -1,6 +1,6 @@
 #include "cameraArea.h"
 #include "PixelSizeDetector.h"
-#include "CameraAreaDetector.h"
+#include "CameraBorderDetector.h"
 
 
 

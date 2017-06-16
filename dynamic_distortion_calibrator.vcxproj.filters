@@ -52,9 +52,6 @@
     <ClCompile Include="..\..\Libraries\openframeworks_v0.9.8_vs_release\addons\ofxOpenCv\src\ofxCvShortImage.cpp">
       <Filter>addons\ofxOpenCv\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\CameraAreaDetector.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\PixelSizeDetector.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -62,6 +59,9 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\commonFunctions.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CameraBorderDetector.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -704,13 +704,16 @@
     <ClInclude Include="src\cameraArea.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\CameraAreaDetector.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="src\DynamicDistortionCalibrator.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\commonFunctions.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Constants.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CameraBorderDetector.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

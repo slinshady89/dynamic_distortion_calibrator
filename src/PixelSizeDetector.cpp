@@ -120,10 +120,10 @@ void PixelSizeDetector::draw() {
 		// subtract the background
 		_diffPixels = commonFunctions::subtractBackground(_img.getPixels(), _background);
 		// and finally detect the position of the brightest pixel
-		tuple<int, int, float> bright = commonFunctions::detectBrightness(_diffPixels);
-		_maxBrightnessX = std::get<0>(bright);
-		_maxBrightnessY = std::get<1>(bright);
-		_maxBrightness = std::get<2>(bright);
+		 _pos  bright = commonFunctions::detectBrightness(_diffPixels);
+		_maxBrightnessX = bright.x;
+		_maxBrightnessY = bright.y;
+		_maxBrightness = bright.b;
 		//TODO: currently just a claim, need to verify!!
 		// if the maximal found brightness is over 150 we have found our white square
 		if (_maxBrightness >= 150) {

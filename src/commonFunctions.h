@@ -1,9 +1,10 @@
 #pragma once
 
 #include "ofxOpenCv.h"
+#include "Constants.h"
 
 namespace commonFunctions {
-	// function that subtracts the background bkkgrnd from the image img
+	// function that subtracts the background background from the image img
 	// input:	ofPixels img: the current image
 	//			ofPixels bkgrnd: the background you wish to subtract
 	// 
@@ -16,5 +17,5 @@ namespace commonFunctions {
 	//				- first value : x position of brightest pixel
 	//				- second value: y position of brightest pixel
 	//				- third value : maximal brightness value in image
-	tuple<int, int, float> detectBrightness(ofPixels img);
+	_pos detectBrightness(ofPixels img);
 }

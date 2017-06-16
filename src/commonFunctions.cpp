@@ -25,10 +25,10 @@ ofPixels commonFunctions::subtractBackground(ofPixels img, ofPixels bkgd)
 }
 
 //_____________________________________________________________________________
-tuple<int, int, float> commonFunctions::detectBrightness(ofPixels img)
+ _pos commonFunctions::detectBrightness(ofPixels img)
 {
 	// coordinates of brightest pixel
-	tuple<int, int, float> brightCoord;
+	 _pos brightCoord;
 
 	// get width and height from image
 	int width = img.getWidth();
@@ -47,7 +47,11 @@ tuple<int, int, float> commonFunctions::detectBrightness(ofPixels img)
       //brightness = color.getLightness();  // maybe useful for further experiments -> check definition of functions
 			if (brightness > maxBrightness) {
 				maxBrightness = brightness;
-				brightCoord = std::make_tuple(x, y, maxBrightness);
+        brightCoord.x = x;
+        brightCoord.y = y;
+        brightCoord.b = maxBrightness;
+
+				//brightCoord = std::make_tuple(x, y, maxBrightness);
 				//std::cout << "maxBrightness: " << maxBrightness << "\n";
 			}
 		}
