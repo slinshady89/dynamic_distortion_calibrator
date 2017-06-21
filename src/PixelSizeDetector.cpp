@@ -48,7 +48,7 @@ void PixelSizeDetector::setup() {
 	_mousePressedOnce = false;
 	_mousePressedTwice = false;
 
-	_foundPixelSizeCounter = 0;
+	_foundPixelSizeCounter = 2;
 
 	std::cout << "pixelSizeDetector done setting up\n";
 }
@@ -104,7 +104,7 @@ void PixelSizeDetector::draw() {
 	else if (_state == 1) { // capturing frame state
 		_cam.update();
 		_img = _cam.getPixels();
-		_imgPixels = _img.getPixels();
+		//_imgPixels = _img.getPixels();
 
 		// if we're in this state for the first time, catch the background
 		if (_backgroundSet == false) {

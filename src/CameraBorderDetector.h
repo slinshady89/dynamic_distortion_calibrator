@@ -56,9 +56,12 @@ class CameraBorderDetector : public ofBaseApp {
 		// pixelSize
 		int _pixelSize;
 		// x position of drawing the pixel
-		int _screenX;
+		//int _screen.x;
 		// y position of drawing the pixel
-		int _screenY;
+		//int _screen.y;
+
+    // replaces _screenX and _screenY so the max brightness that is detected for this drawn pixel could be saved to the coordinates
+    _pos _screen;
 
 		// screenHeight
 		int _screenHeight;
@@ -91,6 +94,7 @@ class CameraBorderDetector : public ofBaseApp {
 		int _seenCount;
 		int _startX;
 		int _startY;
+
 
 		// color at a given pixel
 		ofColor _colorAtXY;
