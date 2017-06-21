@@ -1,5 +1,7 @@
 #include "PixelSizeDetector.h"
 
+int WHITE_THRESHOLD = 100;
+
 //_____________________________________________________________________________
 void PixelSizeDetector::setup() {
 	// set framerate
@@ -125,8 +127,8 @@ void PixelSizeDetector::draw() {
 		_maxBrightnessY = bright.y;
 		_maxBrightness = bright.b;
 		//TODO: currently just a claim, need to verify!!
-		// if the maximal found brightness is over 150 we have found our white square
-		if (_maxBrightness >= 150) {
+		// if the maximal found brightness is over 100 we have found our white square
+		if (_maxBrightness >= WHITE_THRESHOLD) {
 			// if the pixelSize remained the same count it, else reset the counter and set new oldPixelSize
 			if (_oldPixelSize == *_pixelSize) {
 				_foundPixelSizeCounter++;

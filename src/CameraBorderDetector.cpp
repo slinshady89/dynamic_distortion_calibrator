@@ -97,8 +97,8 @@ void CameraBorderDetector::draw()
 		_cam.update();
 		_img = _cam.getPixels();
 		drawDebug();
-    // wait 50 iterations of drawing the first black background until the camera and all objects are loaded
-    // switch to state 0 if these 50 iterations are done
+		// wait 50 iterations of drawing the first black background until the camera and all objects are loaded
+		// switch to state 0 if these 50 iterations are done
 		if (_drawCount == 50) {
 			_drawCount = 0;
 			_cam.update();
@@ -109,7 +109,7 @@ void CameraBorderDetector::draw()
 	} else if (_state == 0) {
 		// entered drawing state
 		_drawCount++;
-    // initialize _vis object to local object for drawing some dark green pixels on it for debug purposes 
+		// initialize _vis object to local object for drawing some dark green pixels on it for debug purposes 
 		if (_visDrawn == false) {
 			ofImage vis;
 			vis = _vis;
@@ -121,7 +121,7 @@ void CameraBorderDetector::draw()
 		if (debug == true) {
 			drawDebug();
 		}
-    // actually draws the pixel that should be detected for detection the borders of the camera frame
+		// actually draws the pixel that should be detected for detection the borders of the camera frame
 		ofFill();
 		ofDrawRectangle(_screen.x, _screen.y, _pixelSize, _pixelSize);
 
@@ -144,7 +144,7 @@ void CameraBorderDetector::draw()
 
 		// next call calculation state
 		_state = 2;
-	}// 
+	}
 	else if (_state == 2) {
 		// entered calculation state
 		if (_initPos == false) {
@@ -155,12 +155,12 @@ void CameraBorderDetector::draw()
 
 		} else {
 			determineAndSetPosition();
-      if (!_borderDetected) {
-        binarySearch();
-      }
-      else {
-        // find borders
-      }
+			if (!_borderDetected) {
+				binarySearch();
+			}
+			else {
+			// find borders
+			}
 			if (allPlacesSeen()) {
 				ofGetWindowPtr()->setWindowShouldClose();
 			}
@@ -198,7 +198,7 @@ void CameraBorderDetector::drawDebug()
 	background.draw(0, 480);
 
 	ofNoFill();
-	if (_maxBrightness > 100) {
+	if (_maxBrightness > WHITE_THRESHOLD) {
 		ofSetColor(ofColor::red);
 		ofDrawEllipse(_maxBrightnessX, _maxBrightnessY, 40, 40);
 		ofSetColor(ofColor::white);
@@ -212,32 +212,32 @@ void CameraBorderDetector::determineAndSetPosition()
 	_diffPixels = commonFunctions::subtractBackground(_img.getPixels(), _background);
 	// and finally detect the position of the brightest pixel
 	_pos bright = commonFunctions::detectBrightness(_diffPixels);
-  _maxBrightnessX = bright.x;
-  _maxBrightnessY = bright.y;
-  _maxBrightness = bright.b;
+	_maxBrightnessX = bright.x;
+	_maxBrightnessY = bright.y;
+	_maxBrightness = bright.b;
 	cout << "max brightness: " << _maxBrightness << "\n";
 	// assumed as white
-  if (_maxBrightness > 130) {
-    if (_initPos == false) {
-      _cumulativeX += _screen.x;
-      _cumulativeY += _screen.y;
-      _seenCount++;
-    }
-    else {
-      _area->_imageX[_maxBrightnessX][_maxBrightnessY] = _screen.x;
-      _area->_imageY[_maxBrightnessX][_maxBrightnessY] = _screen.y;
-      _vis.setColor((size_t)_screen.x, (size_t)_screen.y, ofColor::darkOliveGreen);
-      _lastSeenPos = bright;
+	if (_maxBrightness > WHITE_THRESHOLD) {
+		if (_initPos == false) {
+			_cumulativeX += _screen.x;
+			_cumulativeY += _screen.y;
+			_seenCount++;
+		}
+		else {
+			_area->_imageX[_maxBrightnessX][_maxBrightnessY] = _screen.x;
+			_area->_imageY[_maxBrightnessX][_maxBrightnessY] = _screen.y;
+			_vis.setColor((size_t)_screen.x, (size_t)_screen.y, ofColor::darkOliveGreen);
+			_lastSeenPos = bright;
 
-      //cout << "_screen " << _screenX << " " << _screenY  << endl;
-      //cout << "_lastSeenPos "<< bright.x << " " << bright.y << " " << bright.b << endl;
-      _nonVisCount = 0;
-    }
-    _pixelSeen = true;
-  }
-  else {
-    _pixelSeen = false;
-  }
+			//cout << "_screen " << _screenX << " " << _screenY  << endl;
+			//cout << "_lastSeenPos "<< bright.x << " " << bright.y << " " << bright.b << endl;
+			_nonVisCount = 0;
+		}
+		_pixelSeen = true;
+	}
+	else {
+		_pixelSeen = false;
+	}
   
 }
 
@@ -248,29 +248,43 @@ void CameraBorderDetector::binarySearch()
 	
 	if (!_borderDetected) {
 		// binary search algorithm
-		if (_maxBrightness > 130) {
-      _lastSeen = _screen;
+		if (_pixelSeen == true) {
+			cout << "setting _lastSeen to " << _screen.x << " " << _screen.y << endl;
+			_lastSeen.x = _screen.x;
+			_lastSeen.y = _screen.y;
 		}
 		else {
-      _lastNotSeen = _screen;
-    }
-    cout << "_lastSeen " << _lastSeen.x << " " << _lastSeen.y << endl;
-    cout << "_lastNotSeen " << _lastNotSeen.x << " " << _lastNotSeen.y << endl;
+			cout << "setting _lastNotSeen to " << _screen.x << " " << _screen.y << endl;
+			_lastNotSeen.x = _screen.x;
+			_lastNotSeen.y = _screen.y;
+		}
 
-    _screen.x = ceil(((float)_lastSeen.x + _lastNotSeen.x) / 2.0);
+		cout << "_lastSeen " << _lastSeen.x << " " << _lastSeen.y << endl;
+		cout << "_lastNotSeen " << _lastNotSeen.x << " " << _lastNotSeen.y << endl;
 
-    //cout << "screen " << _screen.x << " " << _screen.y << endl;
+		_screen.x = ceil(((float)_lastSeen.x + _lastNotSeen.x) / 2.0);
+		_screen.y = ceil(((float)_lastSeen.y + _lastNotSeen.y) / 2.0);
+
+		//cout << "screen " << _screen.x << " " << _screen.y << endl;
         
 
-    // height should stay at the same 
+		// height should stay at the same 
 		//_screenY = (_lastSeen.y + _lastNotSeen.y) / 2;
-    _drawnPos.x = _screen.x; _drawnPos.y = _screen.y;
-    cout << "actual pos: " << _screen.x << " " << _screen.y  << endl;
+		_drawnPos.x = _screen.x;
+		_drawnPos.y = _screen.y;
+		cout << "next pos: " << _screen.x << " " << _screen.y  << "\n" << endl;
 	}
 
-  if ((abs(_lastSeen.x - _lastNotSeen.x)==1) && (abs(_lastSeen.y - _lastNotSeen.y) == 1)) {
-    _borderDetected = true;
-  }
+	// test
+	if ((abs(_lastSeen.x - _lastNotSeen.x) == 0) && (abs(_lastSeen.y - _lastNotSeen.y) == 0)) {
+		cout << "shifting pixel to the right\n";
+		_screen.x = _screen.x++;
+	}
+
+	if ((abs(_lastSeen.x - _lastNotSeen.x)==1) && (abs(_lastSeen.y - _lastNotSeen.y) == 1)) {
+		cout << "found border, binary search done!\n";
+		_borderDetected = true;
+	}
 }
 
 
@@ -304,9 +318,12 @@ void CameraBorderDetector::findInitialPosition() {
   }
   // setup for binarySearch()
   if (_initPos == true) {
-    _lastSeen.x = _screen.x; _lastSeen.y = _screen.y;
-    _lastNotSeen.x = _screenWidth; _lastNotSeen.y = _screen.y;
+    _lastSeen.x = _screen.x;
+	_lastSeen.y = _screen.y;
+    _lastNotSeen.x = _screenWidth; 
+	_lastNotSeen.y = _screen.y;
     _drawnPos = _lastNotSeen;
+	_screen = _lastNotSeen;
     cout << "found initial posX " << _screen.x << " posY " << _screen.y <<endl;
   }
 }

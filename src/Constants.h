@@ -1,5 +1,7 @@
 #pragma once
 
+extern int WHITE_THRESHOLD;
+
 
 // structure in which all necessary things could be saved
 struct _pos
