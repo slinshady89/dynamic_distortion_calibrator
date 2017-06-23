@@ -39,6 +39,8 @@ void PixelSizeDetector::setup() {
 	_drawCount = 0;
 	_setupDone = false;
 
+	ofSetBackgroundAuto(false);
+
 	_img = _cam.getPixels();
 	_imageHeight = _img.getHeight();
 	_imageWidth = _img.getWidth();
@@ -77,6 +79,8 @@ void PixelSizeDetector::draw() {
 			ofDrawBitmapString("To begin, right click once with your mouse.", posX, posY + 10);
 		} else {
 			// draw the camera image on screen
+			//ofSetBackgroundColor(ofColor::black);
+			ofBackground(ofColor::black);
 			_cam.update();
 			_img = _cam.getPixels();
 			ofSetColor(ofColor::white);

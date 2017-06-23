@@ -50,9 +50,10 @@ void CameraBorderDetector::setup()
 	}
 
 	// start drawing at middle of screen
-  _screen.x = 0; // _screenWidth / 2;
+	_screen.x = 0; // _screenWidth / 2;
 	_screen.y = 0; // _screenHeight / 2;
 
+	ofSetBackgroundAuto(false);
 	ofBackground(ofColor::black);
 	ofSetColor(ofColor::white);
 
@@ -110,12 +111,9 @@ void CameraBorderDetector::draw()
 		// entered drawing state
 		_drawCount++;
 		// initialize _vis object to local object for drawing some dark green pixels on it for debug purposes 
-		if (_visDrawn == false) {
-			ofImage vis;
-			vis = _vis;
-			vis.draw(0, 0);
-			_visDrawn = true;
-		}
+		ofImage vis;
+		vis = _vis;
+		vis.draw(0, 0);
 
 		// debug; draws the camera frame as seen, 
 		if (debug == true) {
@@ -140,7 +138,7 @@ void CameraBorderDetector::draw()
 
 		// get image from camera
 		_img = _cam.getPixels();
-		//_imgPixels = _img.getPixels();
+		_imgPixels = _img.getPixels();
 
 		// next call calculation state
 		_state = 2;
