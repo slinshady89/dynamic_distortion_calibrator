@@ -128,5 +128,10 @@ class CameraBorderDetector : public ofBaseApp {
 
 		bool _pixelSeen, _borderDetected;
 		// for binary search
-		_pos _lastSeen, _lastNotSeen, _drawnPos;
+		_pos _lastSeen, _lastNotSeen;
+
+    // border points of initial pixels
+    _pos _initTop, _initBot, _initLeft, _initRight;
+
+
 };

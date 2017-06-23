@@ -78,6 +78,11 @@ void CameraBorderDetector::setup()
 
 	_pixelSeen = true;
 	_borderDetected = false;
+
+  _initBot.x = 0; _initBot.y = 0;
+  _initLeft.x = _screenWidth; _initLeft.y = 0;
+  _initRight.x = 0; _initRight.y = 0;
+  _initTop.x = 0; _initRight.y = _screenHeight;
 }
 
 //_____________________________________________________________________________
@@ -259,12 +264,6 @@ void CameraBorderDetector::binarySearch()
 
     _screen.x = ceil(((float)_lastSeen.x + _lastNotSeen.x) / 2.0);
 
-    //cout << "screen " << _screen.x << " " << _screen.y << endl;
-        
-
-    // height should stay at the same 
-		//_screenY = (_lastSeen.y + _lastNotSeen.y) / 2;
-    //_drawnPos.x = _screen.x; _drawnPos.y = _screen.y;
     cout << "actual pos: " << _screen.x << " " << _screen.y  << endl;
 	}
 
@@ -303,11 +302,25 @@ void CameraBorderDetector::findInitialPosition() {
     _initPos = true;
   }
   // setup for binarySearch()
+
+  if (_maxBrightness > 130)
+  {
+    if (_screen.x > _initRight.x) _initRight.x = _screen.x;
+    if (_screen.x < _initLeft.x) _initLeft.x = _screen.x;
+    if (_screen.y > _initBot.y) _initBot.y = _screen.y;
+    if (_screen.y < _initTop.y) _initTop.y = _initTop.y;
+  }
+
+
   if (_initPos == true) {
     _lastSeen = _screen;
     _lastNotSeen.x = _screenWidth; _lastNotSeen.y = _screen.y;
     _screen = _lastNotSeen;
-    cout << "found initial posX " << _screen.x << " posY " << _screen.y <<endl;
+    cout << "found initial posX " << _screen.x << " posY " << _screen.y << endl;
+    cout << "found _initRight posX " << _initRight.x << " posY " << _initRight.y << endl;
+    cout << "found _initLeft posX " << _initLeft.x << " posY " << _initLeft.y << endl;
+    cout << "found _initBot posX " << _initBot.x << " posY " << _initBot.y << endl;
+    cout << "found _initTop posX " << _initTop.x << " posY " << _initTop.y << endl;
   }
 }
 

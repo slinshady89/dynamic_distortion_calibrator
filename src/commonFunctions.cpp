@@ -43,6 +43,7 @@ ofPixels commonFunctions::subtractBackground(ofPixels img, ofPixels bkgd)
 	for (int y = 0; y < height; y++) {
 		for (int x = 0; x < width; x++) {
 			color = img.getColor(x, y);
+
 			brightness = color.getBrightness();
       //brightness = color.getLightness();  // maybe useful for further experiments -> check definition of functions
 			if (brightness > maxBrightness) {
