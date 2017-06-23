@@ -104,7 +104,9 @@ void CameraBorderDetector::draw()
 			_drawCount = 0;
 			_cam.update();
 			_backgroundSet = true;
-			_background = _cam.getPixels();
+			_color = _cam.getPixels();
+			_img = _color;
+			_background = _img.getPixels();
 			_state = 0;
 		}
 	} else if (_state == 0) {
@@ -136,8 +138,9 @@ void CameraBorderDetector::draw()
 		// static update of camera
 		_cam.update();
 
-		// get image from camera
-		_img = _cam.getPixels();
+		// get image from camera, conversion happens implicitly
+		_color = _cam.getPixels();
+		_img = _color;
 		_imgPixels = _img.getPixels();
 
 		// next call calculation state
@@ -216,6 +219,7 @@ void CameraBorderDetector::determineAndSetPosition()
 	cout << "max brightness: " << _maxBrightness << "\n";
 	// assumed as white
 	if (_maxBrightness > WHITE_THRESHOLD) {
+		cout << "seen pixel \n";
 		if (_initPos == false) {
 			_cumulativeX += _screen.x;
 			_cumulativeY += _screen.y;
@@ -234,7 +238,10 @@ void CameraBorderDetector::determineAndSetPosition()
 		_pixelSeen = true;
 	}
 	else {
+		cout << "not seen pixel \n";
 		_pixelSeen = false;
+		cout << "_vis size: " << _vis.getWidth() << " x " << _vis.getHeight() << " versus position: " << _screen.x << ", " << _screen.y << "\n";
+		_vis.setColor((size_t)_screen.x, (size_t)_screen.y, ofColor::darkOrchid);
 	}
   
 }
@@ -307,7 +314,7 @@ void CameraBorderDetector::findInitialPosition() {
     _screen.x = 0;
     _screen.y += spacing;
   }
-  if (_screen.y > _screenHeight) {
+  if (_screen.y >= _screenHeight) {
     _startX = ceil((float)_cumulativeX / (float)_seenCount);
     _startY = ceil((float)_cumulativeY / (float)_seenCount);
     _screen.x = _startX;

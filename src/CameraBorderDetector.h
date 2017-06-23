@@ -74,8 +74,10 @@ class CameraBorderDetector : public ofBaseApp {
 
 
 
-		// color image to detect pixels
-		ofxCvColorImage _img;
+		// color image taken from video grabber
+		ofxCvColorImage _color;
+		// greyscale image to be worked on
+		ofxCvGrayscaleImage _img;
 		// pixels of image
 		ofPixels _imgPixels;
 		// background

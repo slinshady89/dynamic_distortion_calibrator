@@ -66,17 +66,17 @@ class PixelSizeDetector : public ofBaseApp {
 		// Object for camera signal
 		ofVideoGrabber _cam;
 		// image from camera
-		ofxCvColorImage _img;
+		ofxCvGrayscaleImage _img;
 		// pixel array of the image
 		ofPixels _imgPixels;
 		// background taken at beginning of pixel detection
 		ofPixels _background;
 		// difference between image and background
-		ofImage _diff;
+		ofxCvGrayscaleImage _diff;
 		// pixel array of the difference image
 		ofPixels _diffPixels;
-		// color at a given pixel
-		//ofColor _colorAtXY;
+		// color image taken from camera grabber
+		ofxCvColorImage _color;
 		// brightness of color at a given pixel
 		float _brightnessAtXY;
 		// maximal brightness found

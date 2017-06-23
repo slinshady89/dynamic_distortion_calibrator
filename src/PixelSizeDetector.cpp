@@ -82,8 +82,8 @@ void PixelSizeDetector::draw() {
 			//ofSetBackgroundColor(ofColor::black);
 			ofBackground(ofColor::black);
 			_cam.update();
-			_img = _cam.getPixels();
-			ofSetColor(ofColor::white);
+			_color.setFromPixels(_cam.getPixels());
+			_img = _color;
 			_img.draw(0, 0);
 
 			// state gets set by mouse-click as well
@@ -109,8 +109,9 @@ void PixelSizeDetector::draw() {
 	}
 	else if (_state == 1) { // capturing frame state
 		_cam.update();
-		_img = _cam.getPixels();
-		//_imgPixels = _img.getPixels();
+		// take image and convert it to grayscale
+		_color.setFromPixels(_cam.getPixels());
+		_img = _color;
 
 		// if we're in this state for the first time, catch the background
 		if (_backgroundSet == false) {
