@@ -125,7 +125,13 @@ void PixelSizeDetector::draw() {
 	else if (_state == 2) { // actual calculation state
 		std::cout << "beginning pixel detection\n";
 		// subtract the background
-		_diffPixels = commonFunctions::subtractBackground(_img.getPixels(), _background);
+		//_diffPixels = commonFunctions::subtractBackground(_img.getPixels(), _background);
+
+		ofxCvGrayscaleImage diff;
+		diff.setFromPixels(_background);
+		diff.absDiff(_img);
+		_diffPixels = diff.getPixels();
+
 		// and finally detect the position of the brightest pixel
 		 _pos  bright = commonFunctions::detectBrightness(_diffPixels);
 		_maxBrightnessX = bright.x;
