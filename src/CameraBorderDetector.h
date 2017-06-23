@@ -41,14 +41,14 @@ class CameraBorderDetector : public ofBaseApp {
 
    
 
-    _pos _test;
+		_pos _test;
 
 
 		// last seen pixel position
 		 _pos _lastSeenPos;
 
-     // initial position of the Pixel
-     _pos _seenPix;
+		 // initial position of the Pixel
+		 _pos _seenPix;
 		
 		
 
@@ -60,8 +60,8 @@ class CameraBorderDetector : public ofBaseApp {
 		// y position of drawing the pixel
 		//int _screen.y;
 
-    // replaces _screenX and _screenY so the max brightness that is detected for this drawn pixel could be saved to the coordinates
-    _pos _screen;
+		// replaces _screenX and _screenY so the max brightness that is detected for this drawn pixel could be saved to the coordinates
+		_pos _screen;
 
 		// screenHeight
 		int _screenHeight;
