@@ -19,7 +19,7 @@ void DynamicDistortionCalibrator::findRawDistortion()
 	int pixelSize = findPixelSize();
 
 	// find cameraArea
-	_area = findCameraArea(pixelSize);
+	_area = findCameraBorder(pixelSize);
 
 	// calculate the global offset from screen coordinates to image coordinates
 	//calculateOffset();
@@ -59,11 +59,11 @@ int DynamicDistortionCalibrator::findPixelSize()
 }
 
 //_____________________________________________________________________________
-cameraArea DynamicDistortionCalibrator::findCameraArea(int pixelSize)
+cameraBorder DynamicDistortionCalibrator::findCameraBorder(int pixelSize)
 {
 	// initialize the cameraArea and pointer to it
-	cameraArea area;
-	cameraArea *areaPointer = &area;
+	cameraBorder area;
+	cameraBorder *areaPointer = &area;
 
 	ofSetupOpenGL(_windowWidth, _windowHeight, OF_FULLSCREEN);// <-------- setup the GL context
 	
@@ -86,10 +86,10 @@ void DynamicDistortionCalibrator::calculateOffset()
 //_____________________________________________________________________________
 void DynamicDistortionCalibrator::correctForOffset()
 {
-	for (int x = 0; x < _area._sizeImageX; x++) {
+	/*for (int x = 0; x < _area._sizeImageX; x++) {
 		for (int y = 0; y < _area._sizeImageY; y++) {
 			_area._distortionX[x][y] = _area._imageX[x][y] - _area._offsetX;
 			_area._distortionY[x][y] = _area._imageY[x][y] - _area._offsetY;
 		}
-	}
+	}*/
 }

@@ -17,5 +17,8 @@ namespace commonFunctions {
 	//				- first value : x position of brightest pixel
 	//				- second value: y position of brightest pixel
 	//				- third value : maximal brightness value in image
-	_pos detectBrightness(ofPixels img);
+	pos detectBrightness(ofPixels img);
+
+	// detects the brightest pixel ina grayscale image
+	pos detectGrayValue(ofPixels img);
 }

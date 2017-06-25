@@ -28,7 +28,7 @@ class PixelSizeDetector : public ofBaseApp {
 		// maximally allowed pixelSize
 		int _maxPixelSize;
 		// current pixelSize
-		int *_pixelSize; 
+		int *_pixelSize;
 
 		// roughly the number of squares drawn on the screen
 		int _noSquaresDrawn; 

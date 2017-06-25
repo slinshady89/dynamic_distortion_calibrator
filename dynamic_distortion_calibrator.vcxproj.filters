@@ -701,9 +701,6 @@
     <ClInclude Include="src\PixelSizeDetector.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\cameraArea.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="src\DynamicDistortionCalibrator.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -714,6 +711,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\CameraBorderDetector.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cameraBorder.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

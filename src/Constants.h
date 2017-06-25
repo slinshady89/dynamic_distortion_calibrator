@@ -4,7 +4,7 @@ extern int WHITE_THRESHOLD;
 
 
 // structure in which all necessary things could be saved
-struct _pos
+struct pos
 {
   // initially default values are zero
   //_pos() : x(), y(), b() {}

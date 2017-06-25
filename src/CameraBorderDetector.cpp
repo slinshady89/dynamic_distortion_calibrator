@@ -34,18 +34,16 @@ void CameraBorderDetector::setup()
 	_area->_sizeImageY = _imageHeight;
 	
 	// allocate storage for the screen coordinates
-	_area->_imageX = new int*[_imageWidth];
-	_area->_imageY = new int*[_imageWidth];
+	_area->_borderArray = new pos*[_imageWidth];
 	for (int i = 0; i < _imageWidth; i++) {
-		_area->_imageX[i] = new int[_imageHeight];
-		_area->_imageY[i] = new int[_imageHeight];
+		_area->_borderArray[i] = new pos[_imageHeight];
 	}
 
 	// set all values to -1 in order to later be able to easier identify seen places
 	for (int y = 0; y < _imageHeight; y++) {
 		for (int x = 0; x < _imageWidth; x++) {
-			_area->_imageX[x][y] = -1;
-			_area->_imageY[x][y] = -1;
+			_area->_borderArray[x][y].x = -1;
+			_area->_borderArray[x][y].y = -1;
 		}
 	}
 
@@ -71,14 +69,18 @@ void CameraBorderDetector::setup()
 		}
 	}
 	_visDrawn = false;
-	_initPos = false;
+	_initPosFound = false;
 	_cumulativeX = 0;
 	_cumulativeY = 0;
 	_seenCount = 0;
 
+	_firstBinarySearchCall = true;
+	_binarySearchDirection = 0;
 
 	_pixelSeen = true;
 	_borderDetected = false;
+
+	
 }
 
 //_____________________________________________________________________________
@@ -148,20 +150,14 @@ void CameraBorderDetector::draw()
 	}
 	else if (_state == 2) {
 		// entered calculation state
-		if (_initPos == false) {
+		if (_initPosFound == false) {
 			determineAndSetPosition();
-
 			// find next square position
 			findInitialPosition();
 
 		} else {
-			determineAndSetPosition();
-			if (!_borderDetected) {
-				binarySearch();
-			}
-			else {
-			// find borders
-			}
+			detectBorder();
+
 			if (allPlacesSeen()) {
 				ofGetWindowPtr()->setWindowShouldClose();
 			}
@@ -181,7 +177,7 @@ void CameraBorderDetector::mousePressed(int x, int y, int button) {
 }
 
 //_____________________________________________________________________________
-void CameraBorderDetector::setCameraAreaPointerAndPixelSize(cameraArea *& area, int pixelSize)
+void CameraBorderDetector::setCameraAreaPointerAndPixelSize(cameraBorder *& area, int pixelSize)
 {	
 	_pixelSize = pixelSize;
 	_area = area;
@@ -217,8 +213,8 @@ void CameraBorderDetector::determineAndSetPosition()
 	diff.absDiff(_img);
 	_diffPixels = diff.getPixels();
 
-	// and finally detect the position of the brightest pixel
-	_pos bright = commonFunctions::detectBrightness(_diffPixels);
+	// and finally detect the position of the brightest pixel in the image
+	pos bright = commonFunctions::detectBrightness(_diffPixels);
 	_maxBrightnessX = bright.x;
 	_maxBrightnessY = bright.y;
 	_maxBrightness = bright.b;
@@ -226,19 +222,15 @@ void CameraBorderDetector::determineAndSetPosition()
 	// assumed as white
 	if (_maxBrightness > WHITE_THRESHOLD) {
 		cout << "seen pixel \n";
-		if (_initPos == false) {
+		if (_initPosFound == false) {
 			_cumulativeX += _screen.x;
 			_cumulativeY += _screen.y;
 			_seenCount++;
 		}
 		else {
-			_area->_imageX[_maxBrightnessX][_maxBrightnessY] = _screen.x;
-			_area->_imageY[_maxBrightnessX][_maxBrightnessY] = _screen.y;
 			_vis.setColor((size_t)_screen.x, (size_t)_screen.y, ofColor::darkOliveGreen);
 			_lastSeenPos = bright;
 
-			//cout << "_screen " << _screenX << " " << _screenY  << endl;
-			//cout << "_lastSeenPos "<< bright.x << " " << bright.y << " " << bright.b << endl;
 			_nonVisCount = 0;
 		}
 		_pixelSeen = true;
@@ -253,48 +245,64 @@ void CameraBorderDetector::determineAndSetPosition()
 }
 
 //_____________________________________________________________________________
-void CameraBorderDetector::binarySearch()
+void CameraBorderDetector::binarySearch(int dir, pos lastNotSeen, bool init)
 {
-	// detection of a the right border of the camera frame
-	
-	if (!_borderDetected) {
-		// binary search algorithm
-		if (_pixelSeen == true) {
-			cout << "setting _lastSeen to " << _screen.x << " " << _screen.y << endl;
-			_lastSeen.x = _screen.x;
-			_lastSeen.y = _screen.y;
-		}
-		else {
-			cout << "setting _lastNotSeen to " << _screen.x << " " << _screen.y << endl;
-			_lastNotSeen.x = _screen.x;
-			_lastNotSeen.y = _screen.y;
-		}
+	// sets initial lastNotSeen position if necessary
+	if (init == true) {
+		_lastNotSeen = lastNotSeen;
+	}
 
-		cout << "_lastSeen " << _lastSeen.x << " " << _lastSeen.y << endl;
-		cout << "_lastNotSeen " << _lastNotSeen.x << " " << _lastNotSeen.y << endl;
+	// if the currently drawn pixel was seen, set lastSeen, else lastNotSeen
+	if (_pixelSeen == true) {
+		_lastSeen.x = _screen.x;
+		_lastSeen.y = _screen.y;
+	}
+	else {
+		_lastNotSeen.x = _screen.x;
+		_lastNotSeen.y = _screen.y;
+	}
 
+	cout << "_lastSeen " << _lastSeen.x << " " << _lastSeen.y << endl;
+	cout << "_lastNotSeen " << _lastNotSeen.x << " " << _lastNotSeen.y << endl;
+
+	_binarySearchDirection;
+
+	// average over the lastSeen and lastNotSeen pixel is next position to consider
+	// ceil and floor depend on search direction, as we want to keep the last seen
+	// pixel as the border pixel.
+	if (dir == 0 || dir == 3) {
 		_screen.x = ceil(((float)_lastSeen.x + _lastNotSeen.x) / 2.0);
 		_screen.y = ceil(((float)_lastSeen.y + _lastNotSeen.y) / 2.0);
-
-		//cout << "screen " << _screen.x << " " << _screen.y << endl;
-        
-
-		// height should stay at the same 
-		//_screenY = (_lastSeen.y + _lastNotSeen.y) / 2;
-		_drawnPos.x = _screen.x;
-		_drawnPos.y = _screen.y;
-		cout << "next pos: " << _screen.x << " " << _screen.y  << "\n" << endl;
+	}
+	else {
+		_screen.x = floor(((float)_lastSeen.x + _lastNotSeen.x) / 2.0);
+		_screen.y = floor(((float)_lastSeen.y + _lastNotSeen.y) / 2.0);
 	}
 
-	// test
-	if ((abs(_lastSeen.x - _lastNotSeen.x) == 0) && (abs(_lastSeen.y - _lastNotSeen.y) == 0)) {
-		cout << "shifting pixel to the right\n";
-		_screen.x = _screen.x++;
-	}
-
-	if ((abs(_lastSeen.x - _lastNotSeen.x)==1) && (abs(_lastSeen.y - _lastNotSeen.y) == 1)) {
-		cout << "found border, binary search done!\n";
-		_borderDetected = true;
+	cout << "next pos: " << _screen.x << " " << _screen.y  << "\n" << endl;
+	
+	// if we're looking for the up or down border, there should only be a 1 difference
+	// in the y-coordinate of the two positions. For left/right in x-coordinate
+	// The sum of these two differences should then be 1.
+	if ((abs(_lastSeen.x - _lastNotSeen.x) + abs(_lastSeen.y - _lastNotSeen.y)) == 1) {
+		// found point on the border
+		switch (dir) {
+			case 0: 
+				_firstUp = _lastSeen;
+				break;
+			case 1:
+				_firstDown = _lastSeen;
+				break;
+			case 2:
+				_firstLeft = _lastSeen;
+				break;
+			case 3:
+				_firstRight = _lastSeen;
+				break;
+		}
+		// go look for next first border position
+		_binarySearchDirection++;
+		_firstBinarySearchCall = true;
 	}
 }
 
@@ -302,7 +310,7 @@ void CameraBorderDetector::binarySearch()
 
 //_____________________________________________________________________________
 bool CameraBorderDetector::allPlacesSeen() {
-	for (int y = 0; y < _imageHeight; y++) {
+	/*for (int y = 0; y < _imageHeight; y++) {
 		for (int x = 0; x < _imageWidth; x++) {
 			// only need to look at either x or y as they get set at the same time
 			if (_area->_imageX[x][y] == -1) {
@@ -310,9 +318,11 @@ bool CameraBorderDetector::allPlacesSeen() {
 			}
 		}
 	}
-	return true;
+	return true;*/
+	return false;
 }
 
+//_____________________________________________________________________________
 void CameraBorderDetector::findInitialPosition() {
   int spacing = _screenHeight / 6; //to get at least 10 different rows of pixels
   _screen.x += spacing;
@@ -321,14 +331,14 @@ void CameraBorderDetector::findInitialPosition() {
     _screen.y += spacing;
   }
   if (_screen.y >= _screenHeight) {
-    _startX = ceil((float)_cumulativeX / (float)_seenCount);
-    _startY = ceil((float)_cumulativeY / (float)_seenCount);
-    _screen.x = _startX;
-    _screen.y = _startY;
-    _initPos = true;
+    _initPos.x = ceil((float)_cumulativeX / (float)_seenCount);
+    _initPos.y = ceil((float)_cumulativeY / (float)_seenCount);
+    _screen.x = _initPos.x;
+    _screen.y = _initPos.y;
+    _initPosFound = true;
   }
   // setup for binarySearch()
-  if (_initPos == true) {
+ /* if (_initPosFound == true) {
     _lastSeen.x = _screen.x;
 	_lastSeen.y = _screen.y;
     _lastNotSeen.x = _screenWidth; 
@@ -336,10 +346,78 @@ void CameraBorderDetector::findInitialPosition() {
     _drawnPos = _lastNotSeen;
 	_screen = _lastNotSeen;
     cout << "found initial posX " << _screen.x << " posY " << _screen.y <<endl;
-  }
+  }*/
 }
 
+//_____________________________________________________________________________
 void CameraBorderDetector::borderWalker()
 {
 }
 
+//_____________________________________________________________________________
+void CameraBorderDetector::detectBorder() {
+	// set up the initial positions for each direction
+	pos up;
+	up.x = _initPos.x;
+	up.y = 0;
+
+	pos down;
+	down.x = _initPos.x;
+	down.y = _screenHeight;
+
+	pos left;
+	left.x = 0;
+	left.y = _initPos.y;
+
+	pos right;
+	right.x = _screenWidth;
+	right.y = _initPos.y;
+
+	// first find some position on each border
+	// call has to be different for first time entering function
+	if (_binarySearchDirection < 4) {
+		if (_firstBinarySearchCall == true) {
+			_firstBinarySearchCall = false;
+			// call with init = true, initial position gets set
+			switch (_binarySearchDirection) {
+			case 0:
+				binarySearch(_binarySearchDirection, up, true);
+				break;
+			case 1:
+				binarySearch(_binarySearchDirection, down, true);
+				break;
+			case 2:
+				binarySearch(_binarySearchDirection, left, true);
+				break;
+			case 3:
+				binarySearch(_binarySearchDirection, right, true);
+				break;
+			}
+		}
+		else {
+			// call with init = false, position is actually irrelevant here
+			binarySearch(_binarySearchDirection, _initPos, false);
+		}
+	}
+	else {
+		// we know a position on all four borders
+		// search for all the positions
+
+		// search lower left corner
+
+		// serach lower right corner
+
+		// search upper left corner
+
+		// search lower right corner
+
+		// when all are found, set some bool to true
+
+	}
+
+	// if some bool is true, check whether the border is complete
+	// start at one border position and check whether one of its nine
+	// neighbours is another border pixel, if so take that as next position
+	// if border is continuous - done
+	// else - don't know yet?
+}

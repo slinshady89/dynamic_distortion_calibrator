@@ -25,10 +25,10 @@ ofPixels commonFunctions::subtractBackground(ofPixels img, ofPixels bkgd)
 }
 
 //_____________________________________________________________________________
- _pos commonFunctions::detectBrightness(ofPixels img)
+ pos commonFunctions::detectBrightness(ofPixels img)
 {
 	// coordinates of brightest pixel
-	 _pos brightCoord;
+	 pos brightCoord;
 
 	// get width and height from image
 	int width = img.getWidth();
@@ -58,3 +58,34 @@ ofPixels commonFunctions::subtractBackground(ofPixels img, ofPixels bkgd)
 	}
 	return brightCoord;
 }
+
+
+ //_____________________________________________________________________________
+ pos commonFunctions::detectGrayValue(ofPixels img) {
+
+	 // coordinates of brightest pixel
+	 pos brightCoord;
+
+
+	 // get width and height from image
+	 int width = img.getWidth();
+	 int height = img.getHeight();
+	 int grayValue = 0;
+	 int maxGrayValue = 0;
+	 unsigned char* pixelData = img.getPixels();
+
+	 for (size_t x = 0; x < width; x++)
+	 {
+		 for (size_t y = 0; y< height; y++)
+		 {
+			 grayValue = pixelData[img.getPixelIndex(x, y)];
+			 if (grayValue>maxGrayValue)
+			 {
+				 brightCoord.x = x;
+				 brightCoord.y = y;
+				 brightCoord.b = grayValue;
+			 }
+		 }
+	 }
+	 return brightCoord;
+ }

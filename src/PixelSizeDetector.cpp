@@ -133,7 +133,7 @@ void PixelSizeDetector::draw() {
 		_diffPixels = diff.getPixels();
 
 		// and finally detect the position of the brightest pixel
-		 _pos  bright = commonFunctions::detectBrightness(_diffPixels);
+		 pos  bright = commonFunctions::detectBrightness(_diffPixels);
 		_maxBrightnessX = bright.x;
 		_maxBrightnessY = bright.y;
 		_maxBrightness = bright.b;

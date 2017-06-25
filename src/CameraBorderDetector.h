@@ -1,7 +1,7 @@
 #include "ofxGui.h"
 #include "ofxOpenCv.h"
 #include "ofMain.h"
-#include "cameraArea.h"
+#include "cameraBorder.h"
 #include "commonFunctions.h"
 
 
@@ -16,11 +16,11 @@ class CameraBorderDetector : public ofBaseApp {
 		// allows to set a pointer to a cameraArea struct outside of this class in order
 		// to keep the values found by this class and set the pixelSize
 		// Is actually a workaround for the lack of return values in ofBaseApp
-		void setCameraAreaPointerAndPixelSize(cameraArea *&area, int pixelSize);
+		void setCameraAreaPointerAndPixelSize(cameraBorder *&area, int pixelSize);
 
 	private:
 		// pointer to the cameraArea struct used for passing things to the outside
-		cameraArea *_area;
+		cameraBorder *_area;
 		// Object for camera signal
 		ofVideoGrabber _cam;
 		// allows detection to start
@@ -41,14 +41,14 @@ class CameraBorderDetector : public ofBaseApp {
 
    
 
-		_pos _test;
+		pos _test;
 
 
 		// last seen pixel position
-		 _pos _lastSeenPos;
+		 pos _lastSeenPos;
 
 		 // initial position of the Pixel
-		 _pos _seenPix;
+		 pos _seenPix;
 		
 		
 
@@ -61,7 +61,7 @@ class CameraBorderDetector : public ofBaseApp {
 		//int _screen.y;
 
 		// replaces _screenX and _screenY so the max brightness that is detected for this drawn pixel could be saved to the coordinates
-		_pos _screen;
+		pos _screen;
 
 		// screenHeight
 		int _screenHeight;
@@ -90,13 +90,18 @@ class CameraBorderDetector : public ofBaseApp {
 		ofPixels _vis;
 		bool _visDrawn;
 		// finished finding initial spiral position
-		bool _initPos;
+		bool _initPosFound;
 		int _cumulativeX;
 		int _cumulativeY;
 		int _seenCount;
 		int _startX;
 		int _startY;
-
+		int _binarySearchDirection; // 0 - up; 1 - down; 2 - left; 3 - right
+		bool _pixelSeen, _borderDetected, _firstBinarySearchCall;
+		// for binary search
+		pos _lastSeen, _lastNotSeen, _drawnPos, _initPos;
+		// coordinates of first border pixels in screen coordinates;
+		pos _firstDown, _firstUp, _firstLeft, _firstRight;
 
 		// color at a given pixel
 		ofColor _colorAtXY;
@@ -117,18 +122,15 @@ class CameraBorderDetector : public ofBaseApp {
 		// set the currently brightest spot seen on the camera in the cameraArea
 		void determineAndSetPosition();
 		// find the right border of the camera frame
-		void binarySearch();
+		// int dir: 0 - up; 1 - down; 2 - left; 3 - right
+		// pos lastNotSeen: the last unseen position, has to be set the first time
+		//					binarySearch is called
+		// bool init: true: set lastNotSeen, false: don't set last not seen
+		void binarySearch(int dir, pos lastNotSeen, bool init);
 		// find initial spiral position
 		void findInitialPosition();
 		// walk along the borders of the camera frame
 		void borderWalker();
-		
 
-
-
-		
-
-		bool _pixelSeen, _borderDetected;
-		// for binary search
-		_pos _lastSeen, _lastNotSeen, _drawnPos;
+		void detectBorder();
 };

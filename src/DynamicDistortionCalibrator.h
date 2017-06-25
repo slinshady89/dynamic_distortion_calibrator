@@ -1,4 +1,4 @@
-#include "cameraArea.h"
+#include "cameraBorder.h"
 #include "PixelSizeDetector.h"
 #include "CameraBorderDetector.h"
 
@@ -17,11 +17,11 @@ class DynamicDistortionCalibrator {
 		void loadRawDistortion();
 
 	private:
-		cameraArea _area;
+		cameraBorder _area;
 		int _windowHeight, _windowWidth;
 
 		int findPixelSize();
-		cameraArea findCameraArea(int pixelSize);
+		cameraBorder findCameraBorder(int pixelSize);
 		void calculateOffset();
 		void correctForOffset();
 
