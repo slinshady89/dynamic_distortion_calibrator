@@ -2,7 +2,9 @@
 #include "ofMain.h"
 #include "cameraBorder.h"
 #include "commonFunctions.h"
+#include "Constants.h"
 #include "Line.h"
+#include "calibrationImage.h"
 
 class ImageCreator : public ofBaseApp {
 public:
@@ -12,18 +14,21 @@ public:
   // allows to set a pointer to a cameraArea struct outside of this class in order
   // to keep the values found by this class and set the pixelSize
   // Is actually a workaround for the lack of return values in ofBaseApp
-  void setCameraAreaPointerAndPixelSize(cameraBorder *&area, int pixelSize);
+  void setImageReturnVariables(calibrationImage *&vertical, calibrationImage *&horizontal, cameraBorder border, int pixelSize);
 
 private:
 
   // pointer to the cameraArea struct used for passing things to the outside
-  cameraBorder *_area;
+  cameraBorder _border;
   // Object for camera signal
   ofVideoGrabber _cam;
   // pixelSize
   int _pixelSize;
   // replaces _screenX and _screenY so the max brightness that is detected for this drawn pixel could be saved to the coordinates
   pos _screen;
+
+  // pointers to return variables
+  calibrationImage *_vertical, *_horizontal;
 
   // keeps track of the state in draw() function
   int _state;

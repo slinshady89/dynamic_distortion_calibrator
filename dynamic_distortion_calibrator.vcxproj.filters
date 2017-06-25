@@ -725,6 +725,9 @@
     <ClInclude Include="src\ImageCreator.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\calibrationImage.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

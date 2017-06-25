@@ -372,6 +372,7 @@
     <ClInclude Include="..\..\Libraries\openframeworks_v0.9.8_vs_release\addons\ofxOpenCv\libs\opencv\include\opencv2\videostab\optical_flow.hpp" />
     <ClInclude Include="..\..\Libraries\openframeworks_v0.9.8_vs_release\addons\ofxOpenCv\libs\opencv\include\opencv2\videostab\stabilizer.hpp" />
     <ClInclude Include="..\..\Libraries\openframeworks_v0.9.8_vs_release\addons\ofxOpenCv\libs\opencv\include\opencv2\videostab\videostab.hpp" />
+    <ClInclude Include="src\calibrationImage.h" />
     <ClInclude Include="src\cameraBorder.h" />
     <ClInclude Include="src\CameraBorderDetector.h" />
     <ClInclude Include="src\commonFunctions.h" />

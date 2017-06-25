@@ -16,10 +16,13 @@ DynamicDistortionCalibrator::~DynamicDistortionCalibrator()
 void DynamicDistortionCalibrator::findRawDistortion()
 {
 	// find pixelSize
-	int pixelSize = findPixelSize();
+	//int pixelSize = findPixelSize();
 
 	// find cameraArea
-	_area = findCameraBorder(pixelSize);
+	//_border = findCameraBorder(pixelSize);
+	//cout << "_borderArray[0][0] = " << _border._borderArray[0][0].x << "\n";
+	// create images based on the found border
+	createImages(2);
 
 	// calculate the global offset from screen coordinates to image coordinates
 	//calculateOffset();
@@ -61,9 +64,9 @@ int DynamicDistortionCalibrator::findPixelSize()
 //_____________________________________________________________________________
 cameraBorder DynamicDistortionCalibrator::findCameraBorder(int pixelSize)
 {
-	// initialize the cameraArea and pointer to it
-	cameraBorder area;
-	cameraBorder *areaPointer = &area;
+	// initialize the cameraBorder and pointer to it
+	cameraBorder border;
+	cameraBorder *areaPointer = &border;
 
 	ofSetupOpenGL(_windowWidth, _windowHeight, OF_FULLSCREEN);// <-------- setup the GL context
 	
@@ -74,7 +77,23 @@ cameraBorder DynamicDistortionCalibrator::findCameraBorder(int pixelSize)
 	ofRunApp(cameraBorderDetector);
 	std::cout << "found area \n";
 
-	return area;
+	return border;
+}
+
+//_____________________________________________________________________________
+void DynamicDistortionCalibrator::createImages(int pixelSize)
+{
+	// initialize
+	calibrationImage *verticalPointer = &_vertical;
+	calibrationImage *horizontalPointer = &_horizontal;
+
+	ofSetupOpenGL(_windowWidth, _windowHeight, OF_FULLSCREEN);// <-------- setup the GL context
+
+	// create the app for the image creation
+	auto imageCreator = make_shared<ImageCreator>();
+	imageCreator->setImageReturnVariables(verticalPointer, horizontalPointer, _border, pixelSize);
+	ofRunApp(imageCreator);
+	std::cout << "vgt[0][0].x = " << _vertical.groundTruth[0][0].x << "\n";
 }
 
 //_____________________________________________________________________________

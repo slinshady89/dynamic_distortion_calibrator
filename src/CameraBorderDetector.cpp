@@ -30,20 +30,20 @@ void CameraBorderDetector::setup()
 	_imgPixels = _img.getPixels();
 	_imageHeight = _img.getHeight();
 	_imageWidth = _img.getWidth();
-	_area->_sizeImageX = _imageWidth;
-	_area->_sizeImageY = _imageHeight;
+	_border->_sizeImageX = _imageWidth;
+	_border->_sizeImageY = _imageHeight;
 	
 	// allocate storage for the screen coordinates
-	_area->_borderArray = new pos*[_imageWidth];
-	for (int i = 0; i < _imageWidth; i++) {
-		_area->_borderArray[i] = new pos[_imageHeight];
+	_border->_borderArray = new pos*[_screenWidth];
+	for (int i = 0; i < _screenWidth; i++) {
+		_border->_borderArray[i] = new pos[_screenHeight];
 	}
 
 	// set all values to -1 in order to later be able to easier identify seen places
-	for (int y = 0; y < _imageHeight; y++) {
-		for (int x = 0; x < _imageWidth; x++) {
-			_area->_borderArray[x][y].x = -1;
-			_area->_borderArray[x][y].y = -1;
+	for (int y = 0; y < _screenHeight; y++) {
+		for (int x = 0; x < _screenWidth; x++) {
+			_border->_borderArray[x][y].x = -1;
+			_border->_borderArray[x][y].y = -1;
 		}
 	}
 
@@ -80,7 +80,7 @@ void CameraBorderDetector::setup()
 	_pixelSeen = true;
 	_borderDetected = false;
 
-	
+	//test: _border->_borderArray[0][0].x = 100;
 }
 
 //_____________________________________________________________________________
@@ -180,7 +180,7 @@ void CameraBorderDetector::mousePressed(int x, int y, int button) {
 void CameraBorderDetector::setCameraAreaPointerAndPixelSize(cameraBorder *& area, int pixelSize)
 {	
 	_pixelSize = pixelSize;
-	_area = area;
+	_border = area;
 }
 
 //_____________________________________________________________________________

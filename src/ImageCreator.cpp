@@ -2,7 +2,6 @@
 
 
 
-
 void ImageCreator::setup() {
   // set framerate
   ofSetFrameRate(20);
@@ -13,12 +12,16 @@ void ImageCreator::setup() {
   else {
     _cam.setDeviceID(0);
   }
+  
+  cout << "found camera\n";
 
   // setup camera
   _cam.setup(320, 240);
+  cout << "setup camera\n";
   // get screen dimensions
   _screenHeight = ofGetWindowHeight();
   _screenWidth = ofGetWindowWidth();
+  cout << "found screen dimensions\n";
   // get image dimensions
   _img = _cam.getPixels();
   _imgPixels = _img.getPixels();
@@ -28,7 +31,39 @@ void ImageCreator::setup() {
   ofBackground(ofColor::black);
   ofSetColor(ofColor::white);
 
+  cout << "setup color stuffs\n beginning ground truth initialization\n";
 
+  // initialize ground truths (same size)
+  _vertical->groundTruth = new pos*[_screenWidth];
+  _horizontal->groundTruth = new pos*[_screenWidth];
+
+  for (int i = 0; i < _screenWidth; i++) {
+	  _vertical->groundTruth[i] = new pos[_screenHeight];
+	  _horizontal->groundTruth[i] = new pos[_screenHeight];
+  }
+
+  for (int x = 0; x < _screenWidth; x++) {
+	  for (int y = 0; y > _screenHeight; y++) {
+		  _vertical->groundTruth[x][y].x = -1;
+		  _horizontal->groundTruth[x][y].x = -1;
+	  }
+  }
+
+  // initialize image
+  _vertical->image = new pos*[_imageWidth];
+  _horizontal->image = new pos*[_imageWidth];
+
+  for (int i = 0; i < _imageWidth; i++) {
+	  _vertical->image[i] = new pos[_imageHeight];
+	  _horizontal->image[i] = new pos[_imageHeight];
+  }
+
+  for (int x = 0; x < _imageWidth; x++) {
+	  for (int y = 0; y > _imageHeight; y++) {
+		  _vertical->image[x][y].x = -1;
+		  _horizontal->image[x][y].x = -1;
+	  }
+  }
 }
 
 
@@ -101,16 +136,17 @@ void ImageCreator::draw() {
     cout << "Something went wrong, unreachable state reached. Quitting now.\n";
     ofGetWindowPtr()->setWindowShouldClose();
   }
-
-
 }
 
 
 
-void ImageCreator::setCameraAreaPointerAndPixelSize(cameraBorder *& area, int pixelSize)
+void ImageCreator::setImageReturnVariables(calibrationImage *&vertical, calibrationImage *&horizontal, cameraBorder border, int pixelSize)
 {
   _pixelSize = pixelSize;
-  _area = area;
+  _border = border;
+
+  _vertical = vertical;
+  _horizontal = horizontal;
 }
 
 
@@ -125,8 +161,8 @@ void ImageCreator::debugArea() {
 
   for (int y = cornerTop; y < cornerBot; y++) {
     for (int x = cornerLeft; x < cornerRight; x++) {
-      _area->_borderArray[x][y].x = x;
-      _area->_borderArray[x][y].y = y;
+      _border._borderArray[x][y].x = x;
+      _border._borderArray[x][y].y = y;
     }
   }
 
@@ -140,7 +176,7 @@ void ImageCreator::findLines() {
     int count = 0;
     line actualLine;
     for (int x = 0; x < _imageWidth; x++) {
-      if (_area->_borderArray[x][y].border) {
+      if (_border._borderArray[x][y].border) {
         actualLine.y1 = actualLine.y2 = y;
         if (lowerX == 0) {
           lowerX = x;
@@ -166,7 +202,7 @@ void ImageCreator::findLines() {
     line actualLine;
     int count = 0;
     for (int y = 0; y < _imageHeight; y++) {
-      if (_area->_borderArray[x][y].border) {
+      if (_border._borderArray[x][y].border) {
         actualLine.x1 = actualLine.x2 = x;
         if (lowerY == 0) {
           lowerY = y;

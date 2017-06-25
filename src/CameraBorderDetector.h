@@ -20,7 +20,7 @@ class CameraBorderDetector : public ofBaseApp {
 
 	private:
 		// pointer to the cameraArea struct used for passing things to the outside
-		cameraBorder *_area;
+		cameraBorder *_border;
 		// Object for camera signal
 		ofVideoGrabber _cam;
 		// allows detection to start
