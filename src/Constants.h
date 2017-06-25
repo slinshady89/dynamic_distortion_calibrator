@@ -12,4 +12,6 @@ struct pos
   int y=0;
   // brightness of the pixel at this position
   float b=0;
+  // is set to true, if the pixel is a border pixel
+  bool border = false;
 };
