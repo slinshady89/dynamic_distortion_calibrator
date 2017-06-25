@@ -64,6 +64,9 @@
     <ClCompile Include="src\CameraBorderDetector.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\ImageCreator.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -714,6 +717,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\cameraBorder.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Line.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ImageCreator.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
