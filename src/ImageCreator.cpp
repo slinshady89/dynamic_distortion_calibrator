@@ -161,18 +161,19 @@ void ImageCreator::debugArea() {
 
   for (int y = cornerTop; y < cornerBot; y++) {
     for (int x = cornerLeft; x < cornerRight; x++) {
-      if (x == cornerLeft || x == cornerRight || y == cornerBot || y == cornerTop )
+      if (x == cornerLeft || x == cornerRight || y == cornerBot || y == cornerTop ){
       _border._borderArray[x][y].x = x;
       _border._borderArray[x][y].y = y;
       // draws arbitrary borders white
-      //_border._borderArray[x][y].b = 255;
+      //_border._borderArray[x][y].b = 256;
+      }
     }
   }
 
 
 }
 
-void ImageCreator::findLines() {
+void ImageCreator::findStraightBorderConnections() {
   // find horizontal lines
   for (int y = 0; y < _imageHeight; y++) {
     int lowerX = 0;
@@ -237,4 +238,18 @@ void ImageCreator::drawDebug()
   ofImage background;
   background = _background;
   background.draw(0, 480);
+}
+
+
+void ImageCreator::drawGroundTruth(vector<line> &vectorOfLines) {
+
+  // go threw the vectorOfLines and set borders of the 2 for-loops to
+  // x1 -> x2 and y1 -> y2
+  // so every pixel on the line should be drawn
+
+
+}
+
+void ImageCreator::saveGroundTruth(vector<line> &vectorOfLines) {
+
 }

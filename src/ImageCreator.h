@@ -66,10 +66,13 @@ private:
   void debugArea();
 
   // draws horizontal and vertical lines for distortion calibration
-  void findLines();
+  void findStraightBorderConnections();
   // debug function
   void drawDebug();
-
+  // draws the vertical and horizontal lines into the ground truth screen image array
+  void drawGroundTruth(vector<line> &vectorOfLines);
+  // saves the ground truth straight lines into the screen image array
+  void saveGroundTruth(vector<line> &vectorOfLines);
 
 
 
