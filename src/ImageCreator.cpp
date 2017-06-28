@@ -161,8 +161,11 @@ void ImageCreator::debugArea() {
 
   for (int y = cornerTop; y < cornerBot; y++) {
     for (int x = cornerLeft; x < cornerRight; x++) {
+      if (x == cornerLeft || x == cornerRight || y == cornerBot || y == cornerTop )
       _border._borderArray[x][y].x = x;
       _border._borderArray[x][y].y = y;
+      // draws arbitrary borders white
+      //_border._borderArray[x][y].b = 255;
     }
   }
 

@@ -93,7 +93,7 @@ void DynamicDistortionCalibrator::createImages(int pixelSize)
 	auto imageCreator = make_shared<ImageCreator>();
 	imageCreator->setImageReturnVariables(verticalPointer, horizontalPointer, _border, pixelSize);
 	ofRunApp(imageCreator);
-	std::cout << "vgt[0][0].x = " << _vertical.groundTruth[0][0].x << "\n";
+	std::cout << "_vertical.groundTruth[0][0].x = " << _vertical.groundTruth[0][0].x << "\n";
 }
 
 //_____________________________________________________________________________
