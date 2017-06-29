@@ -100,7 +100,7 @@ void DrawLine::drawRectangles()
 void DrawLine::drawDebug()
 {
 	ofImage img;
-	img = _contour;// difference between _cam;
+	img = _contour.getPixels();// difference between _cam;
 	img.draw(0, 0);
 	_cam.draw(0, 240);
 	ofImage background;
