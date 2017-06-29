@@ -69,12 +69,10 @@ private:
   void findStraightBorderConnections();
   // debug function
   void drawDebug();
-  // draws the vertical and horizontal lines into the ground truth screen image array
-  void drawGroundTruth(vector<line> &vectorOfLines);
   // saves the ground truth straight lines into the screen image array
   void saveGroundTruth(vector<line> &vectorOfLines);
 
-
+  bool drawHorizontals;
 
   vector<line> _horizontals, _verticals;
 };

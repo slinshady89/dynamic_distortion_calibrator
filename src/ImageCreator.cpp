@@ -64,6 +64,9 @@ void ImageCreator::setup() {
 		  _horizontal->image[x][y].x = -1;
 	  }
   }
+
+  findStraightBorderConnections();
+  drawHorizontals = true;
 }
 
 
@@ -103,8 +106,22 @@ void ImageCreator::draw() {
     }
     // actually draws the pixel that should be detected for detection the borders of the camera frame
     ofFill();
-    ofDrawRectangle(_screen.x, _screen.y, _pixelSize, _pixelSize);
-
+    if (drawHorizontals)
+    {
+      for (auto it : _horizontals)
+      {
+        ofDrawRectangle(it.x1, it.y1, it.x2 - it.x1, _pixelSize);
+      }
+      drawHorizontals = false;
+    }
+    else
+    {
+      for (auto it : _verticals)
+      {
+        ofDrawRectangle(it.x1, it.y1, _pixelSize, it.y2 - it.y1);
+      }
+    }
+    
     // next call capturing state
     if (_drawCount == 5) {  // minimum 4 for Nils' computer check all if you need higher timer!
       _drawCount = 0;
@@ -175,7 +192,7 @@ void ImageCreator::debugArea() {
 
 void ImageCreator::findStraightBorderConnections() {
   // find horizontal lines
-  for (int y = 0; y < _imageHeight; y++) {
+  for (int y = 0; y < _imageHeight; y += 2*_pixelSize) {
     int lowerX = 0;
     int count = 0;
     line actualLine;
@@ -201,7 +218,7 @@ void ImageCreator::findStraightBorderConnections() {
     }
   }
   // find vertical lines
-  for (int x = 0; x < _imageWidth; x++) {
+  for (int x = 0; x < _imageWidth; x += 2 * _pixelSize) {
     int lowerY = 0;
     line actualLine;
     int count = 0;
@@ -226,6 +243,8 @@ void ImageCreator::findStraightBorderConnections() {
       }
     }
   }
+  saveGroundTruth(_horizontals);
+  saveGroundTruth(_verticals);
 }
 
 
@@ -241,15 +260,27 @@ void ImageCreator::drawDebug()
 }
 
 
-void ImageCreator::drawGroundTruth(vector<line> &vectorOfLines) {
 
+void ImageCreator::saveGroundTruth(vector<line> &vectorOfLines) {
   // go threw the vectorOfLines and set borders of the 2 for-loops to
   // x1 -> x2 and y1 -> y2
   // so every pixel on the line should be drawn
-
-
-}
-
-void ImageCreator::saveGroundTruth(vector<line> &vectorOfLines) {
-
+  for (auto it : vectorOfLines){
+    for (int y = it.y1; y <= it.y2; y++) {
+      for (int x = it.x1; x <= it.x2; x++) {
+        if (it.horizontal && !it.vertical)
+        {
+          _horizontal->groundTruth[x][y].x = x;
+          _horizontal->groundTruth[x][y].y = y;
+          _horizontal->groundTruth[x][y].b = 255;
+        }
+        // test isn't necessary but possible
+        else if(it.vertical && !it.horizontal) {
+          _vertical->groundTruth[x][y].x = x;
+          _vertical->groundTruth[x][y].y = y;
+          _vertical->groundTruth[x][y].b = 255;
+        }
+      }
+    }
+  }
 }
