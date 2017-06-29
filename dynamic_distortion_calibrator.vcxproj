@@ -171,8 +171,6 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\CameraAreaDetector.cpp" />
-    <ClCompile Include="src\main.cpp" />
     <ClCompile Include="..\..\Libraries\openframeworks_v0.9.8_vs_release\addons\ofxGui\src\ofxBaseGui.cpp" />
     <ClCompile Include="..\..\Libraries\openframeworks_v0.9.8_vs_release\addons\ofxGui\src\ofxButton.cpp" />
     <ClCompile Include="..\..\Libraries\openframeworks_v0.9.8_vs_release\addons\ofxGui\src\ofxGuiGroup.cpp" />
@@ -188,7 +186,8 @@
     <ClCompile Include="..\..\Libraries\openframeworks_v0.9.8_vs_release\addons\ofxOpenCv\src\ofxCvHaarFinder.cpp" />
     <ClCompile Include="..\..\Libraries\openframeworks_v0.9.8_vs_release\addons\ofxOpenCv\src\ofxCvImage.cpp" />
     <ClCompile Include="..\..\Libraries\openframeworks_v0.9.8_vs_release\addons\ofxOpenCv\src\ofxCvShortImage.cpp" />
-    <ClCompile Include="src\PixelSizeDetector.cpp" />
+    <ClCompile Include="src\commonFunctions.cpp" />
+    <ClCompile Include="src\DrawLine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Libraries\openframeworks_v0.9.8_vs_release\addons\ofxGui\src\ofxBaseGui.h" />
@@ -369,9 +368,9 @@
     <ClInclude Include="..\..\Libraries\openframeworks_v0.9.8_vs_release\addons\ofxOpenCv\libs\opencv\include\opencv2\videostab\optical_flow.hpp" />
     <ClInclude Include="..\..\Libraries\openframeworks_v0.9.8_vs_release\addons\ofxOpenCv\libs\opencv\include\opencv2\videostab\stabilizer.hpp" />
     <ClInclude Include="..\..\Libraries\openframeworks_v0.9.8_vs_release\addons\ofxOpenCv\libs\opencv\include\opencv2\videostab\videostab.hpp" />
-    <ClInclude Include="src\cameraArea.h" />
-    <ClInclude Include="src\CameraAreaDetector.h" />
-    <ClInclude Include="src\PixelSizeDetector.h" />
+    <ClInclude Include="src\commonFunctions.h" />
+    <ClInclude Include="src\Constants.h" />
+    <ClInclude Include="src\DrawLine.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
