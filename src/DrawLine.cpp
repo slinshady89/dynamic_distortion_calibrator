@@ -42,45 +42,54 @@ void DrawLine::update() {
 
 //_____________________________________________________________________________
 void DrawLine::draw() {
-
+	std::cout << "beginning draw \n";
 	_cam.update();
-
+	std::cout << "cam update done \n";
 	bool debug = true;
 
 	// debug; draws the camera frame as seen, 
 	if (debug == true) {
 		drawDebug();
 	}
-
+	std::cout << "done with debug draw\n";
 	// take image and convert it to grayscale
 	_color.setFromPixels(_cam.getPixels());
 	_img = _color;
-
+	std::cout << "converted image to grayscale\n";
 	// if we're in this state for the first time, catch the background
 	if (_backgroundSet == false) {
 		std::cout << "allocating background \n";
 		_background = _img.getPixels();
 		_backgroundSet = true;
+		std::cout << "done with background\n";
 	}
 
 	drawRectangles();
-
+	std::cout << "done with rectangles\n";
 	// take image and convert it to grayscale
 	_color.setFromPixels(_cam.getPixels());
 	_img = _color;
 
+	std::cout << "starting to get difference image\n";
 	ofxCvGrayscaleImage diff;
 	diff.setFromPixels(_background);
 	diff.absDiff(_img);
 	_diffPixels = diff.getPixels();
-
+	std::cout << "done with difference image\n";
 	// from ofxCvGrayScaleImage to cvArr*
 	cv::Mat mat = diff.getCvImage();
-	IplImage img = mat;
-	IplImage edges;
-	cvCanny(&img, &edges, 150, 380, 3);
+	std::cout << "mat object\n";
+	//IplImage img = mat;
+	cv::Mat edges;
+	std::cout << "allocated stuff\n";
+	cv::Canny(mat, edges, 150, 380, 3);
+	std::cout << "canny ran\n";
+	
+	//ofImage contour = edges. 
+	_contour.setFromPixels((unsigned char*)IplImage(edges).imageData, edges.size().width, edges.size().height, OF_IMAGE_GRAYSCALE);
 	// from cvArr* to image
-	*_contour.getCvImage() = edges;
+	std::cout << "grabbed contours\n";
+	_contour.draw(_screenWidth / 2.0, _screenHeight / 2.0);
 }
 
 

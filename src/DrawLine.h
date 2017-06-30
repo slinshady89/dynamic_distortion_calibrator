@@ -4,6 +4,7 @@
 #include "ofxOpenCv.h"
 #include "ofMain.h"
 #include "commonFunctions.h"
+//#include <ofxCv>
 
 class DrawLine : public ofBaseApp {
 public:
@@ -20,8 +21,9 @@ private:
 	int _screenHeight;
 	// screenWidth
 	int _screenWidth;
-	
+	// imageHeight
 	int _imageHeight;
+	// imageWidth
 	int _imageWidth;
 
 	// keep track of whether the background has already been set
@@ -44,7 +46,7 @@ private:
 	// pixel array of the difference image
 	ofPixels _diffPixels;
 	// image of detected line
-	ofxCvGrayscaleImage _contour;
+	ofImage _contour;
 	
 	// function that draws the pattern
 	void drawRectangles();
