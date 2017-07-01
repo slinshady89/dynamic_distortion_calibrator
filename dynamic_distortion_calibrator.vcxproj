@@ -378,8 +378,10 @@
     <ClInclude Include="src\commonFunctions.h" />
     <ClInclude Include="src\Constants.h" />
     <ClInclude Include="src\DynamicDistortionCalibrator.h" />
+    <ClInclude Include="src\edgedetector.h" />
     <ClInclude Include="src\ImageCreator.h" />
     <ClInclude Include="src\Line.h" />
+    <ClInclude Include="src\linefinder.h" />
     <ClInclude Include="src\PixelSizeDetector.h" />
   </ItemGroup>
   <ItemGroup>

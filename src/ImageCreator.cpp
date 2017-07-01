@@ -64,7 +64,7 @@ void ImageCreator::setup() {
 		  _horizontal->image[x][y].x = -1;
 	  }
   }
-
+  debugArea();
   findStraightBorderConnections();
   drawHorizontals = true;
 }
@@ -176,6 +176,11 @@ void ImageCreator::debugArea() {
   int cornerTop = _imageHeight / 4;
   int cornerBot = _imageHeight * 3 / 4;
 
+  _border._borderArray = new pos*[_screenWidth];
+  for (int i = 0; i < _screenWidth; i++) {
+	  _border._borderArray[i] = new pos[_screenHeight];
+  }
+
   for (int y = cornerTop; y < cornerBot; y++) {
     for (int x = cornerLeft; x < cornerRight; x++) {
       if (x == cornerLeft || x == cornerRight || y == cornerBot || y == cornerTop ){
@@ -283,4 +288,195 @@ void ImageCreator::saveGroundTruth(vector<line> &vectorOfLines) {
       }
     }
   }
+}
+
+
+void ImageCreator::countLines(cv::Mat &distImage) {
+  // initial values
+  cv::Mat vert = _vertical->_image;
+  int* offsetX = new int[_imageHeight];
+  offsetX = _vertical->_verticalOffsets;
+  int* offsetY = new int[_imageWidth];
+  offsetY = _horizontal->_horizontalOffsets;
+  pos initialPos = _vertical->_initialPosition;
+
+  // return values
+  int* linesVert = new int[_imageHeight];
+  int* linesHorizon = new int[_imageWidth];
+
+
+  for (size_t y = initialPos.y; y < _imageHeight; y++){
+    size_t initX = offsetX[y];
+    int countLines = 0;
+    int lastVal = -1;
+    for (size_t x = initX; x < _imageWidth; x++) {
+      size_t val = vert.at<uchar>(x, y);
+      if (val == 255 && lastVal != val) {
+        countLines++;
+      }
+      else if(val == 0 && lastVal != val) {
+        countLines++;
+      }
+      lastVal = val;
+    }
+    linesVert[y] = countLines;
+  }
+  for (size_t y = initialPos.y; y < 0; y--) {
+    size_t initX = offsetX[y];
+    int countLines = 0;
+    int lastVal = -1;
+    for (size_t x = initX; x < 0; x--) {
+      size_t val = vert.at<uchar>(x, y);
+      if (val == 255 && lastVal != val) {
+        countLines++;
+      }
+      else if (val == 0 && lastVal != val) {
+        countLines++;
+      }
+      lastVal = val;
+    }
+    linesVert[y] = countLines;
+  }
+
+
+
+  for (size_t x = initialPos.x; x < _imageWidth; x++) {
+    size_t initY = offsetY[x];
+    int countLines = 0;
+    int lastVal = -1;
+    for (size_t y = initY; y < _imageHeight; y++) {
+      size_t val = vert.at<uchar>(x, y);
+      if (val == 255 && lastVal != val) {
+        countLines++;
+      }
+      else if (val == 0 && lastVal != val) {
+        countLines++;
+      }
+      lastVal = val;
+    }
+    linesHorizon[x] = countLines;
+  }
+
+  for (size_t x = initialPos.x; x < 0; x--) {
+    size_t initY = offsetY[x];
+    int countLines = 0;
+    int lastVal = -1;
+    for (size_t y = initY; y < 0; y--) {
+      size_t val = vert.at<uchar>(x, y);
+      if (val == 255 && lastVal != val) {
+        countLines++;
+      }
+      else if (val == 0 && lastVal != val) {
+        countLines++;
+      }
+      lastVal = val;
+    }
+    linesHorizon[x] = countLines;
+  }
+
+
+
+}
+
+
+
+
+cv::Mat ImageCreator::interpolateImage(cv::Mat undistedImage) {
+  cv::Mat interpolatedImage;
+  // allocate the interpolatedImage that will be the return of the function with the size of the 
+  // camera image
+  interpolatedImage.zeros(undistedImage.size(), undistedImage.type());
+  int rows = undistedImage.rows;
+  int cols = undistedImage.cols;
+
+  for (size_t x = 0; x < rows; x++) {
+    for (size_t y = 0;y < cols; y++) {
+      // if a seen value is at (x,y) position use that
+      if (undistedImage.at<uchar>(x, y) != -1) {
+        interpolatedImage.at<uchar>(x, y) = undistedImage.at<uchar>(x, y);
+      }
+      // else use bilinear interpolation of all accessible pixels around (x,y)
+      else {
+        size_t interpolate = 0;
+        size_t count = 0;
+        if (x + 1 < rows) {
+          interpolate += (size_t)undistedImage.at<uchar>(x + 1, y);
+          count++;
+        }
+        if (y + 1 < cols)
+        {
+          interpolate += (size_t)undistedImage.at<uchar>(x, y + 1);
+          count++;
+        }
+        if (x - 1 > 0) {
+          interpolate += (size_t)undistedImage.at<uchar>(x - 1, y);
+          count++;
+        }
+        if (y - 1 < 0)
+        {
+          interpolate += (size_t)undistedImage.at<uchar>(x, y - 1);
+          count++;
+        }
+        // if less than 2 pixel next to the not seen pixel are seen then it has to be at the border or not detected by the camera
+        if (count > 1) {
+          interpolatedImage.at<uchar>(x, y) = (uchar)floor(interpolate / count);
+        }
+      }
+    }
+  }
+  return interpolatedImage;
+}
+
+
+cv::Mat ImageCreator::mappingImage(cv::Mat matchX, cv::Mat matchY, cv::Mat distortedImage) {
+  cv::Mat mappedImage;
+  size_t rows = distortedImage.rows;
+  size_t cols = distortedImage.cols;
+  size_t maxX, maxY, minX, minY;
+  maxX = 0;
+  maxY = 0;
+  minX = rows;
+  minY = cols;
+
+  // find the extremal values of x & y  and save them for correct allocation of the mappedImage
+  for (size_t i = 0; i < rows; i++) {
+    for (size_t j = 0; j < cols; j++) {
+      size_t x = (size_t)matchX.at<uchar>(i, j);
+      size_t y = (size_t)matchY.at<uchar>(i, j);
+      if (x > maxX)
+      {
+        maxX = x;
+      }
+      if (y > maxY )
+      {
+        maxY = y;
+      }
+      if (x < minX)
+      {
+        minX = x;
+      }
+      if (y < minY)
+      {
+        minY = y;
+      }
+    }
+  }
+  // allocates the mapped undistorted matrix with zeros
+  mappedImage.zeros(maxX-minX,maxY-minY, distortedImage.type());
+
+  // checks the found matching matrices for the (x,y) distortion values and 
+  // move the color values to the correct position 
+  for (size_t x = 0; x < rows; x++) {
+    for (size_t y = 0; y < cols; y++) {
+      if (matchX.at<uchar>(x, y) != -1 && matchY.at<uchar>(x, y) != -1) {
+        size_t distX = (size_t)matchX.at<uchar>(x, y) - minX + 1;
+        size_t distY = (size_t)matchY.at<uchar>(x, y) - minY + 1;
+        if (distX >= 0 && distY >= 0)
+        {
+          mappedImage.at<uchar>(distX, distY) = distortedImage.at<uchar>(x, y);
+        }
+      }
+    }
+  }
+  return mappedImage;
 }

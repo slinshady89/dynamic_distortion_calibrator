@@ -80,6 +80,43 @@ void CameraBorderDetector::setup()
 	_pixelSeen = true;
 	_borderDetected = false;
 
+	// new from here on
+	_borderState = 0;
+
+	// initialize ground truths (same size)
+	/*_vertical->_groundTruth = new pos*[_screenWidth];
+	_horizontal->_groundTruth = new pos*[_screenWidth];
+
+	for (int i = 0; i < _screenWidth; i++) {
+		_vertical->_groundTruth[i] = new pos[_screenHeight];
+		_horizontal->_groundTruth[i] = new pos[_screenHeight];
+	}
+
+	for (int x = 0; x < _screenWidth; x++) {
+		for (int y = 0; y > _screenHeight; y++) {
+			_vertical->groundTruth[x][y].x = -1;
+			_horizontal->groundTruth[x][y].x = -1;
+		}
+	}
+
+	// initialize image
+	_vertical->image = new pos*[_imageWidth];
+	_horizontal->image = new pos*[_imageWidth];
+
+	for (int i = 0; i < _imageWidth; i++) {
+		_vertical->image[i] = new pos[_imageHeight];
+		_horizontal->image[i] = new pos[_imageHeight];
+	}
+
+	for (int x = 0; x < _imageWidth; x++) {
+		for (int y = 0; y > _imageHeight; y++) {
+			_vertical->image[x][y].x = -1;
+			_horizontal->image[x][y].x = -1;
+		}
+	}*/
+
+	_vertical->_verticalOffsets = new int[_imageHeight];
+	_horizontal->_horizontalOffsets = new int[_imageWidth];
 	//test: _border->_borderArray[0][0].x = 100;
 }
 
@@ -111,7 +148,8 @@ void CameraBorderDetector::draw()
 			_background = _img.getPixels();
 			_state = 0;
 		}
-	} else if (_state == 0) {
+	}
+	else if (_state == 0) {
 		// entered drawing state
 		_drawCount++;
 		// initialize _vis object to local object for drawing some dark green pixels on it for debug purposes 
@@ -123,9 +161,30 @@ void CameraBorderDetector::draw()
 		if (debug == true) {
 			drawDebug();
 		}
-		// actually draws the pixel that should be detected for detection the borders of the camera frame
+		cout << "_state 0, _borderstate " << _borderState << "\n";
+		ofSetColor(ofColor::white);
 		ofFill();
-		ofDrawRectangle(_screen.x, _screen.y, _pixelSize, _pixelSize);
+		if(_borderState == 0) {
+			// actually draws the pixel that should be detected for detection the borders of the camera frame
+			ofDrawRectangle(_screen.x, _screen.y, _pixelSize, _pixelSize);
+		}
+		else if (_borderState == 1) {
+			ofDrawRectangle(_initPos.x, 0, _pixelSize, _screenHeight);
+		}
+		else if (_borderState == 2) {
+			ofDrawRectangle(0, _initPos.y, _screenWidth, _pixelSize);
+		}
+		else if (_borderState == 3) {
+			makeVerticalLines();
+		}
+		else if (_borderState == 4) {
+			makeHorizontalLines();
+		}
+		else if (_borderState == 5) {
+			_img.draw(_initPos.x, _initPos.y);
+			
+			//fillOutBorders();
+		}
 
 		// next call capturing state
 		if (_drawCount == 5) {  // minimum 4 for Nils' computer check all if you need higher timer!
@@ -135,6 +194,7 @@ void CameraBorderDetector::draw()
 		}
 
 	} else if(_state == 1) {
+		cout << "_state 0, _borderstate " << _borderState << "\n";
 		// entered capturing state
 
 		// static update of camera
@@ -150,18 +210,50 @@ void CameraBorderDetector::draw()
 	}
 	else if (_state == 2) {
 		// entered calculation state
-		if (_initPosFound == false) {
+		/*if (_initPosFound == false) {
 			determineAndSetPosition();
 			// find next square position
 			findInitialPosition();
 
 		} else {
-			detectBorder();
+			// determineAndSetPosition();
+			// detectBorder();
+
+			makeInitCross();
 
 			if (allPlacesSeen()) {
 				ofGetWindowPtr()->setWindowShouldClose();
 			}
+		}*/
+		cout << "_state 0, _borderstate " << _borderState << "\n";
+		if (_borderState == 0) {
+			determineAndSetPosition();
+			findInitialPosition();
+			if (_initPosFound == true) {
+				_borderState = 1;
+			}
 		}
+		else if (_borderState == 1 || _borderState == 2) {
+			bool vertical = false;
+			if (_borderState == 1) {
+				vertical = true;
+			}
+			writeInitialCross(vertical);
+			_borderState++;
+		}
+		else if (_borderState == 3) {
+			writeVerticalLines();
+			_borderState = 4;
+		}
+		else if (_borderState == 4) {
+			writeHorizontalLines();
+			calculateBorders();
+			_borderState = 5;
+		}
+		else if (_borderState == 5) {
+
+		}
+
 		// next call drawing state
 		_state = 0;
 	}
@@ -170,10 +262,6 @@ void CameraBorderDetector::draw()
 		cout << "Something went wrong, unreachable state reached. Quitting now.\n";
 		ofGetWindowPtr()->setWindowShouldClose();
 	}
-}
-
-void CameraBorderDetector::mousePressed(int x, int y, int button) {
-	
 }
 
 //_____________________________________________________________________________
@@ -214,13 +302,10 @@ void CameraBorderDetector::determineAndSetPosition()
 	_diffPixels = diff.getPixels();
 
 	// and finally detect the position of the brightest pixel in the image
-	pos bright = commonFunctions::detectBrightness(_diffPixels);
-	_maxBrightnessX = bright.x;
-	_maxBrightnessY = bright.y;
-	_maxBrightness = bright.b;
-	cout << "max brightness: " << _maxBrightness << "\n";
+	pos bright = commonFunctions::detectGrayValue(_diffPixels);
+	cout << "max brightness: " << bright.b << "\n";
 	// assumed as white
-	if (_maxBrightness > WHITE_THRESHOLD) {
+	if (bright.b > WHITE_THRESHOLD) {
 		cout << "seen pixel \n";
 		if (_initPosFound == false) {
 			_cumulativeX += _screen.x;
@@ -228,9 +313,9 @@ void CameraBorderDetector::determineAndSetPosition()
 			_seenCount++;
 		}
 		else {
-			_vis.setColor((size_t)_screen.x, (size_t)_screen.y, ofColor::darkOliveGreen);
+			//_vis.setColor((size_t)_screen.x, (size_t)_screen.y, ofColor::darkOliveGreen);
 			_lastSeenPos = bright;
-
+			_lastSeen = _screen;
 			_nonVisCount = 0;
 		}
 		_pixelSeen = true;
@@ -239,9 +324,186 @@ void CameraBorderDetector::determineAndSetPosition()
 		cout << "not seen pixel \n";
 		_pixelSeen = false;
 		cout << "_vis size: " << _vis.getWidth() << " x " << _vis.getHeight() << " versus position: " << _screen.x << ", " << _screen.y << "\n";
-		_vis.setColor((size_t)_screen.x, (size_t)_screen.y, ofColor::darkOrchid);
+		//_vis.setColor((size_t)_screen.x, (size_t)_screen.y, ofColor::darkOrchid);
 	}
   
+}
+
+//_____________________________________________________________________________
+void CameraBorderDetector::findInitialPosition() {
+  int spacing = _screenHeight / 6; //to get at least 10 different rows of pixels
+  _screen.x += spacing;
+  if (_screen.x > _screenWidth) {
+    _screen.x = 0;
+    _screen.y += spacing;
+  }
+  if (_screen.y > _screenHeight) {
+    _initPos.x = ceil((float)_cumulativeX / (float)_seenCount);
+    _initPos.y = ceil((float)_cumulativeY / (float)_seenCount);
+    _screen.x = _initPos.x;
+    _screen.y = _initPos.y;
+    _initPosFound = true;
+  }
+  // setup for binarySearch()
+ /* if (_initPosFound == true) {
+    _lastSeen.x = _screen.x;
+	_lastSeen.y = _screen.y;
+    _lastNotSeen.x = _screenWidth; 
+	_lastNotSeen.y = _screen.y;
+    _drawnPos = _lastNotSeen;
+	_screen = _lastNotSeen;
+    cout << "found initial posX " << _screen.x << " posY " << _screen.y <<endl;
+  }*/
+}
+
+//_____________________________________________________________________________
+void CameraBorderDetector::makeInitialCross() {
+	ofDrawRectangle(_initPos.x, 0, _pixelSize, _screenHeight);
+	ofDrawRectangle(0, _initPos.y, _screenWidth, _pixelSize);
+}
+
+//_____________________________________________________________________________
+void CameraBorderDetector::writeInitialCross(bool vertical) {
+	unsigned char* pixelData = _imgPixels.getPixels();
+	cv::Mat mat;
+	mat = _img.getCvImage();
+	for (int x = 0; x < _imageWidth; x++) {
+		for (int y = 0; y > _imageHeight; y++) {
+			if (pixelData[_imgPixels.getPixelIndex(x, y)] > WHITE_THRESHOLD) {
+				if (vertical) {
+					// we walk from left to right through the image
+					// the first time we encounter a white pixel, it's part
+					// of the initial cross line and thus yields the offset to
+					// split the image into halves
+					_vertical->_verticalOffsets[y] = x;
+					// wherever in the image the first vertical line is seen
+					// in the screen it's x position hasn't changed from the
+					// initial value
+					_vertical->_matchX.at<uchar>(x, y) = _initPos.x;
+				}
+				else {
+					_horizontal->_horizontalOffsets[x] = y;
+					_horizontal->_matchY.at<uchar>(x, y) = _initPos.y;
+					// if the vertical offset and the horizontal offset match
+					// this point is the initial point and now we know for a
+					// single point, both camera and screen coordinates
+					if (_vertical->_verticalOffsets[y] == x) {
+						_horizontal->_initialPosition.x = _initPos.x;
+						_horizontal->_initialPosition.y = _initPos.y;
+						_vertical->_initialPosition.x = _initPos.x;
+						_vertical->_initialPosition.y = _initPos.y;
+					}
+				}
+			}
+		}
+	}
+}
+
+//_____________________________________________________________________________
+void CameraBorderDetector::makeHorizontalLines() {
+	// image is roughly halved by initial lines
+	int heightUp = _initPos.y;
+	int heightDown = _screenHeight - _initPos.y;
+
+	// calculate how many lines go above and below initial line
+	int noLinesUp = ceil(heightUp / (float)_pixelSize);
+	int noLinesDown = ceil(heightDown / (float)_pixelSize);
+
+	// actually draw lines
+	for (int i = 0; i < noLinesUp;) {
+		ofDrawRectangle(0, i * _pixelSize, _screenWidth, _pixelSize);
+		i += 2;
+	}
+
+	for (int i = 1; i < noLinesUp;) {
+		ofDrawRectangle(0, i * _pixelSize + _initPos.y, _screenWidth, _pixelSize);
+		i += 2;
+	}
+}
+
+//_____________________________________________________________________________
+void CameraBorderDetector::writeHorizontalLines() {
+	_horizontal->_image = _img.getCvImage();
+
+}
+
+//_____________________________________________________________________________
+void CameraBorderDetector::makeVerticalLines() {
+	// image is roughly halved by initial lines
+	int widthLeft = _initPos.x;
+	int widthRight = _screenWidth - _initPos.x;
+
+	// calculate how many lines go above and below initial line
+	int noLinesLeft = ceil(widthLeft / (float)_pixelSize);
+	int noLinesRight = ceil(widthRight / (float)_pixelSize);
+
+	// actually draw lines
+	for (int i = 0; i < noLinesLeft;) {
+		ofDrawRectangle(i * _pixelSize, 0, _pixelSize, _screenHeight);
+		i += 2;
+	}
+
+	for (int i = 1; i < noLinesRight;) {
+		ofDrawRectangle(i * _pixelSize + _initPos.x, 0, _pixelSize, _screenHeight);
+		i += 2;
+	}
+}
+
+//_____________________________________________________________________________
+void CameraBorderDetector::writeVerticalLines() {
+	_vertical->_image = _img.getCvImage();
+}
+
+//_____________________________________________________________________________
+void CameraBorderDetector::calculateBorders() {
+	cv::Mat vert = _vertical->_image;
+	cv::Mat hor = _horizontal->_image;
+	pos init = _horizontal->_initialPosition;
+
+	EdgeDetector ed;
+
+	ed.computeSobel(vert);
+	cv::Mat vertEdges = ed.getSobelImage();
+
+	ed.computeSobel(hor);
+	cv::Mat horEdges = ed.getSobelImage();
+	
+	IplImage iplimg = hor;
+	*_img.getCvImage() = iplimg;
+
+	// find left border
+	for (int y = 0; y < _imageHeight; y++) {
+		int x = _vertical->_verticalOffsets[y];
+	}
+}
+
+//_____________________________________________________________________________
+void CameraBorderDetector::fillOutBorders() {
+
+}
+
+
+//_____________________________________________________________________________
+void CameraBorderDetector::setImageReturnVariables(calibrationImage *&vertical, calibrationImage *&horizontal)
+{
+	_vertical = vertical;
+	_horizontal = horizontal;
+}
+
+
+/*
+//_____________________________________________________________________________
+bool CameraBorderDetector::allPlacesSeen() {
+	for (int y = 0; y < _imageHeight; y++) {
+	for (int x = 0; x < _imageWidth; x++) {
+	// only need to look at either x or y as they get set at the same time
+	if (_area->_imageX[x][y] == -1) {
+	return false;
+	}
+	}
+	}
+	return true;
+	return false;
 }
 
 //_____________________________________________________________________________
@@ -279,74 +541,31 @@ void CameraBorderDetector::binarySearch(int dir, pos lastNotSeen, bool init)
 		_screen.y = floor(((float)_lastSeen.y + _lastNotSeen.y) / 2.0);
 	}
 
-	cout << "next pos: " << _screen.x << " " << _screen.y  << "\n" << endl;
-	
+	cout << "next pos: " << _screen.x << " " << _screen.y << "\n" << endl;
+
 	// if we're looking for the up or down border, there should only be a 1 difference
 	// in the y-coordinate of the two positions. For left/right in x-coordinate
 	// The sum of these two differences should then be 1.
 	if ((abs(_lastSeen.x - _lastNotSeen.x) + abs(_lastSeen.y - _lastNotSeen.y)) == 1) {
 		// found point on the border
 		switch (dir) {
-			case 0: 
-				_firstUp = _lastSeen;
-				break;
-			case 1:
-				_firstDown = _lastSeen;
-				break;
-			case 2:
-				_firstLeft = _lastSeen;
-				break;
-			case 3:
-				_firstRight = _lastSeen;
-				break;
+		case 0:
+			_firstUp = _lastSeen;
+			break;
+		case 1:
+			_firstDown = _lastSeen;
+			break;
+		case 2:
+			_firstLeft = _lastSeen;
+			break;
+		case 3:
+			_firstRight = _lastSeen;
+			break;
 		}
 		// go look for next first border position
 		_binarySearchDirection++;
 		_firstBinarySearchCall = true;
 	}
-}
-
-
-
-//_____________________________________________________________________________
-bool CameraBorderDetector::allPlacesSeen() {
-	/*for (int y = 0; y < _imageHeight; y++) {
-		for (int x = 0; x < _imageWidth; x++) {
-			// only need to look at either x or y as they get set at the same time
-			if (_area->_imageX[x][y] == -1) {
-				return false;
-			}
-		}
-	}
-	return true;*/
-	return false;
-}
-
-//_____________________________________________________________________________
-void CameraBorderDetector::findInitialPosition() {
-  int spacing = _screenHeight / 6; //to get at least 10 different rows of pixels
-  _screen.x += spacing;
-  if (_screen.x > _screenWidth) {
-    _screen.x = 0;
-    _screen.y += spacing;
-  }
-  if (_screen.y >= _screenHeight) {
-    _initPos.x = ceil((float)_cumulativeX / (float)_seenCount);
-    _initPos.y = ceil((float)_cumulativeY / (float)_seenCount);
-    _screen.x = _initPos.x;
-    _screen.y = _initPos.y;
-    _initPosFound = true;
-  }
-  // setup for binarySearch()
- /* if (_initPosFound == true) {
-    _lastSeen.x = _screen.x;
-	_lastSeen.y = _screen.y;
-    _lastNotSeen.x = _screenWidth; 
-	_lastNotSeen.y = _screen.y;
-    _drawnPos = _lastNotSeen;
-	_screen = _lastNotSeen;
-    cout << "found initial posX " << _screen.x << " posY " << _screen.y <<endl;
-  }*/
 }
 
 //_____________________________________________________________________________
@@ -420,4 +639,4 @@ void CameraBorderDetector::detectBorder() {
 	// neighbours is another border pixel, if so take that as next position
 	// if border is continuous - done
 	// else - don't know yet?
-}
+}*/

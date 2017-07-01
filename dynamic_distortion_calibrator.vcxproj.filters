@@ -728,6 +728,12 @@
     <ClInclude Include="src\calibrationImage.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\edgedetector.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\linefinder.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
