@@ -66,12 +66,24 @@ private:
   void debugArea();
 
   // draws horizontal and vertical lines for distortion calibration
-  void findLines();
+  void findStraightBorderConnections();
   // debug function
   void drawDebug();
-
-
-
+  // saves the ground truth straight lines into the screen image array
+  void saveGroundTruth(vector<line> &vectorOfLines);
+  // if true draw horizontal lines vertical if false 
+  bool drawHorizontals;
+  // calculate debug borders
+  bool debugBorders;
 
   vector<line> _horizontals, _verticals;
+
+
+  void countLines(cv::Mat &distImage);
+
+  // returns the undistorted image with interpolated pixels in the inner of the frame
+  cv::Mat interpolateImage(cv::Mat undistedImage);
+  // returns the undistorted image
+  cv::Mat mappingImage(cv::Mat matchX, cv::Mat matchY, cv::Mat distordedImage);
+
 };
