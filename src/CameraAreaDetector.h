@@ -5,8 +5,6 @@
 #include "cameraArea.h"
 #include "commonFunctions.h"
 #include "calibrationImage.h"
-#include "linefinder.h"
-#include "edgedetector.h"
 #include "opencv2/core/core.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 #include <opencv2/highgui/highgui.hpp>

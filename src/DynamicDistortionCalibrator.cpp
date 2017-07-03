@@ -20,16 +20,6 @@ void DynamicDistortionCalibrator::findRawDistortion()
 
 	// find cameraArea
 	_area = findCameraArea(pixelSize);
-
-	// create images based on the found border
-	createImages(pixelSize);
-
-	// calculate the global offset from screen coordinates to image coordinates
-	//calculateOffset();
-
-	// correct for that offset, the values that remain in _area._distortionX/Y
-	// are the local distortions
-	// correctForOffset();
 }
 
 //_____________________________________________________________________________
@@ -40,6 +30,13 @@ void DynamicDistortionCalibrator::saveRawDistortion()
 //_____________________________________________________________________________
 void DynamicDistortionCalibrator::loadRawDistortion()
 {
+}
+
+//_____________________________________________________________________________
+cv::Mat DynamicDistortionCalibrator::undistort(cv::Mat distortedImage, int** matchX, int** matchY) {
+	cv::Mat undistorted = mappingImage(distortedImage, matchX, matchY);
+
+	return interpolateImage(undistorted);
 }
 
 //_____________________________________________________________________________
@@ -153,4 +150,105 @@ void DynamicDistortionCalibrator::setCannyLowerThreshold(int lowerThreshold) {
 //_____________________________________________________________________________
 int DynamicDistortionCalibrator::getCannyLowerThreshold() {
 	return _cannyLower;
+}
+
+//_____________________________________________________________________________
+cv::Mat DynamicDistortionCalibrator::interpolateImage(cv::Mat undistedImage) {
+	cv::Mat interpolatedImage;
+	// allocate the interpolatedImage that will be the return of the function with the size of the 
+	// camera image
+	interpolatedImage.zeros(undistedImage.size(), undistedImage.type());
+	int rows = undistedImage.rows;
+	int cols = undistedImage.cols;
+
+	for (size_t x = 0; x < rows; x++) {
+		for (size_t y = 0; y < cols; y++) {
+			// if a seen value is at (x,y) position use that
+			if (undistedImage.at<uchar>(x, y) != -1) {
+				interpolatedImage.at<uchar>(x, y) = undistedImage.at<uchar>(x, y);
+			}
+			// else use bilinear interpolation of all accessible pixels around (x,y)
+			else {
+				size_t interpolate = 0;
+				size_t count = 0;
+				if (x + 1 < rows) {
+					interpolate += (size_t)undistedImage.at<uchar>(x + 1, y);
+					count++;
+				}
+				if (y + 1 < cols)
+				{
+					interpolate += (size_t)undistedImage.at<uchar>(x, y + 1);
+					count++;
+				}
+				if (x - 1 > 0) {
+					interpolate += (size_t)undistedImage.at<uchar>(x - 1, y);
+					count++;
+				}
+				if (y - 1 < 0)
+				{
+					interpolate += (size_t)undistedImage.at<uchar>(x, y - 1);
+					count++;
+				}
+				// if less than 2 pixel next to the not seen pixel are seen then it has to be at the border or not detected by the camera
+				if (count > 1) {
+					interpolatedImage.at<uchar>(x, y) = (uchar)floor(interpolate / count);
+				}
+			}
+		}
+	}
+	return interpolatedImage;
+}
+
+//_____________________________________________________________________________
+cv::Mat DynamicDistortionCalibrator::mappingImage(cv::Mat distortedImage, int** matchX, int** matchY) {
+	cv::Mat mappedImage;
+	size_t rows = distortedImage.rows;
+	size_t cols = distortedImage.cols;
+	size_t maxX, maxY, minX, minY;
+	maxX = 0;
+	maxY = 0;
+	minX = rows;
+	minY = cols;
+
+	// find the extremal values of x & y  and save them for correct allocation of the mappedImage
+	for (size_t i = 0; i < rows; i++) {
+		for (size_t j = 0; j < cols; j++) {
+			size_t x = (size_t)matchX[i][j];
+			size_t y = (size_t)matchY[i][j];
+			if (x > maxX)
+			{
+				maxX = x;
+			}
+			if (y > maxY)
+			{
+				maxY = y;
+			}
+			if (x < minX)
+			{
+				minX = x;
+			}
+			if (y < minY)
+			{
+				minY = y;
+			}
+		}
+	}
+	// allocates the mapped undistorted matrix with zeros
+	mappedImage.zeros(maxX - minX, maxY - minY, distortedImage.type());
+
+	// checks the found matching matrices for the (x,y) distortion values and 
+	// move the color values to the correct position 
+	for (size_t x = 0; x < rows; x++) {
+		for (size_t y = 0; y < cols; y++) {
+			if (matchX[x][y] != -1 && matchY[x][y] != -1) {
+				size_t distX = (size_t)matchX[x][y] - minX + 1;
+				size_t distY = (size_t)matchY[x][y] - minY + 1;
+				if (distX >= 0 && distY >= 0)
+				{
+					mappedImage.at<uchar>(distX, distY) = distortedImage.at<uchar>(x, y);
+				}
+			}
+		}
+	}
+	return mappedImage;
 }

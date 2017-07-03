@@ -17,6 +17,8 @@ class DynamicDistortionCalibrator {
 		void findRawDistortion();
 		void saveRawDistortion();
 		void loadRawDistortion();
+		// undistorts the given image, using the given distortion maps
+		cv::Mat undistort(cv::Mat distortedImage, int** matchX, int** matchY);
 
 		// setter for the spacing in the cameraAreaDetector
 		void setSpacing(int spacing);
@@ -55,4 +57,8 @@ class DynamicDistortionCalibrator {
 		int findPixelSize();
 		cameraArea findCameraArea(int pixelSize);
 		void createImages(int pixelSize);
+		// returns the undistorted image with interpolated pixels in the inner of the frame
+		cv::Mat interpolateImage(cv::Mat undistedImage);
+		// returns the undistorted image
+		cv::Mat mappingImage(cv::Mat distordedImage, int** matchY, int** matchX);
 };

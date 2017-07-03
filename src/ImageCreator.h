@@ -80,10 +80,4 @@ private:
 
 
   void countLines(cv::Mat &distImage);
-
-  // returns the undistorted image with interpolated pixels in the inner of the frame
-  cv::Mat interpolateImage(cv::Mat undistedImage);
-  // returns the undistorted image
-  cv::Mat mappingImage(cv::Mat matchX, cv::Mat matchY, cv::Mat distordedImage);
-
 };

@@ -32,7 +32,7 @@ void ImageCreator::setup() {
   ofSetColor(ofColor::white);
 
   cout << "setup color stuffs\n beginning ground truth initialization\n";
-
+  /*
   // initialize ground truths (same size)
   _vertical->groundTruth = new pos*[_screenWidth];
   _horizontal->groundTruth = new pos*[_screenWidth];
@@ -66,6 +66,7 @@ void ImageCreator::setup() {
   }
   debugArea();
   findStraightBorderConnections();
+  */
   drawHorizontals = true;
 }
 
@@ -157,10 +158,9 @@ void ImageCreator::draw() {
 
 
 
-void ImageCreator::setImageReturnVariables(calibrationImage *&vertical, calibrationImage *&horizontal, cameraBorder border, int pixelSize)
+void ImageCreator::setImageReturnVariables(calibrationImage *&vertical, calibrationImage *&horizontal, int pixelSize)
 {
   _pixelSize = pixelSize;
-  _border = border;
 
   _vertical = vertical;
   _horizontal = horizontal;
@@ -175,8 +175,8 @@ void ImageCreator::debugArea() {
   int cornerRight = _imageWidth * 3 / 4;
   int cornerTop = _imageHeight / 4;
   int cornerBot = _imageHeight * 3 / 4;
-
-  _border._borderArray = new pos*[_screenWidth];
+  /*
+  _area._borderArray = new pos*[_screenWidth];
   for (int i = 0; i < _screenWidth; i++) {
 	  _border._borderArray[i] = new pos[_screenHeight];
   }
@@ -191,10 +191,10 @@ void ImageCreator::debugArea() {
       }
     }
   }
-
+  */
 
 }
-
+/*
 void ImageCreator::findStraightBorderConnections() {
   // find horizontal lines
   for (int y = 0; y < _imageHeight; y += 2*_pixelSize) {
@@ -250,9 +250,9 @@ void ImageCreator::findStraightBorderConnections() {
   }
   saveGroundTruth(_horizontals);
   saveGroundTruth(_verticals);
-}
+}*/
 
-
+/*
 void ImageCreator::drawDebug()
 {
   ofImage img;
@@ -263,9 +263,9 @@ void ImageCreator::drawDebug()
   background = _background;
   background.draw(0, 480);
 }
+*/
 
-
-
+/*
 void ImageCreator::saveGroundTruth(vector<line> &vectorOfLines) {
   // go threw the vectorOfLines and set borders of the 2 for-loops to
   // x1 -> x2 and y1 -> y2
@@ -289,7 +289,7 @@ void ImageCreator::saveGroundTruth(vector<line> &vectorOfLines) {
     }
   }
 }
-
+*/
 
 void ImageCreator::countLines(cv::Mat &distImage) {
   // initial values
@@ -376,107 +376,4 @@ void ImageCreator::countLines(cv::Mat &distImage) {
 
 
 
-}
-
-
-
-
-cv::Mat ImageCreator::interpolateImage(cv::Mat undistedImage) {
-  cv::Mat interpolatedImage;
-  // allocate the interpolatedImage that will be the return of the function with the size of the 
-  // camera image
-  interpolatedImage.zeros(undistedImage.size(), undistedImage.type());
-  int rows = undistedImage.rows;
-  int cols = undistedImage.cols;
-
-  for (size_t x = 0; x < rows; x++) {
-    for (size_t y = 0;y < cols; y++) {
-      // if a seen value is at (x,y) position use that
-      if (undistedImage.at<uchar>(x, y) != -1) {
-        interpolatedImage.at<uchar>(x, y) = undistedImage.at<uchar>(x, y);
-      }
-      // else use bilinear interpolation of all accessible pixels around (x,y)
-      else {
-        size_t interpolate = 0;
-        size_t count = 0;
-        if (x + 1 < rows) {
-          interpolate += (size_t)undistedImage.at<uchar>(x + 1, y);
-          count++;
-        }
-        if (y + 1 < cols)
-        {
-          interpolate += (size_t)undistedImage.at<uchar>(x, y + 1);
-          count++;
-        }
-        if (x - 1 > 0) {
-          interpolate += (size_t)undistedImage.at<uchar>(x - 1, y);
-          count++;
-        }
-        if (y - 1 < 0)
-        {
-          interpolate += (size_t)undistedImage.at<uchar>(x, y - 1);
-          count++;
-        }
-        // if less than 2 pixel next to the not seen pixel are seen then it has to be at the border or not detected by the camera
-        if (count > 1) {
-          interpolatedImage.at<uchar>(x, y) = (uchar)floor(interpolate / count);
-        }
-      }
-    }
-  }
-  return interpolatedImage;
-}
-
-
-cv::Mat ImageCreator::mappingImage(cv::Mat matchX, cv::Mat matchY, cv::Mat distortedImage) {
-  cv::Mat mappedImage;
-  size_t rows = distortedImage.rows;
-  size_t cols = distortedImage.cols;
-  size_t maxX, maxY, minX, minY;
-  maxX = 0;
-  maxY = 0;
-  minX = rows;
-  minY = cols;
-
-  // find the extremal values of x & y  and save them for correct allocation of the mappedImage
-  for (size_t i = 0; i < rows; i++) {
-    for (size_t j = 0; j < cols; j++) {
-      size_t x = (size_t)matchX.at<uchar>(i, j);
-      size_t y = (size_t)matchY.at<uchar>(i, j);
-      if (x > maxX)
-      {
-        maxX = x;
-      }
-      if (y > maxY )
-      {
-        maxY = y;
-      }
-      if (x < minX)
-      {
-        minX = x;
-      }
-      if (y < minY)
-      {
-        minY = y;
-      }
-    }
-  }
-  // allocates the mapped undistorted matrix with zeros
-  mappedImage.zeros(maxX-minX,maxY-minY, distortedImage.type());
-
-  // checks the found matching matrices for the (x,y) distortion values and 
-  // move the color values to the correct position 
-  for (size_t x = 0; x < rows; x++) {
-    for (size_t y = 0; y < cols; y++) {
-      if (matchX.at<uchar>(x, y) != -1 && matchY.at<uchar>(x, y) != -1) {
-        size_t distX = (size_t)matchX.at<uchar>(x, y) - minX + 1;
-        size_t distY = (size_t)matchY.at<uchar>(x, y) - minY + 1;
-        if (distX >= 0 && distY >= 0)
-        {
-          mappedImage.at<uchar>(distX, distY) = distortedImage.at<uchar>(x, y);
-        }
-      }
-    }
-  }
-  return mappedImage;
 }
