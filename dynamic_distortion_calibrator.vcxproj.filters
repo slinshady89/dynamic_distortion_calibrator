@@ -61,10 +61,10 @@
     <ClCompile Include="src\commonFunctions.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\CameraBorderDetector.cpp">
+    <ClCompile Include="src\ImageCreator.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\ImageCreator.cpp">
+    <ClCompile Include="src\CameraAreaDetector.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -713,12 +713,6 @@
     <ClInclude Include="src\Constants.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\CameraBorderDetector.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cameraBorder.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="src\Line.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -726,6 +720,18 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\calibrationImage.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\edgedetector.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\linefinder.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cameraArea.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CameraAreaDetector.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

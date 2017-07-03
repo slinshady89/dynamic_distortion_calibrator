@@ -24,11 +24,23 @@ class PixelSizeDetector : public ofBaseApp {
 		*&pixelSize This is a reference to a pointer of type int*/
 		void setPixelSizePointer(int *&pixelSize);
 
+		// setter for camera resolution's height
+		void setResolutionHeight(int resolutionHeight);
+		// getter for camera resolution's height
+		int getResolutionHeight();
+
+		// setter for camera resolution's width
+		void setResolutionWidth(int resolutionWidth);
+		// getter for camera resolution's width
+		int getResolutionWidth();
+
 	private:
 		// maximally allowed pixelSize
 		int _maxPixelSize;
 		// current pixelSize
 		int *_pixelSize;
+		// camera resolution for camera setup, has to be set
+		int _resolutionWidth, _resolutionHeight;
 
 		// roughly the number of squares drawn on the screen
 		int _noSquaresDrawn; 

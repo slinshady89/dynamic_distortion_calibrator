@@ -38,5 +38,10 @@ int main( ){
 	*/
 
 	DynamicDistortionCalibrator dynDistCal(1920, 1080);
+	dynDistCal.setSpacing(89);
+	dynDistCal.setResolutionHeight(720);
+	dynDistCal.setResolutionWidth(1080);
+	dynDistCal.setCannyLowerThreshold(40);
+	dynDistCal.setCannyUpperThreshold(110);
 	dynDistCal.findRawDistortion();
 }

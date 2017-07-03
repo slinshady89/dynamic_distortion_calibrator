@@ -34,25 +34,25 @@ void ImageCreator::setup() {
   cout << "setup color stuffs\n beginning ground truth initialization\n";
 
   // initialize ground truths (same size)
-  _vertical->groundTruth = new pos*[_screenWidth];
-  _horizontal->groundTruth = new pos*[_screenWidth];
-
+  _vertical->_groundTruth;// = new pos*[_screenWidth];
+  _horizontal->_groundTruth;// = new pos*[_screenWidth];
+/*
   for (int i = 0; i < _screenWidth; i++) {
-	  _vertical->groundTruth[i] = new pos[_screenHeight];
-	  _horizontal->groundTruth[i] = new pos[_screenHeight];
+	  _vertical->_groundTruth[i] = new pos[_screenHeight];
+	  _horizontal->_groundTruth[i] = new pos[_screenHeight];
   }
 
   for (int x = 0; x < _screenWidth; x++) {
 	  for (int y = 0; y > _screenHeight; y++) {
-		  _vertical->groundTruth[x][y].x = -1;
-		  _horizontal->groundTruth[x][y].x = -1;
+		  _vertical->_groundTruth[x][y].x = -1;
+		  _horizontal->_groundTruth[x][y].x = -1;
 	  }
   }
-
+  */
   // initialize image
-  _vertical->image = new pos*[_imageWidth];
-  _horizontal->image = new pos*[_imageWidth];
-
+  _vertical->_image;// = new pos*[_imageWidth];
+  _horizontal->_image;// = new pos*[_imageWidth];
+  /*
   for (int i = 0; i < _imageWidth; i++) {
 	  _vertical->image[i] = new pos[_imageHeight];
 	  _horizontal->image[i] = new pos[_imageHeight];
@@ -63,7 +63,7 @@ void ImageCreator::setup() {
 		  _vertical->image[x][y].x = -1;
 		  _horizontal->image[x][y].x = -1;
 	  }
-  }
+  }*/
 }
 
 
@@ -140,16 +140,15 @@ void ImageCreator::draw() {
 
 
 
-void ImageCreator::setImageReturnVariables(calibrationImage *&vertical, calibrationImage *&horizontal, cameraBorder border, int pixelSize)
+void ImageCreator::setImageReturnVariables(calibrationImage *&vertical, calibrationImage *&horizontal, int pixelSize)
 {
   _pixelSize = pixelSize;
-  _border = border;
 
   _vertical = vertical;
   _horizontal = horizontal;
 }
 
-
+/*
 void ImageCreator::debugArea() {
 
   int centerX = _imageWidth / 2;
@@ -161,14 +160,14 @@ void ImageCreator::debugArea() {
 
   for (int y = cornerTop; y < cornerBot; y++) {
     for (int x = cornerLeft; x < cornerRight; x++) {
-      _border._borderArray[x][y].x = x;
-      _border._borderArray[x][y].y = y;
+      _area._borderArray[x][y].x = x;
+      _area._borderArray[x][y].y = y;
     }
   }
-
-
 }
+*/
 
+/*
 void ImageCreator::findLines() {
   // find horizontal lines
   for (int y = 0; y < _imageHeight; y++) {
@@ -223,6 +222,7 @@ void ImageCreator::findLines() {
     }
   }
 }
+*/
 
 
 void ImageCreator::drawDebug()

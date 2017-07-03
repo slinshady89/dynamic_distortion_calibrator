@@ -1,17 +1,19 @@
 #include "PixelSizeDetector.h"
 
-int WHITE_THRESHOLD = 100;
+int WHITE_THRESHOLD = 80;
 
 //_____________________________________________________________________________
 void PixelSizeDetector::setup() {
 	// set framerate
-	ofSetFrameRate(20);
+	ofSetFrameRate(21);
 	// arbitrary value, gets actually "rounded" down to 48
 	_noSquaresDrawn = 50;
 	// pixelSize not found yet
 	_foundPixelSize = false;
 	// set maximal brightness to 0
 	_maxBrightness = 0;
+
+	_cam.setVerbose(false);
 
 	// check for external webcam and use taht if possible
 	if (_cam.listDevices().size() > 1) {
@@ -21,7 +23,7 @@ void PixelSizeDetector::setup() {
 		_cam.setDeviceID(0);
 	}
 	// setup camera
-	_cam.setup(320, 240);
+	_cam.setup(_resolutionWidth, _resolutionHeight);
 
 	// get screen dimensions
 	_screenHeight = ofGetWindowHeight(); 
@@ -84,7 +86,9 @@ void PixelSizeDetector::draw() {
 			_cam.update();
 			_color.setFromPixels(_cam.getPixels());
 			_img = _color;
-			_img.draw(0, 0);
+			ofImage img = _img.getPixels();
+			img.resize(320, 240);
+			img.draw(0, 0);
 
 			// state gets set by mouse-click as well
 		}
@@ -228,20 +232,49 @@ void PixelSizeDetector::drawRectangles()
 }
 
 //_____________________________________________________________________________
+void PixelSizeDetector::setResolutionWidth(int resolutionWidth) {
+	_resolutionWidth = resolutionWidth;
+}
+
+//_____________________________________________________________________________
+int PixelSizeDetector::getResolutionWidth() {
+	return _resolutionWidth;
+}
+
+//_____________________________________________________________________________
+void PixelSizeDetector::setResolutionHeight(int resolutionHeight) {
+	_resolutionHeight = resolutionHeight;
+}
+
+//_____________________________________________________________________________
+int PixelSizeDetector::getResolutionHeight() {
+	return _resolutionHeight;
+}
+
+//_____________________________________________________________________________
 void PixelSizeDetector::drawDebug()
 {
 	ofImage img;
 	img = _diffPixels;// difference between _cam;
+	img.resize(320, 240);
 	img.draw(0, 0);
-	_cam.draw(0, 240);
+	ofImage cam = _cam.getPixels();
+	cam.resize(320, 240);
+	cam.draw(0, 240);
 	ofImage background;
 	background = _background;
+	background.resize(320, 240);
 	background.draw(0, 480);
 	
 	ofNoFill();
+	if (_maxBrightness > WHITE_THRESHOLD) {
+		// remap values to resized image [0, resolution] -> [0, resized]
+		int x = (int)((float)_maxBrightnessX / _resolutionWidth) * 320;
+		int y = (int)((float)_maxBrightnessY / _resolutionHeight) * 240;
 
-	ofSetColor(ofColor::red);
-	ofDrawEllipse(_maxBrightnessX, _maxBrightnessY, 40, 40);
-	ofFill();
-	ofSetColor(ofColor::black);
+		ofSetColor(ofColor::red);
+		ofDrawEllipse(_maxBrightnessX, _maxBrightnessY, 40, 40);
+		ofFill();
+		ofSetColor(ofColor::black);
+	}
 }

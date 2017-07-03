@@ -1,6 +1,6 @@
 #include "ofxOpenCv.h"
 #include "ofMain.h"
-#include "cameraBorder.h"
+#include "cameraArea.h"
 #include "commonFunctions.h"
 #include "Constants.h"
 #include "Line.h"
@@ -14,12 +14,12 @@ public:
   // allows to set a pointer to a cameraArea struct outside of this class in order
   // to keep the values found by this class and set the pixelSize
   // Is actually a workaround for the lack of return values in ofBaseApp
-  void setImageReturnVariables(calibrationImage *&vertical, calibrationImage *&horizontal, cameraBorder border, int pixelSize);
+  void setImageReturnVariables(calibrationImage *&vertical, calibrationImage *&horizontal, int pixelSize);
 
 private:
 
   // pointer to the cameraArea struct used for passing things to the outside
-  cameraBorder _border;
+  cameraArea _area;
   // Object for camera signal
   ofVideoGrabber _cam;
   // pixelSize

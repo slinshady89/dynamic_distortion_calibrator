@@ -16,13 +16,13 @@ DynamicDistortionCalibrator::~DynamicDistortionCalibrator()
 void DynamicDistortionCalibrator::findRawDistortion()
 {
 	// find pixelSize
-	//int pixelSize = findPixelSize();
+	int pixelSize = findPixelSize();
 
 	// find cameraArea
-	//_border = findCameraBorder(pixelSize);
-	//cout << "_borderArray[0][0] = " << _border._borderArray[0][0].x << "\n";
+	_area = findCameraArea(pixelSize);
+
 	// create images based on the found border
-	createImages(2);
+	createImages(pixelSize);
 
 	// calculate the global offset from screen coordinates to image coordinates
 	//calculateOffset();
@@ -54,6 +54,8 @@ int DynamicDistortionCalibrator::findPixelSize()
 	auto pixelSizeDetector = make_shared<PixelSizeDetector>();
 	// set the app's pointer to the outside pixelSize variable
 	pixelSizeDetector->setPixelSizePointer(pixelSizePointer);
+	pixelSizeDetector->setResolutionHeight(_resolutionHeight);
+	pixelSizeDetector->setResolutionWidth(_resolutionWidth);
 	ofRunApp(pixelSizeDetector); // run app, closes once pixel found
 	// print pixel size to screen
 	std::cout << "DynDistCal: found pixelSize = " << pixelSize << "\n";
@@ -62,22 +64,29 @@ int DynamicDistortionCalibrator::findPixelSize()
 }
 
 //_____________________________________________________________________________
-cameraBorder DynamicDistortionCalibrator::findCameraBorder(int pixelSize)
+cameraArea DynamicDistortionCalibrator::findCameraArea(int pixelSize)
 {
-	// initialize the cameraBorder and pointer to it
-	cameraBorder border;
-	cameraBorder *areaPointer = &border;
+	// initialize the cameraArea and pointer to it
+	cameraArea area;
+	cameraArea *areaPointer = &area;
 
 	ofSetupOpenGL(_windowWidth, _windowHeight, OF_FULLSCREEN);// <-------- setup the GL context
 	
 	// create the app for camera area detection
-	auto cameraBorderDetector = make_shared<CameraBorderDetector>();
+	auto cameraAreaDetector = make_shared<CameraAreaDetector>();
 	// set the app's pointer
-	cameraBorderDetector->setCameraAreaPointerAndPixelSize(areaPointer, pixelSize);
-	ofRunApp(cameraBorderDetector);
+	cameraAreaDetector->setCameraAreaPointerAndPixelSize(areaPointer, pixelSize);
+	// set the spacing, was calculated for our setup as optimal with a value of 34
+	cameraAreaDetector->setSpacing(_spacing);
+	cameraAreaDetector->setResolutionHeight(_resolutionHeight);
+	cameraAreaDetector->setResolutionWidth(_resolutionWidth);
+	cameraAreaDetector->setCannyLowerThreshold(_cannyLower);
+	cameraAreaDetector->setCannyUpperThreshold(_cannyUpper);
+	ofRunApp(cameraAreaDetector);
 	std::cout << "found area \n";
+	std::cout << area._distortionX[0][0] << "\n";
 
-	return border;
+	return area;
 }
 
 //_____________________________________________________________________________
@@ -91,24 +100,57 @@ void DynamicDistortionCalibrator::createImages(int pixelSize)
 
 	// create the app for the image creation
 	auto imageCreator = make_shared<ImageCreator>();
-	imageCreator->setImageReturnVariables(verticalPointer, horizontalPointer, _border, pixelSize);
+	imageCreator->setImageReturnVariables(verticalPointer, horizontalPointer, pixelSize);
 	ofRunApp(imageCreator);
-	std::cout << "vgt[0][0].x = " << _vertical.groundTruth[0][0].x << "\n";
+	std::cout << "vgt[0][0].x = " << _vertical._groundTruth.at<uchar>(0, 0) << "\n";
 }
 
 //_____________________________________________________________________________
-void DynamicDistortionCalibrator::calculateOffset()
-{
-
+void DynamicDistortionCalibrator::setSpacing(int spacing) {
+	_spacing = spacing;
 }
 
 //_____________________________________________________________________________
-void DynamicDistortionCalibrator::correctForOffset()
-{
-	/*for (int x = 0; x < _area._sizeImageX; x++) {
-		for (int y = 0; y < _area._sizeImageY; y++) {
-			_area._distortionX[x][y] = _area._imageX[x][y] - _area._offsetX;
-			_area._distortionY[x][y] = _area._imageY[x][y] - _area._offsetY;
-		}
-	}*/
+int DynamicDistortionCalibrator::getSpacing() {
+	return _spacing;
+}
+
+//_____________________________________________________________________________
+void DynamicDistortionCalibrator::setResolutionWidth(int resolutionWidth) {
+	_resolutionWidth = resolutionWidth;
+}
+
+//_____________________________________________________________________________
+int DynamicDistortionCalibrator::getResolutionWidth() {
+	return _resolutionWidth;
+}
+
+//_____________________________________________________________________________
+void DynamicDistortionCalibrator::setResolutionHeight(int resolutionHeight) {
+	_resolutionHeight = resolutionHeight;
+}
+
+//_____________________________________________________________________________
+int DynamicDistortionCalibrator::getResolutionHeight() {
+	return _resolutionHeight;
+}
+
+//_____________________________________________________________________________
+void DynamicDistortionCalibrator::setCannyUpperThreshold(int upperThreshold) {
+	_cannyUpper = upperThreshold;
+}
+
+//_____________________________________________________________________________
+int DynamicDistortionCalibrator::getCannyUpperThreshold() {
+	return _cannyUpper;
+}
+
+//_____________________________________________________________________________
+void DynamicDistortionCalibrator::setCannyLowerThreshold(int lowerThreshold) {
+	_cannyLower = lowerThreshold;
+}
+
+//_____________________________________________________________________________
+int DynamicDistortionCalibrator::getCannyLowerThreshold() {
+	return _cannyLower;
 }
