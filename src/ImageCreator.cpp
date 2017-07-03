@@ -4,7 +4,8 @@
 //_____________________________________________________________________________
 void ImageCreator::setup() {
   // set framerate
-  ofSetFrameRate(20);
+  ofSetFrameRate(5);
+  _cam.setVerbose(false);
   // check for external web cam and use that if possible
   if (_cam.listDevices().size() > 1) {
     _cam.setDeviceID(1);
@@ -15,6 +16,8 @@ void ImageCreator::setup() {
 
   // setup camera
   _cam.setup(_resolutionWidth, _resolutionHeight);
+
+  _cam.update();
 
   // get screen dimensions
   _screenHeight = ofGetWindowHeight();
@@ -29,6 +32,8 @@ void ImageCreator::setup() {
   ofSetColor(ofColor::white);
 
   _state = 0;
+  _drawCount = 0;
+  _loopCount = 0;
 }
 
 //_____________________________________________________________________________
@@ -42,7 +47,7 @@ void ImageCreator::draw() {
 		// draw vertical lines, if wanted
 		if (_drawVertical == true) {
 			for (int x = 0; x < _screenWidth;) {
-				ofDrawRectangle(x, 0, _pixelSize * 5, _imageHeight);
+				ofDrawRectangle(x, 0, _pixelSize * 5, _screenHeight);
 				x += _pixelSize * 15;
 			}
 		}
@@ -50,10 +55,15 @@ void ImageCreator::draw() {
 		// draw horizontal lines, if wanted
 		if (_drawHorizontal == true) {
 			for (int y = 0; y < _screenHeight;) {
-				ofDrawRectangle(0, y, _imageWidth, _pixelSize * 5);
+				ofDrawRectangle(0, y, _screenWidth, _pixelSize * 5);
 				y += _pixelSize * 15;
 			}
 		}
+
+		ofxCvGrayscaleImage img2 = _img;
+
+		img2.resize(320, 240);
+		img2.draw(0, 0);
 
 		// next call capturing state
 		if (_drawCount == 5) {  // minimum 4 for Nils' computer check all if you need higher timer!
@@ -63,8 +73,6 @@ void ImageCreator::draw() {
 	}
 	else if (_state == 1) {
 		// entered capturing state
-
-		// static update of camera
 		_cam.update();
 
 		// get image from camera, conversion happens implicitly
@@ -72,20 +80,27 @@ void ImageCreator::draw() {
 		_img = _color;
 
 		// next call calculation state
-		_state = 2;
-	}
-	else if (_state == 2) {
-		// entered calculation state
-		// just set the return image to the captured image and then close
-
-		*_image = _img.getCvImage();
-		ofGetWindowPtr()->setWindowShouldClose();
+		_state = 0;
 	}
 	else {
 		// something went wrong
 		cout << "Something went wrong, unreachable state reached. Quitting now.\n";
 		ofGetWindowPtr()->setWindowShouldClose();
 	}
+}
+
+//_____________________________________________________________________________
+void ImageCreator::mousePressed(int x, int y, int button) {
+	_cam.update();
+	_color = _cam.getPixels();
+	_img = _color;
+	*_image = _img.getCvImage();
+
+	ofImage img;
+	img = _img.getPixels();
+
+	img.save("distortedImage.jpg");
+	ofGetWindowPtr()->setWindowShouldClose();
 }
 
 //_____________________________________________________________________________

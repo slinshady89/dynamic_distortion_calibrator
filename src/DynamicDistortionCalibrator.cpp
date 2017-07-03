@@ -3,7 +3,7 @@
 //_____________________________________________________________________________
 DynamicDistortionCalibrator::DynamicDistortionCalibrator(int windowWidth , int windowHeight)
 {
-	_pixelSize = -1;
+	_pixelSize = 1;
 	_windowWidth = windowWidth;
 	_windowHeight = windowHeight;
 }
@@ -36,13 +36,15 @@ void DynamicDistortionCalibrator::loadRawDistortion()
 {
 }
 
-cv::Mat DynamicDistortionCalibrator::createImage(bool vert, bool hor) {
+ofxCvGrayscaleImage DynamicDistortionCalibrator::createImage(bool vert, bool hor) {
+	ofImage tmp;
+	ofxCvGrayscaleImage returnImage;
 	cv::Mat image;
 	cv::Mat* imagePointer = &image;
 	
 	if (_pixelSize == -1) {
 		std::cout << "ERROR: _pixelSize unknown. Returned image is unallocated!\n";
-		return image;
+		return returnImage;
 	}
 
 	ofSetupOpenGL(_windowWidth, _windowHeight, OF_FULLSCREEN);// <-------- setup the GL context
@@ -57,14 +59,22 @@ cv::Mat DynamicDistortionCalibrator::createImage(bool vert, bool hor) {
 
 	ofRunApp(imageCreator);
 
-	return image;
+	tmp.setFromPixels((unsigned char*)IplImage(image).imageData, image.size().width,
+		image.size().height, OF_IMAGE_GRAYSCALE);
+	returnImage = tmp;
+
+	return returnImage;
 }
 
 //_____________________________________________________________________________
-cv::Mat DynamicDistortionCalibrator::undistort(cv::Mat distortedImage, int** matchX, int** matchY) {
+ofImage DynamicDistortionCalibrator::undistort(cv::Mat distortedImage, int** matchX, int** matchY) {
 	cv::Mat undistorted = mappingImage(distortedImage, matchX, matchY);
-
-	return interpolateImage(undistorted);
+	cv::Mat interpolated = interpolateImage(undistorted);
+	// conversion to ofImage
+	ofImage img;
+	img.setFromPixels((unsigned char*)IplImage(interpolated).imageData, interpolated.size().width,
+		interpolated.size().height, OF_IMAGE_GRAYSCALE);
+	return img;
 }
 
 //_____________________________________________________________________________

@@ -16,7 +16,7 @@ void CameraAreaDetector::setup()
 		_cam.setDeviceID(0);
 	}
 	// setup camera
-	_cam.setup(1280, 720);
+	_cam.setup(_resolutionHeight, _resolutionHeight);
 
 	// get screen dimensions
 	_screenHeight =  ofGetWindowHeight();

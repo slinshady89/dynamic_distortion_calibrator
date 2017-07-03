@@ -43,16 +43,17 @@ int main( ){
 	DynamicDistortionCalibrator dynDistCal(1920, 1080);
 	dynDistCal.setSpacing(89);
 	dynDistCal.setResolutionHeight(720);
-	dynDistCal.setResolutionWidth(1080);
+	dynDistCal.setResolutionWidth(1280);
 	dynDistCal.setCannyLowerThreshold(40);
 	dynDistCal.setCannyUpperThreshold(110);
 	dynDistCal.findRawDistortion(matchX, matchY);
 
-	cv::Mat distortedImage = dynDistCal.createImage(true, true);
+	ofxCvGrayscaleImage distortedImage = dynDistCal.createImage(true, true);
 
-	cv::imshow("distorted image", distortedImage);
+	std::cout << "created  and saved image\n";
 
-	cv::Mat undistortedImage = dynDistCal.undistort(distortedImage, matchX, matchY);
+	ofImage undistortedImage = dynDistCal.undistort(distortedImage.getCvImage(), matchX, matchY);
 
-	cv::imshow("undistorted image", undistortedImage);
+	// save image as cv::imshow doesn't work currently
+	//undistortedImage.save("undistortedTestImage.jpg", OF_IMAGE_QUALITY_BEST);
 }

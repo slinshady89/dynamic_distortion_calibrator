@@ -18,9 +18,9 @@ class DynamicDistortionCalibrator {
 		void saveRawDistortion();
 		void loadRawDistortion();
 		// undistorts the given image, using the given distortion maps
-		cv::Mat undistort(cv::Mat distortedImage, int** matchX, int** matchY);
+		ofImage undistort(cv::Mat distortedImage, int** matchX, int** matchY);
 		// creates an image for distortion testing purposes
-		cv::Mat createImage(bool vert = true, bool hor = true);
+		ofxCvGrayscaleImage createImage(bool vert = true, bool hor = true);
 
 		// setter for the spacing in the cameraAreaDetector
 		void setSpacing(int spacing);
