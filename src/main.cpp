@@ -37,11 +37,22 @@ int main( ){
 	std::cout << "found area \n";
 	*/
 
+	int** matchX;
+	int** matchY;
+
 	DynamicDistortionCalibrator dynDistCal(1920, 1080);
 	dynDistCal.setSpacing(89);
 	dynDistCal.setResolutionHeight(720);
 	dynDistCal.setResolutionWidth(1080);
 	dynDistCal.setCannyLowerThreshold(40);
 	dynDistCal.setCannyUpperThreshold(110);
-	dynDistCal.findRawDistortion();
+	dynDistCal.findRawDistortion(matchX, matchY);
+
+	cv::Mat distortedImage = dynDistCal.createImage(true, true);
+
+	cv::imshow("distorted image", distortedImage);
+
+	cv::Mat undistortedImage = dynDistCal.undistort(distortedImage, matchX, matchY);
+
+	cv::imshow("undistorted image", undistortedImage);
 }

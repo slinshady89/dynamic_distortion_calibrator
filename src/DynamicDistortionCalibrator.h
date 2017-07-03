@@ -14,11 +14,13 @@ class DynamicDistortionCalibrator {
 		~DynamicDistortionCalibrator();
 
 		// stuff for raw distortion aka local offset in x & y direction
-		void findRawDistortion();
+		void findRawDistortion(int** &matchX, int** &matchY);
 		void saveRawDistortion();
 		void loadRawDistortion();
 		// undistorts the given image, using the given distortion maps
 		cv::Mat undistort(cv::Mat distortedImage, int** matchX, int** matchY);
+		// creates an image for distortion testing purposes
+		cv::Mat createImage(bool vert = true, bool hor = true);
 
 		// setter for the spacing in the cameraAreaDetector
 		void setSpacing(int spacing);
@@ -53,10 +55,11 @@ class DynamicDistortionCalibrator {
 		int _resolutionWidth, _resolutionHeight;
 		// thresholds for canny detector
 		int _cannyLower, _cannyUpper;
+		int _pixelSize;
 
 		int findPixelSize();
-		cameraArea findCameraArea(int pixelSize);
-		void createImages(int pixelSize);
+		cameraArea findCameraArea();
+
 		// returns the undistorted image with interpolated pixels in the inner of the frame
 		cv::Mat interpolateImage(cv::Mat undistedImage);
 		// returns the undistorted image

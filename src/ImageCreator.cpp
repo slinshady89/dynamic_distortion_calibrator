@@ -1,7 +1,7 @@
 #include "ImageCreator.h"
 
 
-
+//_____________________________________________________________________________
 void ImageCreator::setup() {
   // set framerate
   ofSetFrameRate(20);
@@ -12,188 +12,109 @@ void ImageCreator::setup() {
   else {
     _cam.setDeviceID(0);
   }
-  
-  cout << "found camera\n";
 
   // setup camera
-  _cam.setup(320, 240);
-  cout << "setup camera\n";
+  _cam.setup(_resolutionWidth, _resolutionHeight);
+
   // get screen dimensions
   _screenHeight = ofGetWindowHeight();
   _screenWidth = ofGetWindowWidth();
-  cout << "found screen dimensions\n";
+
   // get image dimensions
   _img = _cam.getPixels();
-  _imgPixels = _img.getPixels();
   _imageHeight = _img.getHeight();
   _imageWidth = _img.getWidth();
   ofSetBackgroundAuto(false);
   ofBackground(ofColor::black);
   ofSetColor(ofColor::white);
 
-  cout << "setup color stuffs\n beginning ground truth initialization\n";
-  /*
-  // initialize ground truths (same size)
-  _vertical->groundTruth = new pos*[_screenWidth];
-  _horizontal->groundTruth = new pos*[_screenWidth];
-
-  for (int i = 0; i < _screenWidth; i++) {
-	  _vertical->groundTruth[i] = new pos[_screenHeight];
-	  _horizontal->groundTruth[i] = new pos[_screenHeight];
-  }
-
-  for (int x = 0; x < _screenWidth; x++) {
-	  for (int y = 0; y > _screenHeight; y++) {
-		  _vertical->groundTruth[x][y].x = -1;
-		  _horizontal->groundTruth[x][y].x = -1;
-	  }
-  }
-
-  // initialize image
-  _vertical->image = new pos*[_imageWidth];
-  _horizontal->image = new pos*[_imageWidth];
-
-  for (int i = 0; i < _imageWidth; i++) {
-	  _vertical->image[i] = new pos[_imageHeight];
-	  _horizontal->image[i] = new pos[_imageHeight];
-  }
-
-  for (int x = 0; x < _imageWidth; x++) {
-	  for (int y = 0; y > _imageHeight; y++) {
-		  _vertical->image[x][y].x = -1;
-		  _horizontal->image[x][y].x = -1;
-	  }
-  }
-  debugArea();
-  findStraightBorderConnections();
-  */
-  drawHorizontals = true;
+  _state = 0;
 }
 
-
-
+//_____________________________________________________________________________
 void ImageCreator::draw() {
-  bool debug = true;
+	bool debug = true;
 
-  if (_state == -1) {
-    _drawCount++;
+	if (_state == 0) {
+		// entered drawing state
+		_drawCount++;
 
-    _cam.update();
-    _img = _cam.getPixels();
-    drawDebug();
-    // wait 50 iterations of drawing the first black background until the camera and all objects are loaded
-    // switch to state 0 if these 50 iterations are done
-    if (_drawCount == 50) {
-      _drawCount = 0;
-      _cam.update();
-      _backgroundSet = true;
-      _color = _cam.getPixels();
-      _img = _color;
-      _background = _img.getPixels();
-      _state = 0;
-    }
-  }
-  else if (_state == 0) {
-    // entered drawing state
-    _drawCount++;
-    // initialize _vis object to local object for drawing some dark green pixels on it for debug purposes 
-    ofImage vis;
-    vis = _vis;
-    vis.draw(0, 0);
+		// draw vertical lines, if wanted
+		if (_drawVertical == true) {
+			for (int x = 0; x < _screenWidth;) {
+				ofDrawRectangle(x, 0, _pixelSize * 5, _imageHeight);
+				x += _pixelSize * 15;
+			}
+		}
 
-    // debug; draws the camera frame as seen, 
-    if (debug == true) {
-      drawDebug();
-    }
-    // actually draws the pixel that should be detected for detection the borders of the camera frame
-    ofFill();
-    if (drawHorizontals)
-    {
-      for (auto it : _horizontals)
-      {
-        ofDrawRectangle(it.x1, it.y1, it.x2 - it.x1, _pixelSize);
-      }
-      drawHorizontals = false;
-    }
-    else
-    {
-      for (auto it : _verticals)
-      {
-        ofDrawRectangle(it.x1, it.y1, _pixelSize, it.y2 - it.y1);
-      }
-    }
-    
-    // next call capturing state
-    if (_drawCount == 5) {  // minimum 4 for Nils' computer check all if you need higher timer!
-      _drawCount = 0;
-      _visDrawn = false;
-      _state = 1;
-    }
+		// draw horizontal lines, if wanted
+		if (_drawHorizontal == true) {
+			for (int y = 0; y < _screenHeight;) {
+				ofDrawRectangle(0, y, _imageWidth, _pixelSize * 5);
+				y += _pixelSize * 15;
+			}
+		}
 
-  }
-  else if (_state == 1) {
-    // entered capturing state
+		// next call capturing state
+		if (_drawCount == 5) {  // minimum 4 for Nils' computer check all if you need higher timer!
+			_drawCount = 0;
+			_state = 1;
+		}
+	}
+	else if (_state == 1) {
+		// entered capturing state
 
-    // static update of camera
-    _cam.update();
+		// static update of camera
+		_cam.update();
 
-    // get image from camera, conversion happens implicitly
-    _color = _cam.getPixels();
-    _img = _color;
-    _imgPixels = _img.getPixels();
+		// get image from camera, conversion happens implicitly
+		_color = _cam.getPixels();
+		_img = _color;
 
-    // next call calculation state
-    _state = 2;
-  }
-  else if (_state == 2) {
-    // entered calculation state
-    _state = 0;
-  }
-  else {
-    // something went wrong
-    cout << "Something went wrong, unreachable state reached. Quitting now.\n";
-    ofGetWindowPtr()->setWindowShouldClose();
-  }
+		// next call calculation state
+		_state = 2;
+	}
+	else if (_state == 2) {
+		// entered calculation state
+		// just set the return image to the captured image and then close
+
+		*_image = _img.getCvImage();
+		ofGetWindowPtr()->setWindowShouldClose();
+	}
+	else {
+		// something went wrong
+		cout << "Something went wrong, unreachable state reached. Quitting now.\n";
+		ofGetWindowPtr()->setWindowShouldClose();
+	}
 }
 
-
-
-void ImageCreator::setImageReturnVariables(calibrationImage *&vertical, calibrationImage *&horizontal, int pixelSize)
+//_____________________________________________________________________________
+void ImageCreator::setImagePointer(cv::Mat *&image)
 {
-  _pixelSize = pixelSize;
-
-  _vertical = vertical;
-  _horizontal = horizontal;
+	_image = image;
 }
 
-
-void ImageCreator::debugArea() {
-
-  int centerX = _imageWidth / 2;
-  int centerY = _imageHeight / 2;
-  int cornerLeft = _imageWidth / 4;
-  int cornerRight = _imageWidth * 3 / 4;
-  int cornerTop = _imageHeight / 4;
-  int cornerBot = _imageHeight * 3 / 4;
-  /*
-  _area._borderArray = new pos*[_screenWidth];
-  for (int i = 0; i < _screenWidth; i++) {
-	  _border._borderArray[i] = new pos[_screenHeight];
-  }
-
-  for (int y = cornerTop; y < cornerBot; y++) {
-    for (int x = cornerLeft; x < cornerRight; x++) {
-      if (x == cornerLeft || x == cornerRight || y == cornerBot || y == cornerTop ){
-      _border._borderArray[x][y].x = x;
-      _border._borderArray[x][y].y = y;
-      // draws arbitrary borders white
-      //_border._borderArray[x][y].b = 256;
-      }
-    }
-  }
-  */
-
+//_____________________________________________________________________________
+void ImageCreator::setPixelSize(int pixelSize) {
+	_pixelSize = pixelSize;
 }
+
+//_____________________________________________________________________________
+void ImageCreator::setResolutionHeight(int resolutionHeight) {
+	_resolutionHeight = resolutionHeight;
+}
+
+//_____________________________________________________________________________
+void ImageCreator::setResolutionWidth(int resolutionWidth) {
+	_resolutionWidth = resolutionWidth;
+}
+
+//_____________________________________________________________________________
+void ImageCreator::setLinesToDraw(bool vert, bool hor) {
+	_drawVertical = vert;
+	_drawHorizontal = hor;
+}
+
 /*
 void ImageCreator::findStraightBorderConnections() {
   // find horizontal lines
@@ -290,7 +211,7 @@ void ImageCreator::saveGroundTruth(vector<line> &vectorOfLines) {
   }
 }
 */
-
+/*
 void ImageCreator::countLines(cv::Mat &distImage) {
   // initial values
   cv::Mat vert = _vertical->_image;
@@ -377,3 +298,4 @@ void ImageCreator::countLines(cv::Mat &distImage) {
 
 
 }
+*/

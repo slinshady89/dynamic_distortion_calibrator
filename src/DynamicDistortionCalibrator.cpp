@@ -3,6 +3,7 @@
 //_____________________________________________________________________________
 DynamicDistortionCalibrator::DynamicDistortionCalibrator(int windowWidth , int windowHeight)
 {
+	_pixelSize = -1;
 	_windowWidth = windowWidth;
 	_windowHeight = windowHeight;
 }
@@ -13,13 +14,16 @@ DynamicDistortionCalibrator::~DynamicDistortionCalibrator()
 }
 
 //_____________________________________________________________________________
-void DynamicDistortionCalibrator::findRawDistortion()
+void DynamicDistortionCalibrator::findRawDistortion(int** &matchX, int** &matchY)
 {
 	// find pixelSize
-	int pixelSize = findPixelSize();
+	_pixelSize = findPixelSize();
 
 	// find cameraArea
-	_area = findCameraArea(pixelSize);
+	_area = findCameraArea();
+
+	matchX = _area._distortionX;
+	matchY = _area._distortionY;
 }
 
 //_____________________________________________________________________________
@@ -30,6 +34,30 @@ void DynamicDistortionCalibrator::saveRawDistortion()
 //_____________________________________________________________________________
 void DynamicDistortionCalibrator::loadRawDistortion()
 {
+}
+
+cv::Mat DynamicDistortionCalibrator::createImage(bool vert, bool hor) {
+	cv::Mat image;
+	cv::Mat* imagePointer = &image;
+	
+	if (_pixelSize == -1) {
+		std::cout << "ERROR: _pixelSize unknown. Returned image is unallocated!\n";
+		return image;
+	}
+
+	ofSetupOpenGL(_windowWidth, _windowHeight, OF_FULLSCREEN);// <-------- setup the GL context
+
+	auto imageCreator = make_shared<ImageCreator>();
+
+	imageCreator->setImagePointer(imagePointer);
+	imageCreator->setPixelSize(_pixelSize);
+	imageCreator->setResolutionHeight(_resolutionHeight);
+	imageCreator->setResolutionWidth(_resolutionWidth);
+	imageCreator->setLinesToDraw(vert, hor);
+
+	ofRunApp(imageCreator);
+
+	return image;
 }
 
 //_____________________________________________________________________________
@@ -54,14 +82,12 @@ int DynamicDistortionCalibrator::findPixelSize()
 	pixelSizeDetector->setResolutionHeight(_resolutionHeight);
 	pixelSizeDetector->setResolutionWidth(_resolutionWidth);
 	ofRunApp(pixelSizeDetector); // run app, closes once pixel found
-	// print pixel size to screen
-	std::cout << "DynDistCal: found pixelSize = " << pixelSize << "\n";
 
 	return pixelSize;
 }
 
 //_____________________________________________________________________________
-cameraArea DynamicDistortionCalibrator::findCameraArea(int pixelSize)
+cameraArea DynamicDistortionCalibrator::findCameraArea()
 {
 	// initialize the cameraArea and pointer to it
 	cameraArea area;
@@ -72,7 +98,7 @@ cameraArea DynamicDistortionCalibrator::findCameraArea(int pixelSize)
 	// create the app for camera area detection
 	auto cameraAreaDetector = make_shared<CameraAreaDetector>();
 	// set the app's pointer
-	cameraAreaDetector->setCameraAreaPointerAndPixelSize(areaPointer, pixelSize);
+	cameraAreaDetector->setCameraAreaPointerAndPixelSize(areaPointer, _pixelSize);
 	// set the spacing, was calculated for our setup as optimal with a value of 34
 	cameraAreaDetector->setSpacing(_spacing);
 	cameraAreaDetector->setResolutionHeight(_resolutionHeight);
@@ -84,22 +110,6 @@ cameraArea DynamicDistortionCalibrator::findCameraArea(int pixelSize)
 	std::cout << area._distortionX[0][0] << "\n";
 
 	return area;
-}
-
-//_____________________________________________________________________________
-void DynamicDistortionCalibrator::createImages(int pixelSize)
-{
-	// initialize
-	calibrationImage *verticalPointer = &_vertical;
-	calibrationImage *horizontalPointer = &_horizontal;
-
-	ofSetupOpenGL(_windowWidth, _windowHeight, OF_FULLSCREEN);// <-------- setup the GL context
-
-	// create the app for the image creation
-	auto imageCreator = make_shared<ImageCreator>();
-	imageCreator->setImageReturnVariables(verticalPointer, horizontalPointer, pixelSize);
-	ofRunApp(imageCreator);
-	std::cout << "vgt[0][0].x = " << _vertical._groundTruth.at<uchar>(0, 0) << "\n";
 }
 
 //_____________________________________________________________________________

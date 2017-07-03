@@ -156,6 +156,7 @@ void CameraAreaDetector::draw()
 			ofxCvColorImage test;
 			test = _test;
 			test.draw(0, 0);
+			ofGetWindowPtr()->setWindowShouldClose();
 		}
 		// debug; draws the camera frame as seen, 
 		if (debug == true) {
@@ -685,18 +686,7 @@ void CameraAreaDetector::calculateBorders() {
 	cv::Mat hor = _horizontal->_image;
 	pos init = _horizontal->_initialPosition;
 
-	EdgeDetector ed;
-
-	ed.computeSobel(vert);
-	cv::Mat vertEdges = ed.getSobelImage();
-
-	ed.computeSobel(hor);
-	cv::Mat horEdges = ed.getSobelImage();
 	
-	IplImage iplimg = hor;
-	*_img.getCvImage() = iplimg;
-
-	_img.draw(_screenWidth / 2, _screenHeight / 2);
 }
 
 //_____________________________________________________________________________

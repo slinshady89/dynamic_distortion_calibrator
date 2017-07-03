@@ -11,24 +11,19 @@ public:
   void setup();
   void draw();
 
-  // allows to set a pointer to a cameraArea struct outside of this class in order
-  // to keep the values found by this class and set the pixelSize
+  // allows to set a pointer to a cv::Mat object
   // Is actually a workaround for the lack of return values in ofBaseApp
-  void setImageReturnVariables(calibrationImage *&vertical, calibrationImage *&horizontal, int pixelSize);
+  void setImagePointer(cv::Mat *&image);
+  void setPixelSize(int pixelSize);
+  void setResolutionHeight(int resolutionHeight);
+  void setResolutionWidth(int resolutionWidth);
+  void setLinesToDraw(bool vert, bool hor);
 
 private:
-
-  // pointer to the cameraArea struct used for passing things to the outside
-  cameraArea _area;
   // Object for camera signal
   ofVideoGrabber _cam;
   // pixelSize
   int _pixelSize;
-  // replaces _screenX and _screenY so the max brightness that is detected for this drawn pixel could be saved to the coordinates
-  pos _screen;
-
-  // pointers to return variables
-  calibrationImage *_vertical, *_horizontal;
 
   // keeps track of the state in draw() function
   int _state;
@@ -38,6 +33,8 @@ private:
   int _screenHeight;
   // screenWidth
   int _screenWidth;
+  // resolution
+  int _resolutionHeight, _resolutionWidth;
   // image height
   int _imageHeight;
   // image width
@@ -46,38 +43,12 @@ private:
   ofxCvColorImage _color;
   // grayscale image to be worked on
   ofxCvGrayscaleImage _img;
-  // pixels of image
-  ofPixels _imgPixels;
-  // background
-  ofPixels _background;
-  // difference between image and background
-  ofPixels _diffPixels;
-  // image drawn as background for visualization purposes
-  ofPixels _vis;
-
-  bool _visDrawn;
-  // background set
-  bool _backgroundSet;
+  // return image
+  cv::Mat *_image;
 
 
-
-
-  // draws a arbitrarily area that could be used as a possible camera frame
-  void debugArea();
-
-  // draws horizontal and vertical lines for distortion calibration
-  void findStraightBorderConnections();
-  // debug function
-  void drawDebug();
-  // saves the ground truth straight lines into the screen image array
-  void saveGroundTruth(vector<line> &vectorOfLines);
-  // if true draw horizontal lines vertical if false 
-  bool drawHorizontals;
-  // calculate debug borders
-  bool debugBorders;
-
-  vector<line> _horizontals, _verticals;
-
-
-  void countLines(cv::Mat &distImage);
+  // if true draw horizontal lines, if both horizontal and vertical are true, draw both
+  bool _drawHorizontal;
+  // if true draw vertical, if both horizontal and vertical are true, draw both
+  bool _drawVertical;
 };
