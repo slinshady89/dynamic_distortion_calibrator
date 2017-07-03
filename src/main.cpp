@@ -55,5 +55,5 @@ int main( ){
 	ofImage undistortedImage = dynDistCal.undistort(distortedImage.getCvImage(), matchX, matchY);
 
 	// save image as cv::imshow doesn't work currently
-	//undistortedImage.save("undistortedTestImage.jpg", OF_IMAGE_QUALITY_BEST);
+	undistortedImage.save("undistortedTestImage.jpg", OF_IMAGE_QUALITY_BEST);
 }

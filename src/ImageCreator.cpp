@@ -91,6 +91,7 @@ void ImageCreator::draw() {
 
 //_____________________________________________________________________________
 void ImageCreator::mousePressed(int x, int y, int button) {
+	std::cout << "mouse pressed\n";
 	_cam.update();
 	_color = _cam.getPixels();
 	_img = _color;
@@ -98,8 +99,9 @@ void ImageCreator::mousePressed(int x, int y, int button) {
 
 	ofImage img;
 	img = _img.getPixels();
-
+	std::cout << "pre-saving\n";
 	img.save("distortedImage.jpg");
+	std::cout << "post-saving\n";
 	ofGetWindowPtr()->setWindowShouldClose();
 }
 
