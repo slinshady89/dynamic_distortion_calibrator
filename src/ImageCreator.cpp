@@ -331,7 +331,7 @@ void ImageCreator::interpolateLines(cv::Mat &matchMat , bool vert) {
       for (size_t y = 0; y < _imageHeight; y++)
       {
         // checks if the actual seen pos got a value and save that to actualVal and the last actualVal to lastVal
-        if ((matchMat.at<uchar>(x, y) != 0) && (actualVal == 0))
+        if ((matchMat.at<uchar>(x, y) != -1) && (actualVal == 0))
         {
           lastVal = actualVal;
           actualVal = matchMat.at<uchar>(x, y);
@@ -345,7 +345,7 @@ void ImageCreator::interpolateLines(cv::Mat &matchMat , bool vert) {
           actualVal = 0;
         }
 
-        if ((matchMat.at<uchar>(x, y) == 0))
+        if ((matchMat.at<uchar>(x, y) == -1))
         {
           emptyCellCount++;
         }
@@ -363,7 +363,7 @@ void ImageCreator::interpolateLines(cv::Mat &matchMat , bool vert) {
       int actualVal = 0;
       for (size_t x = 0; x < _imageWidth; x++)
       {
-        if ((matchMat.at<uchar>(x, y) != 0) && (actualVal == 0))
+        if ((matchMat.at<uchar>(x, y) != -1) && (actualVal == 0))
         {
           lastVal = actualVal;
           actualVal = matchMat.at<uchar>(x, y);
@@ -375,7 +375,7 @@ void ImageCreator::interpolateLines(cv::Mat &matchMat , bool vert) {
           }
           actualVal = 0;
         }
-        if ((matchMat.at<uchar>(x, y) == 0))
+        if ((matchMat.at<uchar>(x, y) == -1))
         {
           emptyCellCount++;
         }
