@@ -59,4 +59,6 @@ private:
   bool _drawHorizontal;
   // if true draw vertical, if both horizontal and vertical are true, draw both
   bool _drawVertical;
+  // interpolate missing allocations in a vertical or horizontal line in an image
+  void interpolateLines(cv::Mat &distImage, bool vert);
 };

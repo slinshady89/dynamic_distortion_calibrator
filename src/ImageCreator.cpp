@@ -316,3 +316,73 @@ void ImageCreator::countLines(cv::Mat &distImage) {
 
 }
 */
+
+
+
+void ImageCreator::interpolateLines(cv::Mat &matchMat , bool vert) {
+  // should be set in function use
+  vert = true;
+  if (vert) {
+    for (size_t x = 0; x < _imageWidth; x++)
+    {
+      int emptyCellCount = 0;
+      int lastVal = 0;
+      int actualVal = 0;
+      for (size_t y = 0; y < _imageHeight; y++)
+      {
+        // checks if the actual seen pos got a value and save that to actualVal and the last actualVal to lastVal
+        if ((matchMat.at<uchar>(x, y) != 0) && (actualVal == 0))
+        {
+          lastVal = actualVal;
+          actualVal = matchMat.at<uchar>(x, y);
+        }
+        // every time the emptyCellCount > 0 and a cell is filled the cells between the last filled and actual were interpolated linear
+        if ((emptyCellCount > 0) && (actualVal != 0)) {
+          for (size_t yy = 0; yy < emptyCellCount; yy++)
+          {
+            matchMat.at<uchar>(x, y - emptyCellCount + yy) = ((actualVal - lastVal) / emptyCellCount)*yy;
+          }
+          actualVal = 0;
+        }
+
+        if ((matchMat.at<uchar>(x, y) == 0))
+        {
+          emptyCellCount++;
+        }
+        else {
+          emptyCellCount = 0;
+        }
+      }
+    }
+  }
+  else {
+    for (size_t y = 0; y < _imageHeight; y++)
+    {
+      int emptyCellCount = 0;
+      int lastVal = 0;
+      int actualVal = 0;
+      for (size_t x = 0; x < _imageWidth; x++)
+      {
+        if ((matchMat.at<uchar>(x, y) != 0) && (actualVal == 0))
+        {
+          lastVal = actualVal;
+          actualVal = matchMat.at<uchar>(x, y);
+        }
+        if ((emptyCellCount > 0) && (actualVal != 0) ) {
+          for (size_t xx = 0; xx < emptyCellCount; xx++)
+          {
+            matchMat.at<uchar>(x - emptyCellCount + xx, y ) = ((actualVal - lastVal) / emptyCellCount)*(xx+1);
+          }
+          actualVal = 0;
+        }
+        if ((matchMat.at<uchar>(x, y) == 0))
+        {
+          emptyCellCount++;
+        }
+        else {
+          emptyCellCount = 0;
+        }
+      }
+    }
+  }
+}
