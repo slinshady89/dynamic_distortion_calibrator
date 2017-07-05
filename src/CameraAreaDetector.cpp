@@ -16,7 +16,7 @@ void CameraAreaDetector::setup()
 		_cam.setDeviceID(0);
 	}
 	// setup camera
-	_cam.setup(_resolutionHeight, _resolutionHeight);
+	_cam.setup(_resolutionWidth, _resolutionHeight);
 
 	// get screen dimensions
 	_screenHeight =  ofGetWindowHeight();
@@ -49,7 +49,7 @@ void CameraAreaDetector::setup()
 	_backgroundSet = false;
 	_background = _img.getPixels();
 	_vis.allocate(_screenWidth, _screenHeight, OF_IMAGE_COLOR);
-	std::cout << "_vis height " << _vis.getHeight() << " width" << _vis.getWidth()<< "\n";
+
 	for (int x = 0; x < _vis.getWidth(); x++) {
 		for (int y = 0; y < _vis.getHeight(); y++) {
 			_vis.setColor(x, y, ofColor::black);
@@ -243,11 +243,11 @@ void CameraAreaDetector::draw()
 				// remember the edge in the current image
 				writeLineCorrespondences(true);
 				// increase the distance from the screen
-				_distanceFromScreenX++;
+				_distanceFromScreenX += 5;
 				_x = _screenWidth - _distanceFromScreenX;
 				// if the edge has walked far enough away from the initial point
 				// cease its walk and continue on with the horizontal edges
-				if (_x == _leftBorder) {
+				if (_x <= _leftBorder) {
 					_y = _lowerBorder;
 					_distanceFromScreenY = _screenHeight - _lowerBorder;
 					_distanceFromScreenX = 0;
@@ -256,9 +256,9 @@ void CameraAreaDetector::draw()
 			}
 			else if (_secondBorderReached == false) {
 				writeLineCorrespondences(false);
-				_distanceFromScreenY++;
+				_distanceFromScreenY += 5;
 				_y = _screenHeight - _distanceFromScreenY;
-				if (_y == _upperBorder) {
+				if (_y <= _upperBorder) {
 					_y = 0;
 					_secondBorderReached = true;
 					_borderState = 2;

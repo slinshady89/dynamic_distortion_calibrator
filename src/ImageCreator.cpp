@@ -98,9 +98,10 @@ void ImageCreator::mousePressed(int x, int y, int button) {
 	*_image = _img.getCvImage();
 
 	ofImage img;
-	img = _img.getPixels();
+	img = _color.getPixels();
 	std::cout << "pre-saving\n";
-	img.save("distortedImage.jpg");
+	img.save("distortedImage.jpg");// ("distortedImage.jpg", OF_IMAGE_QUALITY_BEST);
+	//ofSaveImage(img.getPixels(), "distortedImage.jpg", OF_IMAGE_QUALITY_BEST);
 	std::cout << "post-saving\n";
 	ofGetWindowPtr()->setWindowShouldClose();
 }
