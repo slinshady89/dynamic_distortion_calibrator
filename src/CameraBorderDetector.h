@@ -2,16 +2,17 @@
 #include "ofxGui.h"
 #include "ofxOpenCv.h"
 #include "ofMain.h"
-#include "cameraArea.h"
+#include "cameraBorder.h"
 #include "commonFunctions.h"
 #include "calibrationImage.h"
+#include "linefinder.h"
+#include "edgedetector.h"
 #include "opencv2/core/core.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
-#include <opencv2/highgui/highgui.hpp>
-#include <limits.h>
+#include<opencv2/highgui/highgui.hpp>
 
 
-class CameraAreaDetector : public ofBaseApp {
+class CameraBorderDetector : public ofBaseApp {
 	public:
 		void setup();
 		void draw();
@@ -20,44 +21,17 @@ class CameraAreaDetector : public ofBaseApp {
 		// allows to set a pointer to a cameraArea struct outside of this class in order
 		// to keep the values found by this class and set the pixelSize
 		// Is actually a workaround for the lack of return values in ofBaseApp
-		void setCameraAreaPointerAndPixelSize(cameraArea *&area, int pixelSize);
-		
-		// setter for spacing used in center point detection
-		void setSpacing(int spacing);
-		// getter for spacing used in center point detection
-		int getSpacing();
+		void setCameraAreaPointerAndPixelSize(cameraBorder *&area, int pixelSize);
 
-		// setter for camera resolution's height
-		void setResolutionHeight(int resolutionHeight);
-		// getter for camera resolution's height
-		int getResolutionHeight();
-
-		// setter for camera resolution's width
-		void setResolutionWidth(int resolutionWidth);
-		// getter for camera resolution's width
-		int getResolutionWidth();
-
-		// setter for lower threshold for canny edge detection
-		void setCannyLowerThreshold(int lowerThreshold);
-		// getter for lower threshold for canny edge detection
-		int getCannyLowerThreshold();
-
-		// setter for upper threshold for canny edge detection
-		void setCannyUpperThreshold(int upperThreshold);
-		// getter for upper threshold for canny edge detection
-		int getCannyUpperThreshold();
+		void setImageReturnVariables(calibrationImage *&vertical, calibrationImage *&horizontal);
 
 	private:
 		// pointer to the cameraArea struct used for passing things to the outside
-		cameraArea *_area;
+		cameraBorder *_border;
 		// Object for camera signal
 		ofVideoGrabber _cam;
 		// allows detection to start
 		bool _beginDetection;
-		// camera resolution for camera setup, has to be set
-		int _resolutionWidth, _resolutionHeight;
-		// thresholds for canny detector
-		int _cannyLower, _cannyUpper;
 
 		// keeps track of the state in draw() function
 		int _state;
@@ -71,6 +45,11 @@ class CameraAreaDetector : public ofBaseApp {
 		int _dirMovement;
 		// size of the spiral at the moment
 		int _spiralSize;
+
+   
+
+		pos _test;
+
 
 		// last seen pixel position
 		pos _lastSeenPos;
@@ -132,25 +111,6 @@ class CameraAreaDetector : public ofBaseApp {
 		// coordinates of first border pixels in screen coordinates;
 		pos _firstDown, _firstUp, _firstLeft, _firstRight;
 
-		// spacing between the pixels for the center point detection
-		int _spacing;
-		// distance from the screen borders, this is how far the rectangle gets drawn
-		int _distanceFromScreenX, _distanceFromScreenY;
-		// edge position, aka place where rectangle ends
-		int _x, _y;
-		// information about the outermost visible poxeils from findInitialPosition
-		int _leastX, _largestX, _leastY, _largestY;
-		// borders for the drawing to save up on frames
-		int _leftBorder, _rightBorder, _upperBorder, _lowerBorder;
-		// image in which the edge is saved
-		ofImage _contour;
-		// test ofPixels for filling out the area in one colour and the rest of the screen
-		// with another
-		ofPixels _test;
-
-		int _previousX, _previousY;
-		bool _firstBorderReached, _secondBorderReached;
-
 		// color at a given pixel
 		ofColor _colorAtXY;
 		// brightness of color at a given pixel
@@ -168,18 +128,14 @@ class CameraAreaDetector : public ofBaseApp {
 		// debug function
 		void drawDebug();
 		// set the currently brightest spot seen on the camera in the cameraArea
-		void determineBrightestPosition();
-
-		// goes over the _contour image and writes the known position
-		// at the positions of the white pixels (edge) 
-		void writeLineCorrespondences(bool vert);
+		void determineAndSetPosition();
 
 		// pointers to return variables
 		calibrationImage *_vertical, *_horizontal;
 		// find initial spiral position
 		void findInitialPosition();
 		// creates crossed lines through the initial point
-		void makeInitialCross(bool vertical);
+		void makeInitialCross();
 		// creates horizontal lines all over the screen
 		void makeHorizontalLines();
 		// creates vertical lines all over the screen
@@ -193,7 +149,7 @@ class CameraAreaDetector : public ofBaseApp {
 		// calculates the borders from the initial cross and the two images
 		void calculateBorders();
 		// fills out the borders as found to check against
-		void fillOutArea();
+		void fillOutBorders();
 
 
 

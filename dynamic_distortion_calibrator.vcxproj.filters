@@ -7,9 +7,6 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\ofApp.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Libraries\openframeworks_v0.9.8_vs_release\addons\ofxGui\src\ofxBaseGui.cpp">
       <Filter>addons\ofxGui\src</Filter>
     </ClCompile>
@@ -55,10 +52,19 @@
     <ClCompile Include="..\..\Libraries\openframeworks_v0.9.8_vs_release\addons\ofxOpenCv\src\ofxCvShortImage.cpp">
       <Filter>addons\ofxOpenCv\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\CameraAreaDetector.cpp">
+    <ClCompile Include="src\PixelSizeDetector.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\PixelSizeDetector.cpp">
+    <ClCompile Include="src\DynamicDistortionCalibrator.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commonFunctions.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ImageCreator.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CameraAreaDetector.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -161,9 +167,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\ofApp.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Libraries\openframeworks_v0.9.8_vs_release\addons\ofxGui\src\ofxBaseGui.h">
       <Filter>addons\ofxGui\src</Filter>
     </ClInclude>
@@ -698,13 +701,37 @@
     <ClInclude Include="..\..\Libraries\openframeworks_v0.9.8_vs_release\addons\ofxOpenCv\libs\opencv\include\opencv2\videostab\videostab.hpp">
       <Filter>addons\ofxOpenCv\libs\opencv\include\opencv2\videostab</Filter>
     </ClInclude>
-    <ClInclude Include="src\CameraAreaDetector.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="src\PixelSizeDetector.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\DynamicDistortionCalibrator.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\commonFunctions.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Constants.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Line.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ImageCreator.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\calibrationImage.h">
+      <Filter>src</Filter>
+    </ClInclude>
     <ClInclude Include="src\cameraArea.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CameraAreaDetector.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\edgedetector.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\linefinder.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

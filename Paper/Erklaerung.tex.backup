@@ -1,0 +1,50 @@
+\documentclass[journal,final,a4paper,onecolumn]{PS}
+
+%%% Dieser Block ist dem Betreuer des Projektseminars vorbehalten
+\usepackage{PS}             % Alle Definitionen über den Seitenstil (auf keinen Fall editieren!!)
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+\def\lehrveranstaltung{Projektseminar Automatisierungstechnik}
+\def\ausgabe{Vol.6,~WS~12/13}
+\setcounter{page}{1}
+
+
+
+\begin{document}
+
+\headsep 40pt
+\title{Selbständigkeitserklärung}
+
+\maketitle
+
+\large
+
+Hiermit erklären wir, dass die von uns im Rahmen des Projektseminars Automatisierungstechnik im Wintersemester 2012/2013
+am Fachgebiet Regelungstheorie und Robotik des Fachbereis Elektrotechnik und Informationstechnik an der Technischen Universität Darmstadt
+zum Thema
+
+\vspace{1cm}
+\rule{\textwidth}{1pt}
+\\[1cm]
+
+\rule{\textwidth}{1pt}
+\vspace{1cm}
+
+selbst verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt sowie Zitate kenntlich gemacht haben.
+
+\vspace{1cm}
+
+Darmstadt, den \rule{3cm}{1pt} \\[\baselineskip]
+
+Autor 1: \rule{3cm}{1pt} \\[\baselineskip]
+
+Autor 2: \rule{3cm}{1pt} \\[\baselineskip]
+
+Autor 3
+
+Autor 4
+
+
+
+\end{document}
