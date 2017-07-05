@@ -48,8 +48,8 @@ int main( ){
 	dynDistCal.setResolutionWidth(1280);
 	dynDistCal.setCannyLowerThreshold(40);
 	dynDistCal.setCannyUpperThreshold(110);
-	dynDistCal.findRawDistortion(matchX, matchY);
-	dynDistCal.saveRawDistortion("data/maps.txt");
+	//dynDistCal.findRawDistortion(matchX, matchY);
+	//dynDistCal.saveRawDistortion("data/maps.txt");
 	dynDistCal.loadRawDistortion("data/maps.txt");
 	dynDistCal.saveRawDistortion("data/maps2.txt");
 

@@ -106,7 +106,7 @@ void DynamicDistortionCalibrator::loadRawDistortion(string path)
 			getline(file, line);
 			++count;
 			// if it's only a line break, cease
-			if (line.compare("\n")) {
+			if (line.compare("\n") == 0 || line.compare("") == 0) {
 				xComplete = true;
 			}
 		}
@@ -132,12 +132,10 @@ void DynamicDistortionCalibrator::loadRawDistortion(string path)
 int* DynamicDistortionCalibrator::stringToArray(string line) {
 	string tmp;
 	vector<int> vec;
-	while (!line.compare(";") != 0) {
+	while (line.compare(";") != 0 && line.compare("") != 0) {
 		tmp = line.substr(0, line.find_first_of(","));
-		std::cout << "tmp: " << tmp << "\n";
 		vec.push_back(stoi(tmp));
 		line = line.substr(line.find_first_of(",") + 2, line.size());
-		std::cout << "line: " << line << endl;
 	}
 
 	int* arr = new int[vec.size()];
