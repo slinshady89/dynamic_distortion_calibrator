@@ -3,7 +3,7 @@
 %%% Dieser Block ist dem Betreuer des Projektseminars vorbehalten
 \usepackage{PS}             % Alle Definitionen �ber den Seitenstil (auf keinen Fall editieren!!)
 \usepackage[T1]{fontenc}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 
 \def\lehrveranstaltung{PROJEKTSEMINAR ROBOTIK UND COMPUTATIONAL INTELLIGENCE}
 \def\ausgabe{Vol.17,~SS~2017}
@@ -15,7 +15,8 @@
 
 \begin{document}
 \newcommand{\euertitel}{Dynamic Distortion Calibration}   % Titel hier eintragen!
-\newcommand{\betreuer}{M. Sc. Raul Acuna }  % Betreuerdaten hier eintragen (mit einem Leerzeichen am Ende)!
+\newcommand{\betreuer}{M. Sc. Raul Acu\~na }  % Betreuerdaten hier eintragen (mit einem Leerzeichen am Ende)!
+
 
 \headsep 40pt
 \title{\euertitel}
@@ -25,99 +26,73 @@
         Nils Hamacher,
         Linghan Qian,
 	Vivica Wirth
-\thanks{Diese Arbeit wurde von \betreuer unterst�tzt.}}
+\thanks{This paper was supported by \betreuer.}}
 
 \maketitle
 
 
-%\begin{Zusammenfassung}
-%german translation necessry?
-%\end{Zusammenfassung}
-%\vspace{6pt}
+\begin{Zusammenfassung}
+Kameras als Sensoren werden in immer mehr Applikationem im allt\"aglichen Leben wie zum Beispiel in Smartphones, oder um unser Haus mit Hilfe von Smart-Home-Systemen zu \"uberwachen, verwendet. In Fabriken hingegen werden noch viel mehr Kameras zur \"Uberwachung von verschiedensten Prozessen wegen ihrer universellen Anwendung, niedrigen Kosten und dem Potenzial der erhaltenen Daten verwendet. Au\ss{}erdem w\"achst ihre Rolle im Automobilbereich. Jedoch ist jede Kameralinse aufgrund von nicht exakt gleichm\"a\ss{}igen Fertigungstechniken mehr oder weniger gekr\"ummt. Die meisten Kameras zeigen eine radiale Verzerrung, da die Linsen in der Regel eine konvexe Kr\"ummung aufweisen. Diese ist nicht immer gleichm\"a\ss{}ig konvex oder hat Einschl\"usse, die die Verzerrung zu einem sehr nichtlinearen Verhalten ver\"andert. Das macht die Kalibrierung des Kameraobjektivs zu einem wesentlichen Aspekt der Computer Vision, da eine hohe Genauigkeit ihrer Bilder erforderlich ist. Die meisten Kamerakalibrierungen erfordern menschliche Interaktionen wie die Kalibrierung mit einem Schachbrettmuster. In dieser Ausarbeitung wird eine L\"osung f\"ur die Kamera-Kalibrierung vorgestellt, die auf einem planaren Display wie g\"angigen Computermonitoren arbeitet und nicht auf menschliche Interaktion st\"utzt. Dabei wird eine Karte zwischen den Bildschirmpixeln und den projezierten Karmerabildpixeln bestimmt. Wir pr\"asentieren verschiedene Wege, die wir mit ihren Vor- und Nachteilen in Genauigkeit und Laufzeit ausprobiert haben.
+\end{Zusammenfassung}
+\vspace{6pt}
 
 \begin{abstract}
-
-All camera lenses are somewhat different from each other. The curvature of a lens is never perfect, and inclusions may occur which also alter the curvature of the incident light. This leads to distortion that has to be calibrated. State of the art approaches like the checkerboard calibration only base their models on a few interest points. Our aim was to come up a program, which automatically creates a dense model of the lens distortion. This dense model is based on information of the correspondencies of pixels on a screen and the pixels in a captured image. Once the mapping between the screen and the image corresponding pixels is done, we can undistort the image simply by moving the pixels of the actual image we take. In order to reach the desired accuracy we need to set some pre-conditions for the environment in which this takes place. These conditions are darkness, in order to avoid reflections of the camera on the screen, and the camera being perpendicular to the screen. We will present the fundamental principles of several different ideas, which all result in a mapping. To compare them we give a short insight to their runtimes.
+Cameras as a sensor application are widely used in our daily life like in smartphones or to surveille our home via smart home installation. But even more cameras monitor many processes in factories because of their universal application, low cost and the potential of the obtained data. Also it influence in the automotive branche is rising. However, every camera lens is more or less distorted due to imperfect manufacturing techniques. Most cameras show radial distortion due to the fact that most lenses have convex curvature. These aren't always perfectly convex or got inclusions which do alter the distortion to a very non-linear behavior. That makes calibration of the camera lens an essential aspect of computer vision, since a high accuracy of their images is required. Most camera calibrations require human interactions like the calibration with a checkerboard. In this paper a solution to camera calibration is shown that works on a 2D planar display like common used computer monitors and doesn't rely on human interaction. Therefore a mapping between the screen pixel coordinate system and the image pixel coordinate system is determined. We present different ways we tried with their pros and cons in accuracy and runtime.
 \end{abstract}
 
 \section{Introduction}
 
-\PARstart{C}{ameras} are used in more and more environments. They are used as surveillance technology, in toys, mobile phones, and also increasingly in vehicles. 
-The demand for cameras with improving resolution is also increasing. For this purpose, a method for automatic calibration with high accuracy that does not require human interaction is an advantage. At present, the most common method for calibration is to position a checkerboard in different poses in front of the camera and detect the intersection of the black and white squares. 
+\PARstart{C}{ameras} are used in more and more situations. Application areas are monitoring technologies, toys, smartphones and increasingly in vehicles for example. However all camera lenses are somewhat different from each other. The curvature of a lens is never perfect, and inclusions may occur which also alter the curvature of the incident light. This leads to distortion that has to be calibrated. State of the art approaches like the checkerboard calibration only base their models on a few interest points. This method for calibration is to position a checkerboard in different poses in front of the camera and detect the intersections of the black and white squares. The more pictures are done the higher is accuracy of the result what increases the human interaction and the time invested. We present this and other methods in Chapter \ref{sec:related}. 
+Our aim was to develop a program, which automatically creates a dense model of the lens distortion. This dense model is based on information of the correspondencies of pixels on a screen and the pixels in a captured image. Once the mapping between the screen and the image corresponding pixels is done, we can undistort the image simply by moving the pixels of the actual image we take. In order to reach the desired accuracy we need to set some pre-conditions for the environment in which this takes place. These conditions are darkness, in order to avoid reflections of the camera on the screen, and the camera being perpendicular to the screen. We will present the fundamental principles of several different ideas, which all result in a mapping. To compare them we give a short insight to their runtimes. This article is structured as follows: First follows the related work in \ref{sec:related} then in Chapter \ref{sec:maths} the theoretical  foundations are outlined. Chapter \ref{sec:mapping} includes the idea and realization of the project. In Chapter \ref{sec:results} is the conclusion.
+
+
+\subsection{Related Work}
+\label{sec:related}
+Several approaches has been proposed in order to calibrate a camera, they can roughly be classified into two categories [1]: photogrammetric calibration and self-calibration.
+Photogrammetric calibration is based on a spatial object with its 3D shape known which is placed in the view of camera. The commonly used object is planar object point array, so called checkerboard pattern [1], or a 3D cube with determined pattern on it. This method is restricted because errors will occur while printing and manually measuring the pattern or also if the pattern isn't always available.\\
+In self-calibration [3] a reference object is not required, instead it requires the correspondence between points of the scene and the projection. Duane C B. [5] proposed a nonmetric method, based on the fact that the projection of a straight line from the world space should also be a straight line on the image. Swaminathan R and Nayar S K. [6] extended this method by reducing noise and using polycamera. However, this method still relies on calculating parameters, which is not accurate because the model is simplified. 
+Sagawa R  proposed a way using structured light to determine the correspondence and creates directly a dense map so that the error generated by parameter fitting is reduced. 
+The system proposed is based on [4] since they are both based on detecting the correspondence of lines and get the map non-parametrically. \cite{Faugeras}
+
+\section{Mathematical Backround}
+\label{sec:maths}
+
+\section{Mapping of correspondencing pixels}
+\label{sec:mapping}
+Our aim was to get a map of corresponding pixels of the 
+
+\subsection{Pixelwise approach}
+\subsubsection{every Pixel}
+\subsubsection{spiral}
+\subsection{Pixelwise with lines}
+\subsection{simple linedetection for x and y matching}
+We set the backround of the screen to black. Then we draw a white rectangle with height of the screenheight and an increasing width. At the border of the white rectangle to the black backround the \emph{Canny}-operator detects the points the border as a line. We match to every image pixel that belongs to that line the x coordinate to which it should belong. In figure \ref{fig:blockOverTime} we show how the rectangle is getting wide.
+\\
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.8]{./pics/blockOverTime.jpg}
+\caption{Rectangle over time}
+\label{fig:blockOverTime}
+\end{center}
+\end{figure}
+
+\subsection{runtimes of the approaches}
 
 
 
-Bitte beachtet auch die Hinweise zum Verfassen wissenschaftlicher Texte in Anhang~\ref{sec:richtlinien} und~\ref{sec:notation}.
-
-In der Einf�hrung sollte kurz beschrieben werden, was die Problemstellung der Arbeit ist, welche Vorarbeiten es schon gibt (``Stand der Technik'' mit Verweis auf passende Quellen) und was der neue Beitrag der Arbeit ist. Am Ende der Einf�hrung kann kurz auf die Struktur des Artikels eingegangen werden, z.B.: 
-
-Abschnitt~\ref{sec:grundlangen} f�hrt wichtige Grundlagen ein und Abschnitt~\ref{sec:zus} fasst schlie�lich die Ergebnisse zusammen und gibt einen Ausblick.
-
-\section{Grundlagen}
-\label{sec:grundlangen}
-
-\subsection{Dies ist ein Unterabschnitt}
-Subsection text.
-\subsubsection{Dies ist ein Unter-Unterabschnitt}
-Subsubsection text.
+\section{results}
+\label{sec:results}
+\subsection{accuracy}
+\subsection{comparation and valuation}
 
 
-
-
-\section{Zusammenfassung}
-\label{sec:zus}
-Hier die wichtigsten Ergebnisse der Arbeit in 5-10 S�tzen zusammenfassen. Dies sollte keine Wiederholung des Abstracts oder der Einf�hrung sein. Insbesondere kann hier ein Ausblick auf zuk�nftige Arbeiten gegeben werden.
-
-
-\appendices
-\section{Optionaler Titel}
-Anhang eins.
-\section{}
-Anhang zwei.
-
-\section{Richtlinien f�r das Verfassen wissenschaftlicher Arbeiten}
-\label{sec:richtlinien}
-Im Folgenden werden einige wichtige Richtlinien zusammengefasst. Die Aufzaehlung ist allerdings nicht ersch�pfend.
-
-\begin{itemize}
- \item Klare Darstellung, was der Eigenanteil ist und was schon vorhanden war.
- \item Vorsicht vor Plagiaten: vollst�ndige Quellenangaben, auch bei Bildern. Es sollte immer klar ersichtlich sein, was der Eigenanteil ist und was aus Quellen entnommen wurde.
- \item Bilder nicht 1:1 aus Quellen kopieren.
- \item Diskussion der Ergebnisse (Simulationen, Messungen, Rechnungen): Wurde das Ergebnis so erwartet? Wenn nein, was sind m�gliche Gr�nde?
- \item Autoren: Als Autor sollte jede Person in Betracht gezogen werden, die wesentlich zur Arbeit beigetragen hat (siehe auch die Empfehlungen der DFG diesbez�glich, vgl.~\cite{wissPraxis:DFG}). Alle Personen mit kleinerem Beitrag (fachliche Hinweise, Beteiligung an Datensammlung etc.) k�nnen in der Danksagung oder einer Fu�note erw�hnt werden.
-\item Formeln in den Satz einbetten und alle Variablen bei der ersten Verwendung im Text einf�hren. Beispiel:
- F�r die Temperatur ergibt sich damit
- \begin{align*}
-  T(h) = K h^2,
- \end{align*}
- sie h�ngt quadratisch von der H�he $h$ ab.
-\end{itemize}
-
-\section{Hinweise zur Notation}
-\label{sec:notation}
-\begin{itemize}
- \item Abk�rzungen bei der ersten Verwendung erkl�ren, z.B.: ``DFG (Deutsche Forschungsgemeinschaft)''.
- \item Formelzeichen konsistent benennen, nicht zwischen den Abschnitten umbenennen. Formelzeichen kursiv schreiben, z.B. Variable $a$.
- \item Auf korrekte Dimensionen und Einheiten achten. F�r Einheiten das SI-System verwenden, z.B. das LaTeX-Paket \emph{units} oder \emph{SIunits}.
- \item Zahlen: Im Deutschen Komma als Dezimaltrennzeichen, im Englischen Punkt.
- \item Tabellen haben �berschriften, Diagramme haben Unterschriften.
- \item Diagramme: Achsenbeschriftungen hinreichend gro� (insbesondere die Zahlen).
- \item Diagrammunterschriften sollen im Wesentlichen ausreichen, um das Diagramm zu verstehen.
- \item Indizes werden \emph{kursiv} gesetzt, wenn sie die Bedeutung von Variablen haben, ansonsten \textbf{normal}. Beispiele: $V_k, \ k=1,2,\ldots$ und $V_\mathrm{input}$.
-\end{itemize}
-
-
-
-
-\section*{Danksagung}
-Wenn ihr jemanden danken wollt, der Euch bei der Arbeit besonders
-unterst�tzt hat (Korrekturlesen, fachliche Hinweise,...), dann ist hier der daf�r vorgesehene Platz.
+\newpage
 
 \begin{thebibliography}{1}
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to {\LaTeX}}, 3rd~ed. Harlow, England: Addison-Wesley, 1999.
-\bibitem{wissPraxis:DFG}
-Deutsche Forschungsgemeinschaft, \emph{Vorschl�ge zur Sicherung guter wissenschaftlicher Praxis}, Denkschrift, Weinheim: Wiley-VCH, 1998.
+\bibitem{Faugeras:1992}
+O.~Faugeras, Q.T.~Luong and S.~Maybank, \emph{{Camera self-calibration: Theory and experiments}, {pages: 321--334} , {Computer Vision---ECCV'92}}, 1992
+
 \end{thebibliography}
 
 \begin{biography}
@@ -134,6 +109,14 @@ Biographie Autor B.
 [{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{./pics/ComicKopf.eps}}] % hier ein Foto einbinden
 {Autor C}
 Biographie Autor C.
+
+\end{biography}
+
+\begin{biography}
+[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{./pics/ComicKopf.eps}}] % hier ein Foto einbinden
+{Autor D}
+Biographie Autor D.
+
 \end{biography}
 
 \end{document}
