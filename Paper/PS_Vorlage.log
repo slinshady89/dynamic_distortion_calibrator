@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.9.29)  6 JUL 2017 00:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.9.29)  6 JUL 2017 09:01
 entering extended mode
 **./PS_Vorlage.tex
 (PS_Vorlage.tex
@@ -667,9 +667,6 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-
-LaTeX Warning: Citation `Faugeras' on page 1 undefined on input line 55.
-
 Package epstopdf Info: Source file: <./pics/rmr.eps>
 (epstopdf)                    date: 2014-12-09 16:42:06
 (epstopdf)                    size: 263974 bytes
@@ -680,6 +677,7 @@ Package epstopdf Info: Source file: <./pics/rmr.eps>
 .pdf ./pics/rmr.eps>
 (epstopdf)             \includegraphics on input line 56.
 Package epstopdf Info: Output file is already uptodate.
+
 <./pics/rmr-eps-converted-to.pdf, id=1, 542.025pt x 17.06375pt>
 File: ./pics/rmr-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -718,136 +716,11 @@ File: ./pics/blockOverTime.jpg Graphic file (type jpg)
 <use ./pics/blockOverTime.jpg>
 Package pdftex.def Info: ./pics/blockOverTime.jpg used on input line 74.
 (pdftex.def)             Requested size: 187.90225pt x 198.74277pt.
-Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
-(epstopdf)                    date: 2006-01-10 15:16:38
-(epstopdf)                    size: 27821 bytes
-(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
-(epstopdf)                    date: 2011-10-24 15:32:56
-(epstopdf)                    size: 4729 bytes
-(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
-ted-to.pdf ./pics/ComicKopf.eps>
-(epstopdf)             \includegraphics on input line 100.
-Package epstopdf Info: Output file is already uptodate.
 
-<./pics/ComicKopf-eps-converted-to.pdf, id=16, 81.30376pt x 69.25874pt>
-File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
+Underfull \hbox (badness 10000) in paragraph at lines 84--90
 
-<use ./pics/ComicKopf-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
-ne 100.
-(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
-Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
-(epstopdf)                    date: 2006-01-10 15:16:38
-(epstopdf)                    size: 27821 bytes
-(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
-(epstopdf)                    date: 2011-10-24 15:32:56
-(epstopdf)                    size: 4729 bytes
-(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
-ted-to.pdf ./pics/ComicKopf.eps>
-(epstopdf)             \includegraphics on input line 100.
-Package epstopdf Info: Output file is already uptodate.
-File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
+ []
 
-<use ./pics/ComicKopf-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
-ne 100.
-(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
-Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
-(epstopdf)                    date: 2006-01-10 15:16:38
-(epstopdf)                    size: 27821 bytes
-(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
-(epstopdf)                    date: 2011-10-24 15:32:56
-(epstopdf)                    size: 4729 bytes
-(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
-ted-to.pdf ./pics/ComicKopf.eps>
-(epstopdf)             \includegraphics on input line 105.
-Package epstopdf Info: Output file is already uptodate.
-File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
-
-<use ./pics/ComicKopf-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
-ne 105.
-(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
-Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
-(epstopdf)                    date: 2006-01-10 15:16:38
-(epstopdf)                    size: 27821 bytes
-(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
-(epstopdf)                    date: 2011-10-24 15:32:56
-(epstopdf)                    size: 4729 bytes
-(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
-ted-to.pdf ./pics/ComicKopf.eps>
-(epstopdf)             \includegraphics on input line 105.
-Package epstopdf Info: Output file is already uptodate.
-File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
-
-<use ./pics/ComicKopf-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
-ne 105.
-(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
-Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
-(epstopdf)                    date: 2006-01-10 15:16:38
-(epstopdf)                    size: 27821 bytes
-(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
-(epstopdf)                    date: 2011-10-24 15:32:56
-(epstopdf)                    size: 4729 bytes
-(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
-ted-to.pdf ./pics/ComicKopf.eps>
-(epstopdf)             \includegraphics on input line 110.
-Package epstopdf Info: Output file is already uptodate.
-File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
-
-<use ./pics/ComicKopf-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
-ne 110.
-(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
-Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
-(epstopdf)                    date: 2006-01-10 15:16:38
-(epstopdf)                    size: 27821 bytes
-(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
-(epstopdf)                    date: 2011-10-24 15:32:56
-(epstopdf)                    size: 4729 bytes
-(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
-ted-to.pdf ./pics/ComicKopf.eps>
-(epstopdf)             \includegraphics on input line 110.
-Package epstopdf Info: Output file is already uptodate.
-File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
-
-<use ./pics/ComicKopf-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
-ne 110.
-(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
-Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
-(epstopdf)                    date: 2006-01-10 15:16:38
-(epstopdf)                    size: 27821 bytes
-(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
-(epstopdf)                    date: 2011-10-24 15:32:56
-(epstopdf)                    size: 4729 bytes
-(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
-ted-to.pdf ./pics/ComicKopf.eps>
-(epstopdf)             \includegraphics on input line 117.
-Package epstopdf Info: Output file is already uptodate.
-File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
-
-<use ./pics/ComicKopf-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
-ne 117.
-(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
-Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
-(epstopdf)                    date: 2006-01-10 15:16:38
-(epstopdf)                    size: 27821 bytes
-(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
-(epstopdf)                    date: 2011-10-24 15:32:56
-(epstopdf)                    size: 4729 bytes
-(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
-ted-to.pdf ./pics/ComicKopf.eps>
-(epstopdf)             \includegraphics on input line 117.
-Package epstopdf Info: Output file is already uptodate.
-File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
-
-<use ./pics/ComicKopf-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
-ne 117.
-(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
 Package epstopdf Info: Source file: <./pics/rmr2.eps>
 (epstopdf)                    date: 2014-12-09 16:53:36
 (epstopdf)                    size: 2462 bytes
@@ -856,15 +729,14 @@ Package epstopdf Info: Source file: <./pics/rmr2.eps>
 (epstopdf)                    size: 2929 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/rmr2-eps-converted-t
 o.pdf ./pics/rmr2.eps>
-(epstopdf)             \includegraphics on input line 122.
+(epstopdf)             \includegraphics on input line 98.
 Package epstopdf Info: Output file is already uptodate.
-
-<./pics/rmr2-eps-converted-to.pdf, id=25, 543.02875pt x 18.0675pt>
+<./pics/rmr2-eps-converted-to.pdf, id=16, 543.02875pt x 18.0675pt>
 File: ./pics/rmr2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./pics/rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/rmr2-eps-converted-to.pdf used on input line 12
-2.
+Package pdftex.def Info: ./pics/rmr2-eps-converted-to.pdf used on input line 98
+.
 (pdftex.def)             Requested size: 516.0pt x 17.16898pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -876,27 +748,186 @@ Overfull \hbox (3.21994pt too wide) has occurred while \output is active
   [] 
  []
 
-[2 <./pics/ComicKopf-eps-converted-to.pdf> <./pics/rmr2-eps-converted-to.pdf> <
-./pics/blockOverTime.jpg>] (PS_Vorlage.aux)
+[2 <./pics/rmr2-eps-converted-to.pdf> <./pics/blockOverTime.jpg>]
+Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
+(epstopdf)                    date: 2006-01-10 15:16:38
+(epstopdf)                    size: 27821 bytes
+(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
+(epstopdf)                    date: 2011-10-24 15:32:56
+(epstopdf)                    size: 4729 bytes
+(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
+ted-to.pdf ./pics/ComicKopf.eps>
+(epstopdf)             \includegraphics on input line 129.
+Package epstopdf Info: Output file is already uptodate.
 
-LaTeX Warning: There were undefined references.
+<./pics/ComicKopf-eps-converted-to.pdf, id=28, 81.30376pt x 69.25874pt>
+File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
 
- ) 
+<use ./pics/ComicKopf-eps-converted-to.pdf>
+Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
+ne 129.
+(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
+Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
+(epstopdf)                    date: 2006-01-10 15:16:38
+(epstopdf)                    size: 27821 bytes
+(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
+(epstopdf)                    date: 2011-10-24 15:32:56
+(epstopdf)                    size: 4729 bytes
+(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
+ted-to.pdf ./pics/ComicKopf.eps>
+(epstopdf)             \includegraphics on input line 129.
+Package epstopdf Info: Output file is already uptodate.
+File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./pics/ComicKopf-eps-converted-to.pdf>
+Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
+ne 129.
+(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
+Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
+(epstopdf)                    date: 2006-01-10 15:16:38
+(epstopdf)                    size: 27821 bytes
+(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
+(epstopdf)                    date: 2011-10-24 15:32:56
+(epstopdf)                    size: 4729 bytes
+(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
+ted-to.pdf ./pics/ComicKopf.eps>
+(epstopdf)             \includegraphics on input line 134.
+Package epstopdf Info: Output file is already uptodate.
+File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./pics/ComicKopf-eps-converted-to.pdf>
+Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
+ne 134.
+(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
+Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
+(epstopdf)                    date: 2006-01-10 15:16:38
+(epstopdf)                    size: 27821 bytes
+(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
+(epstopdf)                    date: 2011-10-24 15:32:56
+(epstopdf)                    size: 4729 bytes
+(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
+ted-to.pdf ./pics/ComicKopf.eps>
+(epstopdf)             \includegraphics on input line 134.
+Package epstopdf Info: Output file is already uptodate.
+File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./pics/ComicKopf-eps-converted-to.pdf>
+Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
+ne 134.
+(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
+Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
+(epstopdf)                    date: 2006-01-10 15:16:38
+(epstopdf)                    size: 27821 bytes
+(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
+(epstopdf)                    date: 2011-10-24 15:32:56
+(epstopdf)                    size: 4729 bytes
+(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
+ted-to.pdf ./pics/ComicKopf.eps>
+(epstopdf)             \includegraphics on input line 139.
+Package epstopdf Info: Output file is already uptodate.
+File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./pics/ComicKopf-eps-converted-to.pdf>
+Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
+ne 139.
+(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
+Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
+(epstopdf)                    date: 2006-01-10 15:16:38
+(epstopdf)                    size: 27821 bytes
+(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
+(epstopdf)                    date: 2011-10-24 15:32:56
+(epstopdf)                    size: 4729 bytes
+(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
+ted-to.pdf ./pics/ComicKopf.eps>
+(epstopdf)             \includegraphics on input line 139.
+Package epstopdf Info: Output file is already uptodate.
+File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./pics/ComicKopf-eps-converted-to.pdf>
+Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
+ne 139.
+(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
+Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
+(epstopdf)                    date: 2006-01-10 15:16:38
+(epstopdf)                    size: 27821 bytes
+(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
+(epstopdf)                    date: 2011-10-24 15:32:56
+(epstopdf)                    size: 4729 bytes
+(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
+ted-to.pdf ./pics/ComicKopf.eps>
+(epstopdf)             \includegraphics on input line 146.
+Package epstopdf Info: Output file is already uptodate.
+File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./pics/ComicKopf-eps-converted-to.pdf>
+Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
+ne 146.
+(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
+Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
+(epstopdf)                    date: 2006-01-10 15:16:38
+(epstopdf)                    size: 27821 bytes
+(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
+(epstopdf)                    date: 2011-10-24 15:32:56
+(epstopdf)                    size: 4729 bytes
+(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
+ted-to.pdf ./pics/ComicKopf.eps>
+(epstopdf)             \includegraphics on input line 146.
+Package epstopdf Info: Output file is already uptodate.
+File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./pics/ComicKopf-eps-converted-to.pdf>
+Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
+ne 146.
+(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
+Package epstopdf Info: Source file: <./pics/rmr.eps>
+(epstopdf)                    date: 2014-12-09 16:42:06
+(epstopdf)                    size: 263974 bytes
+(epstopdf)             Output file: <./pics/rmr-eps-converted-to.pdf>
+(epstopdf)                    date: 2014-12-09 16:48:36
+(epstopdf)                    size: 8532 bytes
+(epstopdf)             Command: <epstopdf --outfile=./pics/rmr-eps-converted-to
+.pdf ./pics/rmr.eps>
+(epstopdf)             \includegraphics on input line 151.
+Package epstopdf Info: Output file is already uptodate.
+File: ./pics/rmr-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./pics/rmr-eps-converted-to.pdf>
+Package pdftex.def Info: ./pics/rmr-eps-converted-to.pdf used on input line 151
+.
+(pdftex.def)             Requested size: 516.0pt x 16.24507pt.
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+
+ []
+
+
+Overfull \hbox (1.60997pt too wide) has occurred while \output is active
+[] [] 
+ []
+
+[3 <./pics/ComicKopf-eps-converted-to.pdf>] (PS_Vorlage.aux) ) 
 Here is how much of TeX's memory you used:
- 3835 strings out of 493334
- 51094 string characters out of 3139252
- 123209 words of memory out of 3000000
- 7291 multiletter control sequences out of 15000+200000
- 116810 words of font info for 119 fonts, out of 3000000 for 9000
+ 3837 strings out of 493334
+ 51135 string characters out of 3139252
+ 123249 words of memory out of 3000000
+ 7294 multiletter control sequences out of 15000+200000
+ 115930 words of font info for 119 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,10n,40p,1556b,318s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
-s/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/time
-s/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on PS_Vorlage.pdf (2 pages, 84209 bytes).
+ 40i,11n,40p,1556b,325s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files
+/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+mr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Progr
+am Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2
+.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/u
+rw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.
+pfb>
+Output written on PS_Vorlage.pdf (3 pages, 141787 bytes).
 PDF statistics:
- 52 PDF objects out of 1000 (max. 8388607)
+ 79 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  69 words of extra memory for PDF output out of 10000 (max. 10000000)
 
