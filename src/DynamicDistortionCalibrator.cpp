@@ -27,15 +27,126 @@ void DynamicDistortionCalibrator::findRawDistortion(int** &matchX, int** &matchY
 }
 
 //_____________________________________________________________________________
-void DynamicDistortionCalibrator::saveRawDistortion()
+void DynamicDistortionCalibrator::saveRawDistortion(string path)
 {
+	ofstream file(path);
+
+	if (file.is_open()) {
+		// first print the sizes of the arrays
+		file << _area._sizeImageX << "\n";
+		file << _area._sizeImageY << "\n";
+
+		// then print the arrays, first x-distortion
+		for (int x = 0; x < _area._sizeImageX; x++) {
+			for (int y = 0; y < _area._sizeImageY; y++) {
+				file << _area._distortionX[x][y];
+				if (y != _area._sizeImageY - 1) {
+					file << ", ";
+				}
+			}
+			file << ";\n";
+		}
+		// leave a line out
+		std::cout << "saved x-map\n";
+		file << "\n";
+		// then y-distortion
+		for (int x = 0; x < _area._sizeImageX; x++) {
+			for (int y = 0; y < _area._sizeImageY; y++) {
+				file << _area._distortionX[x][y];
+				if (y != _area._sizeImageY - 1) {
+					file << ", ";
+				}
+			}
+			file << "\n";
+		}
+		std::cout << "saved y-map\n";
+	}
+	else {
+		std::cout << "Saving the maps went wrong. File could not be openend.\n";
+	}
 }
 
 //_____________________________________________________________________________
-void DynamicDistortionCalibrator::loadRawDistortion()
+void DynamicDistortionCalibrator::loadRawDistortion(string path)
 {
+	ifstream file(path);
+	string line;
+
+	if (file.is_open()) {
+		// first line is width of the array
+		getline(file, line);
+		int width = stoi(line);
+		// second line is height of the array
+		getline(file, line);
+		int height = stoi(line);
+
+		// allocate the arrays
+		_area._sizeImageX = width;
+		_area._sizeImageY = height;
+
+		std::cout << "loaded sizes: " << width << " x " << height << "\n";
+
+		_area._distortionX = new int*[width];
+		_area._distortionY = new int*[width];
+
+		for (int i = 0; i < width; i++) {
+			_area._distortionX[i] = new int[height];
+			_area._distortionY[i] = new int[height];
+		}
+
+		int count = 0;
+		bool xComplete = false;
+		// load x map
+		// get first line
+		getline(file, line);
+		while(xComplete == false) {
+			// work on that line
+			_area._distortionX[count] = stringToArray(line);
+			// get next line
+			getline(file, line);
+			++count;
+			// if it's only a line break, cease
+			if (line.compare("\n") == 0 || line.compare("") == 0) {
+				xComplete = true;
+			}
+		}
+		std::cout << "loaded x-map\n";
+		// load y map
+		count = 0;
+		getline(file, line);
+		while (!line.empty()) {
+			// work on that line
+			_area._distortionY[count] = stringToArray(line);
+			// get next line
+			getline(file, line);
+			++count;
+		}
+		
+	}
+	else {
+		std::cout << "Reading the maps went wrong. File could not be opened.\n";
+	}
 }
 
+//_____________________________________________________________________________
+int* DynamicDistortionCalibrator::stringToArray(string line) {
+	string tmp;
+	vector<int> vec;
+	while (line.compare(";") != 0 && line.compare("") != 0) {
+		tmp = line.substr(0, line.find_first_of(","));
+		vec.push_back(stoi(tmp));
+		line = line.substr(line.find_first_of(",") + 2, line.size());
+	}
+
+	int* arr = new int[vec.size()];
+	for (size_t i = 0; i < vec.size(); i++) {
+		arr[i] = vec.at(i);
+	}
+
+	return arr;
+}
+
+//_____________________________________________________________________________
 ofxCvGrayscaleImage DynamicDistortionCalibrator::createImage(bool vert, bool hor) {
 	ofImage tmp;
 	ofxCvGrayscaleImage returnImage;

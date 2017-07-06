@@ -15,8 +15,8 @@ class DynamicDistortionCalibrator {
 
 		// stuff for raw distortion aka local offset in x & y direction
 		void findRawDistortion(int** &matchX, int** &matchY);
-		void saveRawDistortion();
-		void loadRawDistortion();
+		void saveRawDistortion(string path);
+		void loadRawDistortion(string path);
 		// undistorts the given image, using the given distortion maps
 		ofImage undistort(cv::Mat distortedImage, int** matchX, int** matchY);
 		// creates an image for distortion testing purposes
@@ -64,4 +64,6 @@ class DynamicDistortionCalibrator {
 		cv::Mat interpolateImage(cv::Mat undistedImage);
 		// returns the undistorted image
 		cv::Mat mappingImage(cv::Mat distordedImage, int** matchY, int** matchX);
+		// breaks up a line into an array
+		int* stringToArray(string line);
 };

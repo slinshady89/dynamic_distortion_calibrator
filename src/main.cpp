@@ -41,16 +41,21 @@ int main( ){
 	int** matchY;
 
 	DynamicDistortionCalibrator dynDistCal(1920, 1080);
+
+
 	dynDistCal.setSpacing(89);
 	dynDistCal.setResolutionHeight(720);
 	dynDistCal.setResolutionWidth(1280);
 	dynDistCal.setCannyLowerThreshold(40);
 	dynDistCal.setCannyUpperThreshold(110);
-	dynDistCal.findRawDistortion(matchX, matchY);
+	//dynDistCal.findRawDistortion(matchX, matchY);
+	//dynDistCal.saveRawDistortion("data/maps.txt");
+	dynDistCal.loadRawDistortion("data/maps.txt");
+	dynDistCal.saveRawDistortion("data/maps2.txt");
 
 	ofxCvGrayscaleImage distortedImage = dynDistCal.createImage(true, true);
-
 	std::cout << "created  and saved image\n";
+	
 
 	ofImage undistortedImage = dynDistCal.undistort(distortedImage.getCvImage(), matchX, matchY);
 
