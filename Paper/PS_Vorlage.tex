@@ -4,7 +4,10 @@
 \usepackage{PS}             % Alle Definitionen �ber den Seitenstil (auf keinen Fall editieren!!)
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-
+\usepackage{tikz}
+\usepackage[]{algorithm2e}
+\usepackage{svg}
+\usepackage{amsmath}
 \def\lehrveranstaltung{PROJEKTSEMINAR ROBOTIK UND COMPUTATIONAL INTELLIGENCE}
 \def\ausgabe{Vol.17,~SS~2017}
 \setcounter{page}{1}        % Hier die Seitennummer der Startseite f�r Gesamtdokument festlegen
@@ -59,19 +62,105 @@ The system proposed is based on [4] since they are both based on detecting the c
 
 \section{Mapping of correspondencing pixels}
 \label{sec:mapping}
-Our aim was to create a map of corresponding pixels of the screen to the camera image. For that we followed different approaches which we evaluate by accuracy and especially by runtime in Chapter \ref{sec:runtime}. 
+Our aim was to create a map of corresponding pixels of the screen to the camera image. For that we followed different approaches which we evaluate by accuracy in Chapter \ref{sec:results} and by runtime in Chapter \ref{sec:runtime}. \\
+Before we begin with the mapping of the correspondencies we will discuss the setup of the device. The camera should be in a distance to the screen that it only detects the screen and nothing else like the borders or so. We should be able to manipulate the entire visible flat surface to excite every pixel on the camera image. The background color of the monitor should be black so that drawn white pixels can be better recognized. The camera and the display should be in a locked dark area where no light is coming so the monitor is the only light source. This leads to no unwanted reflections that sophisticate our result. If the camera is adjusted perpendicular to the display the program could run.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.25]{./pics/setup.png}
+\caption{Setup of Camera and Monitor}
+\label{fig:setup}
+\end{center}
+\end{figure}\\
+ First we have to make sure, that the captured image contains at least one position at which the screen is going to display a rectangle. To do this we draw a set amount of rectangles evenly spaced on the screen. Initially these rectangles have a \emph{width} and \emph{height} of $1$. While the camera doesn't detects a pixel we increase \emph{width} and \emph{height} of the drawn rectangle by $1$ until it does recognise a drawn pixel. This is shown in algorithm~\ref{algo:pixelsize}. In order to ensure, that the detection was not a accidental chance of luck, the same size has to be confirmed by further detections. 
+\begin{algorithm}[h]
+ \KwData{cameraImage}
+ \KwResult{returns pixelSize}
+ initialization: int pixelSize = 1\;
+ \While{(notDetected)}{
+  \eIf{(maxBrightnestPixel != 0)}{
+   notDetected = false\;
+   return pixelSize\;
+   }{
+   notDetected=true\;
+   pixelSize++\;
+  }
+ }
+ \caption{pixel size detection}
+ \label{algo:pixelsize}
+\end{algorithm} 
+ 
+ After the pixel size that is seen by the camera is detected we draw a pixel with that size on the screen that is moving with a spacing. That means that the pixel always gets a new coordinate that with a calculated distance in vertical and/or horizontal  direction. Therefore we're able to calculate an optimal spacing for a specific method of us which is described at the end of Chapter \ref{sec:linebased}. While the pixel is moving on the screen we accumulatively add the $x_s$ and $y_s$ positions of the seen rectangles on the screen. Simultanously we enumerate the number of seen rectangles. The algorithm is shown in \ref{algo:centerPoint}.
+ 
+\begin{algorithm}[h]
+ \KwData{pixelPosition}
+ \KwResult{returns centerPoint}
+ initialization: int counter = 0\;
+ \While{(pixelPosition < display)}{
+  \eIf{(pixelSeen)}{
+   centerPoint += pixelPosition\;
+   counter++\;
+   }{
+   centerPoint /= counter\;
+   }
+ }
+ \caption{calculation of center point of FOV}
+ \label{algo:centerPoint}
+\end{algorithm} 
+
+As you will see in the following chapters, these two methods are fundamental to most of our approaches. Where the pixelSize is not necessary for the algorithm itself, we still use it to generate a test image. To this test image the found distortion maps are applied. Therefore they are necessary in any case. In the next three Subchapter we'll present two principle different possibilities we obtained while this work how it could be possible to get a distortion calibration with a higher accuracy than the state of the art. 
+ 
 
 \subsection{Pixelwise approaches}
+Our first idea was a matching from every screen pixel to his corresponding pixel in the image. We developed three different methods. These were faster in their implementation in this order, with the same accuracy. The duration of the individual methods is given in Chapter \ref{sec:runtime} with an exact minimum value for our example.
 \subsubsection{every Pixel}
-\subsubsection{spiral}
+The first and easiest idea was to light a rectangle with minimum pixel size after another and row for row. If we see a drawn rectangle save the correspondencies of the image and the screen coordinate. Later we could have checked if an imaginary straight line of rectangles on the screen will be to a straight line of pixels on the image. If not we knew we have to move the image pixels so that the line that is seen on the image is also straight.
+\subsubsection{For the sake of the \textbf{SPIRAL}}
+However it's not very efficient if we light every pixel of the screen with the seen pixel size. As the seen area on the screen the field of view (FOV) could be significant smaller than the screen we developed another method to ensure a faster result. For this purpose we produce generate the idea to let the rectangle move on a spirallike path on the screen. The algorithm \ref{algo:centerPoint} was designed to find a optimal starting position to that spiral. After finding the center point of the FOV the rectangle moved slowly to the outside of the FOV. While the pixel wasn't seen for a hole circulation we know we should still be in vision of the camera. So everytime a rectangle is seen it's position on the screen and the camera image is saved for later for the distortion calibration. Exposing the view area in spiral-shape, as described in Chapter \ref{sec:runtime}, is not exactly fast. In addition, the method is very inefficient for fisheye cameras or any kind of wide angle cameras. 
+
+%% mathematics and basics -> some pictures with different distortion shapes
 \subsubsection{by lines}
+The pixelwise distortion calibration was our last concept in which we tried to detect a solution by lighting several rectangles with the minimum pixel size. However this method is already a hybrid since we introduced real line detection methods here to solve the problem of distortion calibration. In the further discussed methods we used the pixel correspondencies and calculated the lines in both images, the drawn and the detected one. In this method we drew lines in the seen area and detect their position in the camera image and wanted to correct them then. But first we tried to detect the borders of the seen area. For that we needed to find at least on border of the seen area. Therfore we developed a binary search algorithm that finds a border. It's initial point is the center point we already detected with algorithm \ref{algo:centerPoint}. From there assumed that a point at any border of the screen is not seen by the camera. Then we check if a point between this two points is seen or not. If not we check between this and center point and else we check between that and the point of the border. This is described in algorithm \ref{algo:binary}.
+
+
+\begin{algorithm}[h]
+ \KwData{pixelPosition}
+ \KwResult{returns borderPoint}
+ initialization: \;
+ point lastSeen = centerPoint\;
+ point lastNotseen = screenBorder\;
+ point nextPos\;
+ \While{(abs(lastSeen - lastNotSeen)>1)}{
+ point nextPos = (lastSeen+lastNotSeen)/2\;
+  \eIf{(pixelSeen)}{
+   lastSeen = pixelPosition\;
+   }{
+   lastNotSeen = pixelPosition\;
+   }
+ }
+ return borderPoint = (lastSeen+lastNotSeen)/2\;
+ \caption{binary search algorithm for border detection}
+ \label{algo:binary}
+\end{algorithm} 
+
+After a border is found our purpose was to find all corresponding screen pixels that belongs to the frame of the camera image. If these are found our idea was to draw lines with \emph{width} for vertical lines and the \emph{height} for horizontal lines of the minimum pixel size on the screen that are straight. Then we should have been able to calibrate the distortion with the next to shown images. However it's would have still needed a long time to detect the borders. Since around a pixel there are 8 possible positions to detect the next that belongs to the frame. Even if you can exclude some of these possible positions, at least 4 possible positions remain. %% Picture Positions? 
+In Chapter \ref{sec:runtime} we calculated the minimum time required for an exemplary FOV. However we dismissed this method to because we found a way faster solution with a straight line detection by a \emph{openCV} function called \emph{Canny}. 
+
 \subsection{simple linedetection for x and y matching}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.25]{./pics/rect.png}
+\caption{rectangle over the screen}
+\label{fig:setup}
+\end{center}
+\end{figure}
+
 We set the backround of the screen to black. Then we draw a white rectangle with height of the screenheight and an increasing width. At the border of the white rectangle to the black backround the \emph{Canny}-operator detects the points the border as a line. We match to every image pixel that belongs to that line the x coordinate to which it should belong. In figure \ref{fig:blockOverTime} we show how the rectangle is getting wide.
 \\
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.8]{./pics/blockOverTime.jpg}
+\includegraphics[scale=0.3]{./pics/pattern.png}
 \caption{Rectangle over time}
 \label{fig:blockOverTime}
 \end{center}
@@ -81,7 +170,7 @@ We set the backround of the screen to black. Then we draw a white rectangle with
 \label{sec:runtime}
 \subsubsection{pixelwise}
 \label{sec:pixelwise}
-Each frame makes one call to the draw function. Given that we need $7$ calls of the draw function to fully draw, capture, and process one image, we can, with a frame rate of $21$ frames per second (FPS), achieve turnover rate of $3$ images per second. This allows us to make an estimation of the runtime of each approach we tested out or considered for the lens calibration. For the following estimates we're assuming a screen of the dimensions $1290 x 1080$ pixels and a field of view (FOV) of roughly $670 x 395$ pixels for the camera. The FOV has been experimentally determined for a distance of 16 cm from the screen. From the results the aperture angle can be calculated, it yields roughly $68.45^{\circ}$, the camera’s specifications state an aperture angle of $68.50 ^{\circ}$ . So these results should be a good estimate of the true FOV. Furthermore the assumption is made that each pixel can be detected on its own, instead of needing larger patches to be detectable by the camera.
+Each frame makes one call to the draw function. Given that we need $7$ calls of the draw function to fully draw, capture, and process one image, we can, with a frame rate of $21$ frames per second (FPS), achieve turnover rate of $3$ images per second. This allows us to make an estimation of the runtime of each approach we tested out or considered for the lens calibration. For the following estimates we're assuming a screen of the dimensions $1290 x 1080$ pixels and a (FOV) of roughly $670 x 395$ pixels for the camera. The FOV has been experimentally determined for a distance of 16 cm from the screen. From the results the aperture angle can be calculated, it yields roughly $68.45^{\circ}$, the camera’s specifications state an aperture angle of $68.50 ^{\circ}$ . So these results should be a good estimate of the true FOV. Furthermore the assumption is made that each pixel can be detected on its own, instead of needing larger patches to be detectable by the camera.
 The following variables will be use: $h_{FOV}$ as the height of the FOV, $w_{FOV}$ as the width of the FOV, $w_s$ as the width of the screen, and $h_s$ as the height of the screen.
 1. Singular pixel detection
 With a naive approach each patch of minimal detectable size on the screen has to be turned on separately. This means screen width times screen height necessary images. In our set up $921,600$ images would be needed, yielding a runtime of $307,200$ seconds, or $3$ days $13$ hours $20$ minutes.
@@ -93,7 +182,7 @@ The center point estimation has been left out, as it is comparably negligible.\\
 The first idea for a line-based detection was to first detect the borders and store how the border pixels of the image map to the screen. The idea was to first detect a pixel on the border via binary search and then move this pixel to new positions to check whether these are seen. We need to check at least four surrounding pixels for visibility. This means $4 * (2 * h_{FOV} + 2 * w_{FOV})$, in our setup that leads to $8,520$ images. To process these images, we need $2,840$ seconds, or $47$ minutes $20$ seconds. After discovering the border only two images need to be created and processed. However, since the discovery of the border would take still too long, we rejected this method as well.
 The next method is a segmentation of the screen. By segmenting the screen sequentially in a black and a white part, we can detect a single edge in the image. The white part starts out as the entire screen and gradually decreases in width, pixel by pixel. After that is done, the white part is again stretched out over the entire screen and then decreases in height. At each image we know exactly at which position the screen shows the edge. From this we can calculate where the edge pixels from the image should have appeared.
 When doing this naively and simply going over the entire screen width and height, this method needs to process $2,370$ images. It would take $790$ seconds, or $13$ minutes $10$ seconds. This is already immensely faster. It can still be sped up, however.
-Instead of going over the entire screen, we first estimate the center point again. This time we additionally store which was the outermost pixel, which was visible during the estimation, for each border. From there we add the spacing, that was used, plus a small margin to be on the safe side. The margin was chosen to be 5 pixels wide. In this method the runtime for the center point estimation is relevant. While the runtime for the center point estimation increases with smaller spacing, the runtime for the line-based detection decreases. This means a runtime-optimal spacing can be calculated.
+Instead of going over the entire screen, we first estimate the center point again. This time we additionally store which was the outermost pixel, which was visible during the estimation, for each border. From there we add the spacing, that was used, plus a small margin to be safe. The margin was chosen to be $5$ pixels wide. In this method the runtime for the center point estimation is relevant. While the runtime for the center point estimation increases with smaller spacing, the runtime for the line-based detection decreases. This means a runtime-optimal spacing can be calculated.
 Let s be the spacing between the positions of the pixels to be lit, and m the margin. Then the runtime of the center estimation, as a function of spacing s, is:
 \begin{align}
 rt_c (s) = \frac{w_s\cdot h_s}{ s^2} = 1393200 / s^2.
@@ -120,7 +209,26 @@ This functions minimum is at roughly s = 89. For this spacing we need then $1,61
 
 \begin{thebibliography}{1}
 \bibitem{Faugeras:1992}
-O.~Faugeras, Q.T.~Luong and S.~Maybank, \emph{{Camera self-calibration: Theory and experiments}, {pages: 321--334} , {Computer Vision---ECCV'92}}, 1992
+O.~Faugeras, Q.T.~Luong and S.~Maybank. \emph{Camera self-calibration: Theory and experiments},p. 321--334Computer Vision--ECCV'92, 1992
+
+\bibitem{Ma:2010}
+Y.~Ma. \emph{{An invitation to 3-D vision: From images to geometric models}, {Springer} , {978-1-4419-1846-8}}
+
+\bibitem{Sagawa}
+R.~Sagawa and M.~Takatsuji and T.~Echigo and Y.~Yagi . \emph{Calibration of lens distortion by structured-light scanning} IEEE/RSJ International Conference on Intelligent Robots and Systems, p.832--837 , 2005
+
+\bibitem{Salvi}
+J.~Salvi and J.~Pag{\`e}s and J.~Batlle. \emph{Pattern codification strategies in structured light systems}, vol.37 num.4, Pattern Recognition, p. 827--849, 2004
+
+\bibitem{Swaminathan}
+R.~Swaminathan and S.K.~Nayar. \emph{Nonmetric calibration of wide-angle lenses and polycameras}, p.1172--1178, vol.22 num.10, IEEE Transactions on Pattern Analysis and Machine Intelligence
+
+\bibitem{Weng}
+J.~Weng and P.~Cohen and M.~Herniou. \emph{Camera calibration with distortion models and accuracy evaluation}, p.965--980, vol.14 num.10, IEEE Transactions on Pattern Analysis and Machine Intelligence, 1992
+
+\bibitem{Zhang}
+Zhang and Zhengyou. \emph{A flexible new technique for camera calibration}, p.965--980, vol.14 num.10, IEEE Transactions on Pattern Analysis and Machine Intelligence, 2010
+
 
 \end{thebibliography}
 
