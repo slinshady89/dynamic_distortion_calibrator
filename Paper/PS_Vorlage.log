@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.9.29)  6 JUL 2017 23:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.9.29)  7 JUL 2017 11:26
 entering extended mode
 **./PS_Vorlage.tex
 (PS_Vorlage.tex
@@ -938,58 +938,58 @@ LaTeX Warning: Label `fig:setup' multiply defined.
 )
 \openout1 = `PS_Vorlage.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 19.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <5> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 19.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 20.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 19.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <7> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 19.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 20.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 19.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <8> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 19.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 20.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 19.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <9> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 19.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 20.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 19.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 19.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 20.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <11> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 19.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <11> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 19.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 20.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 19.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <12> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 19.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 20.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 19.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <17> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 19.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 20.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <20> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 19.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <20> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 19.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 20.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 19.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <24> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 19.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 20.
  ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count135
@@ -1041,14 +1041,14 @@ Package epstopdf Info: Source file: <./pics/rmr.eps>
 (epstopdf)                    size: 8532 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/rmr-eps-converted-to
 .pdf ./pics/rmr.eps>
-(epstopdf)             \includegraphics on input line 59.
+(epstopdf)             \includegraphics on input line 60.
 Package epstopdf Info: Output file is already uptodate.
 
 <./pics/rmr-eps-converted-to.pdf, id=4, 542.025pt x 17.06375pt>
 File: ./pics/rmr-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./pics/rmr-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/rmr-eps-converted-to.pdf used on input line 59.
+Package pdftex.def Info: ./pics/rmr-eps-converted-to.pdf used on input line 60.
 
 (pdftex.def)             Requested size: 516.0pt x 16.24507pt.
 
@@ -1069,7 +1069,7 @@ Non-PDF special ignored!{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
 <./pics/setup.png, id=18, 758.835pt x 721.69624pt>
 File: ./pics/setup.png Graphic file (type png)
  <use ./pics/setup.png>
-Package pdftex.def Info: ./pics/setup.png used on input line 69.
+Package pdftex.def Info: ./pics/setup.png used on input line 70.
 (pdftex.def)             Requested size: 189.70828pt x 180.42361pt.
 
 
@@ -1083,14 +1083,14 @@ Package epstopdf Info: Source file: <./pics/rmr2.eps>
 (epstopdf)                    size: 2929 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/rmr2-eps-converted-t
 o.pdf ./pics/rmr2.eps>
-(epstopdf)             \includegraphics on input line 117.
+(epstopdf)             \includegraphics on input line 118.
 Package epstopdf Info: Output file is already uptodate.
 <./pics/rmr2-eps-converted-to.pdf, id=20, 543.02875pt x 18.0675pt>
 File: ./pics/rmr2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./pics/rmr2-eps-converted-to.pdf>
 Package pdftex.def Info: ./pics/rmr2-eps-converted-to.pdf used on input line 11
-7.
+8.
 (pdftex.def)             Requested size: 516.0pt x 17.16898pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1106,30 +1106,10 @@ Overfull \hbox (3.21994pt too wide) has occurred while \output is active
 <./pics/rect.png, id=31, 758.835pt x 721.69624pt>
 File: ./pics/rect.png Graphic file (type png)
  <use ./pics/rect.png>
-Package pdftex.def Info: ./pics/rect.png used on input line 152.
+Package pdftex.def Info: ./pics/rect.png used on input line 153.
 (pdftex.def)             Requested size: 189.70828pt x 180.42361pt.
 
-Underfull \hbox (badness 2027) in paragraph at lines 158--160
-\T1/ptm/m/n/10 to the black back-round the \T1/ptm/m/it/10 Can-ny\T1/ptm/m/n/10
- -operator de-tects the
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 158--160
-
- []
-
-<./pics/pattern.png, id=32, 493.845pt x 758.835pt>
-File: ./pics/pattern.png Graphic file (type png)
- <use ./pics/pattern.png>
-Package pdftex.def Info: ./pics/pattern.png used on input line 163.
-(pdftex.def)             Requested size: 148.15463pt x 227.65225pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 173--179
+Underfull \hbox (badness 10000) in paragraph at lines 159--161
 
  []
 
@@ -1141,11 +1121,11 @@ Package epstopdf Info: Source file: <./pics/rmr.eps>
 (epstopdf)                    size: 8532 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/rmr-eps-converted-to
 .pdf ./pics/rmr.eps>
-(epstopdf)             \includegraphics on input line 179.
+(epstopdf)             \includegraphics on input line 161.
 Package epstopdf Info: Output file is already uptodate.
 File: ./pics/rmr-eps-converted-to.pdf Graphic file (type pdf)
 <use ./pics/rmr-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/rmr-eps-converted-to.pdf used on input line 179
+Package pdftex.def Info: ./pics/rmr-eps-converted-to.pdf used on input line 161
 .
 (pdftex.def)             Requested size: 516.0pt x 16.24507pt.
 
@@ -1158,7 +1138,17 @@ Overfull \hbox (1.60997pt too wide) has occurred while \output is active
 [] [] 
  []
 
-[3 <./pics/rect.png>]
+[3 <./pics/rect.png>] <./pics/pattern.png, id=36, 493.845pt x 758.835pt>
+File: ./pics/pattern.png Graphic file (type png)
+
+<use ./pics/pattern.png>
+Package pdftex.def Info: ./pics/pattern.png used on input line 164.
+(pdftex.def)             Requested size: 148.15463pt x 227.65225pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 174--180
+
+ []
+
 Package epstopdf Info: Source file: <./pics/rmr2.eps>
 (epstopdf)                    date: 2014-12-09 16:53:36
 (epstopdf)                    size: 2462 bytes
@@ -1167,12 +1157,12 @@ Package epstopdf Info: Source file: <./pics/rmr2.eps>
 (epstopdf)                    size: 2929 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/rmr2-eps-converted-t
 o.pdf ./pics/rmr2.eps>
-(epstopdf)             \includegraphics on input line 208.
+(epstopdf)             \includegraphics on input line 200.
 Package epstopdf Info: Output file is already uptodate.
 File: ./pics/rmr2-eps-converted-to.pdf Graphic file (type pdf)
- <use ./pics/rmr2-eps-converted-to.pdf>
+<use ./pics/rmr2-eps-converted-to.pdf>
 Package pdftex.def Info: ./pics/rmr2-eps-converted-to.pdf used on input line 20
-8.
+0.
 (pdftex.def)             Requested size: 516.0pt x 17.16898pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1193,7 +1183,7 @@ Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
 (epstopdf)                    size: 4729 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
 ted-to.pdf ./pics/ComicKopf.eps>
-(epstopdf)             \includegraphics on input line 237.
+(epstopdf)             \includegraphics on input line 240.
 Package epstopdf Info: Output file is already uptodate.
 
 <./pics/ComicKopf-eps-converted-to.pdf, id=44, 81.30376pt x 69.25874pt>
@@ -1201,7 +1191,7 @@ File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./pics/ComicKopf-eps-converted-to.pdf>
 Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
-ne 237.
+ne 240.
 (pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
 Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
 (epstopdf)                    date: 2006-01-10 15:16:38
@@ -1211,13 +1201,13 @@ Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
 (epstopdf)                    size: 4729 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
 ted-to.pdf ./pics/ComicKopf.eps>
-(epstopdf)             \includegraphics on input line 237.
+(epstopdf)             \includegraphics on input line 240.
 Package epstopdf Info: Output file is already uptodate.
 File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./pics/ComicKopf-eps-converted-to.pdf>
 Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
-ne 237.
+ne 240.
 (pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
 Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
 (epstopdf)                    date: 2006-01-10 15:16:38
@@ -1227,13 +1217,13 @@ Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
 (epstopdf)                    size: 4729 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
 ted-to.pdf ./pics/ComicKopf.eps>
-(epstopdf)             \includegraphics on input line 242.
+(epstopdf)             \includegraphics on input line 245.
 Package epstopdf Info: Output file is already uptodate.
 File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./pics/ComicKopf-eps-converted-to.pdf>
 Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
-ne 242.
+ne 245.
 (pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
 Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
 (epstopdf)                    date: 2006-01-10 15:16:38
@@ -1243,13 +1233,13 @@ Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
 (epstopdf)                    size: 4729 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
 ted-to.pdf ./pics/ComicKopf.eps>
-(epstopdf)             \includegraphics on input line 242.
+(epstopdf)             \includegraphics on input line 245.
 Package epstopdf Info: Output file is already uptodate.
 File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./pics/ComicKopf-eps-converted-to.pdf>
 Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
-ne 242.
+ne 245.
 (pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
 Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
 (epstopdf)                    date: 2006-01-10 15:16:38
@@ -1259,13 +1249,13 @@ Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
 (epstopdf)                    size: 4729 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
 ted-to.pdf ./pics/ComicKopf.eps>
-(epstopdf)             \includegraphics on input line 247.
+(epstopdf)             \includegraphics on input line 250.
 Package epstopdf Info: Output file is already uptodate.
 File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./pics/ComicKopf-eps-converted-to.pdf>
 Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
-ne 247.
+ne 250.
 (pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
 Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
 (epstopdf)                    date: 2006-01-10 15:16:38
@@ -1275,13 +1265,13 @@ Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
 (epstopdf)                    size: 4729 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
 ted-to.pdf ./pics/ComicKopf.eps>
-(epstopdf)             \includegraphics on input line 247.
+(epstopdf)             \includegraphics on input line 250.
 Package epstopdf Info: Output file is already uptodate.
 File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./pics/ComicKopf-eps-converted-to.pdf>
 Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
-ne 247.
+ne 250.
 (pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
 Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
 (epstopdf)                    date: 2006-01-10 15:16:38
@@ -1291,13 +1281,13 @@ Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
 (epstopdf)                    size: 4729 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
 ted-to.pdf ./pics/ComicKopf.eps>
-(epstopdf)             \includegraphics on input line 254.
+(epstopdf)             \includegraphics on input line 257.
 Package epstopdf Info: Output file is already uptodate.
 File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./pics/ComicKopf-eps-converted-to.pdf>
 Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
-ne 254.
+ne 257.
 (pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
 Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
 (epstopdf)                    date: 2006-01-10 15:16:38
@@ -1307,13 +1297,13 @@ Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
 (epstopdf)                    size: 4729 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
 ted-to.pdf ./pics/ComicKopf.eps>
-(epstopdf)             \includegraphics on input line 254.
+(epstopdf)             \includegraphics on input line 257.
 Package epstopdf Info: Output file is already uptodate.
 File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./pics/ComicKopf-eps-converted-to.pdf>
 Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
-ne 254.
+ne 257.
 (pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
 Package epstopdf Info: Source file: <./pics/rmr.eps>
 (epstopdf)                    date: 2014-12-09 16:42:06
@@ -1323,12 +1313,12 @@ Package epstopdf Info: Source file: <./pics/rmr.eps>
 (epstopdf)                    size: 8532 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/rmr-eps-converted-to
 .pdf ./pics/rmr.eps>
-(epstopdf)             \includegraphics on input line 259.
+(epstopdf)             \includegraphics on input line 262.
 Package epstopdf Info: Output file is already uptodate.
 File: ./pics/rmr-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./pics/rmr-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/rmr-eps-converted-to.pdf used on input line 259
+Package pdftex.def Info: ./pics/rmr-eps-converted-to.pdf used on input line 262
 .
 (pdftex.def)             Requested size: 516.0pt x 16.24507pt.
 
@@ -1353,24 +1343,25 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  15345 strings out of 493334
  290429 string characters out of 3139252
- 370661 words of memory out of 3000000
+ 369661 words of memory out of 3000000
  18555 multiletter control sequences out of 15000+200000
  118133 words of font info for 121 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,13n,54p,1556b,2580s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,13n,54p,1588b,2577s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C
 :/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Progra
 m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/M
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb
-8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2
-.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on PS_Vorlage.pdf (5 pages, 241525 bytes).
+c/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/
+MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/
+type1/urw/times/utmri8a.pfb>
+Output written on PS_Vorlage.pdf (5 pages, 250556 bytes).
 PDF statistics:
- 94 PDF objects out of 1000 (max. 8388607)
+ 98 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  91 words of extra memory for PDF output out of 10000 (max. 10000000)
 
