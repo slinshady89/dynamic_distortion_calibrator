@@ -167,12 +167,13 @@ int** DynamicDistortionCalibrator::interpolateLines(int** matchMat, bool vert) {
 				actualVal = matchMat[x][y];
 				// every time the emptyCellCount > 0 and a cell is filled the cells between the last filled and actual were interpolated linear
 				if (((emptyCellCount > 0) || x == 0) && (actualVal != -1)) {
-					for (int xx = 0; xx < emptyCellCount; xx++)
-					{
-						if (lastVal != 0) {
+					if (lastVal != 0) {
+						for (int xx = 0; xx < emptyCellCount; xx++)
+						{
+						
 							// has to be offset with lastVal as that should be the least asignable value
 							// + factor * (yy + 1), as yy = 0 and thus we'd only be replicating the actualValue for the first cell
-							matchMat[x - emptyCellCount + xx][y] = lastVal + round(((actualVal - lastVal) / (float)emptyCellCount)*(xx + 1));
+							matchMat[x - emptyCellCount + xx][y] = (size_t) (lastVal + round(((actualVal - lastVal) / (float)emptyCellCount)*(xx + 1)));
 						}
 					}
 					lastVal = actualVal;
@@ -190,22 +191,23 @@ int** DynamicDistortionCalibrator::interpolateLines(int** matchMat, bool vert) {
 		}
 	}
 	else {
-		for (size_t x = 0; x < _resolutionWidth; x++)
+		for (int x = 0; x < _resolutionWidth; x++)
 		{
 			int emptyCellCount = 0;
 			int lastVal = 0;
 			int actualVal = 0;
-			for (size_t y = 0; y < _resolutionWidth; y++)
+			for (int y = 0; y < _resolutionHeight; y++)
 			{
 				actualVal = matchMat[x][y];
 				// every time the emptyCellCount > 0 and a cell is filled the cells between the last filled and actual were interpolated linear
 				if (((emptyCellCount > 0) || y == 0) && (actualVal != -1)) {
-					for (int yy = 0; yy < emptyCellCount; yy++)
-					{
-						if (lastVal != 0) {
+					if (lastVal != 0) {
+						for (int yy = 0; yy < emptyCellCount; yy++)
+						{
+						
 							// has to be offset with lastVal as that should be the least asignable value
 							// + factor * (yy + 1), as yy = 0 and thus we'd only be replicating the actualValue for the first cell
-							matchMat[x][y - emptyCellCount + yy] = lastVal + round(((actualVal - lastVal) / (float)emptyCellCount)*(yy + 1));
+							matchMat[x][y - emptyCellCount + yy] =(size_t) (lastVal + round(((actualVal - lastVal) / (float)emptyCellCount)*(yy + 1)));
 						}
 					}
 					lastVal = actualVal;

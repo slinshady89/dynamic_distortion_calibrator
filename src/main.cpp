@@ -25,20 +25,23 @@ int main( ){
 	dynDistCal.setJump(3);
 	//dynDistCal.findRawDistortion(matchX, matchY);
 	//dynDistCal.saveRawDistortion("data/maps.txt");
-	dynDistCal.loadRawDistortion("data/maps.txt");
+	dynDistCal.loadRawDistortion("data/mapsJump3.txt");
 
 	matchX = dynDistCal.getMapX();
 	matchY = dynDistCal.getMapY();
 	std::cout << "loaded maps\n";
 
+	matchX = dynDistCal.interpolateLines(matchX, true);
+	matchY = dynDistCal.interpolateLines(matchY, false);
+
 	dynDistCal.setMaps(matchX, matchY);
-	dynDistCal.saveRawDistortion("data/mapsInterpolated.txt");
+	dynDistCal.saveRawDistortion("data/mapsInterpolatedJump3.txt");
 
 	ofxCvGrayscaleImage distortedImage;
 	/*distortedImage.allocate(1280, 720);
 	distortedImage = dynDistCal.createImage(true, true);
 	*/
-	//ofImage img;
+	ofImage img;
 	/*img.setFromPixels(distortedImage.getPixels());
 	img.save("distortedImage.jpg");*/
 	/*
@@ -50,17 +53,8 @@ int main( ){
 	distorted = distortedImage.getCvImage();
 
 	std::cout << "created and saved image\n";
-	*/
-	//dynDistCal.saveImageAsTxt(distortedImage, "data/distortedImageTest.jpg");
-	//std::cout << "saved image\n";
-	/*ofPixels pix = dynDistCal.loadImageAsTxt("data/distortedImage.jpg");
-	std::cout << "loaded image\n";
-	dynDistCal.saveImageAsTxt(img, "data/distortedImage2.jpg");
-	std::cout << "saved image\n";*/
-
 	
-
-	//ofImage undistortedImage = dynDistCal.undistort(distorted, matchX, matchY);
+	ofImage undistortedImage = dynDistCal.undistort(distorted, matchX, matchY);*/
 
 	// save image as cv::imshow doesn't work currently
 	//undistortedImage.save("undistortedTestImage.jpg", OF_IMAGE_QUALITY_BEST);

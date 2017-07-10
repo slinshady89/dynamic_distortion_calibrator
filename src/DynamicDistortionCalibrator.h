@@ -59,7 +59,8 @@ class DynamicDistortionCalibrator {
 
 		// FOR DEBUG PURPOSES ONLY
 		void setMaps(int** mapX, int** mapY);
-
+		// interpolate missing allocations in a vertical or horizontal line in an image
+		int ** interpolateLines(int ** matchMat, bool vert);
 	private:
 		cameraArea _area;
 		int _windowHeight, _windowWidth;
@@ -80,6 +81,5 @@ class DynamicDistortionCalibrator {
 		cv::Mat mappingImage(cv::Mat distordedImage, int** matchY, int** matchX);
 		// breaks up a line into an array
 		int* stringToIntArray(string line);
-		// interpolate missing allocations in a vertical or horizontal line in an image
-		int ** interpolateLines(int ** matchMat, bool vert);
+		
 };
