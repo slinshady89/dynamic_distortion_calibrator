@@ -27,9 +27,6 @@ public:
   void setResolutionWidth(int resolutionWidth);
   void setLinesToDraw(bool vert, bool hor);
 
-
-  // interpolate missing allocations in a vertical or horizontal line in an image
-  int** interpolateLines(int** distImage, bool vert);
 private:
   // Object for camera signal
   ofVideoGrabber _cam;

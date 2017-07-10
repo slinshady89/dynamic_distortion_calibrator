@@ -19,6 +19,7 @@ class DynamicDistortionCalibrator {
 		void loadRawDistortion(string path);
 		// undistorts the given image, using the given distortion maps
 		ofImage undistort(cv::Mat distortedImage, int** matchX, int** matchY);
+		
 		// creates an image for distortion testing purposes
 		ofxCvGrayscaleImage createImage(bool vert = true, bool hor = true);
 
@@ -52,11 +53,6 @@ class DynamicDistortionCalibrator {
 		// getter for jump width
 		int getJump();
 
-		// workaround since the openframeworks internal img.save, img.saveImage, and ofSaveImage(img)
-		// don't work
-		void saveImageAsTxt(ofxCvGrayscaleImage pix, string fileName);
-		ofPixels loadImageAsTxt(string fileName);
-
 		// getter for maps, no setter as it should be either found or loaded
 		int** getMapX();
 		int** getMapY();
@@ -84,4 +80,6 @@ class DynamicDistortionCalibrator {
 		cv::Mat mappingImage(cv::Mat distordedImage, int** matchY, int** matchX);
 		// breaks up a line into an array
 		int* stringToIntArray(string line);
+		// interpolate missing allocations in a vertical or horizontal line in an image
+		int ** interpolateLines(int ** matchMat, bool vert);
 };

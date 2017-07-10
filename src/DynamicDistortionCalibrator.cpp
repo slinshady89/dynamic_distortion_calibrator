@@ -21,7 +21,8 @@ void DynamicDistortionCalibrator::findRawDistortion(int** &matchX, int** &matchY
 
 	// find cameraArea
 	_area = findCameraArea();
-
+	_area._distortionX = interpolateLines(_area._distortionX, true);
+	_area._distortionY = interpolateLines(_area._distortionY, true);
 	matchX = _area._distortionX;
 	matchY = _area._distortionY;
 }
@@ -85,8 +86,6 @@ void DynamicDistortionCalibrator::loadRawDistortion(string path)
 		_area._sizeImageX = width;
 		_area._sizeImageY = height;
 
-		std::cout << "loaded sizes: " << width << " x " << height << "\n";
-
 		_area._distortionX = new int*[width];
 		_area._distortionY = new int*[width];
 
@@ -115,7 +114,7 @@ void DynamicDistortionCalibrator::loadRawDistortion(string path)
 				xComplete = true;
 			}
 		}
-		std::cout << "loaded x-map\n";
+
 		// load y map
 		count = 0;
 		getline(file, line);
@@ -156,157 +155,73 @@ int* DynamicDistortionCalibrator::stringToIntArray(string line) {
 
 
 //_____________________________________________________________________________
-void DynamicDistortionCalibrator::saveImageAsTxt(ofxCvGrayscaleImage pix, string fileName) {
-	/*// for type ofPixels
-	unsigned char* data;
-	int width = pix.getWidth();
-	int height = pix.getHeight();
-	int noChannels = pix.getNumChannels();
-	ofImageType type = pix.getImageType();
-	
-	std::cout << "noChannels: " << noChannels << endl;
-	std::cout << "type: " << type << endl;
-
-	ofstream file(fileName);
-
-	if (file.is_open()) {
-		// grab all the data from the channels
-		ofPixels* channels = new ofPixels[noChannels];
-		for (int i = 0; i < noChannels; i++) {
-			channels[i] = pix.getChannel(i);
-		}
-
-		// first print the sizes of the arrays
-		file << width << "\n";
-		file << height << "\n";
-		file << type << "\n";
-		file << noChannels << "\n";
-		file << pix.getPixelFormat() << "\n";
-
-		ofPixels pixColor;
-		pixColor.allocate(width, height, 1);
-
-		// then print the arrays, first x-distortion
-		for (size_t i = 0; i < noChannels; i++) {
-			pixColor = pix.getChannel(i);
-			for (size_t y = 0; y < height; y++) {
-				for (size_t x = 0; x < width; x++) {
-					file << pixColor.getColor(x, y);
-					if (x != width - 1) {
-						file << ", ";
+int** DynamicDistortionCalibrator::interpolateLines(int** matchMat, bool vert) {
+	if (vert) {
+		for (int y = 0; y < _resolutionHeight; y++)
+		{
+			int emptyCellCount = 0;
+			int lastVal = 0;
+			int actualVal = 0;
+			for (int x = 0; x < _resolutionWidth; x++)
+			{
+				actualVal = matchMat[x][y];
+				// every time the emptyCellCount > 0 and a cell is filled the cells between the last filled and actual were interpolated linear
+				if (((emptyCellCount > 0) || x == 0) && (actualVal != -1)) {
+					for (int xx = 0; xx < emptyCellCount; xx++)
+					{
+						if (lastVal != 0) {
+							// has to be offset with lastVal as that should be the least asignable value
+							// + factor * (yy + 1), as yy = 0 and thus we'd only be replicating the actualValue for the first cell
+							matchMat[x - emptyCellCount + xx][y] = lastVal + round(((actualVal - lastVal) / (float)emptyCellCount)*(xx + 1));
+						}
 					}
+					lastVal = actualVal;
+
 				}
-				file << ";\n";
-			}
-			if (i != noChannels - 1) {
-				std::cout << "went into next channel" << i << "\n";
-				file << "next\n";
-			}
-		}
 
-		delete[] channels;
-	}
-	else {
-		std::cout << "Saving the maps went wrong. File could not be openend.\n";
-	}*/
-
-	cv::Mat mat;
-	mat = pix.getCvImage();
-	cv::Mat* matPointer = &mat;
-
-	cv::FileStorage file;
-	file.open(fileName, cv::FileStorage::WRITE);
-	file.writeObj(fileName, matPointer);
-	file.release();
-}
-
-//_____________________________________________________________________________
-ofPixels DynamicDistortionCalibrator::loadImageAsTxt(string fileName) {
-	/*ifstream file(fileName);
-	string line;
-	ofPixels pix;
-	unsigned char* data;
-	if (file.is_open()) {
-		// first line is width of the array
-		getline(file, line);
-		int width = stoi(line);
-		// second line is height of the array
-		getline(file, line);
-		int height = stoi(line);
-		// third line is ofImageType
-		getline(file, line);
-		int typeNo = stoi(line);
-		ofImageType type = static_cast<ofImageType>(stoi(line));
-
-		std::cout << "type: " << type << "\n";
-		
-		// fourth line number of channels
-		getline(file, line);
-		int noChannels = stoi(line);
-
-		// fifth line pixelFormat
-		getline(file, line);
-		ofPixelFormat format = static_cast<ofPixelFormat>(stoi(line));
-		pix.pixelBitsFromPixelFormat(format);
-
-		// allocate pix
-		pix.allocate(width, height, type);
-		pix.bytesFromPixelFormat(width, height, format);
-		pix.setNumChannels(noChannels);
-
-		data = new unsigned char[width * height];
-
-		// go over all lines and grab color
-		size_t channelCount = 0;
-		size_t lineCount = 0;
-		ofPixels pixHelper;
-		pixHelper.allocate(width, height, type);
-		pixHelper.bytesFromPixelFormat(width, height, format);
-		int* tmp = new int[width];
-		getline(file, line);
-		while (!line.empty()) {
-			// if one channel is completed and there's another
-			if (line.compare("next") == 0) {
-				// set this channel, increase count, reset lineCount
-				//pix.setChannel(channelCount, pixHelper.getChannel(channelCount));
-				pix.setFromExternalPixels(data, width, height, format);
-				channelCount++;
-				lineCount = 0;
-				// get next line and take it from the top
-				getline(file, line);
-				continue;
-			}
-			// get numbers out of line
-			tmp = stringToIntArray(line);
-			// set this channels colors
-			for (size_t x = 0; x < width; x++) {
-				// y value is line count
-				data[pix.getPixelIndex(x, lineCount)] = (unsigned char) tmp[x];
-				if (x == 33) {
-					cout << "data[33] = " << data[pix.getPixelIndex(x, lineCount)] << " and tmp[34] = " << (unsigned char) tmp[x] << endl;
+				if ((actualVal == -1))
+				{
+					emptyCellCount++;
+				}
+				else {
+					emptyCellCount = 0;
 				}
 			}
-			// read next line and increase line count
-			getline(file, line);
-			lineCount++;
 		}
-		// after everything was read in, set last channel
-		pix.setFromExternalPixels(data, width, height, noChannels);
-		std::cout << "im pix: " << (int) pix.getData()[pix.getPixelIndex(4, 0)] << endl;
 	}
 	else {
-		std::cout << "Error: Could not open file.\n";
-		return ofPixels();
+		for (size_t x = 0; x < _resolutionWidth; x++)
+		{
+			int emptyCellCount = 0;
+			int lastVal = 0;
+			int actualVal = 0;
+			for (size_t y = 0; y < _resolutionWidth; y++)
+			{
+				actualVal = matchMat[x][y];
+				// every time the emptyCellCount > 0 and a cell is filled the cells between the last filled and actual were interpolated linear
+				if (((emptyCellCount > 0) || y == 0) && (actualVal != -1)) {
+					for (int yy = 0; yy < emptyCellCount; yy++)
+					{
+						if (lastVal != 0) {
+							// has to be offset with lastVal as that should be the least asignable value
+							// + factor * (yy + 1), as yy = 0 and thus we'd only be replicating the actualValue for the first cell
+							matchMat[x][y - emptyCellCount + yy] = lastVal + round(((actualVal - lastVal) / (float)emptyCellCount)*(yy + 1));
+						}
+					}
+					lastVal = actualVal;
+
+				}
+				if ((matchMat[x][y] == -1))
+				{
+					emptyCellCount++;
+				}
+				else {
+					emptyCellCount = 0;
+				}
+			}
+		}
 	}
-	return pix;*/
-
-	ofFile file;
-	file.open(fileName);
-
-	ofImage img;
-	img.loadImage(file);
-
-	return img.getPixels();
+	return matchMat;
 }
 
 //_____________________________________________________________________________
