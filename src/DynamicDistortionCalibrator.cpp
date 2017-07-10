@@ -21,8 +21,7 @@ void DynamicDistortionCalibrator::findRawDistortion(int** &matchX, int** &matchY
 
 	// find cameraArea
 	_area = findCameraArea();
-	_area._distortionX = interpolateLines(_area._distortionX, true);
-	_area._distortionY = interpolateLines(_area._distortionY, true);
+
 	matchX = _area._distortionX;
 	matchY = _area._distortionY;
 }
@@ -41,7 +40,7 @@ void DynamicDistortionCalibrator::saveRawDistortion(string path)
 		for (int y = 0; y < _area._sizeImageY; y++) {
 			for (int x = 0; x < _area._sizeImageX; x++) {
 				file << _area._distortionX[x][y];
-				if (y != _area._sizeImageX - 1) {
+				if (x != _area._sizeImageX - 1) {
 					file << ", ";
 				}
 			}
@@ -55,7 +54,7 @@ void DynamicDistortionCalibrator::saveRawDistortion(string path)
 		for (int y = 0; y < _area._sizeImageY; y++) {
 			for (int x = 0; x < _area._sizeImageX; x++) {
 				file << _area._distortionY[x][y];
-				if (y != _area._sizeImageX - 1) {
+				if (x != _area._sizeImageX - 1) {
 					file << ", ";
 				}
 			}
@@ -261,11 +260,14 @@ ofxCvGrayscaleImage DynamicDistortionCalibrator::createImage(bool vert, bool hor
 ofImage DynamicDistortionCalibrator::undistort(cv::Mat distortedImage, int** matchX, int** matchY) {
 	cout << "starting undistortion\n";
 	cv::Mat undistorted = mappingImage(distortedImage, matchX, matchY);
+	ofImage img;
+	img.setFromPixels((unsigned char*)IplImage(undistorted).imageData, undistorted.size().width,
+		undistorted.size().height, OF_IMAGE_GRAYSCALE);
+	img.save("uninterpolated.jpg", ofImageQualityType::OF_IMAGE_QUALITY_BEST);
 	cout << "mapping done\n";
 	cv::Mat interpolated = interpolateImage(undistorted);
 	cout << "interpolation done\n";
 	// conversion to ofImage
-	ofImage img;
 	img.setFromPixels((unsigned char*)IplImage(interpolated).imageData, interpolated.size().width,
 		interpolated.size().height, OF_IMAGE_GRAYSCALE);
 	return img;
@@ -400,37 +402,37 @@ cv::Mat DynamicDistortionCalibrator::interpolateImage(cv::Mat undistedImage) {
 	int rows = undistedImage.rows;
 	int cols = undistedImage.cols;
 
-	for (size_t x = 0; x < cols; x++) {
-		for (size_t y = 0; y < rows; y++) {
+	for (int x = 0; x < cols; x++) {
+		for (int y = 0; y < rows; y++) {
 			// if a seen value is at (x,y) position use that
-			if (undistedImage.at<uchar>(y, x) != -1) {
+			if (_interpolate[x][y] == false) {
 				interpolatedImage.at<uchar>(y, x) = undistedImage.at<uchar>(y, x);
 			}
 			// else use bilinear interpolation of all accessible pixels around (x,y)
 			else {
 				size_t interpolate = 0;
 				size_t count = 0;
-				if (x + 1 < rows) {
-					interpolate += (size_t)undistedImage.at<uchar>(x + 1, y);
+				if (y + 1 < rows && _interpolate[x][y + 1] == false) {
+					interpolate += (size_t)undistedImage.at<uchar>(y + 1, x);
 					count++;
 				}
-				if (y + 1 < cols)
+				if (x + 1 < cols && _interpolate[x + 1][y] == false)
 				{
-					interpolate += (size_t)undistedImage.at<uchar>(x, y + 1);
+					interpolate += (size_t)undistedImage.at<uchar>(y, x + 1);
 					count++;
 				}
-				if (x - 1 > 0) {
-					interpolate += (size_t)undistedImage.at<uchar>(x - 1, y);
+				if (x - 1 > 0 && _interpolate[x - 1][y] == false) {
+					interpolate += (size_t)undistedImage.at<uchar>(y, x - 1);
 					count++;
 				}
-				if (y - 1 < 0)
+				if (y - 1 > 0 && _interpolate[x][y - 1] == false)
 				{
-					interpolate += (size_t)undistedImage.at<uchar>(x, y - 1);
+					interpolate += (size_t)undistedImage.at<uchar>(y - 1, x);
 					count++;
 				}
 				// if less than 2 pixel next to the not seen pixel are seen then it has to be at the border or not detected by the camera
 				if (count > 1) {
-					interpolatedImage.at<uchar>(x, y) = (uchar)floor(interpolate / count);
+					interpolatedImage.at<uchar>(y, x) = (uchar)floor(interpolate / count);
 				}
 			}
 		}
@@ -479,6 +481,20 @@ cv::Mat DynamicDistortionCalibrator::mappingImage(cv::Mat distortedImage, int** 
 	}
 	// allocates the mapped undistorted matrix with zeros
 	cv::Mat mappedImage(maxY - minY + 1, maxX - minX + 1, distortedImage.type(), cv::Scalar::all(0));
+
+	// bool array for interpolation can be initialized here, as now we know it's size
+	_interpolate = new bool*[maxX - minX + 1];
+	for (int i = 0; i < (maxX - minX + 1); i++) {
+		_interpolate[i] = new bool[maxY - minY + 1];
+	}
+
+	// initialize as true and set to false once the value is actually set in the image
+	for (int x = 0; x < maxX - minX + 1; x++) {
+		for (int y = 0; y < maxY - minY + 1; y++) {
+			_interpolate[x][y] = true;
+		}
+	}
+
 	// checks the found matching matrices for the (x,y) distortion values and 
 	// move the color values to the correct position 
 	for (size_t x = 0; x < cols; x++) {
@@ -489,7 +505,8 @@ cv::Mat DynamicDistortionCalibrator::mappingImage(cv::Mat distortedImage, int** 
 				if (distX >= 0 && distY >= 0)
 				{
 					//auto a = distortedImage.at<uchar>(y,x);
-					mappedImage.at<uchar>(distY, distX) << distortedImage.at<uchar>(y, x);
+					mappedImage.at<uchar>(distY, distX) = distortedImage.at<uchar>(y, x);
+					_interpolate[distX][distY] = false;
 				}
 			}
 		}
