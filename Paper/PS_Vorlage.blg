@@ -1,4 +1,5 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: PS_Vorlage.aux
-I found no \bibdata command---while reading file PS_Vorlage.aux
-I found no \bibstyle command---while reading file PS_Vorlage.aux
-(There were 2 error messages)
+The style file: unsrt.bst
+Database file #1: Literatur.bib
+Warning--I didn't find a database entry for "Faugeras:1992"
+(There was 1 warning)
