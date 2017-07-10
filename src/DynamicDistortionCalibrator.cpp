@@ -173,8 +173,7 @@ int** DynamicDistortionCalibrator::interpolateLines(int** matchMat, bool vert) {
 						
 							// has to be offset with lastVal as that should be the least asignable value
 							// + factor * (yy + 1), as yy = 0 and thus we'd only be replicating the actualValue for the first cell
-							int setVal = lastVal + round(((actualVal - lastVal) / (float)emptyCellCount)*(xx + 1));
-							matchMat[x - emptyCellCount + xx][y] = setVal;
+							matchMat[x - emptyCellCount + xx][y] = (size_t) (lastVal + round(((actualVal - lastVal) / (float)emptyCellCount)*(xx + 1)));
 						}
 					}
 					lastVal = actualVal;
@@ -208,7 +207,7 @@ int** DynamicDistortionCalibrator::interpolateLines(int** matchMat, bool vert) {
 						
 							// has to be offset with lastVal as that should be the least asignable value
 							// + factor * (yy + 1), as yy = 0 and thus we'd only be replicating the actualValue for the first cell
-							matchMat[x][y - emptyCellCount + yy] = lastVal + round(((actualVal - lastVal) / (float)emptyCellCount)*(yy + 1));
+							matchMat[x][y - emptyCellCount + yy] =(size_t) (lastVal + round(((actualVal - lastVal) / (float)emptyCellCount)*(yy + 1)));
 						}
 					}
 					lastVal = actualVal;
