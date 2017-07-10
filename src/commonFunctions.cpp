@@ -84,7 +84,7 @@ ofPixels commonFunctions::subtractBackground(ofPixels img, ofPixels bkgd)
 				 brightCoord.x = x;
 				 brightCoord.y = y;
 				 brightCoord.b = grayValue;
-         maxGrayValue = grayValue;
+				 maxGrayValue = grayValue;
 			 }
 		 }
 	 }

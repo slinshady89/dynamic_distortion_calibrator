@@ -37,10 +37,10 @@ void DynamicDistortionCalibrator::saveRawDistortion(string path)
 		file << _area._sizeImageY << "\n";
 
 		// then print the arrays, first x-distortion
-		for (int x = 0; x < _area._sizeImageX; x++) {
-			for (int y = 0; y < _area._sizeImageY; y++) {
+		for (int y = 0; y < _area._sizeImageY; y++) {
+			for (int x = 0; x < _area._sizeImageX; x++) {
 				file << _area._distortionX[x][y];
-				if (y != _area._sizeImageY - 1) {
+				if (y != _area._sizeImageX - 1) {
 					file << ", ";
 				}
 			}
@@ -50,10 +50,11 @@ void DynamicDistortionCalibrator::saveRawDistortion(string path)
 		std::cout << "saved x-map\n";
 		file << "\n";
 		// then y-distortion
-		for (int x = 0; x < _area._sizeImageX; x++) {
-			for (int y = 0; y < _area._sizeImageY; y++) {
-				file << _area._distortionX[x][y];
-				if (y != _area._sizeImageY - 1) {
+		
+		for (int y = 0; y < _area._sizeImageY; y++) {
+			for (int x = 0; x < _area._sizeImageX; x++) {
+				file << _area._distortionY[x][y];
+				if (y != _area._sizeImageX - 1) {
 					file << ", ";
 				}
 			}
@@ -101,7 +102,7 @@ void DynamicDistortionCalibrator::loadRawDistortion(string path)
 		getline(file, line);
 		while(xComplete == false) {
 			// work on that line
-			_area._distortionX[count] = stringToArray(line);
+			_area._distortionX[count] = stringToIntArray(line);
 			// get next line
 			getline(file, line);
 			++count;
@@ -116,7 +117,7 @@ void DynamicDistortionCalibrator::loadRawDistortion(string path)
 		getline(file, line);
 		while (!line.empty()) {
 			// work on that line
-			_area._distortionY[count] = stringToArray(line);
+			_area._distortionY[count] = stringToIntArray(line);
 			// get next line
 			getline(file, line);
 			++count;
@@ -129,7 +130,7 @@ void DynamicDistortionCalibrator::loadRawDistortion(string path)
 }
 
 //_____________________________________________________________________________
-int* DynamicDistortionCalibrator::stringToArray(string line) {
+int* DynamicDistortionCalibrator::stringToIntArray(string line) {
 	string tmp;
 	vector<int> vec;
 	while (line.compare(";") != 0 && line.compare("") != 0) {
@@ -144,6 +145,161 @@ int* DynamicDistortionCalibrator::stringToArray(string line) {
 	}
 
 	return arr;
+}
+
+
+//_____________________________________________________________________________
+void DynamicDistortionCalibrator::saveImageAsTxt(ofxCvGrayscaleImage pix, string fileName) {
+	/*// for type ofPixels
+	unsigned char* data;
+	int width = pix.getWidth();
+	int height = pix.getHeight();
+	int noChannels = pix.getNumChannels();
+	ofImageType type = pix.getImageType();
+	
+	std::cout << "noChannels: " << noChannels << endl;
+	std::cout << "type: " << type << endl;
+
+	ofstream file(fileName);
+
+	if (file.is_open()) {
+		// grab all the data from the channels
+		ofPixels* channels = new ofPixels[noChannels];
+		for (int i = 0; i < noChannels; i++) {
+			channels[i] = pix.getChannel(i);
+		}
+
+		// first print the sizes of the arrays
+		file << width << "\n";
+		file << height << "\n";
+		file << type << "\n";
+		file << noChannels << "\n";
+		file << pix.getPixelFormat() << "\n";
+
+		ofPixels pixColor;
+		pixColor.allocate(width, height, 1);
+
+		// then print the arrays, first x-distortion
+		for (size_t i = 0; i < noChannels; i++) {
+			pixColor = pix.getChannel(i);
+			for (size_t y = 0; y < height; y++) {
+				for (size_t x = 0; x < width; x++) {
+					file << pixColor.getColor(x, y);
+					if (x != width - 1) {
+						file << ", ";
+					}
+				}
+				file << ";\n";
+			}
+			if (i != noChannels - 1) {
+				std::cout << "went into next channel" << i << "\n";
+				file << "next\n";
+			}
+		}
+
+		delete[] channels;
+	}
+	else {
+		std::cout << "Saving the maps went wrong. File could not be openend.\n";
+	}*/
+
+	cv::Mat mat;
+	mat = pix.getCvImage();
+	cv::Mat* matPointer = &mat;
+
+	cv::FileStorage file;
+	file.open(fileName, cv::FileStorage::WRITE);
+	file.writeObj(fileName, matPointer);
+	file.release();
+}
+
+//_____________________________________________________________________________
+ofPixels DynamicDistortionCalibrator::loadImageAsTxt(string fileName) {
+	/*ifstream file(fileName);
+	string line;
+	ofPixels pix;
+	unsigned char* data;
+	if (file.is_open()) {
+		// first line is width of the array
+		getline(file, line);
+		int width = stoi(line);
+		// second line is height of the array
+		getline(file, line);
+		int height = stoi(line);
+		// third line is ofImageType
+		getline(file, line);
+		int typeNo = stoi(line);
+		ofImageType type = static_cast<ofImageType>(stoi(line));
+
+		std::cout << "type: " << type << "\n";
+		
+		// fourth line number of channels
+		getline(file, line);
+		int noChannels = stoi(line);
+
+		// fifth line pixelFormat
+		getline(file, line);
+		ofPixelFormat format = static_cast<ofPixelFormat>(stoi(line));
+		pix.pixelBitsFromPixelFormat(format);
+
+		// allocate pix
+		pix.allocate(width, height, type);
+		pix.bytesFromPixelFormat(width, height, format);
+		pix.setNumChannels(noChannels);
+
+		data = new unsigned char[width * height];
+
+		// go over all lines and grab color
+		size_t channelCount = 0;
+		size_t lineCount = 0;
+		ofPixels pixHelper;
+		pixHelper.allocate(width, height, type);
+		pixHelper.bytesFromPixelFormat(width, height, format);
+		int* tmp = new int[width];
+		getline(file, line);
+		while (!line.empty()) {
+			// if one channel is completed and there's another
+			if (line.compare("next") == 0) {
+				// set this channel, increase count, reset lineCount
+				//pix.setChannel(channelCount, pixHelper.getChannel(channelCount));
+				pix.setFromExternalPixels(data, width, height, format);
+				channelCount++;
+				lineCount = 0;
+				// get next line and take it from the top
+				getline(file, line);
+				continue;
+			}
+			// get numbers out of line
+			tmp = stringToIntArray(line);
+			// set this channels colors
+			for (size_t x = 0; x < width; x++) {
+				// y value is line count
+				data[pix.getPixelIndex(x, lineCount)] = (unsigned char) tmp[x];
+				if (x == 33) {
+					cout << "data[33] = " << data[pix.getPixelIndex(x, lineCount)] << " and tmp[34] = " << (unsigned char) tmp[x] << endl;
+				}
+			}
+			// read next line and increase line count
+			getline(file, line);
+			lineCount++;
+		}
+		// after everything was read in, set last channel
+		pix.setFromExternalPixels(data, width, height, noChannels);
+		std::cout << "im pix: " << (int) pix.getData()[pix.getPixelIndex(4, 0)] << endl;
+	}
+	else {
+		std::cout << "Error: Could not open file.\n";
+		return ofPixels();
+	}
+	return pix;*/
+
+	ofFile file;
+	file.open(fileName);
+
+	ofImage img;
+	img.loadImage(file);
+
+	return img.getPixels();
 }
 
 //_____________________________________________________________________________
@@ -179,8 +335,11 @@ ofxCvGrayscaleImage DynamicDistortionCalibrator::createImage(bool vert, bool hor
 
 //_____________________________________________________________________________
 ofImage DynamicDistortionCalibrator::undistort(cv::Mat distortedImage, int** matchX, int** matchY) {
+	cout << "starting undistortion\n";
 	cv::Mat undistorted = mappingImage(distortedImage, matchX, matchY);
+	cout << "mapping done\n";
 	cv::Mat interpolated = interpolateImage(undistorted);
+	cout << "interpolation done\n";
 	// conversion to ofImage
 	ofImage img;
 	img.setFromPixels((unsigned char*)IplImage(interpolated).imageData, interpolated.size().width,
@@ -220,15 +379,14 @@ cameraArea DynamicDistortionCalibrator::findCameraArea()
 	auto cameraAreaDetector = make_shared<CameraAreaDetector>();
 	// set the app's pointer
 	cameraAreaDetector->setCameraAreaPointerAndPixelSize(areaPointer, _pixelSize);
-	// set the spacing, was calculated for our setup as optimal with a value of 34
+	// set the spacing, was calculated for our setup as optimal with a value of 70
 	cameraAreaDetector->setSpacing(_spacing);
 	cameraAreaDetector->setResolutionHeight(_resolutionHeight);
 	cameraAreaDetector->setResolutionWidth(_resolutionWidth);
 	cameraAreaDetector->setCannyLowerThreshold(_cannyLower);
 	cameraAreaDetector->setCannyUpperThreshold(_cannyUpper);
+	cameraAreaDetector->setJump(_jump);
 	ofRunApp(cameraAreaDetector);
-	std::cout << "found area \n";
-	std::cout << area._distortionX[0][0] << "\n";
 
 	return area;
 }
@@ -284,6 +442,27 @@ int DynamicDistortionCalibrator::getCannyLowerThreshold() {
 }
 
 //_____________________________________________________________________________
+int** DynamicDistortionCalibrator::getMapX() {
+	return _area._distortionX;
+}
+
+//_____________________________________________________________________________
+int** DynamicDistortionCalibrator::getMapY() {
+	return _area._distortionY;
+}
+
+//_____________________________________________________________________________
+void DynamicDistortionCalibrator::setJump(int jump)
+{
+	_jump = jump;
+}
+
+//_____________________________________________________________________________
+int DynamicDistortionCalibrator::getJump() {
+	return _jump;
+}
+
+//_____________________________________________________________________________
 cv::Mat DynamicDistortionCalibrator::interpolateImage(cv::Mat undistedImage) {
 	cv::Mat interpolatedImage;
 	// allocate the interpolatedImage that will be the return of the function with the size of the 
@@ -332,54 +511,65 @@ cv::Mat DynamicDistortionCalibrator::interpolateImage(cv::Mat undistedImage) {
 
 //_____________________________________________________________________________
 cv::Mat DynamicDistortionCalibrator::mappingImage(cv::Mat distortedImage, int** matchX, int** matchY) {
-	cv::Mat mappedImage;
+	//cv::Mat mappedImage;
 	size_t rows = distortedImage.rows;
 	size_t cols = distortedImage.cols;
 	size_t maxX, maxY, minX, minY;
 	maxX = 0;
 	maxY = 0;
-	minX = rows;
-	minY = cols;
+	minX = MAXSIZE_T;
+	minY = MAXSIZE_T;
 
 	// find the extremal values of x & y  and save them for correct allocation of the mappedImage
 	for (size_t i = 0; i < rows; i++) {
 		for (size_t j = 0; j < cols; j++) {
 			size_t x = (size_t)matchX[i][j];
 			size_t y = (size_t)matchY[i][j];
-			if (x > maxX)
-			{
-				maxX = x;
+			if (x != -1) {
+				if (x > maxX)
+				{
+					maxX = x;
+				}
+				else if (x < minX)
+				{
+					minX = x;
+				}
 			}
-			if (y > maxY)
-			{
-				maxY = y;
-			}
-			if (x < minX)
-			{
-				minX = x;
-			}
-			if (y < minY)
-			{
-				minY = y;
+
+			if (y != -1) {
+				if (y > maxY)
+				{
+					maxY = y;
+				}
+				else if (y < minY)
+				{
+					minY = y;
+				}
 			}
 		}
 	}
+	cout << "first loop to look for min and max done\n";
 	// allocates the mapped undistorted matrix with zeros
-	mappedImage.zeros(maxX - minX, maxY - minY, distortedImage.type());
 
+	cv::Mat mappedImage(maxY - minY, maxX - minX, CV_32F, cv::Scalar::all(0));
+	cout << "allocated image\n";
 	// checks the found matching matrices for the (x,y) distortion values and 
 	// move the color values to the correct position 
 	for (size_t x = 0; x < rows; x++) {
 		for (size_t y = 0; y < cols; y++) {
 			if (matchX[x][y] != -1 && matchY[x][y] != -1) {
-				size_t distX = (size_t)matchX[x][y] - minX + 1;
-				size_t distY = (size_t)matchY[x][y] - minY + 1;
+				std::cout << "matchX: " << matchX[x][y] - minY << ", matchY: " << matchY[x][y] - minY << " sizes: " << rows << "x" << cols << endl;
+				size_t distX = (size_t)matchX[x][y] - minX;
+				size_t distY = (size_t)matchY[x][y] - minY;
 				if (distX >= 0 && distY >= 0)
 				{
+					std::cout << "error ";
 					mappedImage.at<uchar>(distX, distY) = distortedImage.at<uchar>(x, y);
+					cout << "here?\n";
 				}
 			}
 		}
 	}
+	cout << "went over image\n";
 	return mappedImage;
 }

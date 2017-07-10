@@ -94,16 +94,19 @@ void CameraAreaDetector::setup()
 	_firstBorderReached = false;
 	_secondBorderReached = false;
 
-	_x = 0;
-	_y = 0;
+	_x = _screenWidth;
+	_y = _screenHeight;
 	_distanceFromScreenX = 0;
-	_distanceFromScreenX = 0;
-	
+	_distanceFromScreenY = 0;
+
 	_leastX = INT_MAX;
 	_leastY = INT_MAX;
 	_largestX = 0;
 	_largestY = 0;
-	//test: _area->_borderArray[0][0].x = 100;
+
+	_coverageRatio = (float)(_imageWidth * _imageHeight) / (float)(_screenWidth * _screenHeight);
+
+	cv::setBreakOnError(true);
 }
 
 //_____________________________________________________________________________
@@ -149,7 +152,15 @@ void CameraAreaDetector::draw()
 		}
 		else if (_borderState == 1) {
 			// drawing the rectangle that grows over the screen
-			ofDrawRectangle(0, 0, _screenWidth - _distanceFromScreenX, _screenHeight - _distanceFromScreenY);
+			if (_x > _initPos.x && _y > _initPos.y) {
+				ofDrawRectangle(0, 0, _screenWidth - _distanceFromScreenX, _screenHeight - _distanceFromScreenY);
+			}
+			else {
+				ofBackground(ofColor::white);
+				ofSetColor(ofColor::black);
+				ofDrawRectangle(0, 0, _screenWidth - _distanceFromScreenX, _screenHeight - _distanceFromScreenY);
+				ofSetColor(ofColor::white);
+			}
 		}
 		else {
 			fillOutArea();
@@ -163,33 +174,6 @@ void CameraAreaDetector::draw()
 			drawDebug();
 		}
 
-		
-
-		/*cout << "_state 0, _borderstate " << _borderState << "\n";
-		ofSetColor(ofColor::white);
-		ofFill();
-		if(_borderState == 0) {
-			// actually draws the pixel that should be detected for detection the borders of the camera frame
-			ofDrawRectangle(_screen.x, _screen.y, _pixelSize, _pixelSize);
-		}
-		else if (_borderState == 1) {
-			makeInitialCross(true);
-		}
-		else if (_borderState == 2) {
-			makeInitialCross(false);
-		}
-		else if (_borderState == 3) {
-			makeVerticalLines();
-		}
-		else if (_borderState == 4) {
-			makeHorizontalLines();
-		}
-		else if (_borderState == 5) {
-			_img.draw(_initPos.x, _initPos.y);
-			
-			//fillOutBorders();
-		}*/
-
 		// next call capturing state
 		if (_drawCount == 5) {  // minimum 4 for Nils' computer check all if you need higher timer!
 			_drawCount = 0;
@@ -198,7 +182,6 @@ void CameraAreaDetector::draw()
 		}
 
 	} else if(_state == 1) {
-		cout << "_state 1, _borderstate " << _borderState << "\n";
 		// entered capturing state
 
 		// static update of camera
@@ -224,30 +207,35 @@ void CameraAreaDetector::draw()
 
 			// get the difference between the background and the current image
 			ofxCvGrayscaleImage diff;
-			diff.setFromPixels(_background);
-			diff.absDiff(_img);
+			diff.setFromPixels(_img.getPixels());
+			
+			diff.threshold(WHITE_THRESHOLD, false);
+			cout << "thresholded\n";
+			//diff.absDiff(_img);
+			pos brightest = commonFunctions::detectGrayValue(diff.getPixels());
+			cout << "detected brightest\n";
 			_diffPixels = diff.getPixels();
 			cv::Mat temp = diff.getCvImage();
 			// use canny to detect the edge of the rectangle on the screen
 			// if it's not there, canny will simply find no edges
 			cv::Mat edges;
+			cout << "before canny\n";
 			cv::Canny(temp, edges, _cannyLower, _cannyUpper);
-
+			cout << "after canny\n";
 			// get ofImage out of the cv::Mat object
 			_contour.setFromPixels((unsigned char*)IplImage(edges).imageData, edges.size().width, edges.size().height, OF_IMAGE_GRAYSCALE);
-			_diffPixels = _contour.getPixels();
-
+			cout << "set from pixels\n";
 			// creating the vertical edges
 			if (_firstBorderReached == false) {
-				cout << "_x: " << _x << " from " << _rightBorder << " to " << _leftBorder << "\n";
 				// remember the edge in the current image
 				writeLineCorrespondences(true);
 				// increase the distance from the screen
-				_distanceFromScreenX += 5;
+				_distanceFromScreenX += _jump;
 				_x = _screenWidth - _distanceFromScreenX;
 				// if the edge has walked far enough away from the initial point
 				// cease its walk and continue on with the horizontal edges
 				if (_x <= _leftBorder) {
+					_x = _screenWidth;
 					_y = _lowerBorder;
 					_distanceFromScreenY = _screenHeight - _lowerBorder;
 					_distanceFromScreenX = 0;
@@ -256,7 +244,7 @@ void CameraAreaDetector::draw()
 			}
 			else if (_secondBorderReached == false) {
 				writeLineCorrespondences(false);
-				_distanceFromScreenY += 5;
+				_distanceFromScreenY += _jump;
 				_y = _screenHeight - _distanceFromScreenY;
 				if (_y <= _upperBorder) {
 					_y = 0;
@@ -265,41 +253,6 @@ void CameraAreaDetector::draw()
 				}
 			}
 		}
-		/*
-		cout << "_state 2, _borderstate " << _borderState << "\n";
-		if (_borderState == 0) {
-			determineAndSetPosition();
-			findInitialPosition();
-			if (_initPosFound == true) {
-				_borderState = 1;
-			}
-		}
-		else if (_borderState == 1 || _borderState == 2) {
-			bool vertical = false;
-			if (_borderState == 1) {
-				vertical = true;
-			}
-			writeInitialCross(vertical);
-			_borderState++;
-		}
-		else if (_borderState == 3) {
-			writeVerticalLines();
-			if (_secondBorderReached == true) {
-				// reset border reached bools and proceed to next state
-				_firstBorderReached = false;
-				_secondBorderReached = false;
-				_borderState = 4;
-			}
-		}
-		else if (_borderState == 4) {
-			writeHorizontalLines();
-			if (_secondBorderReached == true) {
-				_borderState = 5;
-			}
-		}
-		else if (_borderState == 5) {
-			calculateBorders();
-		}*/
 
 		// next call drawing state
 		_state = 0;
@@ -330,14 +283,22 @@ void CameraAreaDetector::drawDebug()
 	cam.draw(0, 240);
 	ofImage background;
 	background = _background;
-	background.resize(320, 240);
-	background.draw(0, 480);
+	if (background.bAllocated()) {
+		background.resize(320, 240);
+		background.draw(0, 480);
+	}
+
+	if (_contour.bAllocated()) {
+		ofImage contour = _contour;
+		contour.resize(320, 240);
+		contour.draw(0, 720);
+	}
 
 	ofNoFill();
 	if (_maxBrightness > WHITE_THRESHOLD) {
 		// remap values to resized image [0, resolution] -> [0, resized]
-		int x = (int) ((float)_maxBrightnessX / _resolutionWidth) * 320;
-		int y = (int) ((float)_maxBrightnessY / _resolutionHeight) * 240;
+		int x = (int) (((float)_maxBrightnessX / (float)_resolutionWidth) * 320);
+		int y = (int) (((float)_maxBrightnessY / (float)_resolutionHeight) * 240);
 
 		ofSetColor(ofColor::red);
 		ofDrawEllipse(x, y, 40, 40);
@@ -417,19 +378,16 @@ void CameraAreaDetector::findInitialPosition() {
   // cease and calculate the center point
   if (_screen.y > _screenHeight) {
 	// average over the seen pixel positions
-	_initPos.x = ceil((float)_cumulativeX / (float)_seenCount);
+	_initPos.x = ceil((float)_cumulativeX / (float)_seenCount) - _spacing;
     _initPos.y = ceil((float)_cumulativeY / (float)_seenCount);
 
 	// calculate drawing borders
 	// borders are outward from the outermost seen pixels by spacing + margin
 	// unless out of screen dimensions
-	_leftBorder = _leastX - (_spacing + 5) > 0 ? _leastX - (_spacing + 5) : 0;
+	_leftBorder = _leastX - 2*_spacing - 5 > 0 ? _leastX - 2*_spacing - 5 : 0;
 	_rightBorder = _largestX + (_spacing + 5) < _screenWidth? _largestX + (_spacing + 5) : _screenWidth;
 	_upperBorder = _leastY - (_spacing + 5) > 0 ? _leastY - (_spacing + 5) : 0;
 	_lowerBorder = _largestY + (_spacing + 5) < _screenHeight? _largestY + (_spacing + 5) : _screenHeight;
-
-	std::cout << _leastX << ", " << _largestX << "\n";
-	std::cout << _leftBorder << ", " << _rightBorder << "\n";
 
 	// offset from left screen border for drawing purposes
 	int tmp = _screenWidth - _rightBorder; 
@@ -739,6 +697,17 @@ void CameraAreaDetector::setCannyUpperThreshold(int upperThreshold) {
 //_____________________________________________________________________________
 int CameraAreaDetector::getCannyUpperThreshold() {
 	return _cannyUpper;
+}
+
+//_____________________________________________________________________________
+void CameraAreaDetector::setJump(int jump)
+{
+	_jump = jump;
+}
+
+//_____________________________________________________________________________
+int CameraAreaDetector::getJump() {
+	return _jump;
 }
 
 //_____________________________________________________________________________

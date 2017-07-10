@@ -47,6 +47,20 @@ class DynamicDistortionCalibrator {
 		// getter for upper threshold for canny edge detection
 		int getCannyUpperThreshold();
 
+		// setter for jump width
+		void setJump(int jump);
+		// getter for jump width
+		int getJump();
+
+		// workaround since the openframeworks internal img.save, img.saveImage, and ofSaveImage(img)
+		// don't work
+		void saveImageAsTxt(ofxCvGrayscaleImage pix, string fileName);
+		ofPixels loadImageAsTxt(string fileName);
+
+		// getter for maps, no setter as it should be either found or loaded
+		int** getMapX();
+		int** getMapY();
+
 	private:
 		cameraArea _area;
 		int _windowHeight, _windowWidth;
@@ -56,6 +70,7 @@ class DynamicDistortionCalibrator {
 		// thresholds for canny detector
 		int _cannyLower, _cannyUpper;
 		int _pixelSize;
+		int _jump;
 
 		int findPixelSize();
 		cameraArea findCameraArea();
@@ -65,5 +80,5 @@ class DynamicDistortionCalibrator {
 		// returns the undistorted image
 		cv::Mat mappingImage(cv::Mat distordedImage, int** matchY, int** matchX);
 		// breaks up a line into an array
-		int* stringToArray(string line);
+		int* stringToIntArray(string line);
 };

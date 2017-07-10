@@ -47,6 +47,11 @@ class CameraAreaDetector : public ofBaseApp {
 		// getter for upper threshold for canny edge detection
 		int getCannyUpperThreshold();
 
+		// setter for jump width
+		void setJump(int jump);
+		// getter for jump width
+		int getJump();
+
 	private:
 		// pointer to the cameraArea struct used for passing things to the outside
 		cameraArea *_area;
@@ -58,6 +63,10 @@ class CameraAreaDetector : public ofBaseApp {
 		int _resolutionWidth, _resolutionHeight;
 		// thresholds for canny detector
 		int _cannyLower, _cannyUpper;
+		// contains the how many-th pixel is taken
+		int _jump;
+		// ratio, how much of the screen does the camera capture
+		float _coverageRatio;
 
 		// keeps track of the state in draw() function
 		int _state;
@@ -84,10 +93,7 @@ class CameraAreaDetector : public ofBaseApp {
 
 		// pixelSize
 		int _pixelSize;
-		// x position of drawing the pixel
-		//int _screen.x;
-		// y position of drawing the pixel
-		//int _screen.y;
+		
 
 		// replaces _screenX and _screenY so the max brightness that is detected for this drawn pixel could be saved to the coordinates
 		pos _screen;

@@ -1,3 +1,5 @@
+#pragma once
+
 #include "ofxOpenCv.h"
 #include "ofMain.h"
 #include "cameraArea.h"

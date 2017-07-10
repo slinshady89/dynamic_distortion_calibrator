@@ -269,12 +269,11 @@ void PixelSizeDetector::drawDebug()
 	ofNoFill();
 	if (_maxBrightness > WHITE_THRESHOLD) {
 		// remap values to resized image [0, resolution] -> [0, resized]
-		int x = (int)((float)_maxBrightnessX / _resolutionWidth) * 320;
-		int y = (int)((float)_maxBrightnessY / _resolutionHeight) * 240;
+		int x = (int)(((float)_maxBrightnessX / (float)_resolutionWidth) * 320);
+		int y = (int)(((float)_maxBrightnessY / (float)_resolutionHeight) * 240);
 
 		ofSetColor(ofColor::red);
-		ofDrawEllipse(_maxBrightnessX, _maxBrightnessY, 40, 40);
-		ofFill();
+		ofDrawEllipse(x, y, 40, 40);
 		ofSetColor(ofColor::black);
 	}
 }
