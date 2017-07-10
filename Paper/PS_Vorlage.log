@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.9.29)  10 JUL 2017 15:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.9.29)  10 JUL 2017 22:04
 entering extended mode
 **./PS_Vorlage.tex
 (PS_Vorlage.tex
@@ -1066,11 +1066,228 @@ Non-PDF special ignored!{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
  <./pics/rmr-eps-converted-to.pdf>]
-<./pics/setup.png, id=20, 758.835pt x 721.69624pt>
+<./pics/pinhole.png, id=20, 401.5pt x 274.02374pt>
+File: ./pics/pinhole.png Graphic file (type png)
+ <use ./pics/pinhole.png>
+Package pdftex.def Info: ./pics/pinhole.png used on input line 83.
+(pdftex.def)             Requested size: 160.59715pt x 109.60754pt.
+
+<./pics/imageFormationGeometry.png, id=22, 341.275pt x 287.0725pt>
+File: ./pics/imageFormationGeometry.png Graphic file (type png)
+
+<use ./pics/imageFormationGeometry.png>
+Package pdftex.def Info: ./pics/imageFormationGeometry.png used on input line 9
+1.
+(pdftex.def)             Requested size: 204.76657pt x 172.24483pt.
+
+
+LaTeX Warning: Citation `Corke' on page 2 undefined on input line 92.
+
+
+LaTeX Warning: Citation `Corke' on page 2 undefined on input line 96.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./pics/CenterProjectionModel.png, id=23, 385.94188pt x 331.2375pt>
+File: ./pics/CenterProjectionModel.png Graphic file (type png)
+
+<use ./pics/CenterProjectionModel.png>
+Package pdftex.def Info: ./pics/CenterProjectionModel.png used on input line 11
+5.
+(pdftex.def)             Requested size: 231.56691pt x 198.74402pt.
+
+
+LaTeX Warning: Citation `Corke' on page 2 undefined on input line 116.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 107--121
+
+ []
+
+
+Underfull \hbox (badness 1412) in paragraph at lines 107--121
+\T1/ptm/m/n/10 Its com-mon in Com-pu-ter vi-si-on en-gi-nee-ring o use the
+ []
+
+
+LaTeX Warning: Reference `eq:P_w' on page 2 undefined on input line 127.
+
+
+LaTeX Warning: Reference `eq:P_i' on page 2 undefined on input line 127.
+
+Package epstopdf Info: Source file: <./pics/rmr2.eps>
+(epstopdf)                    date: 2014-12-09 16:53:36
+(epstopdf)                    size: 2462 bytes
+(epstopdf)             Output file: <./pics/rmr2-eps-converted-to.pdf>
+(epstopdf)                    date: 2014-12-09 16:54:26
+(epstopdf)                    size: 2929 bytes
+(epstopdf)             Command: <epstopdf --outfile=./pics/rmr2-eps-converted-t
+o.pdf ./pics/rmr2.eps>
+(epstopdf)             \includegraphics on input line 133.
+Package epstopdf Info: Output file is already uptodate.
+<./pics/rmr2-eps-converted-to.pdf, id=24, 543.02875pt x 18.0675pt>
+File: ./pics/rmr2-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./pics/rmr2-eps-converted-to.pdf>
+Package pdftex.def Info: ./pics/rmr2-eps-converted-to.pdf used on input line 13
+3.
+(pdftex.def)             Requested size: 516.0pt x 17.16898pt.
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+
+ []
+
+
+Overfull \hbox (3.21994pt too wide) has occurred while \output is active
+  [] 
+ []
+
+[2 <./pics/rmr2-eps-converted-to.pdf> <./pics/pinhole.png> <./pics/imageFormati
+onGeometry.png> <./pics/CenterProjectionModel.png>]
+
+LaTeX Warning: Citation `Corke' on page 3 undefined on input line 143.
+
+<./pics/cameraCoordinateFrame.png, id=37, 434.12187pt x 348.80313pt>
+File: ./pics/cameraCoordinateFrame.png Graphic file (type png)
+
+<use ./pics/cameraCoordinateFrame.png>
+Package pdftex.def Info: ./pics/cameraCoordinateFrame.png used on input line 18
+4.
+(pdftex.def)             Requested size: 217.0604pt x 174.40114pt.
+
+
+LaTeX Warning: Citation `Corke' on page 3 undefined on input line 185.
+
+
+LaTeX Warning: Reference `fig:projectionModel' on page 3 undefined on input lin
+e 196.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 198--205
+
+ []
+
+
+LaTeX Warning: Citation `Corke' on page 3 undefined on input line 243.
+
+
+LaTeX Warning: Reference `fig:projectionModel' on page 3 undefined on input lin
+e 254.
+
+Package epstopdf Info: Source file: <./pics/rmr.eps>
+(epstopdf)                    date: 2014-12-09 16:42:06
+(epstopdf)                    size: 263974 bytes
+(epstopdf)             Output file: <./pics/rmr-eps-converted-to.pdf>
+(epstopdf)                    date: 2014-12-09 16:48:36
+(epstopdf)                    size: 8532 bytes
+(epstopdf)             Command: <epstopdf --outfile=./pics/rmr-eps-converted-to
+.pdf ./pics/rmr.eps>
+(epstopdf)             \includegraphics on input line 266.
+Package epstopdf Info: Output file is already uptodate.
+File: ./pics/rmr-eps-converted-to.pdf Graphic file (type pdf)
+<use ./pics/rmr-eps-converted-to.pdf>
+Package pdftex.def Info: ./pics/rmr-eps-converted-to.pdf used on input line 266
+.
+(pdftex.def)             Requested size: 516.0pt x 16.24507pt.
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+
+ []
+
+
+Overfull \hbox (1.60997pt too wide) has occurred while \output is active
+[] [] 
+ []
+
+[3 <./pics/cameraCoordinateFrame.png>]
+
+LaTeX Warning: Citation `Corke' on page 4 undefined on input line 275.
+
+
+Overfull \hbox (12.52922pt too wide) detected at line 288
+[] \OT1/cmr/m/n/10 = [] + []  []
+ []
+
+
+LaTeX Warning: Citation `Langaniere' on page 4 undefined on input line 302.
+
+
+LaTeX Warning: Citation `Langaniere' on page 4 undefined on input line 304.
+
+<./pics/setup.png, id=45, 758.835pt x 721.69624pt>
 File: ./pics/setup.png Graphic file (type png)
  <use ./pics/setup.png>
-Package pdftex.def Info: ./pics/setup.png used on input line 70.
+Package pdftex.def Info: ./pics/setup.png used on input line 364.
 (pdftex.def)             Requested size: 189.70828pt x 180.42361pt.
+Package epstopdf Info: Source file: <./pics/rmr2.eps>
+(epstopdf)                    date: 2014-12-09 16:53:36
+(epstopdf)                    size: 2462 bytes
+(epstopdf)             Output file: <./pics/rmr2-eps-converted-to.pdf>
+(epstopdf)                    date: 2014-12-09 16:54:26
+(epstopdf)                    size: 2929 bytes
+(epstopdf)             Command: <epstopdf --outfile=./pics/rmr2-eps-converted-t
+o.pdf ./pics/rmr2.eps>
+(epstopdf)             \includegraphics on input line 386.
+Package epstopdf Info: Output file is already uptodate.
+File: ./pics/rmr2-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./pics/rmr2-eps-converted-to.pdf>
+Package pdftex.def Info: ./pics/rmr2-eps-converted-to.pdf used on input line 38
+6.
+(pdftex.def)             Requested size: 516.0pt x 17.16898pt.
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+
+ []
+
+
+Overfull \hbox (3.21994pt too wide) has occurred while \output is active
+  [] 
+ []
+
+[4]
+Package epstopdf Info: Source file: <./pics/rmr.eps>
+(epstopdf)                    date: 2014-12-09 16:42:06
+(epstopdf)                    size: 263974 bytes
+(epstopdf)             Output file: <./pics/rmr-eps-converted-to.pdf>
+(epstopdf)                    date: 2014-12-09 16:48:36
+(epstopdf)                    size: 8532 bytes
+(epstopdf)             Command: <epstopdf --outfile=./pics/rmr-eps-converted-to
+.pdf ./pics/rmr.eps>
+(epstopdf)             \includegraphics on input line 413.
+Package epstopdf Info: Output file is already uptodate.
+File: ./pics/rmr-eps-converted-to.pdf Graphic file (type pdf)
+ <use ./pics/rmr-eps-converted-to.pdf>
+Package pdftex.def Info: ./pics/rmr-eps-converted-to.pdf used on input line 413
+.
+(pdftex.def)             Requested size: 516.0pt x 16.24507pt.
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+
+ []
+
+
+Overfull \hbox (1.60997pt too wide) has occurred while \output is active
+[] [] 
+ []
+
+[5 <./pics/setup.png>] <./pics/rect.png, id=54, 758.835pt x 721.69624pt>
+File: ./pics/rect.png Graphic file (type png)
+
+<use ./pics/rect.png>
+Package pdftex.def Info: ./pics/rect.png used on input line 446.
+(pdftex.def)             Requested size: 189.70828pt x 180.42361pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 452--454
+
+ []
+
+<./pics/pattern.png, id=55, 493.845pt x 758.835pt>
+File: ./pics/pattern.png Graphic file (type png)
+ <use ./pics/pattern.png>
+Package pdftex.def Info: ./pics/pattern.png used on input line 457.
+(pdftex.def)             Requested size: 148.15463pt x 227.65225pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1083,14 +1300,12 @@ Package epstopdf Info: Source file: <./pics/rmr2.eps>
 (epstopdf)                    size: 2929 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/rmr2-eps-converted-t
 o.pdf ./pics/rmr2.eps>
-(epstopdf)             \includegraphics on input line 117.
+(epstopdf)             \includegraphics on input line 468.
 Package epstopdf Info: Output file is already uptodate.
-<./pics/rmr2-eps-converted-to.pdf, id=22, 543.02875pt x 18.0675pt>
 File: ./pics/rmr2-eps-converted-to.pdf Graphic file (type pdf)
-
 <use ./pics/rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/rmr2-eps-converted-to.pdf used on input line 11
-7.
+Package pdftex.def Info: ./pics/rmr2-eps-converted-to.pdf used on input line 46
+8.
 (pdftex.def)             Requested size: 516.0pt x 17.16898pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1102,14 +1317,8 @@ Overfull \hbox (3.21994pt too wide) has occurred while \output is active
   [] 
  []
 
-[2 <./pics/rmr2-eps-converted-to.pdf> <./pics/setup.png>]
-<./pics/rect.png, id=31, 758.835pt x 721.69624pt>
-File: ./pics/rect.png Graphic file (type png)
- <use ./pics/rect.png>
-Package pdftex.def Info: ./pics/rect.png used on input line 152.
-(pdftex.def)             Requested size: 189.70828pt x 180.42361pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 158--160
+[6 <./pics/rect.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 505--508
 
  []
 
@@ -1121,11 +1330,11 @@ Package epstopdf Info: Source file: <./pics/rmr.eps>
 (epstopdf)                    size: 8532 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/rmr-eps-converted-to
 .pdf ./pics/rmr.eps>
-(epstopdf)             \includegraphics on input line 160.
+(epstopdf)             \includegraphics on input line 515.
 Package epstopdf Info: Output file is already uptodate.
 File: ./pics/rmr-eps-converted-to.pdf Graphic file (type pdf)
 <use ./pics/rmr-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/rmr-eps-converted-to.pdf used on input line 160
+Package pdftex.def Info: ./pics/rmr-eps-converted-to.pdf used on input line 515
 .
 (pdftex.def)             Requested size: 516.0pt x 16.24507pt.
 
@@ -1138,16 +1347,22 @@ Overfull \hbox (1.60997pt too wide) has occurred while \output is active
 [] [] 
  []
 
-[3 <./pics/rect.png>] <./pics/pattern.png, id=36, 493.845pt x 758.835pt>
-File: ./pics/pattern.png Graphic file (type png)
-
-<use ./pics/pattern.png>
-Package pdftex.def Info: ./pics/pattern.png used on input line 163.
-(pdftex.def)             Requested size: 148.15463pt x 227.65225pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 211--214
+[7 <./pics/pattern.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 517--519
 
  []
+
+
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 550.
+
+
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 550.
+
+
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 564.
+
+
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 564.
 
 Package epstopdf Info: Source file: <./pics/rmr2.eps>
 (epstopdf)                    date: 2014-12-09 16:53:36
@@ -1157,11 +1372,11 @@ Package epstopdf Info: Source file: <./pics/rmr2.eps>
 (epstopdf)                    size: 2929 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/rmr2-eps-converted-t
 o.pdf ./pics/rmr2.eps>
-(epstopdf)             \includegraphics on input line 214.
+(epstopdf)             \includegraphics on input line 574.
 Package epstopdf Info: Output file is already uptodate.
 File: ./pics/rmr2-eps-converted-to.pdf Graphic file (type pdf)
 <use ./pics/rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/rmr2-eps-converted-to.pdf used on input line 21
+Package pdftex.def Info: ./pics/rmr2-eps-converted-to.pdf used on input line 57
 4.
 (pdftex.def)             Requested size: 516.0pt x 17.16898pt.
 
@@ -1174,23 +1389,104 @@ Overfull \hbox (3.21994pt too wide) has occurred while \output is active
   [] 
  []
 
-[4 <./pics/pattern.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 223--225
+[8]
+Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
+(epstopdf)                    date: 2006-01-10 15:16:38
+(epstopdf)                    size: 27821 bytes
+(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
+(epstopdf)                    date: 2011-10-24 15:32:56
+(epstopdf)                    size: 4729 bytes
+(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
+ted-to.pdf ./pics/ComicKopf.eps>
+(epstopdf)             \includegraphics on input line 627.
+Package epstopdf Info: Output file is already uptodate.
+ <./pics/ComicKopf-eps-converted-to.pdf, id=68, 81.30376pt x 69.25874pt>
+File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
 
- []
+<use ./pics/ComicKopf-eps-converted-to.pdf>
+Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
+ne 627.
+(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
+Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
+(epstopdf)                    date: 2006-01-10 15:16:38
+(epstopdf)                    size: 27821 bytes
+(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
+(epstopdf)                    date: 2011-10-24 15:32:56
+(epstopdf)                    size: 4729 bytes
+(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
+ted-to.pdf ./pics/ComicKopf.eps>
+(epstopdf)             \includegraphics on input line 627.
+Package epstopdf Info: Output file is already uptodate.
+File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
 
+<use ./pics/ComicKopf-eps-converted-to.pdf>
+Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
+ne 627.
+(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
+Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
+(epstopdf)                    date: 2006-01-10 15:16:38
+(epstopdf)                    size: 27821 bytes
+(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
+(epstopdf)                    date: 2011-10-24 15:32:56
+(epstopdf)                    size: 4729 bytes
+(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
+ted-to.pdf ./pics/ComicKopf.eps>
+(epstopdf)             \includegraphics on input line 632.
+Package epstopdf Info: Output file is already uptodate.
+File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 256.
+<use ./pics/ComicKopf-eps-converted-to.pdf>
+Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
+ne 632.
+(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
+Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
+(epstopdf)                    date: 2006-01-10 15:16:38
+(epstopdf)                    size: 27821 bytes
+(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
+(epstopdf)                    date: 2011-10-24 15:32:56
+(epstopdf)                    size: 4729 bytes
+(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
+ted-to.pdf ./pics/ComicKopf.eps>
+(epstopdf)             \includegraphics on input line 632.
+Package epstopdf Info: Output file is already uptodate.
+File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
 
+<use ./pics/ComicKopf-eps-converted-to.pdf>
+Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
+ne 632.
+(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
+Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
+(epstopdf)                    date: 2006-01-10 15:16:38
+(epstopdf)                    size: 27821 bytes
+(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
+(epstopdf)                    date: 2011-10-24 15:32:56
+(epstopdf)                    size: 4729 bytes
+(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
+ted-to.pdf ./pics/ComicKopf.eps>
+(epstopdf)             \includegraphics on input line 637.
+Package epstopdf Info: Output file is already uptodate.
+File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 256.
+<use ./pics/ComicKopf-eps-converted-to.pdf>
+Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
+ne 637.
+(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
+Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
+(epstopdf)                    date: 2006-01-10 15:16:38
+(epstopdf)                    size: 27821 bytes
+(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
+(epstopdf)                    date: 2011-10-24 15:32:56
+(epstopdf)                    size: 4729 bytes
+(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
+ted-to.pdf ./pics/ComicKopf.eps>
+(epstopdf)             \includegraphics on input line 637.
+Package epstopdf Info: Output file is already uptodate.
+File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
 
-
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 270.
-
-
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 270.
-
+<use ./pics/ComicKopf-eps-converted-to.pdf>
+Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
+ne 637.
+(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
 Package epstopdf Info: Source file: <./pics/rmr.eps>
 (epstopdf)                    date: 2014-12-09 16:42:06
 (epstopdf)                    size: 263974 bytes
@@ -1199,11 +1495,12 @@ Package epstopdf Info: Source file: <./pics/rmr.eps>
 (epstopdf)                    size: 8532 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/rmr-eps-converted-to
 .pdf ./pics/rmr.eps>
-(epstopdf)             \includegraphics on input line 270.
+(epstopdf)             \includegraphics on input line 649.
 Package epstopdf Info: Output file is already uptodate.
 File: ./pics/rmr-eps-converted-to.pdf Graphic file (type pdf)
+
 <use ./pics/rmr-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/rmr-eps-converted-to.pdf used on input line 270
+Package pdftex.def Info: ./pics/rmr-eps-converted-to.pdf used on input line 649
 .
 (pdftex.def)             Requested size: 516.0pt x 16.24507pt.
 
@@ -1216,160 +1513,10 @@ Overfull \hbox (1.60997pt too wide) has occurred while \output is active
 [] [] 
  []
 
-[5]
-Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
-(epstopdf)                    date: 2006-01-10 15:16:38
-(epstopdf)                    size: 27821 bytes
-(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
-(epstopdf)                    date: 2011-10-24 15:32:56
-(epstopdf)                    size: 4729 bytes
-(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
-ted-to.pdf ./pics/ComicKopf.eps>
-(epstopdf)             \includegraphics on input line 333.
-Package epstopdf Info: Output file is already uptodate.
- <./pics/ComicKopf-eps-converted-to.pdf, id=49, 81.30376pt x 69.25874pt>
-File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
+[9 <./pics/ComicKopf-eps-converted-to.pdf>] (PS_Vorlage.aux)
 
-<use ./pics/ComicKopf-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
-ne 333.
-(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
-Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
-(epstopdf)                    date: 2006-01-10 15:16:38
-(epstopdf)                    size: 27821 bytes
-(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
-(epstopdf)                    date: 2011-10-24 15:32:56
-(epstopdf)                    size: 4729 bytes
-(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
-ted-to.pdf ./pics/ComicKopf.eps>
-(epstopdf)             \includegraphics on input line 333.
-Package epstopdf Info: Output file is already uptodate.
-File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
+LaTeX Warning: There were undefined references.
 
-<use ./pics/ComicKopf-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
-ne 333.
-(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
-Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
-(epstopdf)                    date: 2006-01-10 15:16:38
-(epstopdf)                    size: 27821 bytes
-(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
-(epstopdf)                    date: 2011-10-24 15:32:56
-(epstopdf)                    size: 4729 bytes
-(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
-ted-to.pdf ./pics/ComicKopf.eps>
-(epstopdf)             \includegraphics on input line 338.
-Package epstopdf Info: Output file is already uptodate.
-File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
-
-<use ./pics/ComicKopf-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
-ne 338.
-(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
-Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
-(epstopdf)                    date: 2006-01-10 15:16:38
-(epstopdf)                    size: 27821 bytes
-(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
-(epstopdf)                    date: 2011-10-24 15:32:56
-(epstopdf)                    size: 4729 bytes
-(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
-ted-to.pdf ./pics/ComicKopf.eps>
-(epstopdf)             \includegraphics on input line 338.
-Package epstopdf Info: Output file is already uptodate.
-File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
-
-<use ./pics/ComicKopf-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
-ne 338.
-(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
-Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
-(epstopdf)                    date: 2006-01-10 15:16:38
-(epstopdf)                    size: 27821 bytes
-(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
-(epstopdf)                    date: 2011-10-24 15:32:56
-(epstopdf)                    size: 4729 bytes
-(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
-ted-to.pdf ./pics/ComicKopf.eps>
-(epstopdf)             \includegraphics on input line 343.
-Package epstopdf Info: Output file is already uptodate.
-File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
-
-<use ./pics/ComicKopf-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
-ne 343.
-(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
-Package epstopdf Info: Source file: <./pics/ComicKopf.eps>
-(epstopdf)                    date: 2006-01-10 15:16:38
-(epstopdf)                    size: 27821 bytes
-(epstopdf)             Output file: <./pics/ComicKopf-eps-converted-to.pdf>
-(epstopdf)                    date: 2011-10-24 15:32:56
-(epstopdf)                    size: 4729 bytes
-(epstopdf)             Command: <epstopdf --outfile=./pics/ComicKopf-eps-conver
-ted-to.pdf ./pics/ComicKopf.eps>
-(epstopdf)             \includegraphics on input line 343.
-Package epstopdf Info: Output file is already uptodate.
-File: ./pics/ComicKopf-eps-converted-to.pdf Graphic file (type pdf)
-
-<use ./pics/ComicKopf-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/ComicKopf-eps-converted-to.pdf used on input li
-ne 343.
-(pdftex.def)             Requested size: 72.27574pt x 61.5682pt.
-Package epstopdf Info: Source file: <./pics/rmr2.eps>
-(epstopdf)                    date: 2014-12-09 16:53:36
-(epstopdf)                    size: 2462 bytes
-(epstopdf)             Output file: <./pics/rmr2-eps-converted-to.pdf>
-(epstopdf)                    date: 2014-12-09 16:54:26
-(epstopdf)                    size: 2929 bytes
-(epstopdf)             Command: <epstopdf --outfile=./pics/rmr2-eps-converted-t
-o.pdf ./pics/rmr2.eps>
-(epstopdf)             \includegraphics on input line 355.
-Package epstopdf Info: Output file is already uptodate.
-File: ./pics/rmr2-eps-converted-to.pdf Graphic file (type pdf)
-
-<use ./pics/rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/rmr2-eps-converted-to.pdf used on input line 35
-5.
-(pdftex.def)             Requested size: 516.0pt x 17.16898pt.
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-
-Overfull \hbox (3.21994pt too wide) has occurred while \output is active
-  [] 
- []
-
-[6 <./pics/ComicKopf-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <./pics/rmr.eps>
-(epstopdf)                    date: 2014-12-09 16:42:06
-(epstopdf)                    size: 263974 bytes
-(epstopdf)             Output file: <./pics/rmr-eps-converted-to.pdf>
-(epstopdf)                    date: 2014-12-09 16:48:36
-(epstopdf)                    size: 8532 bytes
-(epstopdf)             Command: <epstopdf --outfile=./pics/rmr-eps-converted-to
-.pdf ./pics/rmr.eps>
-(epstopdf)             \includegraphics on input line 355.
-Package epstopdf Info: Output file is already uptodate.
-File: ./pics/rmr-eps-converted-to.pdf Graphic file (type pdf)
-
-<use ./pics/rmr-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/rmr-eps-converted-to.pdf used on input line 355
-.
-(pdftex.def)             Requested size: 516.0pt x 16.24507pt.
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-
- []
-
-
-Overfull \hbox (1.60997pt too wide) has occurred while \output is active
-[] [] 
- []
-
-[7
-
-] (PS_Vorlage.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -1379,29 +1526,30 @@ LaTeX Warning: There were multiply-defined labels.
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 15349 strings out of 493334
- 290456 string characters out of 3139252
+ 15382 strings out of 493334
+ 291250 string characters out of 3139252
  376689 words of memory out of 3000000
- 18559 multiletter control sequences out of 15000+200000
+ 18588 multiletter control sequences out of 15000+200000
  118133 words of font info for 121 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,19n,54p,1588b,2580s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,19n,54p,1588b,2585s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C
 :/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Progra
 m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmr5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy
-7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:
-/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/Mi
-KTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
-ype1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/ut
-mri8a.pfb>
-Output written on PS_Vorlage.pdf (7 pages, 288833 bytes).
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmr5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy1
+0.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:
+/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program 
+Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/
+fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/
+times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb
+>
+Output written on PS_Vorlage.pdf (9 pages, 945412 bytes).
 PDF statistics:
- 111 PDF objects out of 1000 (max. 8388607)
+ 129 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 79 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 99 words of extra memory for PDF output out of 10000 (max. 10000000)
 

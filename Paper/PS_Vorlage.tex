@@ -61,6 +61,300 @@ The system proposed is based on \cite{Sagawa} since they are both based on detec
 \section{Mathematical Backround}
 \label{sec:maths}
 
+
+
+
+
+
+
+\section{Image formation in digital camera}
+\label{sec:imageFormation}
+The first thing of human perception of the world is observing through eyes or cameras for robots. Through that a lot of information will be gathered, like size, shape and distance of objects in the world, in conjunction with many object characteristics like color and texture, that leads to recognition of things.
+All creatures, that can see, have a lens that forms an inverted image on the retina where the light sensitive cells rod and cone cells, are arranged. A digital Camera is like human eye in principle, a lens, which can be made from glass or plastic, forms an Image on the surface of semiconductor chip with an array of light-sensitive devices to convert light to digital image.
+
+The formation of Image in an eye or digital camera, is based on the process of a projection of 3D objects onto 2D surface. The transformation from 3D to 2D is known as perspective projection. Through that Projection, the depth information is lost and we cannot tell anymore from image whether it is of a large object in the distance or a smaller close object.
+
+In this section, we will discuss how camera works, images are captured and formed.
+
+\subsection{Perspective projection}
+The Pinhole camera idea is based on the principle of perspective projection and it works when a small hole in the wall of a closed box will cast a dim inverted image of the outside world on the opposite side of the box.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.4]{./pics/pinhole.png}
+\caption{Image formation in pinhole camera}
+\label{fig:pinhole}
+\end{center}
+\end{figure}
+Convex lenses can do the same work as pinhole and the in the following image we can see the fundamental geometry of image formation for a thin convex lens.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{./pics/imageFormationGeometry.png}
+\caption{Image formation for a convex lens \cite{Corke}}
+\label{fig:imageGeometry}
+\end{center}
+\end{figure}
+The thin lens equation that describes the z-coordinate of the observed object and its image with respect to the CenterPoint of the image \cite{Corke}.
+\begin{equation}
+\frac{1}{Z_0}+\frac{1}{Z_i}+\frac{1}{f}
+\end{equation}
+
+
+
+$Z_0$ : the distance to the observed object.
+
+$Z_i$ : the distance to the observed object.
+
+$f$ : is the focal length of the lens.
+\\
+\\
+Its common in Computer vision engineering o use the center perspective imaging model  as shown in the following figure.
+\\
+%%problem displaying figure here
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{./pics/CenterProjectionModel.png}
+\caption{The central-projection model \cite{Corke}.}
+\label{fig:projectionModel}
+\end{center}
+\end{figure}
+\begin{subequations}
+\begin{align}
+\{C\}&\text{ : Origin of camera frame.}\label{eq:C_origin}\\
+P_w=(X,Y,Z)^T&\text{ : Point in world coordinates.}\label{eq:P_w}\\
+P_i=(x,y)^T&\text{ : Point on the image plane}\label{eq:P_i}
+\end{align}
+\end{subequations}
+The rays of all corresponding Points \ref{eq:P_w} and \ref{eq:P_i} converge all at $\{C\}$ and a noninverted image is projected onto the image plane located art $z=f$. The z-axis intersects the image plane at the principal point which is the origin of the 2D image coordinate frame.
+\begin{equation}
+x=f\frac{X}{Z}, y=f\frac{Y}{Z}
+\end{equation}
+
+Through transformation from the world to image plane, the straight lines in the world are not projected as straight lines on the image plane, parallel lines converge and circles become ellipse, and the size of a shape is not preserved and it depends on the distance.
+
+\subsubsection{Modeling a perspective camera}
+By using the homogenous form $\tilde{\textbf{P}}=(\tilde{x} ,\tilde{y} ,\tilde{z} )$ to describe the image-plane point coordinates, where \begin{subequations}\begin{align}
+&\tilde{x}=f\cdot X\label{eq:homo_x}\\
+&\tilde{y}=f\cdot Y\label{eq:homo_y}\\
+&\tilde{z}=Z\label{eq:homo_z}
+\end{align}
+\end{subequations}
+
+
+are the homogeneous image-plane coordinate. As well we can formulate it in matrix form\cite{Corke}.
+\begin{equation}
+\tilde{\textbf{P}} = \begin{pmatrix}
+f&0&0\\
+0&f&0\\
+0&0&1\\
+\end{pmatrix}
+\begin{pmatrix}
+X\\
+Y\\
+Z\\
+\end{pmatrix}
+\end{equation}
+and
+\begin{equation}
+x=\frac{\tilde{x}}{\tilde{z}}, y \frac{\tilde{y}}{\tilde{z}}
+\end{equation}
+are the nonhomogeneous image-plane coordinates.
+\\
+When $f=1$ the coordinates are referred to as the canonial, retinal or horizontalized image-plane coordinate and we can rewrite the homogenous coordinate like $ {}^{c}\tilde{\textbf{P}} = (X,Y,Z,1)^T $
+then the perspective projection can be written in a linear matrix form like
+\begin{equation}
+\tilde{\textbf{P}} = C{}^{c}\tilde{\textbf{P}}
+\end{equation}
+
+or the Camera matrix can be factorized into two matrices and the second matrix is the projection matrix 
+\begin{equation}
+\tilde{\textbf{P}} = \begin{pmatrix}
+f&0&0\\
+0&f&0\\
+0&0&1\\
+\end{pmatrix}\begin{pmatrix}
+1&0&0&0\\
+0&1&0&0\\
+0&0&1&0\\
+\end{pmatrix}{}^{c}\tilde{\textbf{P}}
+\end{equation}
+
+As known the camera will have an arbitrary pose $\varepsilon_c$ with respect to the world coordinate frame and can be shown and formulated as following 
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.5]{./pics/cameraCoordinateFrame.png}
+\caption{camera coordinate frame\cite{Corke}.}
+\label{fig:cameraFrame}
+\end{center}
+\end{figure}
+
+Or by using the homogenous coordinates 
+\begin{equation}
+{}^{c}\textbf{P}=\textbf{T}_c^{-1}\, {}^{0}\textbf{P}
+\end{equation}
+
+\subsubsection{Discrete image plane}
+As shown on fig \ref{fig:projectionModel} the image plane in a digital camera constructed by $ W\times H $ photosites, which is light-sensitive elements, that correspond to pixels of the image.  The positive pixel coordinate system is a 2-vector $(u,v)$ and the origin is at the top-left hand corner of the image plane.
+The pixel coordinate is related to the image-plane coordinate by
+$$\frac{x}{\rho_w} + u_0, v = \frac{y}{\rho_h}+v_0$$
+$\rho_w : $ width of each pixel
+\\
+$\rho_h : $ height of each pixel
+\\
+$(u_0,v_0) : $ principal point
+\\
+
+We can rewrite the linear perspective projection matrix in terms of pixel coordinates acknowledging the camera parameter matrix  $K$
+\begin{equation}
+\tilde{\textbf{P}}= \begin{pmatrix}
+\frac{1}{\rho_w}&0&u_0\\
+0&\frac{1}{\rho_h}&v_0\\
+0&0&1\\
+\end{pmatrix}\begin{pmatrix}
+f&0&0&0\\
+0&1&0&0\\
+0&0&1&0\\
+\end{pmatrix}{}^{c}\tilde{\textbf{P}}
+\end{equation}
+
+$\tilde{\textbf{P}}=(\tilde{u},\tilde{v},\tilde{w})$ : is the homogenous coordinate of the world p in the pixel coordinates
+\begin{equation}
+u= \frac{\tilde{u}}{\tilde{w}}, v= \frac{\tilde{v}}{\tilde{w}}
+\end{equation}
+
+$(u,v)$ : nonhomogenous image-plan pixel coordinates
+
+\subsubsection{Camera matrix}
+From the previous equation the camera projection equation can be formulated in the general form as
+\begin{subequations}\begin{align}
+\tilde{\textbf{P}}&= \begin{pmatrix}
+\frac{f}{\rho_w}&0&u_0\\
+0&\frac{f}{\rho_h}&v_0\\
+0&0&1\\
+\end{pmatrix}\begin{pmatrix}
+1&0&0&0\\
+0&1&0&0\\
+0&0&1&0\\
+\end{pmatrix}{}^{0}\textbf{T}_c^{-1}\tilde{\textbf{P}}\\
+\tilde{\textbf{P}}&= \textbf{K}\textbf{P}_0 \,{}^{0}\textbf{T}^{-1}_c\,\tilde{\textbf{P}}\\
+\tilde{\textbf{P}}&= \textbf{C}\tilde{\textbf{P}}
+\end{align}
+\end{subequations}
+Where the first two matrices are the intrinsic matrix and last two matrices are the extrinsic matrices.
+The projection function can be written as\cite{Corke}
+\begin{equation}
+\textbf{P}=p(\textbf{P},\textbf{K},\varepsilon_c)
+\end{equation}
+$\textbf{K}$ : camera parameter matrix
+\\
+$\varepsilon_c$ : camera pose\\
+The camera Parameter matrix K includes the characteristics the camera and the sensors like $f,\rho,\rho_h,u_0  and v_0$. Furthermore, the pose of the camera holds the six extrinsic parameters that describe camera orientation and translation.
+\\
+We have a total of 11 independent parameters to describe a camera, 5 intrinsic and 6 extrinsic parameters. In practical life, the camera parameters are not known and must be calculated by using a camera calibration process, which will be explained in the calibration section.
+\\
+The camera field of view is a function of its focal length f  and dimensions of the camera chip $W\rho_w  \times  H\rho_h$. The field of can be determined from the geometry of fig \ref{fig:projectionModel}.
+In the horizontal direction the angle of view is calculated as following.
+\begin{equation}
+\theta_h = 2\arctan{\frac{{W_\rho}_w}{2f}}, \theta_v = 2\arctan{\frac{{H_\rho}_h}{2f}}
+\end{equation}
+$W: number of pixels in the horizontal direction$
+
+
+\subsubsection{Lens Distortion}
+As mentioned in the introduction, that no lens is perfect due to many factors. Lens imperfection leads to a geometric distortion, where points on the plane are not displaced where they should be.
+\\
+The geometric distortion is one of the most famous distortion effects that is comprises two components, the radial and tangential distortion. The Radial distortion is the displacement of the image points along radial lines from the principal point. The radial error can be approximated through the polynomial as following 
+\begin{equation}
+\delta_r=k_1r^3+k_2r^5+k_3r^7+...
+\end{equation}
+$r:is the distance of the image point from the principal point$
+The decentering distortion or the tangential distortion, occurs at the right angle to the radii but it's not stronger than radial distortion.
+The can describe the coordinate of the distorted matrix as following 
+\begin{equation}
+u^d = u+\delta_u,v^d=v+\delta_v
+\end{equation}
+The displacement matrix is like the following, where the first matrix is describing the radial distortion and the second matrix describes the tangential distortion\cite{Corke}.
+\begin{equation}
+\begin{pmatrix}
+\delta_u\\
+\delta_v\\
+\end{pmatrix}=\begin{pmatrix}
+u(k_1r^2+k_2r^4+k_3r^6)\\
+v(k_1r^2+k_2r^4+k_3r^6)\\
+\end{pmatrix}+\\
+\begin{pmatrix}
+2p_1uv+P_2(r^2+2u^2)\\
+p_1(r^2+2v^3)+2P_2uv
+\end{pmatrix}
+\end{equation}
+In practical life to describe the radial distortion only three coefficients are sufficient and the distortion model is parameterized by $(k_1,k_2,k_3,p_1,p_2)$. Which are considered as additional intrinsic parameters.
+
+\subsubsection{Calibration with checkerboard}
+Based on a popular Toolbox for calibrating cameras, which is presented from Caltech university.By using a chessboard, where several images of calibration patterns, always between 10 to 20 images. The images have been taken at different distances and orientations as shown in the following figure.
+%Chessboard pic
+\\
+To pass the images to the toolbox, so they had to use an uncompressed images or loss less compression formats such as PNG. Since the default format of a USB Webcam is JPG, so we hat to convert the images to PNG format. Moreover, we hat to measure the exact length of one side of a square from the checkerboard pattern to improve the process accuracy. After passing the patter images to the Toolbox, an image analyzing process starts to analyze each image, so it detects if the image is duplicated or if the entire chessboard could not be detected because of blurry images or an extreme angle of the pattern.
+
+\subsubsection{Canny and Sobel edge detection}
+To perform camera calibration and to calculate the distortion for each pixel, so the camera will be stimulated with vertical and horizontal line at each position. In deed to detect line from a displayed image and to cancel all environment noises we must perform image processing and extract image primitives of interest. 
+To extract lines, we should look for regions where strong change of intensity or color in the processed Image. In that section, we will compare many different predefined line detection algorithms and choose the best algorithm that suits our requirements.
+
+\subsubsection{Sobel operator}
+The main idea of the Sobel operator or Sobel filter is that it affects the vertical or horizontal image frequencies based on which kernel is used, therefore Sobel operator is considered as directional filter. On the other side Sobel operator is a gray scale operator so we've to convert the image to gray scale before applying the algorithm\cite{Langaniere}.
+\\
+The Sobel operator uses two Kernels that operates on each pixel that have the following form to calculate the derivatives of Intensity function\cite{Langaniere}.
+\begin{equation}
+Kernel_{vertical}=\begin{pmatrix}
+-1&0&1\\
+-2&0&2\\
+-1&0&1\\
+\end{pmatrix}
+\end{equation}
+\begin{equation}
+Kernel_{horizontal}=\begin{pmatrix}
+-1&-2&-1\\
+0&0&0\\
+1&2&1\\
+\end{pmatrix}
+\end{equation}
+\begin{equation}
+grad(I)=\begin{bmatrix}
+\frac{\partial I}{\partial x},\frac{\partial I}{\partial y}
+\end{bmatrix}^T
+\end{equation}
+
+%Sobel Figure
+
+Since the calculated gradient lines at each pixel has a x and y direction, so it's interesting to calculate the norm and direction to get the amplitude of the variation and the orientation.
+\begin{equation}
+|grad(I)|=\sqrt[2]{\left(\frac{\partial I}{\partial x}\right)^2+\left(\frac{\partial I}{\partial y}\right)^2}
+\end{equation}
+\begin{equation}
+\theta_{orientation}=\arctan{\frac{\partial I}{\partial y},\frac{\partial I}{\partial x}}
+\end{equation}
+%Soble figutre Orientation 
+After applying Sobel operator, we can conclude that this algorithm detects a lot of edges, which is not the actual edge because of the small kernel. Therefore, the algorithm is noisy. 
+\subsubsection{Canny operator}
+The Canny operator is based on Sobel operator and it is very useful to remove the edges that we are not interested in.  Simply Canny operator takes the output of Sobel operator. 
+\\
+The Canny operator start working on images after many stages. Firstly, the Image should be converted to grayscale Image. After that the gaussian blur filter is applied.   Hereafter the Soble operator is applied on vertical and horizontal directions. At the end, the calculation of the orientation is to be done to get ready to apply Canny operator.
+\\
+The most powerful part of that method is the hysteresis thresholding: The hysteresis thresholding is defined as two thresholds, min thresholds and max thresholds. The thresholds classify the strong edges,which is a main edges of an object. form weak edges.  So, any edge above the top threshold will be taken and anything under the lower threshold will be ignored. The region in between will be inspected, that any strong edge is connected to edge at that region by pixel traversal will be included.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \section{Mapping of correspondencing pixels}
 \label{sec:mapping}
 Our aim was to create a map of corresponding pixels of the screen to the camera image. For that we followed different approaches which we evaluate by accuracy in Chapter \ref{sec:results} and by runtime in Chapter \ref{sec:runtime}. \\
