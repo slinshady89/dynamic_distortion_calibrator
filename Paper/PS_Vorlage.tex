@@ -36,30 +36,320 @@
 
 
 \begin{Zusammenfassung}
-Kameras als Sensoren werden in immer mehr Applikationem im allt\"aglichen Leben wie zum Beispiel in Smartphones, oder um unser Haus mit Hilfe von Smart-Home-Systemen zu \"uberwachen, verwendet. In Fabriken hingegen werden noch viel mehr Kameras zur \"Uberwachung von verschiedensten Prozessen wegen ihrer universellen Anwendung, niedrigen Kosten und dem Potenzial der erhaltenen Daten verwendet. Au\ss{}erdem w\"achst ihre Rolle im Automobilbereich. Jedoch ist jede Kameralinse aufgrund von nicht exakt gleichm\"a\ss{}igen Fertigungstechniken mehr oder weniger gekr\"ummt. Die meisten Kameras zeigen eine radiale Verzerrung, da die Linsen in der Regel eine konvexe Kr\"ummung aufweisen. Diese ist nicht immer gleichm\"a\ss{}ig konvex oder hat Einschl\"usse, die die Verzerrung zu einem sehr nichtlinearen Verhalten ver\"andert. Das macht die Kalibrierung des Kameraobjektivs zu einem wesentlichen Aspekt der Computer Vision, da eine hohe Genauigkeit ihrer Bilder erforderlich ist. Die meisten Kamerakalibrierungen erfordern menschliche Interaktionen wie die Kalibrierung mit einem Schachbrettmuster. In dieser Ausarbeitung wird eine L\"osung f\"ur die Kamera-Kalibrierung vorgestellt, die auf einem planaren Display wie g\"angigen Computermonitoren arbeitet und nicht auf menschliche Interaktion st\"utzt. Dabei wird eine Karte zwischen den Bildschirmpixeln und den projezierten Karmerabildpixeln bestimmt. Wir pr\"asentieren verschiedene Wege, die wir mit ihren Vor- und Nachteilen in Genauigkeit und Laufzeit ausprobiert haben.
+Kameras als Sensoren werden in immer mehr Applikationem im allt\"aglichen Leben wie zum Beispiel in Smartphones, oder um unser Haus mit Hilfe von Smart-Home-Systemen zu \"uberwachen, verwendet. In Fabriken hingegen werden noch viel mehr Kameras zur \"Uberwachung von verschiedensten Prozessen wegen ihrer universellen Anwendung, niedrigen Kosten und dem Potenzial der erhaltenen Daten verwendet. Au\ss{}erdem w\"achst ihre Rolle im Automobilbereich. Jedoch ist jede Kameralinse aufgrund von nicht exakt gleichm\"a\ss{}igen Fertigungstechniken mehr oder weniger gekr\"ummt. Die meisten Kameras zeigen eine radiale Verzerrung, da die Linsen in der Regel eine konvexe Kr\"ummung aufweisen. Diese ist nicht immer gleichm\"a\ss{}ig konvex oder hat Einschl\"usse, die die Verzerrung zu einem sehr nichtlinearen Verhalten ver\"andert. Das macht die Kalibrierung des Kameraobjektivs zu einem wesentlichen Aspekt der Computer Vision, da eine hohe Genauigkeit ihrer Bilder erforderlich ist. Die meisten Kamerakalibrierungen erfordern menschliche Interaktionen wie die Kalibrierung mit einem Schachbrettmuster. In dieser Ausarbeitung wird eine L\"osung f\"ur die Kamera-Kalibrierung vorgestellt, die auf einem planaren Display wie g\"angigen Computermonitoren arbeitet und nicht auf menschliche Interaktion st\"utzt. Dabei wird eine Karte zwischen den Bildschirmpixeln und den projezierten Karmerabildpixeln bestimmt. Es werden verschiedene Wege mit ihren Vor-- und Nachteilen in Genauigkeit und~/~oder Laufzeit vorgestellt.
 \end{Zusammenfassung}
 \vspace{6pt}
 
 \begin{abstract}
-Cameras as a sensor application are widely used in our daily life like in smartphones or to surveille our home via smart home installation. But even more cameras monitor many processes in factories because of their universal application, low cost and the potential of the obtained data. Also it influence in the automotive branche is rising. However, every camera lens is more or less distorted due to imperfect manufacturing techniques. Most cameras show radial distortion due to the fact that most lenses have convex curvature. These aren't always perfectly convex or got inclusions which do alter the distortion to a very non-linear behavior. That makes calibration of the camera lens an essential aspect of computer vision, since a high accuracy of their images is required. Most camera calibrations require human interactions like the calibration with a checkerboard. In this paper a solution to camera calibration is shown that works on a 2D planar display like common used computer monitors and doesn't rely on human interaction. Therefore a mapping between the screen pixel coordinate system and the image pixel coordinate system is determined. We present different ways we tried with their pros and cons in accuracy and runtime.
+Cameras as a sensor application are widely used in our daily life like in smartphones or to surveille our home via smart home installation. But even more cameras monitor many processes in factories because of their universal application, low cost and the potential of the obtained data. Also it influence in the automotive branche is rising. However, every camera lens is more or less distorted due to imperfect manufacturing techniques. Most cameras show radial distortion due to the fact that most lenses have convex curvature. These aren't always perfectly convex or got inclusions which do alter the distortion to a very non-linear behavior. That makes calibration of the camera lens an essential aspect of computer vision, since a high accuracy of their images is required. Most camera calibrations require human interactions like the calibration with a checkerboard. In this paper a solution to camera calibration is shown that works on a 2D planar display like common used computer monitors and doesn't rely on human interaction. Therefore a mapping between the screen pixel coordinate system and the image pixel coordinate system is determined. Different ways that we're tried are presented with their pros and cons in accuracy or runtime.
 \end{abstract}
 
 \section{Introduction}
 
-\PARstart{C}{ameras} are used in more and more situations. Application areas are monitoring technologies, toys, smartphones and increasingly in vehicles for example. However all camera lenses are somewhat different from each other. The curvature of a lens is never perfect, and inclusions may occur which also alter the curvature of the incident light. This leads to distortion that has to be calibrated. State of the art approaches like the checkerboard calibration only base their models on a few interest points. This method for calibration is to position a checkerboard in different poses in front of the camera and detect the intersections of the black and white squares. The more pictures are done the higher is accuracy of the result what increases the human interaction and the time invested. We present this and other methods in Chapter \ref{sec:related}. 
-Our aim was to develop a program, which automatically creates a dense model of the lens distortion. This dense model is based on information of the correspondencies of pixels on a screen and the pixels in a captured image. Once the mapping between the screen and the image corresponding pixels is done, we can undistort the image simply by moving the pixels of the actual image we take. In order to reach the desired accuracy we need to set some pre-conditions for the environment in which this takes place. These conditions are darkness, in order to avoid reflections of the camera on the screen, and the camera being perpendicular to the screen. We will present the fundamental principles of several different ideas, which all result in a mapping. To compare them we give a short insight to their runtimes. This article is structured as follows: First follows the related work in \ref{sec:related} then in Chapter \ref{sec:maths} the theoretical  foundations are outlined. Chapter \ref{sec:mapping} includes the idea and realization of the project. In Chapter \ref{sec:results} is the conclusion.
+\PARstart{C}{ameras} are used in more and more situations. Application areas are monitoring technologies, toys, smartphones and increasingly in vehicles for example. However all camera lenses are somewhat different from each other. The curvature of a lens is never perfect, and inclusions may occur which also alter the curvature of the incident light. This leads to distortion that has to be calibrated. State of the art approaches like the checkerboard calibration only base their models on a few interest points. This method for calibration is to position a checkerboard in different poses in front of the camera and detect the intersections of the black and white squares. The more pictures are done the higher is accuracy of the result what increases the human interaction and the time invested. This and other methods are shown in Chapter \ref{sec:related}. 
+The aim was to develop a program, which automatically creates a dense model of the lens distortion. This dense model is based on information of the correspondencies of pixels on a screen and the pixels in a captured image. Once the mapping between the screen and the image corresponding pixels is done, the undistortion of the image can be done simply by moving the pixels of the actual image that is taken. In order to reach the desired accuracy some pre-conditions for the environment in which this takes place were set. These conditions are darkness, in order to avoid reflections of the camera on the screen, and the camera being perpendicular to the screen. The fundamental principles of several different ideas, which all result in a mapping, are presented. To compare them a short insight to their runtime is given. This article is structured as follows: First follows the related work in \ref{sec:related} then in Chapter \ref{sec:imageFormation} the theoretical  foundations are outlined. Chapter \ref{sec:mapping} includes the idea and realization of the project. In Chapter \ref{sec:results} the results are presented. Chapter \ref{sec:work_probs} finally shows some issues that came up during the project and shows ideas that couldn't be implemented.
 
 
 \subsection{Related Work}
 \label{sec:related}
-Several approaches has been proposed in order to calibrate a camera, they can roughly be classified into two categories \cite{Zhang}: photogrammetric calibration and self-calibration.
-Photogrammetric calibration is based on a spatial object with its $3D$ shape known which is placed in the view of camera. The commonly used object is planar object point array, so called checkerboard pattern \cite{Zhang}, or a $3D$ cube with determined pattern on it. This method is restricted because errors will occur while printing and manually measuring the pattern or also if the pattern isn't always available.\\
+According to Zhang in \cite{Zhang} several approaches has been proposed in order to calibrate a camera. They can roughly be classified into two categories: photogrammetric calibration and self-calibration.
+Photogrammetric calibration is based on a spatial object with its $3D$ shape known which is placed in the view of the camera. The commonly used object is planar object point array, so called checkerboard pattern \cite{Zhang}, or a $3D$ cube with determined pattern on it. This method is restricted because errors will occur while printing and manually measuring the pattern or also if the pattern isn't always available.\\
 In self-calibration \cite{Faugeras} a reference object is not required, instead it requires the correspondence between points of the scene and the projection. C.B.~Duane proposed in \cite{Duane} a nonmetric method, based on the fact that the projection of a straight line from the world space should also be a straight line on the image. R.~Swaminathan and S.K.~Nayar extended in \cite{Swaminathan} this method by reducing noise and using polycamera. However, this method still relies on calculating parameters, which is not accurate because the model is simplified. 
-In \cite{Sagawa} a way is proposed using structured light to determine the correspondence and creates directly a dense map so that the error generated by parameter fitting is reduced. 
-The system proposed is based on \cite{Sagawa} since they are both based on detecting the correspondence of lines and get the map non-parametrically. %\cite{Faugeras:1992}
+In \cite{Sagawa} a way is proposed by Sagawa using structured light to determine the correspondence and creates directly a dense map so that the error generated by parameter fitting is reduced. 
+The system proposed is based on \cite{Sagawa} since they are both based on detecting the correspondence of lines and get the map nonparametrically.
 
-\section{Mathematical Backround}
-\label{sec:maths}
+
+
+
+
+
+
+\section{Image formation in digital camera}
+\label{sec:imageFormation}
+The first thing of human perception of the world is observing through eyes or cameras for robots. Through that a lot of information will be gathered, like size, shape and distance of objects in the world, in conjunction with many object characteristics like color and texture, that leads to recognition of things.
+All creatures, that can see, have a lens that forms an inverted image on the retina where the light sensitive cells rod and cone cells, are arranged. A digital Camera is like human eye in principle, a lens, which can be made from glass or plastic, forms an Image on the surface of semiconductor chip with an array of light-sensitive devices to convert light to digital image.
+
+The formation of Image in an eye or digital camera, is based on the process of a projection of 3D objects onto 2D surface. The transformation from 3D to 2D is known as perspective projection. Through that Projection, the depth information is lost and we cannot tell anymore from image whether it is of a large object in the distance or a smaller close object.
+
+In this section, we will discuss how camera works, images are captured and formed.
+
+\subsection{Perspective projection}
+The Pinhole camera idea is based on the principle of perspective projection and it works when a small hole in the wall of a closed box will cast a dim inverted image of the outside world on the opposite side of the box.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.4]{./pics/pinhole.png}
+\caption{Image formation in pinhole camera}
+\label{fig:pinhole}
+\end{center}
+\end{figure}
+Convex lenses can do the same work as pinhole and the in the following image we can see the fundamental geometry of image formation for a thin convex lens.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{./pics/imageFormationGeometry.png}
+\caption{Image formation for a convex lens \cite{Corke}}
+\label{fig:imageGeometry}
+\end{center}
+\end{figure}
+The thin lens equation that describes the z-coordinate of the observed object and its image with respect to the CenterPoint of the image \cite{Corke}.
+\begin{equation}
+\frac{1}{Z_0}+\frac{1}{Z_i}+\frac{1}{f}
+\end{equation}
+
+
+
+$Z_0$ : the distance to the observed object.
+
+$Z_i$ : the distance to the observed object.
+
+$f$ : is the focal length of the lens.
+\\
+\\
+Its common in Computer vision engineering o use the center perspective imaging model  as shown in the following figure.
+\\
+%%problem displaying figure here
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{./pics/CenterProjectionModel.png}
+\caption{The central-projection model \cite{Corke}.}
+\label{fig:projectionModel}
+\end{center}
+\end{figure}
+\begin{subequations}
+\begin{align}
+\{C\}&\text{ : Origin of camera frame.}\label{eq:C_origin}\\
+P_w=(X,Y,Z)^T&\text{ : Point in world coordinates.}\label{eq:P_w}\\
+P_i=(x,y)^T&\text{ : Point on the image plane}\label{eq:P_i}
+\end{align}
+\end{subequations}
+The rays of all corresponding Points \ref{eq:P_w} and \ref{eq:P_i} converge all at $\{C\}$ and a noninverted image is projected onto the image plane located art $z=f$. The z-axis intersects the image plane at the principal point which is the origin of the 2D image coordinate frame.
+\begin{equation}
+x=f\frac{X}{Z}, y=f\frac{Y}{Z}
+\end{equation}
+
+Through transformation from the world to image plane, the straight lines in the world are not projected as straight lines on the image plane, parallel lines converge and circles become ellipse, and the size of a shape is not preserved and it depends on the distance.
+
+\subsubsection{Modeling a perspective camera}
+By using the homogenous form $\tilde{\textbf{P}}=(\tilde{x} ,\tilde{y} ,\tilde{z} )$ to describe the image-plane point coordinates, where \begin{subequations}\begin{align}
+&\tilde{x}=f\cdot X\label{eq:homo_x}\\
+&\tilde{y}=f\cdot Y\label{eq:homo_y}\\
+&\tilde{z}=Z\label{eq:homo_z}
+\end{align}
+\end{subequations}
+
+
+are the homogeneous image-plane coordinate. As well we can formulate it in matrix form\cite{Corke}.
+\begin{equation}
+\tilde{\textbf{P}} = \begin{pmatrix}
+f&0&0\\
+0&f&0\\
+0&0&1\\
+\end{pmatrix}
+\begin{pmatrix}
+X\\
+Y\\
+Z\\
+\end{pmatrix}
+\end{equation}
+and
+\begin{equation}
+x=\frac{\tilde{x}}{\tilde{z}}, y \frac{\tilde{y}}{\tilde{z}}
+\end{equation}
+are the nonhomogeneous image-plane coordinates.
+\\
+When $f=1$ the coordinates are referred to as the canonial, retinal or horizontalized image-plane coordinate and we can rewrite the homogenous coordinate like $ {}^{c}\tilde{\textbf{P}} = (X,Y,Z,1)^T $
+then the perspective projection can be written in a linear matrix form like
+\begin{equation}
+\tilde{\textbf{P}} = C{}^{c}\tilde{\textbf{P}}
+\end{equation}
+
+or the Camera matrix can be factorized into two matrices and the second matrix is the projection matrix 
+\begin{equation}
+\tilde{\textbf{P}} = \begin{pmatrix}
+f&0&0\\
+0&f&0\\
+0&0&1\\
+\end{pmatrix}\begin{pmatrix}
+1&0&0&0\\
+0&1&0&0\\
+0&0&1&0\\
+\end{pmatrix}{}^{c}\tilde{\textbf{P}}
+\end{equation}
+
+As known the camera will have an arbitrary pose $\varepsilon_c$ with respect to the world coordinate frame and can be shown and formulated as following 
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.5]{./pics/cameraCoordinateFrame.png}
+\caption{camera coordinate frame\cite{Corke}.}
+\label{fig:cameraFrame}
+\end{center}
+\end{figure}
+
+Or by using the homogenous coordinates 
+\begin{equation}
+{}^{c}\textbf{P}=\textbf{T}_c^{-1}\, {}^{0}\textbf{P}
+\end{equation}
+
+\subsubsection{Discrete image plane}
+As shown on fig \ref{fig:projectionModel} the image plane in a digital camera constructed by $ W\times H $ photosites, which is light-sensitive elements, that correspond to pixels of the image.  The positive pixel coordinate system is a 2-vector $(u,v)$ and the origin is at the top-left hand corner of the image plane.
+The pixel coordinate is related to the image-plane coordinate by
+$$\frac{x}{\rho_w} + u_0, v = \frac{y}{\rho_h}+v_0$$
+$\rho_w : $ width of each pixel
+\\
+$\rho_h : $ height of each pixel
+\\
+$(u_0,v_0) : $ principal point
+\\
+
+We can rewrite the linear perspective projection matrix in terms of pixel coordinates acknowledging the camera parameter matrix  $K$
+\begin{equation}
+\tilde{\textbf{P}}= \begin{pmatrix}
+\frac{1}{\rho_w}&0&u_0\\
+0&\frac{1}{\rho_h}&v_0\\
+0&0&1\\
+\end{pmatrix}\begin{pmatrix}
+f&0&0&0\\
+0&1&0&0\\
+0&0&1&0\\
+\end{pmatrix}{}^{c}\tilde{\textbf{P}}
+\end{equation}
+
+$\tilde{\textbf{P}}=(\tilde{u},\tilde{v},\tilde{w})$ : is the homogenous coordinate of the world p in the pixel coordinates
+\begin{equation}
+u= \frac{\tilde{u}}{\tilde{w}}, v= \frac{\tilde{v}}{\tilde{w}}
+\end{equation}
+
+$(u,v)$ : nonhomogenous image-plan pixel coordinates
+
+\subsubsection{Camera matrix}
+From the previous equation the camera projection equation can be formulated in the general form as
+\begin{subequations}\begin{align}
+\tilde{\textbf{P}}&= \begin{pmatrix}
+\frac{f}{\rho_w}&0&u_0\\
+0&\frac{f}{\rho_h}&v_0\\
+0&0&1\\
+\end{pmatrix}\begin{pmatrix}
+1&0&0&0\\
+0&1&0&0\\
+0&0&1&0\\
+\end{pmatrix}{}^{0}\textbf{T}_c^{-1}\tilde{\textbf{P}}\\
+\tilde{\textbf{P}}&= \textbf{K}\textbf{P}_0 \,{}^{0}\textbf{T}^{-1}_c\,\tilde{\textbf{P}}\\
+\tilde{\textbf{P}}&= \textbf{C}\tilde{\textbf{P}}
+\end{align}
+\end{subequations}
+Where the first two matrices are the intrinsic matrix and last two matrices are the extrinsic matrices.
+The projection function can be written as\cite{Corke}
+\begin{equation}
+\textbf{P}=p(\textbf{P},\textbf{K},\varepsilon_c)
+\end{equation}
+$\textbf{K}$ : camera parameter matrix
+\\
+$\varepsilon_c$ : camera pose\\
+The camera Parameter matrix K includes the characteristics the camera and the sensors like $f,\rho,\rho_h,u_0  and v_0$. Furthermore, the pose of the camera holds the six extrinsic parameters that describe camera orientation and translation.
+\\
+We have a total of 11 independent parameters to describe a camera, 5 intrinsic and 6 extrinsic parameters. In practical life, the camera parameters are not known and must be calculated by using a camera calibration process, which will be explained in the calibration section.
+\\
+The camera field of view is a function of its focal length f  and dimensions of the camera chip $W\rho_w  \times  H\rho_h$. The field of can be determined from the geometry of fig \ref{fig:projectionModel}.
+In the horizontal direction the angle of view is calculated as following.
+\begin{equation}
+\theta_h = 2\arctan{\frac{{W_\rho}_w}{2f}}, \theta_v = 2\arctan{\frac{{H_\rho}_h}{2f}}
+\end{equation}
+$W: number of pixels in the horizontal direction$
+
+
+\subsubsection{Lens Distortion}
+As mentioned in the introduction, that no lens is perfect due to many factors. Lens imperfection leads to a geometric distortion, where points on the plane are not displaced where they should be.
+\\
+The geometric distortion is one of the most famous distortion effects that is comprises two components, the radial and tangential distortion. The Radial distortion is the displacement of the image points along radial lines from the principal point. The radial error can be approximated through the polynomial as following 
+\begin{equation}
+\delta_r=k_1r^3+k_2r^5+k_3r^7+...
+\end{equation}
+$r$ : \textit{is the distance of the image point from the principal point}
+The decentering distortion or the tangential distortion, occurs at the right angle to the radii but it's not stronger than radial distortion.
+The can describe the coordinate of the distorted matrix as following 
+\begin{equation}
+u^d = u+\delta_u,v^d=v+\delta_v
+\end{equation}
+The displacement matrix is like the following, where the first matrix is describing the radial distortion and the second matrix describes the tangential distortion \cite{Corke}.
+\begin{align}
+\begin{split}
+\begin{pmatrix}
+\delta_u\\
+\delta_v\\
+\end{pmatrix}=\begin{pmatrix}
+u(k_1r^2+k_2r^4+k_3r^6)\\
+v(k_1r^2+k_2r^4+k_3r^6)\\
+\end{pmatrix}+\\
+\begin{pmatrix}
+2p_1uv+P_2(r^2+2u^2)\\
+p_1(r^2+2v^3)+2P_2uv
+\end{pmatrix}
+\end{split}
+\end{align}
+In practical life to describe the radial distortion only three coefficients are sufficient and the distortion model is parameterized by $(k_1,k_2,k_3,p_1,p_2)$. Which are considered as additional intrinsic parameters.
+
+\subsubsection{Calibration with checkerboard}
+Based on a popular Toolbox for calibrating cameras, which is presented from Caltech university.By using a chessboard, where several images of calibration patterns, always between 10 to 20 images. The images have been taken at different distances and orientations as shown in the following figure.
+%Chessboard pic
+\\
+To pass the images to the toolbox, so they had to use an uncompressed images or loss less compression formats such as PNG. Since the default format of a USB Webcam is JPG, so we hat to convert the images to PNG format. Moreover, we hat to measure the exact length of one side of a square from the checkerboard pattern to improve the process accuracy. After passing the patter images to the Toolbox, an image analyzing process starts to analyze each image, so it detects if the image is duplicated or if the entire chessboard could not be detected because of blurry images or an extreme angle of the pattern.
+
+\subsubsection{Canny and Sobel edge detection}
+To perform camera calibration and to calculate the distortion for each pixel, so the camera will be stimulated with vertical and horizontal line at each position. In deed to detect line from a displayed image and to cancel all environment noises we must perform image processing and extract image primitives of interest. 
+To extract lines, we should look for regions where strong change of intensity or color in the processed Image. In that section, we will compare many different predefined line detection algorithms and choose the best algorithm that suits our requirements.
+
+\subsubsection{Sobel operator}
+The main idea of the Sobel operator or Sobel filter is that it affects the vertical or horizontal image frequencies based on which kernel is used, therefore Sobel operator is considered as directional filter. On the other side Sobel operator is a gray scale operator so we've to convert the image to gray scale before applying the algorithm\cite{Langaniere}.
+\\
+The Sobel operator uses two Kernels that operates on each pixel that have the following form to calculate the derivatives of Intensity function\cite{Langaniere}.
+\begin{equation}
+Kernel_{vertical}=\begin{pmatrix}
+-1&0&1\\
+-2&0&2\\
+-1&0&1\\
+\end{pmatrix}
+\end{equation}
+\begin{equation}
+Kernel_{horizontal}=\begin{pmatrix}
+-1&-2&-1\\
+0&0&0\\
+1&2&1\\
+\end{pmatrix}
+\end{equation}
+\begin{equation}
+grad(I)=\begin{bmatrix}
+\frac{\partial I}{\partial x},\frac{\partial I}{\partial y}
+\end{bmatrix}^T
+\end{equation}
+
+%Sobel Figure
+
+Since the calculated gradient lines at each pixel has a x and y direction, so it's interesting to calculate the norm and direction to get the amplitude of the variation and the orientation.
+\begin{equation}
+|grad(I)|=\sqrt[2]{\left(\frac{\partial I}{\partial x}\right)^2+\left(\frac{\partial I}{\partial y}\right)^2}
+\end{equation}
+\begin{equation}
+\theta_{orientation}=\arctan{\frac{\partial I}{\partial y},\frac{\partial I}{\partial x}}
+\end{equation}
+%Soble figutre Orientation 
+After applying Sobel operator, we can conclude that this algorithm detects a lot of edges, which is not the actual edge because of the small kernel. Therefore, the algorithm is noisy. 
+\subsubsection{Canny operator}
+The Canny operator is based on Sobel operator and it is very useful to remove the edges that we are not interested in.  Simply Canny operator takes the output of Sobel operator. 
+\\
+The \emph{Canny}--Operator start working on images after many stages. Firstly, the Image should be converted to grayscale Image. After that the gaussian blur filter is applied.   Hereafter the Soble operator is applied on vertical and horizontal directions. At the end, the calculation of the orientation is to be done to get ready to apply Canny operator.
+\\
+The most powerful part of that method is the hysteresis thresholding: The hysteresis thresholding is defined as two thresholds, min thresholds and max thresholds. The thresholds classify the strong edges,which is a main edges of an object. form weak edges.  So, any edge above the top threshold will be taken and anything under the lower threshold will be ignored. The region in between will be inspected, that any strong edge is connected to edge at that region by pixel traversal will be included.
+In the next section \emph{Mapping of correspondencing pixels} it's introduced when the \emph{Canny}--Operator will be used to detect lines in the undistortion calibration process. But first some other methods are shown that we're implemented during this project.
+
+
+
+
+
+
+
+
+
+
+
 
 \section{Mapping of correspondencing pixels}
 \label{sec:mapping}
@@ -192,7 +482,7 @@ To calculate the aperture angle $\alpha$ for the width or height $\left( \alpha_
 &\alpha_{diag} = \sqrt{\alpha_{width}^2 + \alpha_{height}^2)}.
 \end{split}
 \end{align}
-In our setup we used an \emph{ASUS--VX239} screen of dimensions $1290$x$1080$ pixels and $95.78~ppi$ and a \emph{Microsoft~LifeCam~HD--3000}. We weren't able to place the camera exactly perpendicular to the screen. This warps the FOV somewhat. Therefore we used an average of the largest and smallest measurement of the FOV width and height. On average we measured a width of $17.75~cm$, and a height of $10.5~cm$. This yields us FOV dimensions of
+In our setup we used an \emph{ASUS--VX239} screen of dimensions $1290$x$1080$ pixels and $95.78~ppi$ and a \emph{Microsoft~LifeCam~HD--3000}. We weren't able to place the camera exactly perpendicular to the screen. This warps the FOV somewhat. Therefore we used an average of the largest and smallest measurement of the FOV width and height. On average we measured a width of $17.75~cm$, and a height of $10.45~cm$. This yields us FOV dimensions of
 \begin{align*}
 FOV_{width}(17.75~cm) \approx 669.327~pixels
 \end{align*}
@@ -242,24 +532,24 @@ Let s be the spacing between the positions of the pixels to be lit, and m the ma
 rt_c (s) =\frac{1}{3} \frac{w_s\cdot h_s}{ s^2} =\frac{1393200}{3s^2} .
 \end{align}
 For the runtime of the line-based detection after that, follows:
-\begin{align}
-rt_d (s) &=\frac{1}{3}\left( 4s + 4\cdot m + w_{FOV} + h_{FOV}\right)\\& = 4s + 1085
+\begin{align}\begin{split}
+rt_d (s) &=\frac{1}{3}\left( 4s + 4\cdot m + w_{FOV} + h_{FOV}\right)\\& = 4s + 1085\end{split}
 \end{align}
 From there the overall runtime can be calculated as:
-\begin{align}
-rt(s) &=\frac{1}{3}\left(\frac{w_s*h_s}{s^2} + 4s + 4m + w_{FOV} + h_{FOV}\right)\\& = \frac{\frac{1,393,200}{s^2} + 4s +1085}{3}.
+\begin{align}\begin{split}
+rt(s) &=\frac{1}{3}\left(\frac{w_s*h_s}{s^2} + 4s + 4m + w_{FOV} + h_{FOV}\right)\\& = \frac{\frac{1,393,200}{s^2} + 4s +1085}{3}.\end{split}
 \end{align}
 For calculating the minimum of this function we take the first derivative w.r.t. spacing s and set it to zero:
-\begin{align}
+\begin{align}\begin{split}
 &rt’(s) = \frac{1}{3} \cdot \left( \frac{-w_s \cdot h_s}{s^3 }  + 4\right) = \frac{ \frac{-1,393,200}{s^3}+ 4}{3},\\
-\Rightarrow &s = \sqrt[3]{\frac{w_s * h_s}{4}} = \sqrt[3]{\frac{1393200}{4}}. 
+\Rightarrow &s = \sqrt[3]{\frac{w_s * h_s}{4}} = \sqrt[3]{\frac{1393200}{4}}. \end{split}
 \end{align}
 
-The functions minimum is at roughly $s = 70$. For this spacing we need then $\textbf{1,617}$ images, leading to a runtime of $539$ seconds, or nearly $9$ minutes. Of these roughly $59$ seconds are taken by center point estimation.\\
+The functions minimum is at roughly $s = 70$. For this spacing we need then $1,650$ images, leading to a runtime of $550$ seconds, or $9$ minutes $10$ seconds. Of these roughly $1$ minute $35$ seconds are taken by center point estimation.\\
 If this is deemed too slow, but the restriction of true pixelwise mapping is lifted, it can be sped up. We skip a set amount of pixels, when moving the white rectangle over the screen. We can introduce the jump width as variable $j$, i.e. every $j$--th pixel will be part of an edge. This changes our runtime formula for the detection part to, when assuming the same margin $m$:
-\begin{align}
+\begin{align}\begin{split}
 rt_d (s; j) &=\frac{1}{3} \cdot \frac{4*s + 4 * m + w_{FOV} + h_{FOV}}{j}\\
- &= \frac{4s + 1085}{3j},
+ &= \frac{4s + 1085}{3j},\end{split}
 \end{align}
 and thus the overall formula and its derivative to:
 \begin{align}\begin{split}
@@ -282,7 +572,10 @@ For a skip of $j = 3$ we get in our setup an optimal spacing of roughly $s = 101
 \subsection{accuracy}
 \subsection{comparation and valuation}
 
-\section{Problems}
+\section{Future work and problems}
+\label{sec:work_probs}
+In this section the problems with the openframeworks and openCV Libraries that occured during this work are presented in \ref{sec:probs}. After that, ideas and possible improvements are introduced in \ref{sec:future}, which could not be implemented anymore.
+\subsection{Problems}
 \label{sec:probs}
 Several problems appear during the process of this project.
 The first is the use of new programming tools. Openframeworks is a toolkit with powerful embedded functions (setup(), update() and draw()) which has an advantage that draws parallel to processing, however, it brings timing issues in our project, since the update function only runs once before drawing. Getting rid of it costs the first several weeks and slowed the process down. Ultimately we divided each app into several states in draw(), and use a state machine to control the process, which turns out to be a good solution.  \\
@@ -294,7 +587,8 @@ The modular program structure was important for us, as we wanted to keep an over
 We also set ofSetBackgroundAuto(false) to avoid flickering of the screen, which brings has problematics since for Windows 10 systems because of incompatibility. 
 
 
-
+\subsection{Future work}
+\label{sec:future}
 
 %\bibliography{literatur}
 
@@ -326,6 +620,11 @@ J.~Weng and P.~Cohen and M.~Herniou. \emph{Camera calibration with distortion mo
 \bibitem{Duane}
 C.B.~Duane  \emph{Close-range camera calibration}. Photogramm. Eng, vol.37 num.8, p.855-866. 1971
 
+\bibitem{Corke}
+C.B.~Peter Corke  \emph{Robotics, Vision and Control: Fundamental Algorithms In MATLAB® Second, Completely Revised, Extended And Updated Edition }. Eng, vol.1 , p.319-356. 2017
+
+\bibitem{Langaniere}
+C.B.~Robert Laganiere  \emph{OpenCV3 ComputerVision Application Programming Cookbook }. Eng, vol.3, 2017
 
 \end{thebibliography}
 
