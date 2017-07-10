@@ -192,7 +192,7 @@ To calculate the aperture angle $\alpha$ for the width or height $\left( \alpha_
 &\alpha_{diag} = \sqrt{\alpha_{width}^2 + \alpha_{height}^2)}.
 \end{split}
 \end{align}
-In our setup we used an \emph{ASUS--VX239} screen of dimensions $1290$x$1080$ pixels and $95.78~ppi$ and a \emph{Microsoft~LifeCam~HD--3000}. We weren't able to place the camera exactly perpendicular to the screen. This warps the FOV somewhat. Therefore we used an average of the largest and smallest measurement of the FOV width and height. On average we measured a width of $17.75~cm$, and a height of $10.5~cm$. This yields us FOV dimensions of
+In our setup we used an \emph{ASUS--VX239} screen of dimensions $1290$x$1080$ pixels and $95.78~ppi$ and a \emph{Microsoft~LifeCam~HD--3000}. We weren't able to place the camera exactly perpendicular to the screen. This warps the FOV somewhat. Therefore we used an average of the largest and smallest measurement of the FOV width and height. On average we measured a width of $17.75~cm$, and a height of $10.45~cm$. This yields us FOV dimensions of
 \begin{align*}
 FOV_{width}(17.75~cm) \approx 669.327~pixels
 \end{align*}
@@ -242,24 +242,24 @@ Let s be the spacing between the positions of the pixels to be lit, and m the ma
 rt_c (s) =\frac{1}{3} \frac{w_s\cdot h_s}{ s^2} =\frac{1393200}{3s^2} .
 \end{align}
 For the runtime of the line-based detection after that, follows:
-\begin{align}
-rt_d (s) &=\frac{1}{3}\left( 4s + 4\cdot m + w_{FOV} + h_{FOV}\right)\\& = 4s + 1085
+\begin{align}\begin{split}
+rt_d (s) &=\frac{1}{3}\left( 4s + 4\cdot m + w_{FOV} + h_{FOV}\right)\\& = 4s + 1085\end{split}
 \end{align}
 From there the overall runtime can be calculated as:
-\begin{align}
-rt(s) &=\frac{1}{3}\left(\frac{w_s*h_s}{s^2} + 4s + 4m + w_{FOV} + h_{FOV}\right)\\& = \frac{\frac{1,393,200}{s^2} + 4s +1085}{3}.
+\begin{align}\begin{split}
+rt(s) &=\frac{1}{3}\left(\frac{w_s*h_s}{s^2} + 4s + 4m + w_{FOV} + h_{FOV}\right)\\& = \frac{\frac{1,393,200}{s^2} + 4s +1085}{3}.\end{split}
 \end{align}
 For calculating the minimum of this function we take the first derivative w.r.t. spacing s and set it to zero:
-\begin{align}
+\begin{align}\begin{split}
 &rt’(s) = \frac{1}{3} \cdot \left( \frac{-w_s \cdot h_s}{s^3 }  + 4\right) = \frac{ \frac{-1,393,200}{s^3}+ 4}{3},\\
-\Rightarrow &s = \sqrt[3]{\frac{w_s * h_s}{4}} = \sqrt[3]{\frac{1393200}{4}}. 
+\Rightarrow &s = \sqrt[3]{\frac{w_s * h_s}{4}} = \sqrt[3]{\frac{1393200}{4}}. \end{split}
 \end{align}
 
-The functions minimum is at roughly $s = 70$. For this spacing we need then $\textbf{1,617}$ images, leading to a runtime of $539$ seconds, or nearly $9$ minutes. Of these roughly $59$ seconds are taken by center point estimation.\\
+The functions minimum is at roughly $s = 70$. For this spacing we need then $1,650$ images, leading to a runtime of $550$ seconds, or $9$ minutes $10$ seconds. Of these roughly $1$ minute $35$ seconds are taken by center point estimation.\\
 If this is deemed too slow, but the restriction of true pixelwise mapping is lifted, it can be sped up. We skip a set amount of pixels, when moving the white rectangle over the screen. We can introduce the jump width as variable $j$, i.e. every $j$--th pixel will be part of an edge. This changes our runtime formula for the detection part to, when assuming the same margin $m$:
-\begin{align}
+\begin{align}\begin{split}
 rt_d (s; j) &=\frac{1}{3} \cdot \frac{4*s + 4 * m + w_{FOV} + h_{FOV}}{j}\\
- &= \frac{4s + 1085}{3j},
+ &= \frac{4s + 1085}{3j},\end{split}
 \end{align}
 and thus the overall formula and its derivative to:
 \begin{align}\begin{split}
