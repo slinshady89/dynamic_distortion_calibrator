@@ -36,30 +36,27 @@
 
 
 \begin{Zusammenfassung}
-Kameras als Sensoren werden in immer mehr Applikationem im allt\"aglichen Leben wie zum Beispiel in Smartphones, oder um unser Haus mit Hilfe von Smart-Home-Systemen zu \"uberwachen, verwendet. In Fabriken hingegen werden noch viel mehr Kameras zur \"Uberwachung von verschiedensten Prozessen wegen ihrer universellen Anwendung, niedrigen Kosten und dem Potenzial der erhaltenen Daten verwendet. Au\ss{}erdem w\"achst ihre Rolle im Automobilbereich. Jedoch ist jede Kameralinse aufgrund von nicht exakt gleichm\"a\ss{}igen Fertigungstechniken mehr oder weniger gekr\"ummt. Die meisten Kameras zeigen eine radiale Verzerrung, da die Linsen in der Regel eine konvexe Kr\"ummung aufweisen. Diese ist nicht immer gleichm\"a\ss{}ig konvex oder hat Einschl\"usse, die die Verzerrung zu einem sehr nichtlinearen Verhalten ver\"andert. Das macht die Kalibrierung des Kameraobjektivs zu einem wesentlichen Aspekt der Computer Vision, da eine hohe Genauigkeit ihrer Bilder erforderlich ist. Die meisten Kamerakalibrierungen erfordern menschliche Interaktionen wie die Kalibrierung mit einem Schachbrettmuster. In dieser Ausarbeitung wird eine L\"osung f\"ur die Kamera-Kalibrierung vorgestellt, die auf einem planaren Display wie g\"angigen Computermonitoren arbeitet und nicht auf menschliche Interaktion st\"utzt. Dabei wird eine Karte zwischen den Bildschirmpixeln und den projezierten Karmerabildpixeln bestimmt. Wir pr\"asentieren verschiedene Wege, die wir mit ihren Vor- und Nachteilen in Genauigkeit und Laufzeit ausprobiert haben.
+Kameras als Sensoren werden in immer mehr Applikationem im allt\"aglichen Leben wie zum Beispiel in Smartphones, oder um unser Haus mit Hilfe von Smart-Home-Systemen zu \"uberwachen, verwendet. In Fabriken hingegen werden noch viel mehr Kameras zur \"Uberwachung von verschiedensten Prozessen wegen ihrer universellen Anwendung, niedrigen Kosten und dem Potenzial der erhaltenen Daten verwendet. Au\ss{}erdem w\"achst ihre Rolle im Automobilbereich. Jedoch ist jede Kameralinse aufgrund von nicht exakt gleichm\"a\ss{}igen Fertigungstechniken mehr oder weniger gekr\"ummt. Die meisten Kameras zeigen eine radiale Verzerrung, da die Linsen in der Regel eine konvexe Kr\"ummung aufweisen. Diese ist nicht immer gleichm\"a\ss{}ig konvex oder hat Einschl\"usse, die die Verzerrung zu einem sehr nichtlinearen Verhalten ver\"andert. Das macht die Kalibrierung des Kameraobjektivs zu einem wesentlichen Aspekt der Computer Vision, da eine hohe Genauigkeit ihrer Bilder erforderlich ist. Die meisten Kamerakalibrierungen erfordern menschliche Interaktionen wie die Kalibrierung mit einem Schachbrettmuster. In dieser Ausarbeitung wird eine L\"osung f\"ur die Kamera-Kalibrierung vorgestellt, die auf einem planaren Display wie g\"angigen Computermonitoren arbeitet und nicht auf menschliche Interaktion st\"utzt. Dabei wird eine Karte zwischen den Bildschirmpixeln und den projezierten Karmerabildpixeln bestimmt. Es werden verschiedene Wege mit ihren Vor-- und Nachteilen in Genauigkeit und~/~oder Laufzeit vorgestellt.
 \end{Zusammenfassung}
 \vspace{6pt}
 
 \begin{abstract}
-Cameras as a sensor application are widely used in our daily life like in smartphones or to surveille our home via smart home installation. But even more cameras monitor many processes in factories because of their universal application, low cost and the potential of the obtained data. Also it influence in the automotive branche is rising. However, every camera lens is more or less distorted due to imperfect manufacturing techniques. Most cameras show radial distortion due to the fact that most lenses have convex curvature. These aren't always perfectly convex or got inclusions which do alter the distortion to a very non-linear behavior. That makes calibration of the camera lens an essential aspect of computer vision, since a high accuracy of their images is required. Most camera calibrations require human interactions like the calibration with a checkerboard. In this paper a solution to camera calibration is shown that works on a 2D planar display like common used computer monitors and doesn't rely on human interaction. Therefore a mapping between the screen pixel coordinate system and the image pixel coordinate system is determined. We present different ways we tried with their pros and cons in accuracy and runtime.
+Cameras as a sensor application are widely used in our daily life like in smartphones or to surveille our home via smart home installation. But even more cameras monitor many processes in factories because of their universal application, low cost and the potential of the obtained data. Also it influence in the automotive branche is rising. However, every camera lens is more or less distorted due to imperfect manufacturing techniques. Most cameras show radial distortion due to the fact that most lenses have convex curvature. These aren't always perfectly convex or got inclusions which do alter the distortion to a very non-linear behavior. That makes calibration of the camera lens an essential aspect of computer vision, since a high accuracy of their images is required. Most camera calibrations require human interactions like the calibration with a checkerboard. In this paper a solution to camera calibration is shown that works on a 2D planar display like common used computer monitors and doesn't rely on human interaction. Therefore a mapping between the screen pixel coordinate system and the image pixel coordinate system is determined. Different ways that we're tried are presented with their pros and cons in accuracy or runtime.
 \end{abstract}
 
 \section{Introduction}
 
-\PARstart{C}{ameras} are used in more and more situations. Application areas are monitoring technologies, toys, smartphones and increasingly in vehicles for example. However all camera lenses are somewhat different from each other. The curvature of a lens is never perfect, and inclusions may occur which also alter the curvature of the incident light. This leads to distortion that has to be calibrated. State of the art approaches like the checkerboard calibration only base their models on a few interest points. This method for calibration is to position a checkerboard in different poses in front of the camera and detect the intersections of the black and white squares. The more pictures are done the higher is accuracy of the result what increases the human interaction and the time invested. We present this and other methods in Chapter \ref{sec:related}. 
-Our aim was to develop a program, which automatically creates a dense model of the lens distortion. This dense model is based on information of the correspondencies of pixels on a screen and the pixels in a captured image. Once the mapping between the screen and the image corresponding pixels is done, we can undistort the image simply by moving the pixels of the actual image we take. In order to reach the desired accuracy we need to set some pre-conditions for the environment in which this takes place. These conditions are darkness, in order to avoid reflections of the camera on the screen, and the camera being perpendicular to the screen. We will present the fundamental principles of several different ideas, which all result in a mapping. To compare them we give a short insight to their runtimes. This article is structured as follows: First follows the related work in \ref{sec:related} then in Chapter \ref{sec:maths} the theoretical  foundations are outlined. Chapter \ref{sec:mapping} includes the idea and realization of the project. In Chapter \ref{sec:results} is the conclusion.
+\PARstart{C}{ameras} are used in more and more situations. Application areas are monitoring technologies, toys, smartphones and increasingly in vehicles for example. However all camera lenses are somewhat different from each other. The curvature of a lens is never perfect, and inclusions may occur which also alter the curvature of the incident light. This leads to distortion that has to be calibrated. State of the art approaches like the checkerboard calibration only base their models on a few interest points. This method for calibration is to position a checkerboard in different poses in front of the camera and detect the intersections of the black and white squares. The more pictures are done the higher is accuracy of the result what increases the human interaction and the time invested. This and other methods are shown in Chapter \ref{sec:related}. 
+The aim was to develop a program, which automatically creates a dense model of the lens distortion. This dense model is based on information of the correspondencies of pixels on a screen and the pixels in a captured image. Once the mapping between the screen and the image corresponding pixels is done, the undistortion of the image can be done simply by moving the pixels of the actual image that is taken. In order to reach the desired accuracy some pre-conditions for the environment in which this takes place were set. These conditions are darkness, in order to avoid reflections of the camera on the screen, and the camera being perpendicular to the screen. The fundamental principles of several different ideas, which all result in a mapping, are presented. To compare them a short insight to their runtime is given. This article is structured as follows: First follows the related work in \ref{sec:related} then in Chapter \ref{sec:imageFormation} the theoretical  foundations are outlined. Chapter \ref{sec:mapping} includes the idea and realization of the project. In Chapter \ref{sec:results} the results are presented. Chapter \ref{sec:work_probs} finally shows some issues that came up during the project and shows ideas that couldn't be implemented.
 
 
 \subsection{Related Work}
 \label{sec:related}
-Several approaches has been proposed in order to calibrate a camera, they can roughly be classified into two categories \cite{Zhang}: photogrammetric calibration and self-calibration.
-Photogrammetric calibration is based on a spatial object with its $3D$ shape known which is placed in the view of camera. The commonly used object is planar object point array, so called checkerboard pattern \cite{Zhang}, or a $3D$ cube with determined pattern on it. This method is restricted because errors will occur while printing and manually measuring the pattern or also if the pattern isn't always available.\\
+According to Zhang in \cite{Zhang} several approaches has been proposed in order to calibrate a camera. They can roughly be classified into two categories: photogrammetric calibration and self-calibration.
+Photogrammetric calibration is based on a spatial object with its $3D$ shape known which is placed in the view of the camera. The commonly used object is planar object point array, so called checkerboard pattern \cite{Zhang}, or a $3D$ cube with determined pattern on it. This method is restricted because errors will occur while printing and manually measuring the pattern or also if the pattern isn't always available.\\
 In self-calibration \cite{Faugeras} a reference object is not required, instead it requires the correspondence between points of the scene and the projection. C.B.~Duane proposed in \cite{Duane} a nonmetric method, based on the fact that the projection of a straight line from the world space should also be a straight line on the image. R.~Swaminathan and S.K.~Nayar extended in \cite{Swaminathan} this method by reducing noise and using polycamera. However, this method still relies on calculating parameters, which is not accurate because the model is simplified. 
-In \cite{Sagawa} a way is proposed using structured light to determine the correspondence and creates directly a dense map so that the error generated by parameter fitting is reduced. 
-The system proposed is based on \cite{Sagawa} since they are both based on detecting the correspondence of lines and get the map non-parametrically. %\cite{Faugeras:1992}
-
-\section{Mathematical Backround}
-\label{sec:maths}
+In \cite{Sagawa} a way is proposed by Sagawa using structured light to determine the correspondence and creates directly a dense map so that the error generated by parameter fitting is reduced. 
+The system proposed is based on \cite{Sagawa} since they are both based on detecting the correspondence of lines and get the map nonparametrically.
 
 
 
@@ -266,14 +263,15 @@ The geometric distortion is one of the most famous distortion effects that is co
 \begin{equation}
 \delta_r=k_1r^3+k_2r^5+k_3r^7+...
 \end{equation}
-$r:is the distance of the image point from the principal point$
+$r$ : \textit{is the distance of the image point from the principal point}
 The decentering distortion or the tangential distortion, occurs at the right angle to the radii but it's not stronger than radial distortion.
 The can describe the coordinate of the distorted matrix as following 
 \begin{equation}
 u^d = u+\delta_u,v^d=v+\delta_v
 \end{equation}
-The displacement matrix is like the following, where the first matrix is describing the radial distortion and the second matrix describes the tangential distortion\cite{Corke}.
-\begin{equation}
+The displacement matrix is like the following, where the first matrix is describing the radial distortion and the second matrix describes the tangential distortion \cite{Corke}.
+\begin{align}
+\begin{split}
 \begin{pmatrix}
 \delta_u\\
 \delta_v\\
@@ -285,7 +283,8 @@ v(k_1r^2+k_2r^4+k_3r^6)\\
 2p_1uv+P_2(r^2+2u^2)\\
 p_1(r^2+2v^3)+2P_2uv
 \end{pmatrix}
-\end{equation}
+\end{split}
+\end{align}
 In practical life to describe the radial distortion only three coefficients are sufficient and the distortion model is parameterized by $(k_1,k_2,k_3,p_1,p_2)$. Which are considered as additional intrinsic parameters.
 
 \subsubsection{Calibration with checkerboard}
@@ -336,13 +335,10 @@ After applying Sobel operator, we can conclude that this algorithm detects a lot
 \subsubsection{Canny operator}
 The Canny operator is based on Sobel operator and it is very useful to remove the edges that we are not interested in.  Simply Canny operator takes the output of Sobel operator. 
 \\
-The Canny operator start working on images after many stages. Firstly, the Image should be converted to grayscale Image. After that the gaussian blur filter is applied.   Hereafter the Soble operator is applied on vertical and horizontal directions. At the end, the calculation of the orientation is to be done to get ready to apply Canny operator.
+The \emph{Canny}--Operator start working on images after many stages. Firstly, the Image should be converted to grayscale Image. After that the gaussian blur filter is applied.   Hereafter the Soble operator is applied on vertical and horizontal directions. At the end, the calculation of the orientation is to be done to get ready to apply Canny operator.
 \\
 The most powerful part of that method is the hysteresis thresholding: The hysteresis thresholding is defined as two thresholds, min thresholds and max thresholds. The thresholds classify the strong edges,which is a main edges of an object. form weak edges.  So, any edge above the top threshold will be taken and anything under the lower threshold will be ignored. The region in between will be inspected, that any strong edge is connected to edge at that region by pixel traversal will be included.
-
-
-
-
+In the next section \emph{Mapping of correspondencing pixels} it's introduced when the \emph{Canny}--Operator will be used to detect lines in the undistortion calibration process. But first some other methods are shown that we're implemented during this project.
 
 
 
@@ -576,7 +572,10 @@ For a skip of $j = 3$ we get in our setup an optimal spacing of roughly $s = 101
 \subsection{accuracy}
 \subsection{comparation and valuation}
 
-\section{Problems}
+\section{Future work and problems}
+\label{sec:work_probs}
+In this section the problems with the openframeworks and openCV Libraries that occured during this work are presented in \ref{sec:probs}. After that, ideas and possible improvements are introduced in \ref{sec:future}, which could not be implemented anymore.
+\subsection{Problems}
 \label{sec:probs}
 Several problems appear during the process of this project.
 The first is the use of new programming tools. Openframeworks is a toolkit with powerful embedded functions (setup(), update() and draw()) which has an advantage that draws parallel to processing, however, it brings timing issues in our project, since the update function only runs once before drawing. Getting rid of it costs the first several weeks and slowed the process down. Ultimately we divided each app into several states in draw(), and use a state machine to control the process, which turns out to be a good solution.  \\
@@ -588,7 +587,8 @@ The modular program structure was important for us, as we wanted to keep an over
 We also set ofSetBackgroundAuto(false) to avoid flickering of the screen, which brings has problematics since for Windows 10 systems because of incompatibility. 
 
 
-
+\subsection{Future work}
+\label{sec:future}
 
 %\bibliography{literatur}
 
@@ -620,6 +620,11 @@ J.~Weng and P.~Cohen and M.~Herniou. \emph{Camera calibration with distortion mo
 \bibitem{Duane}
 C.B.~Duane  \emph{Close-range camera calibration}. Photogramm. Eng, vol.37 num.8, p.855-866. 1971
 
+\bibitem{Corke}
+C.B.~Peter Corke  \emph{Robotics, Vision and Control: Fundamental Algorithms In MATLAB® Second, Completely Revised, Extended And Updated Edition }. Eng, vol.1 , p.319-356. 2017
+
+\bibitem{Langaniere}
+C.B.~Robert Laganiere  \emph{OpenCV3 ComputerVision Application Programming Cookbook }. Eng, vol.3, 2017
 
 \end{thebibliography}
 
