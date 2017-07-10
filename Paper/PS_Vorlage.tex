@@ -213,29 +213,67 @@ The specifications for the camera state a diagonal aperture angle of $68.50^{\ci
 The following variables will be use: $h_{FOV}$ as the height of the FOV, $w_{FOV}$ as the width of the FOV, $w_s$ as the width of the screen, and $h_s$ as the height of the screen.\\
 \subsubsection{Singular pixel detection}
 \label{singlePixel}
-With a naive approach each patch of minimal detectable size on the screen has to be turned on separately. This means screen width times screen height necessary images. In our set up $921,600$ images would be needed, yielding a runtime of $307,200$ seconds, or $3$ days $13$ hours $20$ minutes.
-It can be sped up however. By lighting up single pixels in a spiral pattern around an estimation of the middle point, the amount of images can be reduced to the amount of pixels within the camera’s FOV runtime to roughly $88,572$ seconds, or $1$ day $1$ hour $30$ minutes.
-The center point estimation has been left out, as it is comparably negligible.\\
+With a naive approach each patch of minimal detectable size on the screen has to be turned on separately.
+\begin{align}
+rt(w_s, h_s) = \frac{1}{3} \cdot w_s \cdot h_s
+\end{align}
+This means screen width times screen height necessary images. In our set up $921,600$ images would be needed, yielding a runtime of $307,200$ seconds, or $3$ days $13$ hours $20$ minutes.\\
+It can be sped up however. . By lighting up single pixels in a spiral pattern around an estimation of the middle point, the amount of images can be reduced to the amount of pixels within the camera’s FOV plus one pixel in each dimension. The additional pixel is necessary, because it allows us to know, when the spiral does not need to actually be done, but can jump to a next position. This is due to the pixel outside no longer being detected. \begin{align}
+rt(w_{FOV}, h_{FOV}) = \frac{1}{3} (w_{FOV} + 1) \cdot (h_{FOV} + 1)
+\end{align}
+In our setup, we need 265,716 images, leading to a runtime of 88,572 seconds, or 1 day 36 hours 12  seconds. The center point estimation has been left out, as it is comparably negligible.\\
 	
 \subsubsection{Line-based detection} 
 \label{sec:linebased}
-The first idea for a line-based detection was to first detect the borders and store how the border pixels of the image map to the screen. The idea was to first detect a pixel on the border via binary search and then move this pixel to new positions to check whether these are seen. We need to check at least four surrounding pixels for visibility. This means $4 \cdot (2 \cdot h_{FOV} + 2 \cdot w_{FOV})$, in our setup that leads to $8,520$ images. To process these images, we need $2,840$ seconds, or $47$ minutes $20$ seconds. After discovering the border only two images need to be created and processed. However, since the discovery of the border would take still too long, we rejected this method as well.\\
+The first idea for a line-based detection was to first detect the borders and store how the border pixels of the image map to the screen. The idea was to first detect a pixel on the border via binary search and then move this pixel to new positions to check whether these are seen. We need to check at least four surrounding pixels for visibility.  For the runtime of only the border detection, once the binary search is done, this means 
+\begin{align}
+rt(w_{FOV}, h_{VOF}) = \frac{4}{3} (2 \cdot h_{FOV} + 2 \cdot w_{FOV})
+\end{align}
+In our setup, we need $8,520$ images, leading to a runtime of $2,840$ seconds, or $47$ minutes $20$ seconds.  After discovering the border only two images need to be created and processed. However, since the discovery of the border would take still too long, we rejected this method as well.\\
 The next method is a segmentation of the screen. By segmenting the screen sequentially in a black and a white part, we can detect a single edge in the image. The white part starts out as the entire screen and gradually decreases in width, pixel by pixel. After that is done, the white part is again stretched out over the entire screen and then decreases in height. At each image we know exactly at which position the screen shows the edge. From this we can calculate where the edge pixels from the image should have appeared.\\
-When doing this naively and simply going over the entire screen width and height, this method needs to process $2,370$ images. It would take $790$ seconds, or $13$ minutes $10$ seconds. This is already immensely faster. It can still be sped up, however.\\
+A naïve and simple approach is to go over the entire screen width and height. Each row and each column is once the edge row or column. This leads to a runtime of
+\begin{align}
+rt(w_s, h_s) = \frac{1}{3} (w_s + h_s)
+\end{align}
+In our setup, we need $2,370$ images, leading to a runtime of $790$ seconds, or $13$ minutes $10$ seconds.  This is already immensely faster. It can still be sped up, however.\\
 Instead of going over the entire screen, we first estimate the center point again. This time we additionally store which was the outermost pixel, which was visible during the estimation, for each border. From there we add the spacing, that was used, plus a small margin to be safe. The margin was chosen to be $5$ pixels wide. In this method the runtime for the center point estimation is relevant. While the runtime for the center point estimation increases with smaller spacing, the runtime for the line-based detection decreases. This means a runtime-optimal spacing can be calculated.\\
 Let s be the spacing between the positions of the pixels to be lit, and m the margin. Then the runtime of the center estimation, as a function of spacing s, is:
 \begin{align}
-rt_c (s) = \frac{w_s\cdot h_s}{ s^2} =\frac{1393200}{s^2} .
+rt_c (s) =\frac{1}{3} \frac{w_s\cdot h_s}{ s^2} =\frac{1393200}{3s^2} .
 \end{align}
 For the runtime of the line-based detection after that, follows:
 \begin{align}
-rt_d (s) = 4s + 4\cdot m + w_{FOV} + h_{FOV} = 4s + 1085
+rt_d (s) &=\frac{1}{3}\left( 4s + 4\cdot m + w_{FOV} + h_{FOV}\right)\\& = 4s + 1085
 \end{align}
 From there the overall runtime can be calculated as:
 \begin{align}
-rt(s) = \frac{1393200}{s^2} + 4s +1085.
+rt(s) &=\frac{1}{3}\left(\frac{w_s*h_s}{s^2} + 4s + 4m + w_{FOV} + h_{FOV}\right)\\& = \frac{\frac{1,393,200}{s^2} + 4s +1085}{3}.
 \end{align}
-This functions minimum is at roughly $s = 89$. For this spacing we need then $1,617$ images, leading to a runtime of $539$ seconds, or nearly $9$ minutes. Of these roughly $59$ seconds are center point estimation.
+For calculating the minimum of this function we take the first derivative w.r.t. spacing s and set it to zero:
+\begin{align}
+&rt’(s) = \frac{1}{3} \cdot \left( \frac{-w_s \cdot h_s}{s^3 }  + 4\right) = \frac{ \frac{-1,393,200}{s^3}+ 4}{3},\\
+\Rightarrow &s = \sqrt[3]{\frac{w_s * h_s}{4}} = \sqrt[3]{\frac{1393200}{4}}. 
+\end{align}
+
+The functions minimum is at roughly $s = 70$. For this spacing we need then $\textbf{1,617}$ images, leading to a runtime of $539$ seconds, or nearly $9$ minutes. Of these roughly $59$ seconds are taken by center point estimation.\\
+If this is deemed too slow, but the restriction of true pixelwise mapping is lifted, it can be sped up. We skip a set amount of pixels, when moving the white rectangle over the screen. We can introduce the jump width as variable $j$, i.e. every $j$--th pixel will be part of an edge. This changes our runtime formula for the detection part to, when assuming the same margin $m$:
+\begin{align}
+rt_d (s; j) &=\frac{1}{3} \cdot \frac{4*s + 4 * m + w_{FOV} + h_{FOV}}{j}\\
+ &= \frac{4s + 1085}{3j},
+\end{align}
+and thus the overall formula and its derivative to:
+\begin{align}\begin{split}
+rt(s; j) &= \frac{1}{3} \left(\frac{w_s\cdot h_s}{3} + \left( 4s + 4m + w_{FOV} + h_{FOV}\right)\frac{1}{j}\right)\\ &=\frac{1}{3}\left( \frac{1,393,200}{s^2} + \frac{4s +1085}{j}\right),\end{split}
+\end{align}
+\begin{align}\begin{split}
+rt’(s; j) &= \frac{1}{3} \left(\frac{-w_s * h_s}{s^3} + \frac{4}{j}\right)\\& =\frac{-1,393,200 }{3s^3} + \frac{4}{3j} \end{split}
+\end{align}
+The new optimal spacing is now calculated as:
+\begin{align}\begin{split}
+s &= \sqrt[3]{\frac{w_s \cdot h_s \cdot j }{ 4}} \\&= \sqrt[3]{\frac{1,393,200 * j} { 4}}.\end{split}
+\end{align}
+For a skip of $j = 3$ we get in our setup an optimal spacing of roughly $s = 101$. This spacing and skipping, we need $633$ images, leading to a runtime of $211$ seconds, or $3$ minutes $31$ seconds. Of these roughly $46$ seconds are taken by center point estimation.
+
 
 
 
