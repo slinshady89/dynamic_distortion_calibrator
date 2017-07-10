@@ -44,7 +44,7 @@ int main( ){
 	ofImage img;
 	/*img.setFromPixels(distortedImage.getPixels());
 	img.save("distortedImage.jpg");*/
-	/*
+	
 	img.load("distortedImage.jpg");
 
 	distortedImage.setFromPixels(img.getPixels());
@@ -54,7 +54,7 @@ int main( ){
 
 	std::cout << "created and saved image\n";
 	
-	ofImage undistortedImage = dynDistCal.undistort(distorted, matchX, matchY);*/
+	ofImage undistortedImage = dynDistCal.undistort(distorted, matchX, matchY);
 
 	// save image as cv::imshow doesn't work currently
 	//undistortedImage.save("undistortedTestImage.jpg", OF_IMAGE_QUALITY_BEST);
