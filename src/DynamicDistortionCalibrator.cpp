@@ -394,18 +394,17 @@ int DynamicDistortionCalibrator::getJump() {
 
 //_____________________________________________________________________________
 cv::Mat DynamicDistortionCalibrator::interpolateImage(cv::Mat undistedImage) {
-	cv::Mat interpolatedImage;
 	// allocate the interpolatedImage that will be the return of the function with the size of the 
 	// camera image
-	interpolatedImage.zeros(undistedImage.size(), undistedImage.type());
+	cv::Mat interpolatedImage(undistedImage.rows, undistedImage.cols, undistedImage.type(), cv::Scalar::all(0));
 	int rows = undistedImage.rows;
 	int cols = undistedImage.cols;
 
-	for (size_t x = 0; x < rows; x++) {
-		for (size_t y = 0; y < cols; y++) {
+	for (size_t x = 0; x < cols; x++) {
+		for (size_t y = 0; y < rows; y++) {
 			// if a seen value is at (x,y) position use that
-			if (undistedImage.at<uchar>(x, y) != -1) {
-				interpolatedImage.at<uchar>(x, y) = undistedImage.at<uchar>(x, y);
+			if (undistedImage.at<uchar>(y, x) != -1) {
+				interpolatedImage.at<uchar>(y, x) = undistedImage.at<uchar>(y, x);
 			}
 			// else use bilinear interpolation of all accessible pixels around (x,y)
 			else {
@@ -444,17 +443,17 @@ cv::Mat DynamicDistortionCalibrator::mappingImage(cv::Mat distortedImage, int** 
 	//cv::Mat mappedImage;
 	size_t rows = distortedImage.rows;
 	size_t cols = distortedImage.cols;
-	size_t maxX, maxY, minX, minY;
+	int maxX, maxY, minX, minY;
 	maxX = 0;
 	maxY = 0;
-	minX = MAXSIZE_T;
-	minY = MAXSIZE_T;
+	minX = MAXINT;
+	minY = MAXINT;
 
 	// find the extremal values of x & y  and save them for correct allocation of the mappedImage
-	for (size_t i = 0; i < rows; i++) {
-		for (size_t j = 0; j < cols; j++) {
-			size_t x = (size_t)matchX[i][j];
-			size_t y = (size_t)matchY[i][j];
+	for (size_t i = 0; i < cols; i++) {
+		for (size_t j = 0; j < rows; j++) {
+			int x = matchX[i][j];
+			int y = matchY[i][j];
 			if (x != -1) {
 				if (x > maxX)
 				{
@@ -478,28 +477,22 @@ cv::Mat DynamicDistortionCalibrator::mappingImage(cv::Mat distortedImage, int** 
 			}
 		}
 	}
-	cout << "first loop to look for min and max done\n";
 	// allocates the mapped undistorted matrix with zeros
-
-	cv::Mat mappedImage(maxY - minY, maxX - minX, CV_32F, cv::Scalar::all(0));
-	cout << "allocated image\n";
+	cv::Mat mappedImage(maxY - minY + 1, maxX - minX + 1, distortedImage.type(), cv::Scalar::all(0));
 	// checks the found matching matrices for the (x,y) distortion values and 
 	// move the color values to the correct position 
-	for (size_t x = 0; x < rows; x++) {
-		for (size_t y = 0; y < cols; y++) {
+	for (size_t x = 0; x < cols; x++) {
+		for (size_t y = 0; y < rows; y++) {
 			if (matchX[x][y] != -1 && matchY[x][y] != -1) {
-				std::cout << "matchX: " << matchX[x][y] - minY << ", matchY: " << matchY[x][y] - minY << " sizes: " << rows << "x" << cols << endl;
-				size_t distX = (size_t)matchX[x][y] - minX;
-				size_t distY = (size_t)matchY[x][y] - minY;
+				int distX = matchX[x][y] - minX;
+				int distY = matchY[x][y] - minY;
 				if (distX >= 0 && distY >= 0)
 				{
-					std::cout << "error ";
-					mappedImage.at<uchar>(distX, distY) = distortedImage.at<uchar>(x, y);
-					cout << "here?\n";
+					//auto a = distortedImage.at<uchar>(y,x);
+					mappedImage.at<uchar>(distY, distX) << distortedImage.at<uchar>(y, x);
 				}
 			}
 		}
 	}
-	cout << "went over image\n";
 	return mappedImage;
 }
