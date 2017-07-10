@@ -61,6 +61,9 @@ class DynamicDistortionCalibrator {
 		int** getMapX();
 		int** getMapY();
 
+		// FOR DEBUG PURPOSES ONLY
+		void setMaps(int** mapX, int** mapY);
+
 	private:
 		cameraArea _area;
 		int _windowHeight, _windowWidth;

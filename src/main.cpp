@@ -23,14 +23,20 @@ int main( ){
 	dynDistCal.setCannyLowerThreshold(40);
 	dynDistCal.setCannyUpperThreshold(110);
 	dynDistCal.setJump(3);
-	dynDistCal.findRawDistortion(matchX, matchY);
-	dynDistCal.saveRawDistortion("data/maps.txt");
-	/*dynDistCal.loadRawDistortion("data/maps.txt");
+	//dynDistCal.findRawDistortion(matchX, matchY);
+	//dynDistCal.saveRawDistortion("data/maps.txt");
+	dynDistCal.loadRawDistortion("data/maps.txt");
 	// debug thing
 	//dynDistCal.saveRawDistortion("data/maps2.txt");
 	matchX = dynDistCal.getMapX();
 	matchY = dynDistCal.getMapY();
 	std::cout << "loaded maps\n";
+
+	ImageCreator imgc;
+	matchX = imgc.interpolateLines(matchX, true);
+	matchY = imgc.interpolateLines(matchY, false);
+	dynDistCal.setMaps(matchX, matchY);
+	dynDistCal.saveRawDistortion("data/mapsInterpolated.txt");
 
 	ofxCvGrayscaleImage distortedImage;
 	/*distortedImage.allocate(1280, 720);

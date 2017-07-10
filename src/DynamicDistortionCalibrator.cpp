@@ -47,7 +47,7 @@ void DynamicDistortionCalibrator::saveRawDistortion(string path)
 			file << ";\n";
 		}
 		// leave a line out
-		std::cout << "saved x-map\n";
+
 		file << "\n";
 		// then y-distortion
 		
@@ -60,7 +60,7 @@ void DynamicDistortionCalibrator::saveRawDistortion(string path)
 			}
 			file << "\n";
 		}
-		std::cout << "saved y-map\n";
+
 	}
 	else {
 		std::cout << "Saving the maps went wrong. File could not be openend.\n";
@@ -96,13 +96,17 @@ void DynamicDistortionCalibrator::loadRawDistortion(string path)
 		}
 
 		int count = 0;
+		int* arr;
 		bool xComplete = false;
 		// load x map
 		// get first line
 		getline(file, line);
 		while(xComplete == false) {
 			// work on that line
-			_area._distortionX[count] = stringToIntArray(line);
+			arr = stringToIntArray(line);
+			for (int i = 0; i < width; i++) {
+				_area._distortionX[i][count] = arr[i];
+			}
 			// get next line
 			getline(file, line);
 			++count;
@@ -117,7 +121,10 @@ void DynamicDistortionCalibrator::loadRawDistortion(string path)
 		getline(file, line);
 		while (!line.empty()) {
 			// work on that line
-			_area._distortionY[count] = stringToIntArray(line);
+			arr = stringToIntArray(line);
+			for (int i = 0; i < width; i++) {
+				_area._distortionY[i][count] = arr[i];
+			}
 			// get next line
 			getline(file, line);
 			++count;
@@ -449,6 +456,12 @@ int** DynamicDistortionCalibrator::getMapX() {
 //_____________________________________________________________________________
 int** DynamicDistortionCalibrator::getMapY() {
 	return _area._distortionY;
+}
+
+void DynamicDistortionCalibrator::setMaps(int ** mapX, int ** mapY)
+{
+	_area._distortionX = mapX;
+	_area._distortionY = mapY;
 }
 
 //_____________________________________________________________________________

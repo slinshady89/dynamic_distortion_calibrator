@@ -27,6 +27,9 @@ public:
   void setResolutionWidth(int resolutionWidth);
   void setLinesToDraw(bool vert, bool hor);
 
+
+  // interpolate missing allocations in a vertical or horizontal line in an image
+  int** interpolateLines(int** distImage, bool vert);
 private:
   // Object for camera signal
   ofVideoGrabber _cam;
@@ -46,9 +49,9 @@ private:
   // resolution
   int _resolutionHeight, _resolutionWidth;
   // image height
-  int _imageHeight;
+  int _imageHeight = 720;
   // image width
-  int _imageWidth;
+  int _imageWidth = 1280;
   // color image taken from video grabber
   ofxCvColorImage _color;
   // grayscale image to be worked on
@@ -61,6 +64,5 @@ private:
   bool _drawHorizontal;
   // if true draw vertical, if both horizontal and vertical are true, draw both
   bool _drawVertical;
-  // interpolate missing allocations in a vertical or horizontal line in an image
-  void interpolateLines(cv::Mat &distImage, bool vert);
+
 };

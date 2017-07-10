@@ -322,33 +322,31 @@ void ImageCreator::countLines(cv::Mat &distImage) {
 
 
 
-void ImageCreator::interpolateLines(cv::Mat &matchMat , bool vert) {
-  // should be set in function use
-  vert = true;
-  if (vert) {
-    for (size_t x = 0; x < _imageWidth; x++)
+int** ImageCreator::interpolateLines(int** matchMat , bool vert) {
+   if (vert) {
+    for (int y = 0; y < _imageHeight; y++)
     {
       int emptyCellCount = 0;
       int lastVal = 0;
       int actualVal = 0;
-      for (size_t y = 0; y < _imageHeight; y++)
+      for (int x = 0; x < _imageWidth; x++)
       {
-        // checks if the actual seen pos got a value and save that to actualVal and the last actualVal to lastVal
-        if ((matchMat.at<uchar>(x, y) != -1) && (actualVal == 0))
-        {
-          lastVal = actualVal;
-          actualVal = matchMat.at<uchar>(x, y);
-        }
+		actualVal = matchMat[x][y];
         // every time the emptyCellCount > 0 and a cell is filled the cells between the last filled and actual were interpolated linear
-        if ((emptyCellCount > 0) && (actualVal != 0)) {
-          for (size_t yy = 0; yy < emptyCellCount; yy++)
+        if (((emptyCellCount > 0) || x == 0) && (actualVal != -1)) {
+          for (int xx = 0; xx < emptyCellCount; xx++)
           {
-            matchMat.at<uchar>(x, y - emptyCellCount + yy) = ((actualVal - lastVal) / emptyCellCount)*yy;
-          }
-          actualVal = 0;
+			  if(lastVal != 0) {
+				// has to be offset with lastVal as that should be the least asignable value
+				// + factor * (yy + 1), as yy = 0 and thus we'd only be replicating the actualValue for the first cell
+				matchMat[x - emptyCellCount + xx][y] = lastVal + round(((actualVal - lastVal) / (float)emptyCellCount)*(xx + 1));
+			  }
+		  }
+		  lastVal = actualVal;
+
         }
 
-        if ((matchMat.at<uchar>(x, y) == -1))
+        if ((actualVal == -1))
         {
           emptyCellCount++;
         }
@@ -359,26 +357,28 @@ void ImageCreator::interpolateLines(cv::Mat &matchMat , bool vert) {
     }
   }
   else {
-    for (size_t y = 0; y < _imageHeight; y++)
+    for (size_t x = 0; x < _imageWidth; x++)
     {
       int emptyCellCount = 0;
       int lastVal = 0;
       int actualVal = 0;
-      for (size_t x = 0; x < _imageWidth; x++)
+      for (size_t y = 0; y < _imageWidth; y++)
       {
-        if ((matchMat.at<uchar>(x, y) != -1) && (actualVal == 0))
-        {
-          lastVal = actualVal;
-          actualVal = matchMat.at<uchar>(x, y);
-        }
-        if ((emptyCellCount > 0) && (actualVal != 0) ) {
-          for (size_t xx = 0; xx < emptyCellCount; xx++)
-          {
-            matchMat.at<uchar>(x - emptyCellCount + xx, y ) = ((actualVal - lastVal) / emptyCellCount)*(xx+1);
-          }
-          actualVal = 0;
-        }
-        if ((matchMat.at<uchar>(x, y) == -1))
+		actualVal = matchMat[x][y];
+		// every time the emptyCellCount > 0 and a cell is filled the cells between the last filled and actual were interpolated linear
+		if (((emptyCellCount > 0) || y == 0) && (actualVal != -1)) {
+			for (int yy = 0; yy < emptyCellCount; yy++)
+			{
+				if (lastVal != 0) {
+					// has to be offset with lastVal as that should be the least asignable value
+					// + factor * (yy + 1), as yy = 0 and thus we'd only be replicating the actualValue for the first cell
+					matchMat[x][y - emptyCellCount + yy] = lastVal + round(((actualVal - lastVal) / (float)emptyCellCount)*(yy + 1));
+				}
+			}
+			lastVal = actualVal;
+
+		}
+        if ((matchMat[x][y] == -1))
         {
           emptyCellCount++;
         }
@@ -388,4 +388,5 @@ void ImageCreator::interpolateLines(cv::Mat &matchMat , bool vert) {
       }
     }
   }
+  return matchMat;
 }
