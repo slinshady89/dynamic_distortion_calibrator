@@ -53,26 +53,36 @@ class DynamicDistortionCalibrator {
 		// getter for jump width
 		int getJump();
 
-		// getter for maps, no setter as it should be either found or loaded
+		// getter for maps
 		int** getMapX();
 		int** getMapY();
-
-		// FOR DEBUG PURPOSES ONLY
+		// setter for maps
 		void setMaps(int** mapX, int** mapY);
+
 		// interpolate missing allocations in a vertical or horizontal line in an image
 		int ** interpolateLines(int ** matchMat, bool vert);
 	private:
+		// contains information about the visible camera area
 		cameraArea _area;
+		// height and width of the screen
 		int _windowHeight, _windowWidth;
 		calibrationImage _vertical, _horizontal;
+		// spacing for center point estimation in camera area detection
 		int _spacing;
+		// resolution of the camera
 		int _resolutionWidth, _resolutionHeight;
 		// thresholds for canny detector
 		int _cannyLower, _cannyUpper;
+		// minimally visible pixelSize
 		int _pixelSize;
+		// width by which the rectangle in the camera area detection shrink
 		int _jump;
+		// bool array that contains whether a specific pixel needs to be interpolated
+		bool** _interpolate;
 
+		// finds teh minimally visible pixel size
 		int findPixelSize();
+		// finds the visible camera area
 		cameraArea findCameraArea();
 
 		// returns the undistorted image with interpolated pixels in the inner of the frame
