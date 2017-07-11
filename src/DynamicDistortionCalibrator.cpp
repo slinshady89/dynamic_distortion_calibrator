@@ -408,7 +408,7 @@ cv::Mat DynamicDistortionCalibrator::interpolateImage(cv::Mat undistedImage) {
 			if (_interpolate[x][y] == false) {
 				interpolatedImage.at<uchar>(y, x) = undistedImage.at<uchar>(y, x);
 			}
-			// else use bilinear interpolation of all accessible pixels around (x,y)
+			// else use bilinear interpolation of all accessible uninterpolated pixels around (x,y)
 			else {
 				size_t interpolate = 0;
 				size_t count = 0;
