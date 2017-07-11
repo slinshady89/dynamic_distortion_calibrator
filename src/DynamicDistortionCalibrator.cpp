@@ -58,7 +58,7 @@ void DynamicDistortionCalibrator::saveRawDistortion(string path)
 					file << ", ";
 				}
 			}
-			file << "\n";
+			file << ";\n";
 		}
 
 	}
@@ -138,7 +138,7 @@ void DynamicDistortionCalibrator::loadRawDistortion(string path)
 int* DynamicDistortionCalibrator::stringToIntArray(string line) {
 	string tmp;
 	vector<int> vec;
-	while (line.compare(";") != 0 && line.compare("") != 0) {
+	while (line.compare(";") != 0 && line.compare("") != 0 && line.compare(" ;") != 0 && line.compare(" ") != 0) {
 		tmp = line.substr(0, line.find_first_of(","));
 		vec.push_back(stoi(tmp));
 		line = line.substr(line.find_first_of(",") + 2, line.size());
