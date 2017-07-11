@@ -10,76 +10,109 @@
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {I-A}Related Work}{1}}
 \newlabel{sec:related}{{I-A}{1}}
+\citation{Wikipedia}
+\citation{Wikipedia}
+\citation{Corke}
+\citation{Corke}
 \citation{Corke}
 \citation{Corke}
 \citation{Corke}
 \citation{Ma:2010}
+\citation{Corke}
 \@writefile{toc}{\contentsline {section}{\numberline {II}Image formation in digital camera}{2}}
 \newlabel{sec:imageFormation}{{II}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {II-A}Perspective projection}{2}}
 \newlabel{sec:projection}{{II-A}{2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Image formation in pinhole camera}}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Image formation in pinhole camera\cite  {Wikipedia}\relax }}{2}}
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:pinhole}{{1}{2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Image formation for a convex lens \cite  {Corke}}}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Image formation for a convex lens \cite  {Corke}\relax }}{2}}
 \newlabel{fig:imageGeometry}{{2}{2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces The central-projection model \cite  {Corke}.}}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces The central-projection model \cite  {Corke}.\relax }}{2}}
 \newlabel{fig:projectionModel}{{3}{2}}
 \newlabel{eq:C_origin}{{2a}{2}}
 \newlabel{eq:P_w}{{2b}{2}}
 \newlabel{eq:P_i}{{2c}{2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {II-A.1}Modeling a perspective camera}{2}}
 \citation{Corke}
 \citation{Corke}
 \citation{Corke}
 \citation{Corke}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {II-A.1}Modeling a perspective camera}{3}}
 \newlabel{eq:homo_x}{{4a}{3}}
 \newlabel{eq:homo_y}{{4b}{3}}
 \newlabel{eq:homo_z}{{4c}{3}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {II-A.2}Discrete image plane}{3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces camera coordinate frame\cite  {Corke}.}}{3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces camera coordinate frame \cite  {Corke}.\relax }}{3}}
 \newlabel{fig:cameraFrame}{{4}{3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {II-A.2}Discrete image plane}{3}}
 \newlabel{sec:camMatrix}{{II-A.3}{3}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {II-A.3}Camera matrix}{3}}
 \citation{Corke}
+\citation{matlab}
+\citation{matlab}
+\citation{matlab}
+\citation{matlab}
+\citation{Corke}
+\citation{Corke}
+\citation{matlab}
+\citation{opencv}
+\citation{Langaniere}
 \citation{Langaniere}
 \citation{Langaniere}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {II-A.4}Lens Distortion}{4}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {II-A.5}Calibration with checkerboard}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces camera coordinate frame\cite  {matlab}.\relax }}{4}}
+\newlabel{fig:cameraCoordinateFrame}{{5}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces detected points with Matlab toolbox\cite  {matlab}.\relax }}{4}}
+\newlabel{fig:detectedPoints}{{6}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces camera poses for each calibration image\cite  {Corke}\relax }}{4}}
+\newlabel{fig:cameraPose}{{7}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Reprojection Errors Bar Graph.\relax }}{4}}
+\newlabel{fig:ErrorsBarGraph}{{8}{4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {II-B}Canny and Sobel edge detection}{4}}
 \newlabel{sec:Canny}{{II-B}{4}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {II-B.1}Sobel operator}{4}}
+\citation{opencv}
+\citation{opencv}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {II-B.2}Canny operator}{5}}
 \@writefile{toc}{\contentsline {section}{\numberline {III}Mapping of correspondencing pixels}{5}}
 \newlabel{sec:mapping}{{III}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Setup of Camera and Monitor}}{5}}
-\newlabel{fig:setup}{{5}{5}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces pixel size detection}}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Setup of Camera and Monitor\relax }}{5}}
+\newlabel{fig:setup}{{9}{5}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces pixel size detection\relax }}{5}}
 \newlabel{algo:pixelsize}{{1}{5}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces calculation of center point of FOV}}{5}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces calculation of center point of FOV\relax }}{5}}
 \newlabel{algo:centerPoint}{{2}{5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {III-A}Pixelwise approaches}{6}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {III-A.1}Enlighting every Pixel}{6}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {III-A.2}Moving the pixel in spiral shape}{6}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {III-A.3}by lines}{6}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {3}{\ignorespaces binary search algorithm for border detection}}{6}}
-\newlabel{algo:binary}{{3}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Rectangle moving over the screen\relax }}{6}}
+\newlabel{fig:setup}{{10}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Rectangle over time\relax }}{6}}
+\newlabel{fig:blockOverTime}{{11}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {III-B}simple linedetection for x and y matching}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces rectangle over the screen}}{6}}
-\newlabel{fig:setup}{{6}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Rectangle over time}}{7}}
-\newlabel{fig:blockOverTime}{{7}{7}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {III-C}runtimes and seen area}{7}}
 \newlabel{sec:runtime}{{III-C}{7}}
 \newlabel{sec:FOV}{{III-C.1}{7}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {III-C.1}Field of View}{7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Distance and angles of the FOV}}{7}}
-\newlabel{fig:dist}{{8}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Distance and angles of the FOV\relax }}{7}}
+\newlabel{fig:dist}{{12}{7}}
 \newlabel{singlePixel}{{III-C.2}{8}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {III-C.2}Singular pixel detection}{8}}
 \newlabel{sec:linebased}{{III-C.3}{8}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {III-C.3}Line-based detection}{8}}
 \bibcite{Zhang}{1}
-\bibcite{Sturm}{2}
+\bibcite{Faugeras}{2}
+\bibcite{Ma:2010}{3}
+\bibcite{Sagawa}{4}
+\bibcite{Salvi}{5}
+\bibcite{Swaminathan}{6}
+\bibcite{Duane}{7}
+\bibcite{Corke}{8}
+\bibcite{Langaniere}{9}
+\bibcite{Wikipedia}{10}
+\bibcite{opencv}{11}
+\bibcite{matlab}{12}
 \@writefile{toc}{\contentsline {section}{\numberline {IV}results}{9}}
 \newlabel{sec:results}{{IV}{9}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {IV-A}accuracy}{9}}
@@ -91,17 +124,6 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {V-B}Future work}{9}}
 \newlabel{sec:future}{{V-B}{9}}
 \@writefile{toc}{\contentsline {section}{Quellen}{9}}
-\bibcite{Faugeras}{3}
-\bibcite{Ma:2010}{4}
-\bibcite{Sagawa}{5}
-\bibcite{Salvi}{6}
-\bibcite{Swaminathan}{7}
-\bibcite{Weng}{8}
-\bibcite{Duane}{9}
-\bibcite{Corke}{10}
-\bibcite{Langaniere}{11}
-\bibcite{Wikipedia}{12}
-\bibcite{opencv}{13}
 \@writefile{toc}{\contentsline {section}{Biographies}{10}}
 \@writefile{toc}{\contentsline {subsection}{Ahmed Ashraf Mohammed}{10}}
 \@writefile{toc}{\contentsline {subsection}{Nils Hamacher}{10}}

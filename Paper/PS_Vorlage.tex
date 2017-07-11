@@ -7,6 +7,7 @@
 \usepackage{tikz}
 \usepackage[]{algorithm2e}
 \usepackage{svg}
+\usepackage{subfig}
 \usepackage{amsmath}
 \def\lehrveranstaltung{PROJEKTSEMINAR ROBOTIK UND COMPUTATIONAL INTELLIGENCE}
 \def\ausgabe{Vol.17,~SS~2017}
@@ -78,15 +79,15 @@ In this section, it will be discussed how cameras are working \ref{sec:projectio
 The Pinhole camera idea is based on the principle of perspective projection and it works when a small hole in the wall of a closed box will cast a dim inverted image of the outside world on the opposite side of the box.
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.4]{./pics/pinhole.png}
-\caption{Image formation in pinhole camera}
+\includegraphics[scale=0.25]{./pics/pinhole.png}
+\caption{Image formation in pinhole camera\cite{Wikipedia}}
 \label{fig:pinhole}
 \end{center}
 \end{figure}
 Convex lenses can do the same work as pinhole and the in the following image we can see the fundamental geometry of image formation for a thin convex lens.
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.6]{./pics/imageFormationGeometry.png}
+\includegraphics[scale=0.5]{./pics/imageFormationGeometry.png}
 \caption{Image formation for a convex lens \cite{Corke}}
 \label{fig:imageGeometry}
 \end{center}
@@ -103,7 +104,7 @@ Its common in Computer vision engineering o use the center perspective imaging m
 %%problem displaying figure here
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.6]{./pics/CenterProjectionModel.png}
+\includegraphics[scale=0.5]{./pics/CenterProjectionModel.png}
 \caption{The central-projection model \cite{Corke}.}
 \label{fig:projectionModel}
 \end{center}
@@ -172,8 +173,8 @@ f&0&0\\
 As known the camera will have an arbitrary pose $\varepsilon_c$ with respect to the world coordinate frame and can be shown and formulated as following 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.5]{./pics/cameraCoordinateFrame.png}
-\caption{camera coordinate frame\cite{Corke}.}
+\includegraphics[scale=0.3]{./pics/cameraCoordinateFrame.png}
+\caption{camera coordinate frame \cite{Corke}.}
 \label{fig:cameraFrame}
 \end{center}
 \end{figure}
@@ -184,7 +185,7 @@ Or by using the homogenous coordinates
 \end{equation}
 
 \subsubsection{Discrete image plane}
-As shown on fig \ref{fig:projectionModel} the image plane in a digital camera constructed by $ W\times H $ photosites, which is light-sensitive elements, that correspond to pixels of the image.  The positive pixel coordinate system is a 2-vector $(u,v)$ and the origin is at the top-left hand corner of the image plane.
+As shown on fig \ref{fig:projectionModel} the image plane in a digital camera constructed by $ W\times H $ photosites, which is light-sensitive elements, that correspond to pixels of the image.  The positive pixel coordinate system is a $2$--vector $(u,v)$ and the origin is at the top-left hand corner of the image plane.
 The pixel coordinate is related to the image-plane coordinate by
 \begin{equation}\frac{x}{\rho_w} + u_0, v = \frac{y}{\rho_h}+v_0\end{equation}
 \begin{align*}
@@ -232,15 +233,14 @@ From the previous equation the camera projection equation can be formulated in t
 \end{subequations}
 Where the first two matrices are the intrinsic matrix and last two matrices are the extrinsic matrices.
 The projection function can be written as\cite{Corke}
-\begin{equation}
-\textbf{P}=p(\textbf{P},\textbf{K},\varepsilon_c)
-\end{equation}
-$\textbf{K}$ : camera parameter matrix
+\begin{align}\begin{split}
+\textbf{P}&=p(\textbf{P},\textbf{K},\varepsilon_c)\\
+\textbf{K}&\text{ : camera parameter matrix}\\
+\varepsilon_c&\text{ : camera pose}\end{split}
+\end{align}
+The camera Parameter matrix K includes the characteristics the camera and the sensors like $f,\rho,\rho_h,u_0$ and $v_0$. Furthermore, the pose of the camera holds the six extrinsic parameters that describe camera orientation and translation.
 \\
-$\varepsilon_c$ : camera pose\\
-The camera Parameter matrix K includes the characteristics the camera and the sensors like $f,\rho,\rho_h,u_0  and v_0$. Furthermore, the pose of the camera holds the six extrinsic parameters that describe camera orientation and translation.
-\\
-There are a total of 11 independent parameters to describe a camera, 5 intrinsic and 6 extrinsic parameters. In practical life, the camera parameters are not known and must be calculated by using a camera calibration process, which will be explained in the calibration section.
+There are a total of $11$ independent parameters to describe a camera, $5$ intrinsic and $6$ extrinsic parameters. In practical life, the camera parameters are not known and must be calculated by using a camera calibration process, which will be explained in the calibration section.
 \\
 The camera field of view is a function of its focal length f  and dimensions of the camera chip $W\rho_w  \times  H\rho_h$. The field of view can be determined from the geometry of fig \ref{fig:projectionModel}.
 In the horizontal direction the angle of view is calculated as following.
@@ -287,18 +287,78 @@ p_1(r^2+2v^3)+2P_2uv
 In practical life to describe the radial distortion only three coefficients are sufficient and the distortion model is parameterized by $(k_1,k_2,k_3,p_1,p_2)$. Which are considered as additional intrinsic parameters.
 
 \subsubsection{Calibration with checkerboard}
-Based on a popular Toolbox for calibrating cameras, which is presented from Caltech university.By using a chessboard, where several images of calibration patterns, always between 10 to 20 images. The images have been taken at different distances and orientations as shown in the following figure.
-%Chessboard pic
-\\
-To pass the images to the toolbox, so they had to use an uncompressed images or loss less compression formats such as PNG. Since the default format of a USB Webcam is JPG, so at first the images need to be converted to PNG format. Moreover, a measurement of the exact length of one side of a square from the checkerboard pattern is necessary to improve the process accuracy. After passing the pattern images to the Toolbox, an image analyzing process starts to analyze each image, so it detects if the image is duplicated or if the entire chessboard could not be detected because of blurry images or an extreme angle of the pattern.
+Based on a popular Toolbox for calibrating cameras, which is presented from Caltech university.By using a chessboard.To pass the images to the toolbox, so they had to use an uncompressed images or loss less compression formats such as PNG. Since the default format of a USB Webcam is JPG, so at first the images need to be converted to PNG format. For best results, 10 to 20 images have to be taken and the chessboard pattern has to be approximately 2 meters from the camera and have to cover as much of the image frame as possible as shown in the following figure.
+%\begin{figure}[h]
+%\begin{center}
+%\includegraphics[scale=0.5]{./pics/chessboardOrientation.png}
+%\caption{camera coordinate frame\cite{matlab}.}
+%\label{fig:cameraCoordinateFrame}
+%\end{center}
+%\end{figure}
+
+
+\begin{figure}[h]
+\centering
+\parbox{4cm}{
+\includegraphics[width=4cm]{./pics/chessboardOrientation.png}
+\caption{camera coordinate frame\cite{matlab}.}
+\label{fig:cameraCoordinateFrame}}
+\qquad
+\begin{minipage}{4cm}
+\includegraphics[width=4cm]{./pics/detectedPoints.jpg}
+\caption{detected points with Matlab toolbox\cite{matlab}.}
+\label{fig:detectedPoints}
+\end{minipage}
+\end{figure}
+
+
+%\begin{figure}[h]
+%\begin{center}
+%\includegraphics[scale=0.10]{./pics/detectedPoints.jpg}
+%\caption{detected points with Matlab toolbox\cite{matlab}.}
+%\label{fig:detectedPoints}
+%\end{center}
+%\end{figure}
+Moreover, a measurement of the exact length of one side of a square from the checkerboard pattern is necessary to improve the process accuracy. After passing the pattern images to the Toolbox, an image analyzing process starts to detect squares intersection points, checkerboard origin, and reprojected points.
+To analyze each image, so it detects if the image is duplicated or if the entire chessboard could not be detected because of blurry images or an extreme angle of the pattern. After running the calibration,  The toolbox shows the different camera pose relative to the target for each calibration image.
+
+\begin{figure}[h]
+\centering
+\parbox{4cm}{
+\includegraphics[width=4cm]{./pics/cameraPoses.png}
+\caption{camera poses for each calibration image\cite{Corke}}
+\label{fig:cameraPose}}
+\qquad
+\begin{minipage}{4cm}
+\includegraphics[width=4cm]{./pics/meanErrorInPixel.png}
+\caption{Reprojection Errors Bar Graph.}
+\label{fig:ErrorsBarGraph}
+\end{minipage}
+\end{figure}
+
+%\begin{figure}[h]
+%\begin{center}
+%\includegraphics[scale=0.2]{./pics/cameraPoses.png}
+%\caption{camera poses for each calibration image\cite{Corke}.}
+%\label{fig:cameraPose}
+%\end{center}
+%\end{figure}
+Furthermore calibration accuracy can be evaluated by examining the Reprojection Errors Bar Graph. The bar graph displays the mean reprojection error per image, along with the overall mean error \cite{matlab} so images can be rejected for better calibration process.
+%\begin{figure}[h]
+%\begin{center}
+%\includegraphics[scale=0.4]{./pics/meanErrorInPixel.png}
+%\caption{Reprojection Errors Bar Graph.}
+%\label{fig:ErrorsBarGraph}
+%\end{center}
+%\end{figure}
 
 \subsection{Canny and Sobel edge detection}
 \label{sec:Canny}
-To perform camera calibration and to calculate the distortion for each pixel, so the camera will be stimulated with vertical and horizontal line at each position. However it's necessary for linedetection in a displayed image to cancel all environment noises so it's recommended to perform image processing like a gaussian blur to extract image primitives of interest. 
-Lines could be extracted at regions where strong change of intensity or color in the processed Image is detected. In this section two different predefined line detection algorithms are compared and the second will be chosen, because it suits the requirements better.
+To perform camera calibration and to calculate the distortion for each pixel, so the camera will be stimulated with vertical and horizontal line at each position. However it's necessary for linedetection in a displayed image to cancel all environment noises so it's recommended to perform image processing like a gaussian blur to extract image primitives of interest \cite{opencv}. 
+Lines could be extracted at regions where strong change of intensity or color in the processed Image is detected. In this section two different predefined line detection algorithms are compared and the second will be chosen, because it suits the requirements better\cite{Langaniere}.
 
 \subsubsection{Sobel operator}
-The main idea of the \emph{Sobel}--operator or \emph{Sobel}--filter is that it affects the vertical or horizontal image frequencies based on which kernel is used, therefore \emph{Sobel}--operator is considered as directional filter. On the other side \emph{Sobel}--operator is a gray scale operator so the image has to be converted to gray scale before applying the algorithm\cite{Langaniere}.
+The main idea of the \emph{Sobel}--operator or \emph{Sobel}--filter is that it affects the vertical or horizontal image frequencies based on which kernel is used, therefore \emph{Sobel}--operator is considered as directional filter. On the other side \emph{Sobel}--operator is a gray scale operator so the image has to be converted to gray scale before applying the algorithm \cite{Langaniere}.
 \\
 The \emph{Sobel}--operator uses two Kernels that operates on each pixel that have the following form to calculate the derivatives of Intensity function \cite{Langaniere}.
 \begin{equation}
@@ -332,22 +392,9 @@ Since the calculated gradient lines at each pixel has a x and y direction, so it
 The \emph{Sobel}--algorithm detects a lot of edges, which are not the actual edge because of the small kernel. Therefore the algorithm's results are noisy. 
 \subsubsection{Canny operator}
 The \emph{Canny}--operator is based on the output of the \emph{Sobel}--operator and it is very useful to remove the edges that aren't in interest. 
-The \emph{Canny}--operator starts working on images after many stages. Firstly, the image should be converted to gray scale. After that the \emph{gaussian}--blur filter is applied. Hereafter the \emph{Sobel}--operator is applied on vertical and horizontal directions. At the end, the calculation of the orientation has to be done to get ready to apply \emph{Canny}--operator.
+The \emph{Canny}--operator starts working on images after many stages. Firstly, the image should be converted to gray scale. After that the \emph{gaussian}--blur filter is applied \cite{opencv}. Hereafter the \emph{Sobel}--operator is applied on vertical and horizontal directions. At the end, the calculation of the orientation has to be done to get ready to apply \emph{Canny}--operator.
 \\
-The most powerful part of that method is the hysteresis thresholding. In the hysteresis thresholding there are two thresholdsd defined, $T_{min}$ and $T_{max}$. A search for an intensity value bigger than $T_{max}$ is started. If a pixel with such a high value is found the algorithm follows this border in both directions as long as a pixel value is higher than $T_{min}$. Every pixel that is found that way belongs to that border. If the complete image was searched for edges the algorithm is terminated. As a result, it provides an image of the dimension of the original image, in which only the edges are dyed white.
-
-
-
-
-
-
-
-
-
-
-
-
-
+The most powerful part of that method is the hysteresis thresholding. In the hysteresis thresholding there are two thresholdsd defined, $T_{min}$ and $T_{max}$. A search for an intensity value bigger than $T_{max}$ is started. If a pixel with such a high value is found the algorithm follows this border in both directions as long as a pixel value is higher than $T_{min}$. Every pixel that is found that way belongs to that border. If the complete image was searched for edges the algorithm is terminated. As a result, it provides an image of the dimension of the original image, in which only the edges are dyed white \cite{opencv}.
 
 
 \section{Mapping of correspondencing pixels}
@@ -356,7 +403,7 @@ The aim of this project is to create a map of corresponding pixels of the screen
 Before the mapping of the correspondences, the set-up of the device should be discussed. The camera should be in a distance to the screen that it only observes the screen and nothing else like the borders or so. The entire visible flat surface should be capable of manipulated by computer in order to excite every pixel on the camera image. The background color of the monitor should be black so that the drawn white pixels can be better recognized. The camera and the display should be in a locked dark area where no light is coming so the monitor is the only light source. This excludes the unwanted reflections that sophisticate the result. If the camera is adjusted perpendicular to the display the program could run.
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.25]{./pics/setup.png}
+\includegraphics[scale=0.18]{./pics/setup.png}
 \caption{Setup of Camera and Monitor}
 \label{fig:setup}
 \end{center}
@@ -378,7 +425,6 @@ First is to be made sure, that the captured image contains at least one position
  \caption{pixel size detection}
  \label{algo:pixelsize}
 \end{algorithm} 
- 
 After the pixel size which can be seen by the camera is detected, a pixel with that size is drawn on the screen which is moving with a spacing. That means that the pixel always gets a new coordinate that with a calculated distance in vertical and/or horizontal  direction. Therefore it's possible to calculate an optimal spacing for a specific method which is described at the end of Chapter \ref{sec:linebased}. While the pixel is moving on the screen the $x_s$ and $y_s$ positions of the seen rectangles on the screen are accumulatively added. Simultaneously the number of seen rectangles is enumerated. The algorithm is shown in \ref{algo:centerPoint}.
  
 \begin{algorithm}[h]
@@ -408,54 +454,54 @@ However it's not very efficient by lighting every pixel of the screen with the s
 
 %% mathematics and basics -> some pictures with different distortion shapes
 \subsubsection{by lines}
-The pixel-wise distortion calibration was the last concept in which was tried to detect a solution by lighting several rectangles with the minimum pixel size. However this method is already a hybrid since the real line detection methods are introduced here to solve the problem of distortion calibration. In the further discussed methods the pixel correspondence is used and the lines in both images( the drawn and the detected one) are calculated. In this method lines are drawn in the seen area and their position in the camera image are detected and later be corrected. However the borders of the seen area should first be detected. To this end it is forced to find at least one border of the seen area. Therefore a binary search algorithm is developed in order to find a border. The initial point to that algorithm is the center point which has been already detected with algorithm~\ref{algo:centerPoint}. From there it is assumed that a point at any border of the screen is not seen by the camera. Then it will be checked if a point between this two points is seen or not. If not then check between this and center point or else check between that and the point of the border. This is described in algorithm~\ref{algo:binary}. 
+The pixel-wise distortion calibration was the last concept in which was tried to detect a solution by lighting several rectangles with the minimum pixel size. However this method is already a hybrid since the real line detection methods are introduced here to solve the problem of distortion calibration. In the further discussed methods the pixel correspondence is used and the lines in both images( the drawn and the detected one) are calculated. In this method lines are drawn in the seen area and their position in the camera image are detected and later be corrected. However the borders of the seen area should first be detected. To this end it is forced to find at least one border of the seen area. Therefore a binary search algorithm is developed in order to find a border. The initial point to that algorithm is the center point which has been already detected with algorithm~\ref{algo:centerPoint}. From there it is assumed that a point at any border of the screen is not seen by the camera. Then it will be checked if a point between this two points is seen or not. If not then check between this and center point or else check between that and the point of the border. %This is described in algorithm~\ref{algo:binary}. 
 
 
-\begin{algorithm}[h]
- \KwData{pixelPosition}
- \KwResult{returns borderPoint}
- initialization: \;
- point lastSeen = centerPoint\;
- point lastNotseen = screenBorder\;
- point nextPos\;
- \While{(abs(lastSeen - lastNotSeen)>1)}{
- nextPos = (lastSeen+lastNotSeen)/2\;
-  \eIf{(pixelSeen)}{
-   lastSeen = pixelPosition\;
-   }{
-   lastNotSeen = pixelPosition\;
-   }
- }
- pixelPosition = nextPos\;
- return borderPoint = (lastSeen+lastNotSeen)/2\;
- \caption{binary search algorithm for border detection}
- \label{algo:binary}
-\end{algorithm} 
+%\begin{algorithm}[h]
+% \KwData{pixelPosition}
+% \KwResult{returns borderPoint}
+% initialization: \;
+% point lastSeen = centerPoint\;
+% point lastNotseen = screenBorder\;
+% point nextPos\;
+% \While{(abs(lastSeen - lastNotSeen)>1)}{
+% nextPos = (lastSeen+lastNotSeen)/2\;
+%  \eIf{(pixelSeen)}{
+%   lastSeen = pixelPosition\;
+%   }{
+%   lastNotSeen = pixelPosition\;
+%   }
+% }
+% pixelPosition = nextPos\;
+% return borderPoint = (lastSeen+lastNotSeen)/2\;
+% \caption{binary search algorithm for border detection}
+% \label{algo:binary}
+%\end{algorithm} 
+
 In the process of this work the binary search showed that absolute darkness around the setup is necessary because otherwise in the outer area of the camera image pixels that could be seen aren't seen. \\
 After a border is found, the next step is to find all corresponding screen pixels which belongs to the frame of the camera image. If these are found, then draw lines with \emph{width} for vertical lines and the \emph{height} for horizontal lines of the minimum pixel size on the screen that are straight. Then it is possible  to calibrate the distortion with the next two shown images. However, it could still need a long time to detect the borders since around a pixel, it exists 8 possible positions to detect the next one that belongs to the frame. Even if some of these possible positions can be excluded if the side of border and the direction of movement are known, at least 4 possible positions still remain. \\%% Picture Positions? 
 In Chapter \ref{sec:runtime} the minimum time required for an exemplary FOV is calculated. However this method was dismissed too because a way faster solution with a line detection by a \emph{openCV}--function called \emph{Canny} was found. 
 
 \subsection{simple linedetection for x and y matching}
 
-\begin{figure}[h]
-\begin{center}
-\includegraphics[scale=0.25]{./pics/rect.png}
-\caption{rectangle over the screen}
-\label{fig:setup}
-\end{center}
+\begin{figure}
+\centering
+\parbox{4cm}{
+\includegraphics[width=4cm]{./pics/rect.png}
+\caption{Rectangle moving over the screen}
+\label{fig:setup}}
+\qquad
+\begin{minipage}{4cm}
+\includegraphics[width=4cm]{./pics/pattern.png}
+\caption{Rectangle over time}
+\label{fig:blockOverTime}
+\end{minipage}
 \end{figure}
+
 
 The background of the screen is set to be black. Then a white rectangle with height of the screen height is drawn, which has a increasing width. In figure \ref{fig:blockOverTime} how the rectangle is getting wide is shown. At the border of the white rectangle to the black background the \emph{Canny}-operator detects the points of the border as a line. The return of that operation is a point cloud of image coordinates that belong to that line. To every image pixel that in that point cloud the $x$--coordinate to which it should belong is matched. The width of the rectangle is enlarged until it disappears from the FOV.\\
 After that the rectangle is generated from up to down with the same method. Every pixel that belongs to that line in a point cloud by the \emph{Canny}--operator will also be obtained. Now the $y$--coordinates to the points which are obtained can be matched, since they always belong to the actual drawn line. At the end of Chapter \ref{sec:runtime} the runtime of this method is calculated .\\
 It is significantly faster than any of the other methods that were presented so far. However, it can be accelerated even more, if several instead of one pixel size is set as step. To obtain a dense image, a interpolation function is written that interpolates linearly between matched pixels. In future it could be tested if another interpolation method besides linear interpolation give better results. In case of radial distortion a radius to the center point dependent interpolation could return better results.\\
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[scale=0.3]{./pics/pattern.png}
-\caption{Rectangle over time}
-\label{fig:blockOverTime}
-\end{center}
-\end{figure}
 
 \subsection{runtimes and seen area}
 \label{sec:runtime}
@@ -475,7 +521,7 @@ To calculate the aperture angle $\alpha$ for the width or height $\left( \alpha_
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.45]{./pics/distanceandangles.png}
+\includegraphics[scale=0.4]{./pics/distanceandangles.png}
 \caption{Distance and angles of the FOV}
 \label{fig:dist}
 \end{center}
@@ -593,7 +639,7 @@ In this section the problems with the openframeworks and openCV Libraries that o
 Several problems appear during the process of this project.
 The first is the use of new programming tools. Openframeworks is a toolkit with powerful embedded functions (setup(), update() and draw()) which has an advantage that draws parallel to processing, however, it brings timing issues into the project, since the update function only runs once before drawing. Getting rid of it costs the first several weeks and slowed the process down. Ultimately each app was divided into several states in draw(), and use a state machine to control the process, which turns out to be a good solution.  \\
 The next problem is, several classes with their own functions has been written to achieve a modularly structured program. A  master--class was created to bring these module--classes and their functionality together. So each module--class brings a functionality and together they solve the given problem to undistort a image. This splitting of the code made it necessary to retain information gained in each part. This, however, was a problem. Any class that is supposed to draw on the screen, needs to inherit from openframeworks class ofApp. Any class that inherits from class ofApp, has to be started with the openframeworks function ofRunApp.\\
-While the runtime of each App, the only way to access data is to work with multi-threading and trying to access variables from another thread. Since it have to be ensured, that there are no read/write access violations and that the threads are properly synchronized, this method is problematic. \\
+While the runtime of each App, the only way to access data is to work with multi-threading and trying to access variables from another thread. Since it have to be ensured, that there are no read~/~write access violations and that the threads are properly synchronized, this method is problematic. \\
 There is also a problem to access information after the runtime of the apps, since after the runtime of the app all variables used within are deleted. To overcome this disadvantage, a pointer of the app is introduced to a variable outside of it. This ensured that the app wrote into that variable. Since the variable wasn't within the scope of the app, the information in it was retained even after the app was closed and deleted.\\
 The modular program structure was important, as an overview of the code could be lost else. It also allows functionalities easily replaceable as long as the defined interfaces are kept the same.
 \\
@@ -611,8 +657,8 @@ It was necessary to set ofSetBackgroundAuto(false) to avoid flickering of the sc
 \bibitem{Zhang}
 Zhang and Zhengyou. \emph{A flexible new technique for camera calibration}, p.965--980, vol.14 num.10, IEEE Transactions on Pattern Analysis and Machine Intelligence, 2010
 
-\bibitem{Sturm}
-P.F.~Sturm and S.J.~Maybank. \emph{On plane-based camera calibration: A general algorithm, singularities, applications}, Computer Vision and Pattern Recognition, IEEE Computer Society Conference on. IEEE, p.432--437, 1999
+%\bibitem{Sturm}
+%P.F.~Sturm and S.J.~Maybank. \emph{On plane-based camera calibration: A general algorithm, singularities, applications}, Computer Vision and Pattern Recognition, IEEE Computer Society Conference on. IEEE, p.432--437, 1999
 
 \bibitem{Faugeras}
 O.~Faugeras, Q.T.~Luong and S.~Maybank. \emph{Camera self-calibration: Theory and experiments},p. 321--334Computer Vision--ECCV'92, 1992
@@ -629,8 +675,8 @@ J.~Salvi and J.~Pag{\`e}s and J.~Batlle. \emph{Pattern codification strategies i
 \bibitem{Swaminathan}
 R.~Swaminathan and S.K.~Nayar. \emph{Nonmetric calibration of wide-angle lenses and polycameras}, p.1172--1178, vol.22 num.10, IEEE Transactions on Pattern Analysis and Machine Intelligence
 
-\bibitem{Weng}
-J.~Weng and P.~Cohen and M.~Herniou. \emph{Camera calibration with distortion models and accuracy evaluation}, p.965--980, vol.14 num.10, IEEE Transactions on Pattern Analysis and Machine Intelligence, 1992
+%\bibitem{Weng}
+%J.~Weng and P.~Cohen and M.~Herniou. \emph{Camera calibration with distortion models and accuracy evaluation}, p.965--980, vol.14 num.10, IEEE Transactions on Pattern Analysis and Machine Intelligence, 1992
 
 \bibitem{Duane}
 C.B.~Duane  \emph{Close-range camera calibration}. Photogramm. Eng, vol.37 num.8, p.855-866. 1971
@@ -652,7 +698,9 @@ OPENCV {Open Source Computer Vision Library}
 \url {http://docs.opencv.org/2.4/doc/tutorials/imgproc/imgtrans/canny_detector/canny_detector.html} 20.06.2017.\\
 \url {http://docs.opencv.org/2.4/doc/tutorials/imgproc/imgtrans/sobel_derivatives/sobel_derivatives.html} 20.06.2017.\\
 \url {http://docs.opencv.org/2.4/doc/tutorials/calib3d/camera_calibration/camera_calibration.html} 15.06.2017.\\
-
+\bibitem {matlab}
+MATLAB {MathWorks}
+\url {https://www.mathworks.com/help/vision/ug/single-camera-calibrator-app.html}
 \end{thebibliography}
 
 \begin{biography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{./pics/FullSizeRender.jpg}}]
