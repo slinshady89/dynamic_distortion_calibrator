@@ -38,12 +38,12 @@ int main( ){
 	
 	// PART 2, SECOND MAIN CALL
 	// RUN FROM HERE TO PART 3
-	/*
+	
 	distortedImage.allocate(1280, 720);
 	distortedImage = dynDistCal.createImage(true, true);
 	img.setFromPixels(distortedImage.getPixels());
 	img.save("distortedImage.jpg");
-	*/
+	
 
 	// PART 3, THIRD AND LAST MAIN CALL RUN FROM HERE TO THE END
 	/*
@@ -93,7 +93,7 @@ int main( ){
 
 	// COMPARISON between ground truth and undistorted image
 	// load undistorted image and groundtruth
-	
+	/*
 	ofImage undistorted;
 	ofImage gt;
 	undistorted.loadImage("interpolatedJump5.jpg");
@@ -114,5 +114,5 @@ int main( ){
 	difference.save("difference5.jpg", ofImageQualityType::OF_IMAGE_QUALITY_BEST);
 	std::cout << "number of pixels with difference from ground truth: " << noPixDiff  << " of " << gt.getWidth() * gt.getHeight() << endl;
 	std::cout << "ratio of wrong pixels to all pixels: " << ratioPixDiff << ", in percent: " << ratioPixDiff * 100 << "%" <<  endl;
-	
+	*/
 }
