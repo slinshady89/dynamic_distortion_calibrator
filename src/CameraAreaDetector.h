@@ -156,6 +156,7 @@ class CameraAreaDetector : public ofBaseApp {
 
 		int _previousX, _previousY;
 		bool _firstBorderReached, _secondBorderReached;
+		bool _flippedRectangle;
 
 		// color at a given pixel
 		ofColor _colorAtXY;

@@ -268,7 +268,7 @@ ofImage DynamicDistortionCalibrator::createGroundTruthFromImageAndMap(ofImage im
 	minY = MAXINT;
 
 	ofImage gt;
-	gt.setColor(ofColor::black);
+	//gt.setColor(ofColor::black);
 
 	// bool array to take not of which pixels get taken into the ground truth
 	bool** take = new bool*[width];
@@ -288,18 +288,20 @@ ofImage DynamicDistortionCalibrator::createGroundTruthFromImageAndMap(ofImage im
 		for (size_t y = 0; y < _resolutionHeight; y++) {
 			if (mapX[x][y] != -1 && mapY[x][y] != -1) {
 				take[mapX[x][y]][mapY[x][y]] = true;
-				if (mapX[x][y] < minX) {
-					minX = mapX[x][y];
-				}
-				else if (mapX[x][y] > maxX) {
-					maxX = mapX[x][y];
-				}
-				if (mapY[x][y] < minY) {
-					minY = mapY[x][y];
-				}
-				else if (mapY[x][y] > maxY) {
-					maxY = mapY[x][y];
-				}
+			}
+			
+			if (mapX[x][y] != -1 && mapX[x][y] < minX) {
+				minX = mapX[x][y];
+			}
+			else if (mapX[x][y] != -1 && mapX[x][y] > maxX) {
+				maxX = mapX[x][y];
+			}
+			
+			if (mapY[x][y] != -1 && mapY[x][y] < minY) {
+				minY = mapY[x][y];
+			}
+			else if (mapY[x][y] != -1 && mapY[x][y] > maxY) {
+				maxY = mapY[x][y];
 			}
 		}
 	}
@@ -446,6 +448,7 @@ int** DynamicDistortionCalibrator::getMapY() {
 	return _area._distortionY;
 }
 
+//_____________________________________________________________________________
 void DynamicDistortionCalibrator::setMaps(int ** mapX, int ** mapY)
 {
 	_area._distortionX = mapX;
@@ -467,7 +470,7 @@ int DynamicDistortionCalibrator::getJump() {
 cv::Mat DynamicDistortionCalibrator::interpolateImage(cv::Mat undistedImage) {
 	// allocate the interpolatedImage that will be the return of the function with the size of the 
 	// camera image
-	cv::Mat interpolatedImage(undistedImage.rows, undistedImage.cols, undistedImage.type(), cv::Scalar::all(0));
+	cv::Mat interpolatedImage(undistedImage.rows, undistedImage.cols, undistedImage.type());
 	int rows = undistedImage.rows;
 	int cols = undistedImage.cols;
 
@@ -514,11 +517,15 @@ cv::Mat DynamicDistortionCalibrator::mappingImage(cv::Mat distortedImage, int** 
 	//cv::Mat mappedImage;
 	size_t rows = distortedImage.rows;
 	size_t cols = distortedImage.cols;
-	int maxX, maxY, minX, minY;
+	int maxX, maxY, minX, minY, sumX, sumY, meanX, meanY, countX, countY, offsetX, offsetY;
 	maxX = 0;
 	maxY = 0;
 	minX = MAXINT;
 	minY = MAXINT;
+	sumX = 0;
+	sumY = 0;
+	countX = 0;
+	countY = 0;
 
 	// find the extremal values of x & y  and save them for correct allocation of the mappedImage
 	for (size_t i = 0; i < cols; i++) {
@@ -526,6 +533,8 @@ cv::Mat DynamicDistortionCalibrator::mappingImage(cv::Mat distortedImage, int** 
 			int x = matchX[i][j];
 			int y = matchY[i][j];
 			if (x != -1) {
+				countX++;
+				sumX += matchX[i][j];
 				if (x > maxX)
 				{
 					maxX = x;
@@ -537,6 +546,8 @@ cv::Mat DynamicDistortionCalibrator::mappingImage(cv::Mat distortedImage, int** 
 			}
 
 			if (y != -1) {
+				countY++;
+				sumY += matchY[i][j];
 				if (y > maxY)
 				{
 					maxY = y;
@@ -549,7 +560,14 @@ cv::Mat DynamicDistortionCalibrator::mappingImage(cv::Mat distortedImage, int** 
 		}
 	}
 	// allocates the mapped undistorted matrix with zeros
-	cv::Mat mappedImage(maxY - minY + 1, maxX - minX + 1, distortedImage.type(), cv::Scalar::all(0));
+	cv::Mat mappedImage(maxY - minY + 1, maxX - minX + 1, distortedImage.type());
+
+	// get means
+	meanX = round(sumX / (float)countX);
+	meanY = round(sumY / (float)countY);
+	// offset so that min - mean = 0 instead of something negative
+	offsetX = -(minX - meanX);
+	offsetY = -(minY - meanY);
 
 	// bool array for interpolation can be initialized here, as now we know it's size
 	_interpolate = new bool*[maxX - minX + 1];
@@ -569,8 +587,8 @@ cv::Mat DynamicDistortionCalibrator::mappingImage(cv::Mat distortedImage, int** 
 	for (size_t x = 0; x < cols; x++) {
 		for (size_t y = 0; y < rows; y++) {
 			if (matchX[x][y] != -1 && matchY[x][y] != -1) {
-				int distX = matchX[x][y] - minX;
-				int distY = matchY[x][y] - minY;
+				int distX = matchX[x][y] - meanX + offsetX;
+				int distY = matchY[x][y] - meanY + offsetY;
 				if (distX >= 0 && distY >= 0)
 				{
 					//auto a = distortedImage.at<uchar>(y,x);
@@ -581,4 +599,48 @@ cv::Mat DynamicDistortionCalibrator::mappingImage(cv::Mat distortedImage, int** 
 		}
 	}
 	return mappedImage;
+}
+
+//_____________________________________________________________________________
+void DynamicDistortionCalibrator::compareResults(ofImage gt, ofImage resImg, ofImage *&difference) {
+	// check that the dimensions match
+	if (gt.getHeight() != resImg.getHeight() || gt.getWidth() != resImg.getWidth()) {
+		std::cout << "Error! Ground truth and resulting image should have the same size!\n";
+		return;
+	}
+
+	// grab dimensions as they'll be needed a few times
+	int width = gt.getWidth();
+	int height = gt.getHeight();
+
+	// allocate the difference image
+	difference->allocate(width, height, gt.getImageType());
+	
+	// threshold images, as the colours (grayscalue values) may vary
+	for (int x = 0; x < width; x++) {
+		for (int y = 0; y < height; y++) {
+			// threshold results
+			if (resImg.getColor(x, y).getBrightness() > WHITE_THRESHOLD) {				resImg.setColor(x, y, ofColor::white);
+			}
+			else {
+				resImg.setColor(x, y, ofColor::black);
+			}
+			// threshold ground
+			if (gt.getColor(x, y).getBrightness() > WHITE_THRESHOLD) {
+				gt.setColor(x, y, ofColor::white);
+			}
+			else {
+				gt.setColor(x, y, ofColor::black);
+			}
+			// set difference
+			ofColor color;
+			color.set(gt.getColor(x, y) - resImg.getColor(x, y));
+			difference->setColor(x, y, color);
+		}
+	}
+
+
+
+	resImg.saveImage("thresholdedImage.jpg", ofImageQualityType::OF_IMAGE_QUALITY_BEST);
+	gt.saveImage("thresholdedGT.jpG");
 }

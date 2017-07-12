@@ -106,7 +106,7 @@ void CameraAreaDetector::setup()
 
 	_coverageRatio = (float)(_imageWidth * _imageHeight) / (float)(_screenWidth * _screenHeight);
 
-	cv::setBreakOnError(true);
+	_flippedRectangle = false;
 }
 
 //_____________________________________________________________________________
@@ -210,21 +210,21 @@ void CameraAreaDetector::draw()
 			diff.setFromPixels(_img.getPixels());
 			
 			diff.threshold(WHITE_THRESHOLD, false);
-			cout << "thresholded\n";
+
 			//diff.absDiff(_img);
 			pos brightest = commonFunctions::detectGrayValue(diff.getPixels());
-			cout << "detected brightest\n";
+
 			_diffPixels = diff.getPixels();
 			cv::Mat temp = diff.getCvImage();
 			// use canny to detect the edge of the rectangle on the screen
 			// if it's not there, canny will simply find no edges
 			cv::Mat edges;
-			cout << "before canny\n";
+
 			cv::Canny(temp, edges, _cannyLower, _cannyUpper);
-			cout << "after canny\n";
+
 			// get ofImage out of the cv::Mat object
 			_contour.setFromPixels((unsigned char*)IplImage(edges).imageData, edges.size().width, edges.size().height, OF_IMAGE_GRAYSCALE);
-			cout << "set from pixels\n";
+
 			// creating the vertical edges
 			if (_firstBorderReached == false) {
 				// remember the edge in the current image
@@ -232,6 +232,12 @@ void CameraAreaDetector::draw()
 				// increase the distance from the screen
 				_distanceFromScreenX += _jump;
 				_x = _screenWidth - _distanceFromScreenX;
+				if (_flippedRectangle == false && _x < _initPos.x) {
+					_distanceFromScreenX++;
+					_x++;
+					_flippedRectangle = true;
+				}
+
 				// if the edge has walked far enough away from the initial point
 				// cease its walk and continue on with the horizontal edges
 				if (_x <= _leftBorder) {
@@ -240,12 +246,18 @@ void CameraAreaDetector::draw()
 					_distanceFromScreenY = _screenHeight - _lowerBorder;
 					_distanceFromScreenX = 0;
 					_firstBorderReached = true;
+					_flippedRectangle = false;
 				}
 			}
 			else if (_secondBorderReached == false) {
 				writeLineCorrespondences(false);
 				_distanceFromScreenY += _jump;
 				_y = _screenHeight - _distanceFromScreenY;
+				if (_flippedRectangle == false && _y < _initPos.y) {
+					_distanceFromScreenY++;
+					_y++;
+					_flippedRectangle = true;
+				}
 				if (_y <= _upperBorder) {
 					_y = 0;
 					_secondBorderReached = true;

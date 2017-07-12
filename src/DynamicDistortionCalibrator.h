@@ -67,6 +67,9 @@ class DynamicDistortionCalibrator {
 
 		// calculates the part of the screen that was seen by the camera and thus it's content
 		ofImage createGroundTruthFromImageAndMap(ofImage img, int** mapX, int** mapY);
+		
+		// gives a comparison of the ground truth and the undistorted image
+		void compareResults(ofImage gt, ofImage resImg, ofImage *&difference);
 
 	private:
 		// contains information about the visible camera area

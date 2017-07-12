@@ -20,19 +20,19 @@ int main( ){
 
 	DynamicDistortionCalibrator dynDistCal(1920, 1080);
 
-	dynDistCal.setSpacing(70);
+	dynDistCal.setSpacing(101);
 	dynDistCal.setResolutionHeight(720);
 	dynDistCal.setResolutionWidth(1280);
 	dynDistCal.setCannyLowerThreshold(40);
 	dynDistCal.setCannyUpperThreshold(110);
-	dynDistCal.setJump(1);
-
+	dynDistCal.setJump(3);
+	
 	// PART 1, FIRST MAIN CALL ONLY RUN FROM HERE TO PART 2!
 	// PUT THIS IN COMMENT WHEN RUNNING PART 2 OR 3!
 	// OPENFRAMEWORKS FAILURE!
 	/*
 	dynDistCal.findRawDistortion(matchX, matchY);
-	dynDistCal.saveRawDistortion("data/mapsJump1.txt");
+	dynDistCal.saveRawDistortion("data/mapsJump3.txt");
 	*/
 
 	
@@ -47,7 +47,7 @@ int main( ){
 
 	// PART 3, THIRD AND LAST MAIN CALL RUN FROM HERE TO THE END
 	/*
-	dynDistCal.loadRawDistortion("data/mapsJump1.txt");
+	dynDistCal.loadRawDistortion("data/mapsJump3.txt");
 
 	matchX = dynDistCal.getMapX();
 	matchY = dynDistCal.getMapY();
@@ -57,7 +57,7 @@ int main( ){
 	matchY = dynDistCal.interpolateLines(matchY, false);
 
 	dynDistCal.setMaps(matchX, matchY);
-	dynDistCal.saveRawDistortion("data/mapsJump1Interpolated.txt");
+	dynDistCal.saveRawDistortion("data/mapsJump3Interpolated.txt");
 	
 	img.load("distortedImage.jpg");
 	distortedImage.setFromPixels(img.getPixels());
@@ -66,13 +66,14 @@ int main( ){
 	ofImage undistortedImage = dynDistCal.undistort(distorted, matchX, matchY);
 
 	// save image
-	undistortedImage.save("interpolatedJump1.jpg", OF_IMAGE_QUALITY_BEST);
+	undistortedImage.save("interpolatedJump3.jpg", OF_IMAGE_QUALITY_BEST);
 	*/
 	// END
 
 	// If GROUND TRUTH is needed run this
 	// load maps
-	dynDistCal.loadRawDistortion("data/mapsJump1.txt");
+	/*
+	dynDistCal.loadRawDistortion("data/mapsJump3.txt");
 	matchX = dynDistCal.getMapX();
 	matchY = dynDistCal.getMapY();
 	// and interpolate them
@@ -87,5 +88,23 @@ int main( ){
 	// run calculation on screenContent with maps
 	ofImage gt;
 	gt = dynDistCal.createGroundTruthFromImageAndMap(screenContent, matchX, matchY);
-	gt.save("groundTruth1.jpg", ofImageQualityType::OF_IMAGE_QUALITY_BEST);
+	gt.save("groundTruth3.jpg", ofImageQualityType::OF_IMAGE_QUALITY_BEST);
+	*/
+
+	// COMPARISON between ground truth and undistorted image
+	// load undistorted image and groundtruth
+	
+	ofImage undistorted;
+	ofImage gt;
+	undistorted.loadImage("interpolatedJump3.jpg");
+	gt.loadImage("groundTruth3.jpg");
+
+	// set image for difference result
+	ofImage difference;
+	ofImage *diffPointer = &difference;
+
+	// run comparison function
+	dynDistCal.compareResults(gt, undistorted, diffPointer);
+	difference.save("difference3.jpg", ofImageQualityType::OF_IMAGE_QUALITY_BEST);
+	
 }
