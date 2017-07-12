@@ -20,19 +20,19 @@ int main( ){
 
 	DynamicDistortionCalibrator dynDistCal(1920, 1080);
 
-	dynDistCal.setSpacing(101);
+	dynDistCal.setSpacing(120);
 	dynDistCal.setResolutionHeight(720);
 	dynDistCal.setResolutionWidth(1280);
 	dynDistCal.setCannyLowerThreshold(40);
 	dynDistCal.setCannyUpperThreshold(110);
-	dynDistCal.setJump(3);
+	dynDistCal.setJump(5);
 	
 	// PART 1, FIRST MAIN CALL ONLY RUN FROM HERE TO PART 2!
 	// PUT THIS IN COMMENT WHEN RUNNING PART 2 OR 3!
 	// OPENFRAMEWORKS FAILURE!
 	/*
 	dynDistCal.findRawDistortion(matchX, matchY);
-	dynDistCal.saveRawDistortion("data/mapsJump3.txt");
+	dynDistCal.saveRawDistortion("data/mapsJump5.txt");
 	*/
 
 	
@@ -47,7 +47,7 @@ int main( ){
 
 	// PART 3, THIRD AND LAST MAIN CALL RUN FROM HERE TO THE END
 	/*
-	dynDistCal.loadRawDistortion("data/mapsJump3.txt");
+	dynDistCal.loadRawDistortion("data/mapsJump5.txt");
 
 	matchX = dynDistCal.getMapX();
 	matchY = dynDistCal.getMapY();
@@ -57,7 +57,7 @@ int main( ){
 	matchY = dynDistCal.interpolateLines(matchY, false);
 
 	dynDistCal.setMaps(matchX, matchY);
-	dynDistCal.saveRawDistortion("data/mapsJump3Interpolated.txt");
+	dynDistCal.saveRawDistortion("data/mapsJump5Interpolated.txt");
 	
 	img.load("distortedImage.jpg");
 	distortedImage.setFromPixels(img.getPixels());
@@ -66,17 +66,17 @@ int main( ){
 	ofImage undistortedImage = dynDistCal.undistort(distorted, matchX, matchY);
 
 	// save image
-	undistortedImage.save("interpolatedJump3.jpg", OF_IMAGE_QUALITY_BEST);
+	undistortedImage.save("interpolatedJump5.jpg", OF_IMAGE_QUALITY_BEST);
 	*/
 	// END
 
 	// If GROUND TRUTH is needed run this
 	// load maps
 	/*
-	dynDistCal.loadRawDistortion("data/mapsJump3.txt");
+	dynDistCal.loadRawDistortion("data/mapsJump5.txt");
 	matchX = dynDistCal.getMapX();
 	matchY = dynDistCal.getMapY();
-	// and interpolate them
+	//and interpolate them
 	matchX = dynDistCal.interpolateLines(matchX, true);
 	matchY = dynDistCal.interpolateLines(matchY, false);
 	std::cout << "loaded maps\n";
@@ -88,7 +88,7 @@ int main( ){
 	// run calculation on screenContent with maps
 	ofImage gt;
 	gt = dynDistCal.createGroundTruthFromImageAndMap(screenContent, matchX, matchY);
-	gt.save("groundTruth3.jpg", ofImageQualityType::OF_IMAGE_QUALITY_BEST);
+	gt.save("groundTruth5.jpg", ofImageQualityType::OF_IMAGE_QUALITY_BEST);
 	*/
 
 	// COMPARISON between ground truth and undistorted image
@@ -96,15 +96,23 @@ int main( ){
 	
 	ofImage undistorted;
 	ofImage gt;
-	undistorted.loadImage("interpolatedJump3.jpg");
-	gt.loadImage("groundTruth3.jpg");
+	undistorted.loadImage("interpolatedJump5.jpg");
+	gt.loadImage("groundTruth5.jpg");
 
 	// set image for difference result
 	ofImage difference;
 	ofImage *diffPointer = &difference;
 
+	// numbers for result comparison
+	int noPixDiff;
+	int *noPointer = &noPixDiff;
+	float ratioPixDiff;
+	float *ratioPointer = &ratioPixDiff;
+
 	// run comparison function
-	dynDistCal.compareResults(gt, undistorted, diffPointer);
-	difference.save("difference3.jpg", ofImageQualityType::OF_IMAGE_QUALITY_BEST);
+	dynDistCal.compareResults(gt, undistorted, diffPointer, noPointer, ratioPointer);
+	difference.save("difference5.jpg", ofImageQualityType::OF_IMAGE_QUALITY_BEST);
+	std::cout << "number of pixels with difference from ground truth: " << noPixDiff  << " of " << gt.getWidth() * gt.getHeight() << endl;
+	std::cout << "ratio of wrong pixels to all pixels: " << ratioPixDiff << ", in percent: " << ratioPixDiff * 100 << "%" <<  endl;
 	
 }

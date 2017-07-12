@@ -602,13 +602,16 @@ cv::Mat DynamicDistortionCalibrator::mappingImage(cv::Mat distortedImage, int** 
 }
 
 //_____________________________________________________________________________
-void DynamicDistortionCalibrator::compareResults(ofImage gt, ofImage resImg, ofImage *&difference) {
+void DynamicDistortionCalibrator::compareResults(ofImage gt, ofImage resImg, ofImage *&difference, int *&noDiff, float *&ratioDiff) {
 	// check that the dimensions match
 	if (gt.getHeight() != resImg.getHeight() || gt.getWidth() != resImg.getWidth()) {
 		std::cout << "Error! Ground truth and resulting image should have the same size!\n";
 		return;
 	}
 
+	// initialize number of differing pixels as 0
+	*noDiff = 0;
+	
 	// grab dimensions as they'll be needed a few times
 	int width = gt.getWidth();
 	int height = gt.getHeight();
@@ -620,7 +623,8 @@ void DynamicDistortionCalibrator::compareResults(ofImage gt, ofImage resImg, ofI
 	for (int x = 0; x < width; x++) {
 		for (int y = 0; y < height; y++) {
 			// threshold results
-			if (resImg.getColor(x, y).getBrightness() > WHITE_THRESHOLD) {				resImg.setColor(x, y, ofColor::white);
+			if (resImg.getColor(x, y).getBrightness() > WHITE_THRESHOLD) {				
+				resImg.setColor(x, y, ofColor::white);
 			}
 			else {
 				resImg.setColor(x, y, ofColor::black);
@@ -636,10 +640,16 @@ void DynamicDistortionCalibrator::compareResults(ofImage gt, ofImage resImg, ofI
 			ofColor color;
 			color.set(gt.getColor(x, y) - resImg.getColor(x, y));
 			difference->setColor(x, y, color);
+
+			if (difference->getColor(x, y).getBrightness() > WHITE_THRESHOLD) {
+				*noDiff += 1;
+			}
 		}
 	}
 
+	std::cout << "noDiff = " << *noDiff << endl;
 
+	*ratioDiff = *noDiff / (float)(width * height);
 
 	resImg.saveImage("thresholdedImage.jpg", ofImageQualityType::OF_IMAGE_QUALITY_BEST);
 	gt.saveImage("thresholdedGT.jpG");

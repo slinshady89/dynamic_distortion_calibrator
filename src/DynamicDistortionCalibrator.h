@@ -69,7 +69,7 @@ class DynamicDistortionCalibrator {
 		ofImage createGroundTruthFromImageAndMap(ofImage img, int** mapX, int** mapY);
 		
 		// gives a comparison of the ground truth and the undistorted image
-		void compareResults(ofImage gt, ofImage resImg, ofImage *&difference);
+		void compareResults(ofImage gt, ofImage resImg, ofImage *&difference, int *&noDiff, float *&ratioDiff);
 
 	private:
 		// contains information about the visible camera area
