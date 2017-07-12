@@ -72,7 +72,7 @@ int main( ){
 
 	// If GROUND TRUTH is needed run this
 	// load maps
-	dynDistCal.loadRawDistortion("data/mapsJump3.txt");
+	dynDistCal.loadRawDistortion("data/mapsJump1.txt");
 	matchX = dynDistCal.getMapX();
 	matchY = dynDistCal.getMapY();
 	// and interpolate them
@@ -87,5 +87,5 @@ int main( ){
 	// run calculation on screenContent with maps
 	ofImage gt;
 	gt = dynDistCal.createGroundTruthFromImageAndMap(screenContent, matchX, matchY);
-	gt.save("groundTruth3.jpg", ofImageQualityType::OF_IMAGE_QUALITY_BEST);
+	gt.save("groundTruth1.jpg", ofImageQualityType::OF_IMAGE_QUALITY_BEST);
 }
