@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.9.29)  12 JUL 2017 22:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.9.29)  12 JUL 2017 22:53
 entering extended mode
 **./PS_Vorlage.tex
 (PS_Vorlage.tex
@@ -1287,20 +1287,20 @@ Overfull \hbox (1.60997pt too wide) has occurred while \output is active
 File: ./pics/rect.png Graphic file (type png)
 
 <use ./pics/rect.png>
-Package pdftex.def Info: ./pics/rect.png used on input line 483.
+Package pdftex.def Info: ./pics/rect.png used on input line 484.
 (pdftex.def)             Requested size: 113.81102pt x 108.23875pt.
  <./pics/pattern.png, id=60, 493.845pt x 758.835pt>
 File: ./pics/pattern.png Graphic file (type png)
 
 <use ./pics/pattern.png>
-Package pdftex.def Info: ./pics/pattern.png used on input line 486.
+Package pdftex.def Info: ./pics/pattern.png used on input line 487.
 (pdftex.def)             Requested size: 113.81102pt x 174.87575pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 493--496
+Underfull \hbox (badness 10000) in paragraph at lines 494--497
 
  []
 
@@ -1312,12 +1312,12 @@ Package epstopdf Info: Source file: <./pics/rmr2.eps>
 (epstopdf)                    size: 2929 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/rmr2-eps-converted-t
 o.pdf ./pics/rmr2.eps>
-(epstopdf)             \includegraphics on input line 506.
+(epstopdf)             \includegraphics on input line 507.
 Package epstopdf Info: Output file is already uptodate.
 File: ./pics/rmr2-eps-converted-to.pdf Graphic file (type pdf)
 <use ./pics/rmr2-eps-converted-to.pdf>
 Package pdftex.def Info: ./pics/rmr2-eps-converted-to.pdf used on input line 50
-6.
+7.
 (pdftex.def)             Requested size: 516.0pt x 17.16898pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1334,15 +1334,15 @@ Overfull \hbox (3.21994pt too wide) has occurred while \output is active
 File: ./pics/distanceandangles.png Graphic file (type png)
 
 <use ./pics/distanceandangles.png>
-Package pdftex.def Info: ./pics/distanceandangles.png used on input line 515.
+Package pdftex.def Info: ./pics/distanceandangles.png used on input line 516.
 (pdftex.def)             Requested size: 239.28975pt x 169.43pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 551--554
+Underfull \hbox (badness 10000) in paragraph at lines 552--555
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 563--565
+Underfull \hbox (badness 10000) in paragraph at lines 564--566
 
  []
 
@@ -1354,11 +1354,11 @@ Package epstopdf Info: Source file: <./pics/rmr.eps>
 (epstopdf)                    size: 8532 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/rmr-eps-converted-to
 .pdf ./pics/rmr.eps>
-(epstopdf)             \includegraphics on input line 569.
+(epstopdf)             \includegraphics on input line 572.
 Package epstopdf Info: Output file is already uptodate.
 File: ./pics/rmr-eps-converted-to.pdf Graphic file (type pdf)
 <use ./pics/rmr-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/rmr-eps-converted-to.pdf used on input line 569
+Package pdftex.def Info: ./pics/rmr-eps-converted-to.pdf used on input line 572
 .
 (pdftex.def)             Requested size: 516.0pt x 16.24507pt.
 
@@ -1373,16 +1373,16 @@ Overfull \hbox (1.60997pt too wide) has occurred while \output is active
 
 [7 <./pics/distanceandangles.png>]
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 596.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 597.
 
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 596.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 597.
 
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 610.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 611.
 
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 610.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 611.
 
 Package epstopdf Info: Source file: <./pics/rmr2.eps>
 (epstopdf)                    date: 2014-12-09 15:53:36
@@ -1392,12 +1392,12 @@ Package epstopdf Info: Source file: <./pics/rmr2.eps>
 (epstopdf)                    size: 2929 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/rmr2-eps-converted-t
 o.pdf ./pics/rmr2.eps>
-(epstopdf)             \includegraphics on input line 626.
+(epstopdf)             \includegraphics on input line 627.
 Package epstopdf Info: Output file is already uptodate.
 File: ./pics/rmr2-eps-converted-to.pdf Graphic file (type pdf)
 <use ./pics/rmr2-eps-converted-to.pdf>
 Package pdftex.def Info: ./pics/rmr2-eps-converted-to.pdf used on input line 62
-6.
+7.
 (pdftex.def)             Requested size: 516.0pt x 17.16898pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1412,21 +1412,21 @@ Overfull \hbox (3.21994pt too wide) has occurred while \output is active
 [8] <./pics/gt.jpg, id=75, 722.7pt x 410.53375pt>
 File: ./pics/gt.jpg Graphic file (type jpg)
  <use ./pics/gt.jpg>
-Package pdftex.def Info: ./pics/gt.jpg used on input line 632.
+Package pdftex.def Info: ./pics/gt.jpg used on input line 633.
 (pdftex.def)             Requested size: 113.81102pt x 64.64687pt.
 
 <./pics/seenImage.jpg, id=76, 722.7pt x 410.53375pt>
 File: ./pics/seenImage.jpg Graphic file (type jpg)
 
 <use ./pics/seenImage.jpg>
-Package pdftex.def Info: ./pics/seenImage.jpg used on input line 635.
+Package pdftex.def Info: ./pics/seenImage.jpg used on input line 636.
 (pdftex.def)             Requested size: 113.81102pt x 64.64687pt.
 
 <./pics/withAlignment.jpg, id=77, 722.7pt x 410.53375pt>
 File: ./pics/withAlignment.jpg Graphic file (type jpg)
 
 <use ./pics/withAlignment.jpg>
-Package pdftex.def Info: ./pics/withAlignment.jpg used on input line 649.
+Package pdftex.def Info: ./pics/withAlignment.jpg used on input line 650.
 (pdftex.def)             Requested size: 227.62204pt x 129.30002pt.
 Package epstopdf Info: Source file: <./pics/rmr.eps>
 (epstopdf)                    date: 2014-12-09 15:42:06
@@ -1436,11 +1436,11 @@ Package epstopdf Info: Source file: <./pics/rmr.eps>
 (epstopdf)                    size: 8532 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/rmr-eps-converted-to
 .pdf ./pics/rmr.eps>
-(epstopdf)             \includegraphics on input line 678.
+(epstopdf)             \includegraphics on input line 679.
 Package epstopdf Info: Output file is already uptodate.
 File: ./pics/rmr-eps-converted-to.pdf Graphic file (type pdf)
  <use ./pics/rmr-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/rmr-eps-converted-to.pdf used on input line 678
+Package pdftex.def Info: ./pics/rmr-eps-converted-to.pdf used on input line 679
 .
 (pdftex.def)             Requested size: 516.0pt x 16.24507pt.
 
@@ -1454,87 +1454,87 @@ Overfull \hbox (1.60997pt too wide) has occurred while \output is active
  []
 
 [9 <./pics/gt.jpg> <./pics/seenImage.jpg> <./pics/withAlignment.jpg>]
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 710.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 711.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/it' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 710.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 711.
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 710.
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 717.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 711.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 718.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1pcr.fd"
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 716--721
+Underfull \hbox (badness 10000) in paragraph at lines 717--722
 []\T1/ptm/m/n/8 WIKIPEDIA The Free En-cy-clo-pe-dia $\T1/pcr/m/n/8 https : / / 
 simple .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 716--721
+Underfull \hbox (badness 10000) in paragraph at lines 717--722
 \T1/pcr/m/n/8 https : / / en . wikipedia . org / wiki / Distortion _ (optics)$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 716--721
+Underfull \hbox (badness 10000) in paragraph at lines 717--722
 \T1/pcr/m/n/8 https : / / en . wikipedia . org / wiki / Canny _ edge _ detector
 $
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 716--721
+Underfull \hbox (badness 10000) in paragraph at lines 717--722
 \T1/pcr/m/n/8 https : / / en . wikipedia . org / wiki / Sobel _ operator$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 722--726
+Underfull \hbox (badness 10000) in paragraph at lines 723--727
 []\T1/ptm/m/n/8 OPENCV Open Sour-ce Com-pu-ter Vi-si-on Li-bra-ry $\T1/pcr/m/n/
 8 http :
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 722--726
+Underfull \hbox (badness 10000) in paragraph at lines 723--727
 \T1/pcr/m/n/8 / / docs . opencv . org / 2 . 4 / doc / tutorials / imgproc /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 722--726
+Underfull \hbox (badness 10000) in paragraph at lines 723--727
 \T1/pcr/m/n/8 imgtrans / canny _ detector / canny _ detector . html$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 722--726
+Underfull \hbox (badness 10000) in paragraph at lines 723--727
 \T1/pcr/m/n/8 http : / / docs . opencv . org / 2 . 4 / doc / tutorials / imgpro
 c /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 722--726
+Underfull \hbox (badness 10000) in paragraph at lines 723--727
 \T1/pcr/m/n/8 imgtrans / sobel _ derivatives / sobel _ derivatives . html$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 722--726
+Underfull \hbox (badness 10000) in paragraph at lines 723--727
 \T1/pcr/m/n/8 http : / / docs . opencv . org / 2 . 4 / doc / tutorials / calib3
 d /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 722--726
+Underfull \hbox (badness 10000) in paragraph at lines 723--727
 \T1/pcr/m/n/8 camera _ calibration / camera _ calibration . html$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 722--726
+Underfull \hbox (badness 10000) in paragraph at lines 723--727
 
  []
 
 
-Underfull \hbox (badness 4940) in paragraph at lines 727--729
+Underfull \hbox (badness 4940) in paragraph at lines 728--730
 []\T1/ptm/m/n/8 MATLAB Ma-thWorks $\T1/pcr/m/n/8 https : / / www . mathworks . 
 com / help /
  []
@@ -1543,43 +1543,43 @@ com / help /
 File: ./pics/FullSizeRender.jpg Graphic file (type jpg)
 
 <use ./pics/FullSizeRender.jpg>
-Package pdftex.def Info: ./pics/FullSizeRender.jpg used on input line 732.
+Package pdftex.def Info: ./pics/FullSizeRender.jpg used on input line 733.
 (pdftex.def)             Requested size: 66.56473pt x 90.33386pt.
 File: ./pics/FullSizeRender.jpg Graphic file (type jpg)
  <use ./pics/FullSizeRender.jpg>
-Package pdftex.def Info: ./pics/FullSizeRender.jpg used on input line 732.
+Package pdftex.def Info: ./pics/FullSizeRender.jpg used on input line 733.
 (pdftex.def)             Requested size: 66.56473pt x 90.33386pt.
 
 <./pics/passbild.jpg, id=84, 987.69pt x 1288.815pt>
 File: ./pics/passbild.jpg Graphic file (type jpg)
  <use ./pics/passbild.jpg>
-Package pdftex.def Info: ./pics/passbild.jpg used on input line 737.
+Package pdftex.def Info: ./pics/passbild.jpg used on input line 738.
 (pdftex.def)             Requested size: 69.22072pt x 90.32458pt.
 File: ./pics/passbild.jpg Graphic file (type jpg)
 
 <use ./pics/passbild.jpg>
-Package pdftex.def Info: ./pics/passbild.jpg used on input line 737.
+Package pdftex.def Info: ./pics/passbild.jpg used on input line 738.
 (pdftex.def)             Requested size: 69.22072pt x 90.32458pt.
  <./pics/Qian.jpg, id=87, 961.5925pt x 1237.62375pt>
 File: ./pics/Qian.jpg Graphic file (type jpg)
 
 <use ./pics/Qian.jpg>
-Package pdftex.def Info: ./pics/Qian.jpg used on input line 741.
+Package pdftex.def Info: ./pics/Qian.jpg used on input line 742.
 (pdftex.def)             Requested size: 70.17952pt x 90.32501pt.
 File: ./pics/Qian.jpg Graphic file (type jpg)
  <use ./pics/Qian.jpg>
-Package pdftex.def Info: ./pics/Qian.jpg used on input line 741.
+Package pdftex.def Info: ./pics/Qian.jpg used on input line 742.
 (pdftex.def)             Requested size: 70.17952pt x 90.32501pt.
 
 <./pics/Wirth.jpg, id=90, 481.8pt x 642.4pt>
 File: ./pics/Wirth.jpg Graphic file (type jpg)
  <use ./pics/Wirth.jpg>
-Package pdftex.def Info: ./pics/Wirth.jpg used on input line 746.
+Package pdftex.def Info: ./pics/Wirth.jpg used on input line 747.
 (pdftex.def)             Requested size: 67.75294pt x 90.33728pt.
 File: ./pics/Wirth.jpg Graphic file (type jpg)
 
 <use ./pics/Wirth.jpg>
-Package pdftex.def Info: ./pics/Wirth.jpg used on input line 746.
+Package pdftex.def Info: ./pics/Wirth.jpg used on input line 747.
 (pdftex.def)             Requested size: 67.75294pt x 90.33728pt.
 Package epstopdf Info: Source file: <./pics/rmr2.eps>
 (epstopdf)                    date: 2014-12-09 15:53:36
@@ -1589,12 +1589,12 @@ Package epstopdf Info: Source file: <./pics/rmr2.eps>
 (epstopdf)                    size: 2929 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/rmr2-eps-converted-t
 o.pdf ./pics/rmr2.eps>
-(epstopdf)             \includegraphics on input line 751.
+(epstopdf)             \includegraphics on input line 752.
 Package epstopdf Info: Output file is already uptodate.
 File: ./pics/rmr2-eps-converted-to.pdf Graphic file (type pdf)
  <use ./pics/rmr2-eps-converted-to.pdf>
 Package pdftex.def Info: ./pics/rmr2-eps-converted-to.pdf used on input line 75
-1.
+2.
 (pdftex.def)             Requested size: 516.0pt x 17.16898pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1617,10 +1617,10 @@ LaTeX Warning: There were multiply-defined labels.
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 16674 strings out of 493334
- 314711 string characters out of 3139252
- 400983 words of memory out of 3000000
- 19851 multiletter control sequences out of 15000+200000
+ 16675 strings out of 493334
+ 314728 string characters out of 3139252
+ 399997 words of memory out of 3000000
+ 19852 multiletter control sequences out of 15000+200000
  118736 words of font info for 123 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,19n,54p,1540b,3483s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1638,7 +1638,7 @@ Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.
 9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw
 /times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pf
 b><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on PS_Vorlage.pdf (10 pages, 2736922 bytes).
+Output written on PS_Vorlage.pdf (10 pages, 2745527 bytes).
 PDF statistics:
  150 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

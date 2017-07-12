@@ -317,7 +317,7 @@ To analyze each image, so it detects if the image is duplicated or if the entire
 \centering
 \parbox{4cm}{
 \includegraphics[width=4cm]{./pics/cameraPoses.png}
-\caption{camera poses for each calibration image\cite{Corke}}
+\caption{camera poses for each calibration image~\cite{Corke}}
 \label{fig:cameraPose}}
 \qquad
 \begin{minipage}{4cm}
@@ -334,7 +334,7 @@ To analyze each image, so it detects if the image is duplicated or if the entire
 %\label{fig:cameraPose}
 %\end{center}
 %\end{figure}
-Furthermore calibration accuracy can be evaluated by examining the Reprojection Errors Bar Graph. The bar graph displays the mean reprojection error per image, along with the overall mean error \cite{matlab} so images can be rejected for better calibration process.
+Furthermore calibration accuracy can be evaluated by examining the fig.~\ref{fig:ErrorsBarGraph}. The bar graph displays the mean reprojection error per image, along with the overall mean error \cite{matlab} so images can be rejected for better calibration process.
 %\begin{figure}[h]
 %\begin{center}
 %\includegraphics[scale=0.4]{./pics/meanErrorInPixel.png}
@@ -345,7 +345,7 @@ Furthermore calibration accuracy can be evaluated by examining the Reprojection 
 
 \subsection{Canny and Sobel edge detection}
 \label{sec:Canny}
-To perform camera calibration and to calculate the distortion for each pixel, so the camera will be stimulated with vertical and horizontal line at each position. However it's necessary for linedetection in a displayed image to cancel all environment noises so it's recommended to perform image processing like a gaussian blur to extract image primitives of interest \cite{opencv}. 
+To perform camera calibration and to calculate the distortion for each pixel, so the camera will be stimulated with vertical and horizontal line at each position. However it's necessary for linedetection in a displayed image to cancel all environment noises so it's recommended to perform image processing like a \emph{gaussian}--blur to extract image primitives of interest \cite{opencv}. 
 Lines could be extracted at regions where strong change of intensity or color in the processed Image is detected. In this section two different predefined line detection algorithms are compared and the second will be chosen, because it suits the requirements better\cite{Langaniere}.
 
 \subsubsection{Sobel operator}
@@ -374,7 +374,7 @@ grad(I)=\begin{bmatrix}
 
 %Sobel Figure
 
-Since the calculated gradient lines at each pixel has a x and y direction, so it's interesting to calculate the norm and direction to get the amplitude of the variation and the orientation.
+Since the calculated gradient lines at each pixel has a $x$ and $y$ direction, so it's interesting to calculate the norm and direction to get the amplitude of the variation and the orientation.
 \begin{align}
 &|grad(I)|=\sqrt[2]{\left(\frac{\partial I}{\partial x}\right)^2+\left(\frac{\partial I}{\partial y}\right)^2}\\
 &\theta_{orientation}=\arctan{\frac{\partial I}{\partial y},\frac{\partial I}{\partial x}}
@@ -445,7 +445,8 @@ However it's not very efficient by lighting every pixel of the screen with the s
 
 %% mathematics and basics -> some pictures with different distortion shapes
 \subsubsection{Linebased approach after borderdection}
-The pixel-wise distortion calibration was the last concept in which was tried to detect a solution by lighting several rectangles with the minimum pixel size. However this method is already a hybrid since the real line detection methods are introduced here to solve the problem of distortion calibration. In the further discussed methods the pixel correspondence is used and the lines in both images( the drawn and the detected one) are calculated. In this method lines are drawn in the seen area and their position in the camera image are detected and later be corrected. However the borders of the seen area should first be detected. To this end it is forced to find at least one border of the seen area. Therefore a binary search algorithm is developed in order to find a border. The initial point to that algorithm is the center point which has been already detected with algorithm~\ref{algo:centerPoint}. From there it is assumed that a point at any border of the screen is not seen by the camera. Then it will be checked if a point between this two points is seen or not. If not then check between this and center point or else check between that and the point of the border. %This is described in algorithm~\ref{algo:binary}. 
+\label{sec:boderDetect}
+The pixel-wise distortion calibration was the last concept in which was tried to detect a solution by lighting several rectangles with the minimum pixel size. However this method is already a hybrid since the real line detection methods are introduced here to solve the problem of distortion calibration. In the further discussed methods the pixel correspondence is used and the lines in both images (the drawn and the detected one) are calculated. In this method lines are drawn in the seen area and their position in the camera image are detected and later be corrected. However the borders of the seen area should first be detected. To this end it is forced to find at least one border of the seen area. Therefore a binary search algorithm is developed in order to find a border. The initial point to that algorithm is the center point which has been already detected with algorithm~\ref{algo:centerPoint}. From there it is assumed that a point at any border of the screen is not seen by the camera. Then it will be checked if a point between this two points is seen or not. If not then check between this and center point or else check between that and the point of the border. %This is described in algorithm~\ref{algo:binary}. 
 
 
 %\begin{algorithm}[h]
@@ -565,7 +566,7 @@ In the setup, $265,716$ images were needed, leading to a runtime of $88,572$ $se
 	
 \subsubsection{Line-based detection} 
 \label{sec:linebased}
-The first idea for a line-based detection was to detect the borders first and how to store the border pixels of the image's map to the screen. At first a detection of a pixel on the border via binary search was developed and then the pixels around that are checked if they are seen or not. At least three surrounding pixels need to be checked if they are seen. Around a pixel are eight possible positions but some of them could be rejected due to the actual border that is checked and the direction in which it's checked. 
+In this subsection the runtime of the method of section \ref{sec:boderDetect} is calculated.
 \begin{align}
 rt(w_{FOV}, h_{VOF}) = \frac{4}{3} (2 \cdot h_{FOV} + 2 \cdot w_{FOV})
 \end{align}
@@ -642,7 +643,7 @@ The accuracy of the method depends on the precision of the edge detector and the
 
 \subsection{Conclusion and evaluation}
 \label{sec:conclusion}
-For evaluation the mapping was tested with several jump distances: $1$, $3$ and $5$ pixel size. With jump range the percentage of deviated pixels was $0.287\%$. With range of $3$ pixel size the deviation increased by $10.45\%$ to $0.317\%$.
+For evaluation the mapping was tested with several jump distances: $1$, $3$ and $5$ pixel size. With jump range the percentage of deviated pixels was $0.287\%$. With range of $3$ pixel size the deviation increased by $10.45\%$ to $0.317\%$. At jump range of $5$ the deviation increases to $0.398\%$. 
 
 \begin{figure}[h]
 \begin{center}
