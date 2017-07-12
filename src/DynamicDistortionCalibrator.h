@@ -21,6 +21,9 @@ class DynamicDistortionCalibrator {
 		ofImage undistort(cv::Mat distortedImage, int** matchX, int** matchY);
 		
 		// creates an image for distortion testing purposes
+		// vert: draw vertical lines
+		// hor: draw horizontal lines
+		// save: save content of screen in a .jpg
 		ofxCvGrayscaleImage createImage(bool vert = true, bool hor = true);
 
 		// setter for the spacing in the cameraAreaDetector
@@ -61,6 +64,10 @@ class DynamicDistortionCalibrator {
 
 		// interpolate missing allocations in a vertical or horizontal line in an image
 		int ** interpolateLines(int ** matchMat, bool vert);
+
+		// calculates the part of the screen that was seen by the camera and thus it's content
+		ofImage createGroundTruthFromImageAndMap(ofImage img, int** mapX, int** mapY);
+
 	private:
 		// contains information about the visible camera area
 		cameraArea _area;

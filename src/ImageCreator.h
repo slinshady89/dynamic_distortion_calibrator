@@ -25,6 +25,7 @@ public:
   void setPixelSize(int pixelSize);
   void setResolutionHeight(int resolutionHeight);
   void setResolutionWidth(int resolutionWidth);
+  // tells the creator, whether to create vertical lines, horizontal lines, or both
   void setLinesToDraw(bool vert, bool hor);
 
 private:
@@ -32,6 +33,8 @@ private:
   ofVideoGrabber _cam;
   // pixelSize
   int _pixelSize;
+  // determines whether the screen gets saved upon clicking
+  bool _saveOnClick = false;
 
   // keeps track of the state in draw() function
   int _state;

@@ -4,7 +4,7 @@
 //_____________________________________________________________________________
 void ImageCreator::setup() {
   // set framerate
-  ofSetFrameRate(5);
+  ofSetFrameRate(21);
   _cam.setVerbose(false);
   // check for external web cam and use that if possible
   if (_cam.listDevices().size() > 1) {
@@ -61,9 +61,10 @@ void ImageCreator::draw() {
 		}
 
 		ofxCvGrayscaleImage img2 = _img;
-
-		img2.resize(320, 240);
-		img2.draw(0, 0);
+		if (debug == true) {
+			img2.resize(320, 240);
+			img2.draw(0, 0);
+		}
 
 		// next call capturing state
 		if (_drawCount == 5) {  // minimum 4 for Nils' computer check all if you need higher timer!
@@ -92,19 +93,22 @@ void ImageCreator::draw() {
 //_____________________________________________________________________________
 void ImageCreator::mousePressed(int x, int y, int button) {
 	std::cout << "mouse pressed\n";
+	// update the camera and set the return image
 	_cam.update();
 	_color = _cam.getPixels();
 	_img = _color;
 	*_image = _img.getCvImage();
+	
+	// if the screen is supposed to get saved, do so
+	if (_saveOnClick == true) {
+		ofImage saveScreen;
+		saveScreen.grabScreen(0, 0, ofGetScreenWidth(),ofGetScreenHeight());
+		saveScreen.save("screenContent.jpg", ofImageQualityType::OF_IMAGE_QUALITY_BEST);
+		ofSaveScreen("screenContent2.jpg");
+		ofSaveFrame(false);
+	}
 
-	ofImage img;
-	img.allocate(_imageWidth, _imageHeight, ofImageType::OF_IMAGE_GRAYSCALE);
-	img.setUseTexture(false);
-	img.setFromPixels(_color.getPixels().getPixels(), _imageWidth, _imageHeight, OF_IMAGE_GRAYSCALE, false);
-	/*std::cout << "pre-saving\n";
-	img.save("distortedImage.bmp");// ("distortedImage.jpg", OF_IMAGE_QUALITY_BEST);
-	//ofSaveImage(img.getPixels(), "distortedImage.jpg", OF_IMAGE_QUALITY_BEST);
-	std::cout << "post-saving\n";*/
+	// close app
 	ofGetWindowPtr()->setWindowShouldClose();
 }
 

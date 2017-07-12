@@ -46,7 +46,7 @@ int main( ){
 	*/
 
 	// PART 3, THIRD AND LAST MAIN CALL RUN FROM HERE TO THE END
-	
+	/*
 	dynDistCal.loadRawDistortion("data/mapsJump1.txt");
 
 	matchX = dynDistCal.getMapX();
@@ -67,6 +67,25 @@ int main( ){
 
 	// save image
 	undistortedImage.save("interpolatedJump1.jpg", OF_IMAGE_QUALITY_BEST);
-	
+	*/
 	// END
+
+	// If GROUND TRUTH is needed run this
+	// load maps
+	dynDistCal.loadRawDistortion("data/mapsJump3.txt");
+	matchX = dynDistCal.getMapX();
+	matchY = dynDistCal.getMapY();
+	// and interpolate them
+	matchX = dynDistCal.interpolateLines(matchX, true);
+	matchY = dynDistCal.interpolateLines(matchY, false);
+	std::cout << "loaded maps\n";
+
+	// load screen content, has to be saved prior to this
+	ofImage screenContent;
+	screenContent.loadImage("screenContent.jpg");
+
+	// run calculation on screenContent with maps
+	ofImage gt;
+	gt = dynDistCal.createGroundTruthFromImageAndMap(screenContent, matchX, matchY);
+	gt.save("groundTruth3.jpg", ofImageQualityType::OF_IMAGE_QUALITY_BEST);
 }

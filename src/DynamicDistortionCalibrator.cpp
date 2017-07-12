@@ -257,6 +257,75 @@ ofxCvGrayscaleImage DynamicDistortionCalibrator::createImage(bool vert, bool hor
 }
 
 //_____________________________________________________________________________
+ofImage DynamicDistortionCalibrator::createGroundTruthFromImageAndMap(ofImage img, int** mapX, int** mapY) {
+	// necessary variables
+	int width = img.getWidth();
+	int height = img.getHeight();
+	int gtWidth, gtHeight, minX, minY, maxX, maxY;
+	maxX = 0;
+	maxY = 0;
+	minX = MAXINT;
+	minY = MAXINT;
+
+	ofImage gt;
+	gt.setColor(ofColor::black);
+
+	// bool array to take not of which pixels get taken into the ground truth
+	bool** take = new bool*[width];
+	for (int i = 0; i < width; i++) {
+		take[i] = new bool[height];
+	}
+	// initialize as false
+	for (int x = 0; x < width; x++) {
+		for (int y = 0; y < height; y++) {
+			take[x][y] = false;
+		}
+	}
+
+
+	// go over maps, mark all seen pixels and memorize largest and smallest X and Y
+	for (size_t x = 0; x < _resolutionWidth; x++) {
+		for (size_t y = 0; y < _resolutionHeight; y++) {
+			if (mapX[x][y] != -1 && mapY[x][y] != -1) {
+				take[mapX[x][y]][mapY[x][y]] = true;
+				if (mapX[x][y] < minX) {
+					minX = mapX[x][y];
+				}
+				else if (mapX[x][y] > maxX) {
+					maxX = mapX[x][y];
+				}
+				if (mapY[x][y] < minY) {
+					minY = mapY[x][y];
+				}
+				else if (mapY[x][y] > maxY) {
+					maxY = mapY[x][y];
+				}
+			}
+		}
+	}
+
+	// calculate gt's width and height
+	gtWidth = maxX - minX + 1;
+	gtHeight = maxY - minY + 1;
+
+	gt.allocate(gtWidth, gtHeight, img.getImageType());
+
+	// go over screen content and write taken pixels into gt
+	for (size_t x = 0; x < width; x++) {
+		for (size_t y = 0; y < height; y++) {
+			if (take[x][y] == true) {
+				gt.setColor((size_t)(x - minX), (size_t)(y - minY), img.getColor(x, y));
+			}
+		}
+	}
+
+	delete[] take;
+
+	return gt;
+}
+
+
+//_____________________________________________________________________________
 ofImage DynamicDistortionCalibrator::undistort(cv::Mat distortedImage, int** matchX, int** matchY) {
 	cout << "starting undistortion\n";
 	cv::Mat undistorted = mappingImage(distortedImage, matchX, matchY);
