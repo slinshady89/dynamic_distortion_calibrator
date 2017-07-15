@@ -1,0 +1,749 @@
+\documentclass[accentcolor=tud1b,colorbacktitle,inverttitle,landscape,german,presentation,t]{tudbeamer}
+\mathcode`\,="013B%Löscht das Leerzeichen nach dem Komma in Dezimalzahlen
+%\usepackage{multimedia}
+
+%\usepackage{media9}
+
+%\usepackage{movie15}
+
+
+\usepackage{hyperref}
+\usepackage{bbding}
+\usepackage{units}
+\usepackage{epstopdf}
+\usepackage{subfigure}
+\usepackage{caption}
+\usepackage{ngerman}
+\usepackage{color}
+\usepackage{rotating}
+\usepackage[latin1]{inputenc}   % deutsche Umlaute
+\usepackage[T1]{fontenc}        % Darstellung von Schrift als echte T1 Fonts und nicht als Bilder
+\input{header}
+
+%
+% Macros
+%
+% \renewcommand{\vec}[1]{\ensuremath{\bm{#1}}}
+\renewcommand{\vec}[1]{\ensuremath{\boldsymbol{#1}}}
+
+\begin{document}
+\title[]{Fahrstreifengenaue Fahrzeuglokalisation\\
+mittels visueller Odometrie}
+\subtitle{Martin Buczko}
+
+\author[Martin Buczko]{Martin Buczko}
+\institute[
+Regelungsmethoden und Robotik ]{
+Regelungsmethoden und Robotik }
+
+
+
+
+% \logo{\color{tudtextaccent}TU Darmstadt-}
+\logo{\includegraphics{rmr2}}
+
+\date{23.01.2015}
+%Titelfolie%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titleframe}
+%\vspace{4.cm}
+%\footnotesize
+%\flushright
+
+  \begin{figure}[h]
+  \centering
+  \begin{center}
+  \includegraphics[width=.5\textwidth]{./bilder/Ausschreibung_digitalphotoDE}
+  \end{center}
+  %\caption{Quelle: www.digitalphoto.de}
+  \end{figure}	
+
+
+\end{titleframe}
+
+%Hauptfolien%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%
+
+\begin{frame}{\\Übersicht}
+ \leftbox{
+ \vspace{1.5cm}
+ \begin{itemize}
+  \item Das Projekt
+  \item Der Basisalgorithmus
+  \item Fehlerquellen
+  \item Erweiterungen
+  \item Weiteres Vorgehen
+ 
+ \end{itemize}
+}
+\rightbox{
+\vspace{.5cm}
+   \begin{figure}[h]
+  \centering
+  \begin{center}
+  \includegraphics[width=\textwidth]{./bilder/Kompass.jpg}
+  \end{center}
+  \end{figure}
+}
+\end{frame}
+
+
+
+\begin{frame}{\\Das Projekt - TU Darmstadt}
+
+ \leftbox{
+   \begin{figure}[h]
+  \centering
+  \begin{center}
+  \includegraphics[width=.7\textwidth]{./bilder/tudlogo.eps}
+  \end{center}
+  \end{figure}
+  \begin{figure}[h]
+  \centering
+  \begin{center}
+  \includegraphics[width=.6\textwidth]{./bilder/logoiatgruen.png}
+  \end{center}
+  \end{figure}  
+  \begin{figure}[h]
+  \centering
+  \begin{center}
+  \includegraphics[width=.6\textwidth]{./bilder/rmr.jpg}
+  \end{center}
+  \end{figure}
+}
+ \rightbox{
+ \vspace{2.8cm}
+ \begin{itemize}
+
+ \item Prof. Jürgen Adamy, Dekan
+ \item Volker Willert
+ \item Martin Buczko 
+ 
+ \end{itemize}
+}
+\end{frame}
+
+
+\begin{frame}{\\Das Projekt - Hintergrund}
+ \leftbox{
+ \vspace{.5cm}
+ \begin{itemize}
+  \item Die Kamera als zusätzlicher Sensor zur Selbstlokalisation
+  \item Günstig und oft bereits vorhanden
+
+  \item Unterstützung in GPS-kritischen Situationen
+  \begin{itemize}
+  \item Abschattung
+  \item Mehrwegempfang
+  \item Ungünstige Satellitenkonstellationen
+ \end{itemize}
+ \item Typische Szenarios
+  \begin{itemize}
+  \item Großstädte
+  \item Tunnel
+  \item Alleen
+  \item Starker Schneefall
+ \end{itemize} 
+ \end{itemize}
+}
+\rightbox{
+  \begin{figure}[h]
+  \centering
+  \begin{center}
+  \includegraphics[width=.45\textwidth]{./bilder/3ERBILD_1.pdf}
+  \end{center}
+  \end{figure}
+
+} 
+\end{frame}
+\begin{frame}{\\Das Projekt - Projektziele}
+ \leftbox{
+ Derzeitige Hauptdefizite in der Lokalisierung
+ 
+ \begin{itemize}
+  \item Begrenzte absolute Genauigkeit im Meterbereich bei der GPS-Positionierung
+  \item Abschattung der GPS-Signale führt zu lückenhafter Positionierung \Checkmark
+ \end{itemize}
+}
+ \rightbox{
+ Ergebnisbeschreibung
+ \vspace{0.4cm}
+ \begin{itemize}
+  \item Bewertung von Algorithmen zur Relativposenschätzung \Checkmark
+  \item Fusion mit bestehendem IMU/GPS-Filter 
+  \item Verbesserung der bisherigen Ergebnisse 
+  \item Erstellen einer lauffähigen Echtzeitversion 
+  \item Vergleich mit anderen Verfahren (Kitti-Benchmark) \Checkmark
+  
+ \end{itemize}
+
+ 
+ }
+ \fullbox{
+ \vspace{5cm}
+ \begin{itemize}
+  \item Entwicklung eines Prototyps zur Verbesserung der von Continental entwickelten Fahrzeugeigenlokalisierung (speziell in Fahrszenarien mit  fehlenden bzw. unzureichenden GNSS Informationen) durch die Fusion mit Kameradaten
+ \end{itemize}
+}
+\end{frame}
+
+
+\begin{frame}{\\Das Projekt - Einordnung}
+ \leftbox{
+ \vspace{0,7cm}
+
+ \begin{itemize}
+ \item Visuelle Odometrie bereits in Robotik verwendet
+ \vspace{0.5cm}
+ \item Besondere Anforderungen für Automotive-Anwendung
+ \begin{itemize} 
+  \item Weiter Geschwindigkeitsbereich
+  \item Hochdynamisches Umfeld
+  \item Große Geschwindigkeiten
+  \item Starke Texturunterschiede
+ \end{itemize} 
+
+ \end{itemize}
+
+ }
+ \rightbox{
+ \begin{figure}[h]
+   \centering
+   \includegraphics[width=.5\textwidth]{./bilder/3ERBILD.pdf}
+  \end{figure}
+  }
+ 
+\end{frame}
+
+
+\begin{frame}{\\Das Projekt - Projektplanung}
+ \fullbox{
+ \begin{figure}[h]
+   \centering
+   \includegraphics[width=.68\textwidth]{./bilder/projektplan.jpg}
+  \end{figure}
+  }
+\end{frame}
+
+
+\begin{frame}{\\Das Projekt - Aktueller Stand}
+ \leftbox{
+\begin{itemize} 
+
+\item  Planung
+
+  \item  Projektlaufzeit: 3 Jahre
+
+ \item Aktuell in Phase 1
+
+  \begin{itemize} \item AP 1.1 Literaturrecherche und Methodenübersicht (3PM)
+  \item AP 1.2 Adaption \& softwaremäßige Umsetzung geeigneter kamerabasierter Ansätze (6,5/12PM)
+ \end{itemize}
+ \end{itemize}
+}
+ \rightbox{
+ Aktueller Stand
+ \begin{itemize}
+  \item Literaturrecherche durchgeführt
+  \item Fehleranalyse an idealen Daten durchgeführt
+  \item Lokalisierungsalgorithmen implementiert und verglichen
+  \item Methoden zur Verbesserung der Robustheit implementiert und verglichen
+  \item Basisalgorithmus in C++System (OpenCV) portiert
+  \item Erweiterung derzeit noch in Matlab
+
+ \end{itemize}
+ }
+\end{frame}
+
+
+\begin{frame}{\\Das Projekt - Bisheriger Benchmark}
+ \fullbox{
+ \begin{figure}[h]
+   \centering
+  \begin{center}
+  \includegraphics[width=.85\textwidth]{./bilder/kitti.png}
+  \end{center}
+  \end{figure} 
+ }
+ \fullbox{
+ \vspace{4.5cm}
+ \begin{itemize}
+  \item Bisheriger Datensatz: \textbf{Kitti Benchmark}
+  \item 11 verschiedene Strecken mit Vergleichsdaten
+ \end{itemize}
+ }
+ \fullbox{
+ \vspace{3.1cm}
+ 
+ \begin{figure}[h]
+ \hspace{8cm}
+  \includegraphics[width=.3\textwidth]{./bilder/kitticar.jpg}
+ 
+  \end{figure} 
+ }
+ 
+\end{frame}
+
+
+\begin{frame}{\\Der Basisalgorithmus}
+  \fullbox{
+ \begin{figure}[h]
+   \centering
+  \begin{center}
+  \includegraphics[width=.8\textwidth]{./bilder/features_visualisierung.pdf}
+  \end{center}
+  \end{figure} 
+ }
+ \fullbox{
+ \vspace{5.5cm}
+ \begin{itemize}
+  \item \textbf{Features} als ,,Anker'' für die Bewegungsschätzung
+  \item Aufbau der Gesamtbewegung aus Teilbewegungen
+ \end{itemize}
+}
+
+\end{frame}
+
+\begin{frame}{\\Der Basisalgorithmus - Struktur}
+   \leftbox{
+  Bilddaten $\leftrightarrow$ Features
+ \begin{figure}[h]
+   \centering
+  \begin{center}
+  \includegraphics[width=\textwidth]{./bilder/matching.pdf}
+  \end{center}
+  \end{figure} 
+  
+  \begin{itemize}
+   \item Bestimmen geeigneter Features
+   \item Identifizieren der Features in anderen Bildern
+  \end{itemize}  
+ }
+\rightbox{
+  Features $\leftrightarrow$ Fahrzeugbewegung
+   \begin{figure}[h]
+   \centering
+  \begin{center}
+  \includegraphics[width=.6\textwidth]{./bilder/features_visualisierung2.pdf}
+  \end{center}
+  \end{figure} 
+}
+\rightbox{
+\vspace{3.8cm}
+  \begin{itemize}
+   \item 1. Stereopaar $\Rightarrow$ Raumpunkt
+   \item Virtuelle Bewegung
+   \item Simulierte Bildaufnahme
+   \item Fehlermaß: Messung - Simulation
+  \end{itemize}}
+ 
+ 
+\end{frame}
+
+\begin{frame}{\\Der Basisalgorithmus - Hintergrund}
+ 
+ \fullbox{
+    \begin{figure}[h]
+   \centering
+  \begin{center}
+  \includegraphics[width=.7\textwidth]{./bilder/features_visualisierung3b.pdf}
+  \end{center}
+  \end{figure} 
+ }
+ \fullbox{
+ \vspace{6cm}
+ \centering
+ Video - opticalFlow\_Urban
+  
+ }
+\end{frame}
+
+
+\begin{frame}{\\Fehlerquellen}
+ \leftbox{
+ \vspace{1cm}
+ \begin{itemize}
+  \item Kalibrierungsfehler
+  \item Falsche Matches (Ausreißer)
+  \item Bewegte Objekte
+ \end{itemize}
+ \vspace{2cm}
+ opticalFlow\_MovingObjects
+ qualityplain\_track07
+}
+\rightbox{
+    \begin{figure}[h]
+   \centering
+  \begin{center}
+  \includegraphics[width=\textwidth]{./bilder/2ERBILD.pdf}
+  \end{center}
+  \end{figure} 
+  
+
+
+
+}
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}{\\Fehlerquellen - Auswertungen}
+\leftbox{
+
+ %\item Bewegte Objekte
+ %\item Fehler beim Tracking (Ausreißer)  
+  
+   \begin{figure}[h]
+   \centering
+  \begin{center}
+  \includegraphics[width=\textwidth]{./bilder/3D2D_mitOutlier.eps}
+%  \title{1 Aureißer auf 100 Frames}
+  \end{center}
+  \end{figure} 
+  \vspace{0,2cm}
+  \begin{itemize}
+   \item Ausreißer alle 100 Bilder
+  \end{itemize}
+
+  }
+  
+  \rightbox{
+      \begin{figure}[h]
+   \centering
+  \begin{center}
+  \includegraphics[width=\textwidth]{./bilder/3D2D_DeltaR.eps}
+%  \title{0,5° Torsion der Kameras}
+  \end{center}
+  \end{figure} 
+  \begin{itemize}
+   \item Torsion einer Kamera um \unit[0,5]{°}
+  \end{itemize}
+%Diskretisierung: 3D2D_ohneOutlier
+ %1 Aureißer auf 100 Frames: 3D2D_mitOutlier
+ %0,5° Torsion der Kameras: 3D2D_DeltaR.eps
+
+}
+ 
+ 
+\end{frame}
+
+
+
+\begin{frame}{\\Erweiterungen - \\Modellbasierte Vorausprojektion}
+ \leftbox{
+ \vspace{0,5cm}
+\begin{itemize}
+\item Bewegungshypothese
+\item Prediktion der Featureposition
+
+\item  Verkleinern des Suchbereichs
+ \item Matchwahrscheinlichkeit..
+\begin{itemize}
+ \item \textcolor{green}{erhöhen} für Bewegungen nach Hypothese
+ \item \textcolor{red}{verringern} für Bewegungen entgegen Hypothese
+\end{itemize}
+  \vspace{0,5cm}
+\item Ergebnis: Verringerung der Rechenzeit und Verbesserung der Ergebnisse
+\end{itemize}
+
+  }
+  \rightbox{
+  %\vspace{1cm}
+  \begin{figure}[h]
+   \centering
+  \begin{center}
+  \includegraphics[width=\textwidth]{./bilder/features_visualisierung_prepro.pdf}
+%  \title{0,5° Torsion der Kameras}
+  \end{center}
+  \end{figure} 
+  }
+\end{frame}  
+  
+  
+  \begin{frame}{\\Erweiterungen - Modellfehlerauswertung}
+ \leftbox{
+ \vspace{0,5cm}
+ \begin{itemize}
+  \item Abweichung zwischen Modell und Messung als Maß für die Qualität
+  \item Höherer Fehler bei Ausreißern (wenige)
+  \item Geringerer Fehler bei korrekten Punkten (viele)
+  \vspace{0,5cm}
+  \item Iterativer Algorithmus
+  \begin{enumerate}
+   \item Optimieren
+   \item Selektieren
+   \item Konvergenz bewerten
+   \item Abbruch, oder zu 1.
+  \end{enumerate}
+
+ \end{itemize}
+}
+\rightbox{
+  \begin{figure}[h]
+   \centering
+  \begin{center}
+  %\includegraphics[width=\textwidth]{./bilder/RCF.pdf}
+  \includegraphics[width=.45\textwidth]{./bilder/RCF_2.pdf}
+%  \title{0,5° Torsion der Kameras}
+  \end{center}
+  \end{figure} 
+}
+\end{frame}
+
+
+  \begin{frame}{\\Erweiterungen - Visualisierung}
+      \fullbox{
+      \begin{figure}[h]
+      \centering
+      \begin{center}
+
+      \includegraphics[width=\textwidth]{./bilder/opticalFlow.png}
+
+      \end{center}
+      \end{figure} 
+    }
+  
+  
+    \fullbox{
+    \vspace{5cm}
+    \centering
+ \begin{itemize}
+  \item Unterdrückung bewegter Objekte: EliminatedMovingObject
+  \item Abschätzung der Qualität: quality\_track07
+ \end{itemize}
+  }
+  \end{frame}
+
+  \begin{frame}{\\Weiteres Vorgehen}
+   \leftbox{
+\vspace{.5cm}
+   \begin{itemize}
+    \item Weitere Matching-Verfahren
+    \item Verfahren zur Ausreißerunterdrückung
+    \item Untersuchung driftreduzierender Maßnahmen
+    \item Kontinuierliches Benchmarken der Maßnahmen
+   \end{itemize}
+}
+   \rightbox{
+\vspace{.3cm}   
+   \begin{itemize}
+    \item Anbindung von Conti-Messdaten
+    \item Verwendung zusätzlicher Sensorinformation
+    \item Integration in bestehendes Softwareframework
+   \end{itemize}
+   }
+   \fullbox{
+   \vspace{4cm}
+      \begin{figure}[h]
+      \centering
+      \begin{center}
+      \includegraphics[width=.7\textwidth]{./bilder/Fusion.pdf}
+      \end{center}
+      \end{figure} 
+   }
+  \end{frame}
+
+\begin{frame}{\\Vielen Dank..}
+\fullbox{
+
+\begin{figure}[h]
+   \centering
+  \begin{center}
+  \includegraphics[width=.8\textwidth]{./bilder/mapmatched.jpg}
+%  \title{0,5° Torsion der Kameras}
+  \end{center}
+  \end{figure} 
+}
+\fullbox{
+\vspace{6cm}
+\centering
+\large{\textbf{..für Ihre Aufmerksamkeit.}}
+}     
+\end{frame}
+
+  
+\begin{frame}{\\Rekonstruktionskarten}
+\leftbox{
+\begin{figure}[h]
+   \centering
+  \begin{center}
+  \includegraphics[width=\textwidth]{./bilder/00.eps}
+%  \title{0,5° Torsion der Kameras}
+  \end{center}
+  \end{figure} 
+    \centering
+Länge: \unit[3,7]{km}
+}
+\rightbox{
+\begin{figure}[h]
+   \centering
+  \begin{center}
+  \includegraphics[width=\textwidth]{./bilder/01.eps}
+  \end{center}
+  \end{figure} 
+  \centering
+  Länge: \unit[2,5]{km}
+}
+ 
+\end{frame}
+
+\begin{frame}{\\Rekonstruktionskarten (2)}
+\leftbox{
+\begin{figure}[h]
+   \centering
+  \begin{center}
+  \includegraphics[width=\textwidth]{./bilder/02.eps}
+%  \title{0,5° Torsion der Kameras}
+  \end{center}
+  \end{figure} 
+      \centering
+  Länge: \unit[5,1]{km}
+}
+\rightbox{
+\begin{figure}[h]
+   \centering
+  \begin{center}
+  \includegraphics[width=\textwidth]{./bilder/03.eps}
+%  \title{0,5° Torsion der Kameras}
+  \end{center}
+  \end{figure} 
+      \centering
+  Länge: \unit[0,6]{km}
+}
+ 
+\end{frame}
+
+\begin{frame}{\\Rekonstruktionskarten(3)}
+\leftbox{
+\begin{figure}[h]
+   \centering
+  \begin{center}
+  \includegraphics[width=\textwidth]{./bilder/04.eps}
+%  \title{0,5° Torsion der Kameras}
+  \end{center}
+  \end{figure} 
+      \centering
+  Länge: \unit[0,4]{km}
+}
+\rightbox{
+\begin{figure}[h]
+   \centering
+  \begin{center}
+  \includegraphics[width=\textwidth]{./bilder/05.eps}
+%  \title{0,5° Torsion der Kameras}
+  \end{center}
+  \end{figure} 
+      \centering
+  Länge: \unit[2,2]{km}
+}
+ 
+\end{frame}
+
+\begin{frame}{\\Rekonstruktionskarten(4)}
+\leftbox{
+\begin{figure}[h]
+   \centering
+  \begin{center}
+  \includegraphics[width=\textwidth]{./bilder/06.eps}
+  \\
+  
+
+%  \title{0,5° Torsion der Kameras}
+  \end{center}
+  \end{figure} 
+      \centering
+  Länge: \unit[1,2]{km}
+}
+\rightbox{
+\begin{figure}[h]
+   \centering
+  \begin{center}
+  \includegraphics[width=\textwidth]{./bilder/06_auswertung_rel.eps}
+  \\
+  \includegraphics[width=\textwidth]{./bilder/06_auswertung_abs.eps}
+%  \title{0,5° Torsion der Kameras}
+  \end{center}
+  \end{figure} 
+      \centering
+ 
+}
+ 
+\end{frame}
+
+\begin{frame}{\\Rekonstruktionskarten(5)}
+\leftbox{
+\begin{figure}[h]
+   \centering
+  \begin{center}
+  \includegraphics[width=\textwidth]{./bilder/07.eps}
+%  \title{0,5° Torsion der Kameras}
+  \end{center}
+  \end{figure} 
+      \centering
+  Länge: \unit[0,7]{km}
+}
+\rightbox{
+\begin{figure}[h]
+   \centering
+  \begin{center}
+  \includegraphics[width=\textwidth]{./bilder/08.eps}
+  \end{center}
+  \end{figure} 
+      \centering
+  Länge: \unit[3,2]{km}
+}
+ 
+\end{frame}
+
+\begin{frame}{\\Rekonstruktionskarten(6)}
+\leftbox{
+\begin{figure}[h]
+   \centering
+  \begin{center}
+  \includegraphics[width=\textwidth]{./bilder/09.eps}
+%  \title{0,5° Torsion der Kameras}
+  \end{center}
+  \end{figure}
+      \centering
+  Länge: \unit[1,7]{km}
+}
+\rightbox{
+\begin{figure}[h]
+   \centering
+  \begin{center}
+  \includegraphics[width=\textwidth]{./bilder/10.eps}
+%  \title{0,5° Torsion der Kameras}
+  \end{center}
+  \end{figure}
+      \centering
+  Länge: \unit[0,9]{km}
+}
+
+ 
+\end{frame}
+  
+\begin{frame}{\\Quellen}
+ \begin{itemize}
+  \item Kompass: www.persoenlichkeitsmacher.de
+  \item Tunnel: http://www.insuedthueringen.de
+  \item Häuserschlucht: http://images.fotocommunity.de
+  \item Satelliten: http://www.bandwidthplace.com
+  \item Route 66: http://www.theinternettraveller.com/
+  \item Leitplanke: http://img.archiexpo.de
+  \item Tunnel: http://www.constructionweekonline.com
+  %\item Landstraße: http://images.fotocommunity.de
+  \item Verkehrschaos: https://qingdaoblog.files.wordpress.com
+  \item Dynamik: http://data.motor-talk.de
+  
+ \end{itemize}
+
+\end{frame}
+
+
+
+
+
+\end{document}

@@ -1,0 +1,57 @@
+% \usepackage{multimedia}
+% \usepackage[square]{natbib}
+% \usepackage{bibgerm}
+\usepackage{tikz}
+
+\usetikzlibrary{shapes.geometric,shapes.arrows,decorations.pathmorphing}
+\usetikzlibrary{matrix,chains,scopes,positioning,arrows,fit}
+\usetikzlibrary{calc}
+\usetikzlibrary{patterns}
+
+% \usetikzlibrary{patterns}
+% \usetikzlibrary{matrix}
+% \usetikzlibrary{decorations.pathmorphing}
+% \usetikzlibrary{arrows,shapes.geometric} % fadings, ???
+% \usepackage{fancybox}
+% \usepackage{amsmath}            % Mathematik-Umgebungen
+\usepackage{bm}                 % fette Mathe Buchstaben
+\usepackage{amssymb}            % spezielle Mathe-Symbole
+
+
+\usepackage{color}
+
+%
+% Absolute positioning
+% beamer paper size: 12.80cm x 9.60cm
+%
+\usepackage[overlay,absolute]{textpos}
+\setlength{\TPHorizModule}{10mm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{5mm}{25.5mm}
+\setlength{\parindent}{0pt}
+
+\newcommand{\leftbox}[1]{
+ \begin{textblock}{5.7}(0, 0)
+   #1
+ \end{textblock}
+}
+
+\newcommand{\rightbox}[1]{
+ \begin{textblock}{5.7}(6.1, 0)
+   #1
+ \end{textblock}
+}
+
+\newcommand{\fullbox}[1]{
+ \begin{textblock}{11.8}(0, 0)
+   #1
+ \end{textblock}
+}
+
+% \usepackage{calc}
+\newenvironment{arbbox}[2]
+{%\setlength{\boxwidth}{11.8cm minus \real{#1}}
+\begin{textblock}{11.8cm}(#1, #2)}
+{\end{textblock}}
+
+
