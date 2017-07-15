@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.9.29)  12 JUL 2017 22:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.9.29)  12 JUL 2017 23:50
 entering extended mode
 **./PS_Vorlage.tex
 (PS_Vorlage.tex
@@ -1436,11 +1436,11 @@ Package epstopdf Info: Source file: <./pics/rmr.eps>
 (epstopdf)                    size: 8532 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/rmr-eps-converted-to
 .pdf ./pics/rmr.eps>
-(epstopdf)             \includegraphics on input line 679.
+(epstopdf)             \includegraphics on input line 681.
 Package epstopdf Info: Output file is already uptodate.
 File: ./pics/rmr-eps-converted-to.pdf Graphic file (type pdf)
  <use ./pics/rmr-eps-converted-to.pdf>
-Package pdftex.def Info: ./pics/rmr-eps-converted-to.pdf used on input line 679
+Package pdftex.def Info: ./pics/rmr-eps-converted-to.pdf used on input line 681
 .
 (pdftex.def)             Requested size: 516.0pt x 16.24507pt.
 
@@ -1454,87 +1454,87 @@ Overfull \hbox (1.60997pt too wide) has occurred while \output is active
  []
 
 [9 <./pics/gt.jpg> <./pics/seenImage.jpg> <./pics/withAlignment.jpg>]
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 711.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 713.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/it' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 711.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 713.
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 711.
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 718.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 713.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 720.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1pcr.fd"
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 717--722
+Underfull \hbox (badness 10000) in paragraph at lines 719--724
 []\T1/ptm/m/n/8 WIKIPEDIA The Free En-cy-clo-pe-dia $\T1/pcr/m/n/8 https : / / 
 simple .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 717--722
+Underfull \hbox (badness 10000) in paragraph at lines 719--724
 \T1/pcr/m/n/8 https : / / en . wikipedia . org / wiki / Distortion _ (optics)$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 717--722
+Underfull \hbox (badness 10000) in paragraph at lines 719--724
 \T1/pcr/m/n/8 https : / / en . wikipedia . org / wiki / Canny _ edge _ detector
 $
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 717--722
+Underfull \hbox (badness 10000) in paragraph at lines 719--724
 \T1/pcr/m/n/8 https : / / en . wikipedia . org / wiki / Sobel _ operator$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 723--727
+Underfull \hbox (badness 10000) in paragraph at lines 725--729
 []\T1/ptm/m/n/8 OPENCV Open Sour-ce Com-pu-ter Vi-si-on Li-bra-ry $\T1/pcr/m/n/
 8 http :
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 723--727
+Underfull \hbox (badness 10000) in paragraph at lines 725--729
 \T1/pcr/m/n/8 / / docs . opencv . org / 2 . 4 / doc / tutorials / imgproc /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 723--727
+Underfull \hbox (badness 10000) in paragraph at lines 725--729
 \T1/pcr/m/n/8 imgtrans / canny _ detector / canny _ detector . html$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 723--727
+Underfull \hbox (badness 10000) in paragraph at lines 725--729
 \T1/pcr/m/n/8 http : / / docs . opencv . org / 2 . 4 / doc / tutorials / imgpro
 c /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 723--727
+Underfull \hbox (badness 10000) in paragraph at lines 725--729
 \T1/pcr/m/n/8 imgtrans / sobel _ derivatives / sobel _ derivatives . html$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 723--727
+Underfull \hbox (badness 10000) in paragraph at lines 725--729
 \T1/pcr/m/n/8 http : / / docs . opencv . org / 2 . 4 / doc / tutorials / calib3
 d /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 723--727
+Underfull \hbox (badness 10000) in paragraph at lines 725--729
 \T1/pcr/m/n/8 camera _ calibration / camera _ calibration . html$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 723--727
+Underfull \hbox (badness 10000) in paragraph at lines 725--729
 
  []
 
 
-Underfull \hbox (badness 4940) in paragraph at lines 728--730
+Underfull \hbox (badness 4940) in paragraph at lines 730--732
 []\T1/ptm/m/n/8 MATLAB Ma-thWorks $\T1/pcr/m/n/8 https : / / www . mathworks . 
 com / help /
  []
@@ -1543,43 +1543,43 @@ com / help /
 File: ./pics/FullSizeRender.jpg Graphic file (type jpg)
 
 <use ./pics/FullSizeRender.jpg>
-Package pdftex.def Info: ./pics/FullSizeRender.jpg used on input line 733.
+Package pdftex.def Info: ./pics/FullSizeRender.jpg used on input line 735.
 (pdftex.def)             Requested size: 66.56473pt x 90.33386pt.
 File: ./pics/FullSizeRender.jpg Graphic file (type jpg)
  <use ./pics/FullSizeRender.jpg>
-Package pdftex.def Info: ./pics/FullSizeRender.jpg used on input line 733.
+Package pdftex.def Info: ./pics/FullSizeRender.jpg used on input line 735.
 (pdftex.def)             Requested size: 66.56473pt x 90.33386pt.
 
 <./pics/passbild.jpg, id=84, 987.69pt x 1288.815pt>
 File: ./pics/passbild.jpg Graphic file (type jpg)
  <use ./pics/passbild.jpg>
-Package pdftex.def Info: ./pics/passbild.jpg used on input line 738.
+Package pdftex.def Info: ./pics/passbild.jpg used on input line 740.
 (pdftex.def)             Requested size: 69.22072pt x 90.32458pt.
 File: ./pics/passbild.jpg Graphic file (type jpg)
 
 <use ./pics/passbild.jpg>
-Package pdftex.def Info: ./pics/passbild.jpg used on input line 738.
+Package pdftex.def Info: ./pics/passbild.jpg used on input line 740.
 (pdftex.def)             Requested size: 69.22072pt x 90.32458pt.
  <./pics/Qian.jpg, id=87, 961.5925pt x 1237.62375pt>
 File: ./pics/Qian.jpg Graphic file (type jpg)
 
 <use ./pics/Qian.jpg>
-Package pdftex.def Info: ./pics/Qian.jpg used on input line 742.
+Package pdftex.def Info: ./pics/Qian.jpg used on input line 744.
 (pdftex.def)             Requested size: 70.17952pt x 90.32501pt.
 File: ./pics/Qian.jpg Graphic file (type jpg)
  <use ./pics/Qian.jpg>
-Package pdftex.def Info: ./pics/Qian.jpg used on input line 742.
+Package pdftex.def Info: ./pics/Qian.jpg used on input line 744.
 (pdftex.def)             Requested size: 70.17952pt x 90.32501pt.
 
 <./pics/Wirth.jpg, id=90, 481.8pt x 642.4pt>
 File: ./pics/Wirth.jpg Graphic file (type jpg)
  <use ./pics/Wirth.jpg>
-Package pdftex.def Info: ./pics/Wirth.jpg used on input line 747.
+Package pdftex.def Info: ./pics/Wirth.jpg used on input line 749.
 (pdftex.def)             Requested size: 67.75294pt x 90.33728pt.
 File: ./pics/Wirth.jpg Graphic file (type jpg)
 
 <use ./pics/Wirth.jpg>
-Package pdftex.def Info: ./pics/Wirth.jpg used on input line 747.
+Package pdftex.def Info: ./pics/Wirth.jpg used on input line 749.
 (pdftex.def)             Requested size: 67.75294pt x 90.33728pt.
 Package epstopdf Info: Source file: <./pics/rmr2.eps>
 (epstopdf)                    date: 2014-12-09 15:53:36
@@ -1589,12 +1589,12 @@ Package epstopdf Info: Source file: <./pics/rmr2.eps>
 (epstopdf)                    size: 2929 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pics/rmr2-eps-converted-t
 o.pdf ./pics/rmr2.eps>
-(epstopdf)             \includegraphics on input line 752.
+(epstopdf)             \includegraphics on input line 754.
 Package epstopdf Info: Output file is already uptodate.
 File: ./pics/rmr2-eps-converted-to.pdf Graphic file (type pdf)
  <use ./pics/rmr2-eps-converted-to.pdf>
 Package pdftex.def Info: ./pics/rmr2-eps-converted-to.pdf used on input line 75
-2.
+4.
 (pdftex.def)             Requested size: 516.0pt x 17.16898pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1619,7 +1619,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  16675 strings out of 493334
  314728 string characters out of 3139252
- 399997 words of memory out of 3000000
+ 400997 words of memory out of 3000000
  19852 multiletter control sequences out of 15000+200000
  118736 words of font info for 123 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1638,7 +1638,7 @@ Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.
 9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw
 /times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pf
 b><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on PS_Vorlage.pdf (10 pages, 2745527 bytes).
+Output written on PS_Vorlage.pdf (10 pages, 2745857 bytes).
 PDF statistics:
  150 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
