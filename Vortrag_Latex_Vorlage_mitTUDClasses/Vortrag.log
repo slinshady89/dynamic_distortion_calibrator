@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.9.29)  16 JUL 2017 13:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.9.29)  16 JUL 2017 16:11
 entering extended mode
 **./Vortrag.tex
 (Vortrag.tex
@@ -1195,28 +1195,28 @@ TextBlockOrigin set to 5mm x 25.5mm
 ) (Vortrag.aux)
 \openout1 = `Vortrag.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Try loading font information for T1+phv on input line 31.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 32.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1phv.fd"
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 9.40002pt on input line 31.
+(Font)              scaled to size 9.40002pt on input line 32.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1267,7 +1267,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 \everyMPtoPDFconversion=\toks56
 ) ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box71
-Package hyperref Info: Link coloring OFF on input line 31.
+Package hyperref Info: Link coloring OFF on input line 32.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1277,9 +1277,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count179
 )
-LaTeX Info: Redefining \ref on input line 31.
-LaTeX Info: Redefining \pageref on input line 31.
-LaTeX Info: Redefining \nameref on input line 31.
+LaTeX Info: Redefining \ref on input line 32.
+LaTeX Info: Redefining \pageref on input line 32.
+LaTeX Info: Redefining \nameref on input line 32.
 
 (Vortrag.out) (Vortrag.out)
 \@outlinefile=\write7
@@ -1334,82 +1334,82 @@ Dictionary: translator-theorem-dictionary, Language: English
 rem-dictionary\translator-theorem-dictionary-German.dict"
 Dictionary: translator-theorem-dictionary, Language: German 
 )
-LaTeX Info: Redefining \includegraphics on input line 31.
+LaTeX Info: Redefining \includegraphics on input line 32.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
  (Vortrag.nav)
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 4.70001pt on input line 31.
+(Font)              scaled to size 4.70001pt on input line 32.
 
-Underfull \hbox (badness 10000) in paragraph at lines 31--31
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
 
  []
 
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 31.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 32.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1phv.fd"
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 4.70001pt on input line 31.
-LaTeX Font Info:    Try loading font information for U+msa on input line 31.
+(Font)              scaled to size 4.70001pt on input line 32.
+LaTeX Font Info:    Try loading font information for U+msa on input line 32.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 31.
+LaTeX Font Info:    Try loading font information for U+msb on input line 32.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
-(Font)              scaled to size 4.70001pt on input line 31.
+(Font)              scaled to size 4.70001pt on input line 32.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <5> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 31.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 32.
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 4.70001pt on input line 31.
+(Font)              scaled to size 4.70001pt on input line 32.
 
 
 Package hyperref Warning: Option `pdfauthor' has already been used,
-(hyperref)                setting the option has no effect on input line 35.
+(hyperref)                setting the option has no effect on input line 36.
 
 \TUD@institutelogoboxheight=\skip89
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 3.76001pt on input line 52.
+(Font)              scaled to size 3.76001pt on input line 53.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 11.28003pt on input line 52.
+(Font)              scaled to size 11.28003pt on input line 53.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 52.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 53.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 11.28003pt on input line 52.
+(Font)              scaled to size 11.28003pt on input line 53.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 52.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 53.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 9.40002pt on input line 52.
+(Font)              scaled to size 9.40002pt on input line 53.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 11.28003pt on input line 52.
+(Font)              scaled to size 11.28003pt on input line 53.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 7.52002pt on input line 52.
+(Font)              scaled to size 7.52002pt on input line 53.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 5.64001pt on input line 52.
+(Font)              scaled to size 5.64001pt on input line 53.
 LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
-(Font)              scaled to size 11.28003pt on input line 52.
+(Font)              scaled to size 11.28003pt on input line 53.
 LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
-(Font)              scaled to size 7.52002pt on input line 52.
+(Font)              scaled to size 7.52002pt on input line 53.
 LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
-(Font)              scaled to size 5.64001pt on input line 52.
+(Font)              scaled to size 5.64001pt on input line 53.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 52.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 53.
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 11.28003pt on input line 52.
+(Font)              scaled to size 11.28003pt on input line 53.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 52.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 53.
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 7.52002pt on input line 52.
+(Font)              scaled to size 7.52002pt on input line 53.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <6> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 52.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 53.
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 5.64001pt on input line 52.
+(Font)              scaled to size 5.64001pt on input line 53.
 
 Overfull \hbox (6.00092pt too wide) has occurred while \output is active
 [][] 
@@ -1423,13 +1423,13 @@ Package epstopdf Info: Source file: <rmr2.eps>
 (epstopdf)                    size: 14040 bytes
 (epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
 mr2.eps>
-(epstopdf)             \includegraphics on input line 52.
+(epstopdf)             \includegraphics on input line 53.
 Package epstopdf Info: Output file is already uptodate.
 <rmr2-eps-converted-to.pdf, id=13, 130.4875pt x 14.0525pt>
 File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 52.
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 53.
 (pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1440,25 +1440,25 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
  <./tud_logo.pdf> <./rmr2-eps-converted-to.pdf>]
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 9.40002pt on input line 87.
+(Font)              scaled to size 9.40002pt on input line 88.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 6.58002pt on input line 87.
+(Font)              scaled to size 6.58002pt on input line 88.
 LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
-(Font)              scaled to size 9.40002pt on input line 87.
+(Font)              scaled to size 9.40002pt on input line 88.
 LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
-(Font)              scaled to size 6.58002pt on input line 87.
+(Font)              scaled to size 6.58002pt on input line 88.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 87.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 88.
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 9.40002pt on input line 87.
+(Font)              scaled to size 9.40002pt on input line 88.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <7> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 87.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 88.
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 6.58002pt on input line 87.
+(Font)              scaled to size 6.58002pt on input line 88.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 6.58002pt on input line 87.
+(Font)              scaled to size 6.58002pt on input line 88.
 
-Overfull \hbox (0.30554pt too wide) in paragraph at lines 87--87
+Overfull \hbox (0.30554pt too wide) in paragraph at lines 88--88
 []  
  []
 
@@ -1470,11 +1470,11 @@ Package epstopdf Info: Source file: <rmr2.eps>
 (epstopdf)                    size: 14040 bytes
 (epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
 mr2.eps>
-(epstopdf)             \includegraphics on input line 87.
+(epstopdf)             \includegraphics on input line 88.
 Package epstopdf Info: Output file is already uptodate.
 File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
 <use rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 87.
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 88.
 (pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1487,20 +1487,20 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 File: distortions_inline.png Graphic file (type png)
 
 <use distortions_inline.png>
-Package pdftex.def Info: distortions_inline.png used on input line 116.
+Package pdftex.def Info: distortions_inline.png used on input line 117.
 (pdftex.def)             Requested size: 170.51334pt x 73.85147pt.
 
-Overfull \hbox (8.3328pt too wide) in paragraph at lines 116--116
+Overfull \hbox (8.3328pt too wide) in paragraph at lines 117--117
  [] 
  []
 
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 8.46002pt on input line 116.
+(Font)              scaled to size 8.46002pt on input line 117.
 <bilder/tangential_dist.png, id=43, 412.54124pt x 306.14375pt>
 File: bilder/tangential_dist.png Graphic file (type png)
 
 <use bilder/tangential_dist.png>
-Package pdftex.def Info: bilder/tangential_dist.png used on input line 116.
+Package pdftex.def Info: bilder/tangential_dist.png used on input line 117.
 (pdftex.def)             Requested size: 113.44604pt x 84.18744pt.
 Package epstopdf Info: Source file: <rmr2.eps>
 (epstopdf)                    date: 2016-06-15 15:52:26
@@ -1510,11 +1510,11 @@ Package epstopdf Info: Source file: <rmr2.eps>
 (epstopdf)                    size: 14040 bytes
 (epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
 mr2.eps>
-(epstopdf)             \includegraphics on input line 116.
+(epstopdf)             \includegraphics on input line 117.
 Package epstopdf Info: Output file is already uptodate.
 File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
  <use rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 116.
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 117.
 (pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1528,14 +1528,14 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 File: bilder/pixelSizeImg1.png Graphic file (type png)
 
 <use bilder/pixelSizeImg1.png>
-Package pdftex.def Info: bilder/pixelSizeImg1.png used on input line 139.
+Package pdftex.def Info: bilder/pixelSizeImg1.png used on input line 140.
 (pdftex.def)             Requested size: 144.09674pt x 81.3085pt.
 
 <bilder/pixelSizeImg2.png, id=52, 1439.3775pt x 813.0375pt>
 File: bilder/pixelSizeImg2.png Graphic file (type png)
 
 <use bilder/pixelSizeImg2.png>
-Package pdftex.def Info: bilder/pixelSizeImg2.png used on input line 139.
+Package pdftex.def Info: bilder/pixelSizeImg2.png used on input line 140.
 (pdftex.def)             Requested size: 143.94618pt x 81.3085pt.
 Package epstopdf Info: Source file: <rmr2.eps>
 (epstopdf)                    date: 2016-06-15 15:52:26
@@ -1545,11 +1545,11 @@ Package epstopdf Info: Source file: <rmr2.eps>
 (epstopdf)                    size: 14040 bytes
 (epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
 mr2.eps>
-(epstopdf)             \includegraphics on input line 139.
+(epstopdf)             \includegraphics on input line 140.
 Package epstopdf Info: Output file is already uptodate.
 File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
  <use rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 139.
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 140.
 (pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1559,6 +1559,112 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [4
 
  <./bilder/pixelSizeImg1.png> <./bilder/pixelSizeImg2.png>]
+<bilder/pixelSizeImg2_FOV.png, id=58, 1439.3775pt x 813.0375pt>
+File: bilder/pixelSizeImg2_FOV.png Graphic file (type png)
+
+<use bilder/pixelSizeImg2_FOV.png>
+Package pdftex.def Info: bilder/pixelSizeImg2_FOV.png used on input line 161.
+(pdftex.def)             Requested size: 215.89731pt x 121.95036pt.
+Package epstopdf Info: Source file: <rmr2.eps>
+(epstopdf)                    date: 2016-06-15 15:52:26
+(epstopdf)                    size: 461414 bytes
+(epstopdf)             Output file: <rmr2-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-07-15 15:22:57
+(epstopdf)                    size: 14040 bytes
+(epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
+mr2.eps>
+(epstopdf)             \includegraphics on input line 161.
+Package epstopdf Info: Output file is already uptodate.
+File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
+ <use rmr2-eps-converted-to.pdf>
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 161.
+(pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+
+ []
+
+[5
+
+ <./bilder/pixelSizeImg2_FOV.png>]
+<bilder/gt.png, id=65, 722.7pt x 410.53375pt>
+File: bilder/gt.png Graphic file (type png)
+ <use bilder/gt.png>
+Package pdftex.def Info: bilder/gt.png used on input line 181.
+(pdftex.def)             Requested size: 144.53743pt x 82.10529pt.
+
+<bilder/mappedImage.png, id=66, 722.7pt x 410.53375pt>
+File: bilder/mappedImage.png Graphic file (type png)
+
+<use bilder/mappedImage.png>
+Package pdftex.def Info: bilder/mappedImage.png used on input line 181.
+(pdftex.def)             Requested size: 144.53743pt x 82.10529pt.
+Package epstopdf Info: Source file: <rmr2.eps>
+(epstopdf)                    date: 2016-06-15 15:52:26
+(epstopdf)                    size: 461414 bytes
+(epstopdf)             Output file: <rmr2-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-07-15 15:22:57
+(epstopdf)                    size: 14040 bytes
+(epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
+mr2.eps>
+(epstopdf)             \includegraphics on input line 181.
+Package epstopdf Info: Output file is already uptodate.
+File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
+ <use rmr2-eps-converted-to.pdf>
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 181.
+(pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+
+ []
+
+[6
+
+ <./bilder/gt.png> <./bilder/mappedImage.png>]
+<bilder/substracted.jpg, id=72, 722.7pt x 410.53375pt>
+File: bilder/substracted.jpg Graphic file (type jpg)
+
+<use bilder/substracted.jpg>
+Package pdftex.def Info: bilder/substracted.jpg used on input line 190.
+(pdftex.def)             Requested size: 289.07487pt x 164.21059pt.
+LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
+(Font)              scaled to size 8.46002pt on input line 190.
+LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
+(Font)              scaled to size 8.46002pt on input line 190.
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 190.
+LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
+(Font)              scaled to size 8.46002pt on input line 190.
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <9> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 190.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 8.46002pt on input line 190.
+
+Overfull \vbox (22.91385pt too high) detected at line 190
+ []
+
+Package epstopdf Info: Source file: <rmr2.eps>
+(epstopdf)                    date: 2016-06-15 15:52:26
+(epstopdf)                    size: 461414 bytes
+(epstopdf)             Output file: <rmr2-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-07-15 15:22:57
+(epstopdf)                    size: 14040 bytes
+(epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
+mr2.eps>
+(epstopdf)             \includegraphics on input line 190.
+Package epstopdf Info: Output file is already uptodate.
+File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
+<use rmr2-eps-converted-to.pdf>
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 190.
+(pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+
+ []
+
+[7
+
+ <./bilder/substracted.jpg>]
 \tf@nav=\write8
 \openout8 = `Vortrag.nav'.
 
@@ -1568,31 +1674,32 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 \tf@snm=\write10
 \openout10 = `Vortrag.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 147.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 147.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 197.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 197.
  (Vortrag.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 147.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 147.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 197.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 197.
 Package rerunfilecheck Info: File `Vortrag.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 25375 strings out of 493334
- 506031 string characters out of 3139252
+ 25435 strings out of 493334
+ 507009 string characters out of 3139252
  584421 words of memory out of 3000000
- 28216 multiletter control sequences out of 15000+200000
- 49117 words of font info for 90 fonts, out of 3000000 for 9000
+ 28261 multiletter control sequences out of 15000+200000
+ 59089 words of font info for 105 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,22n,96p,849b,687s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
-/urw/helvetic/uhvb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/
-uhvr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on Vortrag.pdf (4 pages, 300412 bytes).
+ts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helv
+etic/uhvb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pf
+b><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on Vortrag.pdf (7 pages, 580551 bytes).
 PDF statistics:
- 82 PDF objects out of 1000 (max. 8388607)
- 9 named destinations out of 1000 (max. 500000)
- 73 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 109 PDF objects out of 1000 (max. 8388607)
+ 15 named destinations out of 1000 (max. 500000)
+ 93 words of extra memory for PDF output out of 10000 (max. 10000000)
 

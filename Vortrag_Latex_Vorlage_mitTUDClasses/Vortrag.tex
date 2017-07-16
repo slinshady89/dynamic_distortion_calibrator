@@ -16,6 +16,7 @@
 \usepackage{ngerman}
 \usepackage{color}
 \usepackage{rotating}
+\usepackage{amsmath}
 \usepackage[latin1]{inputenc}   % deutsche Umlaute
 \usepackage[T1]{fontenc}        % Darstellung von Schrift als echte T1 Fonts und nicht als Bilder
 \usepackage{graphicx}
@@ -100,7 +101,7 @@ r &= \sqrt{(x_d-x_c)^2+(y_d-y_c)^2}
  \textbf{Radial distortion:}
  \begin{figure}
  \includegraphics[scale=0.3]{distortions_inline}
- \caption{radial distortion possibilities}%source
+ \caption{radial distortions}%source
  \end{figure}
 }
 \rightbox{
@@ -138,6 +139,55 @@ r &= \sqrt{(x_d-x_c)^2+(y_d-y_c)^2}
  
 \end{frame}
 
+\begin{frame}{\\Center point estimation}
+
+ \begin{figure}
+ \vspace{-0.5cm}
+ \includegraphics[scale=0.15]{pixelSizeImg2_FOV}
+ \end{figure}
+ \leftbox{
+  \vspace{4.5cm}
+  \begin{align*}
+  \textbf{x}_c =\frac{\sum\limits_{k=1}^{n} \textbf{x}_k}{n}
+  \end{align*}
+ }
+ \rightbox{
+  \vspace{5cm}
+  %\begin{align*}
+  $n$~~~:~number of seen pixels\\
+  $\textbf{x}_k$~:~position of seen pixel
+  %\end{align*}
+}
+\end{frame}
+
+
+\begin{frame}{\\Results}
+\leftbox{
+ %\vspace{2cm}
+ \textbf{Ground truth:}
+ \begin{figure}
+ \includegraphics[scale=0.2]{gt}
+ \caption{all white lines that we're drawn and seen on the screen}
+  \end{figure}
+}
+\rightbox{
+ %\vspace{2cm}
+\textbf{Mapped Image: }
+ \begin{figure}
+ \includegraphics[scale=0.2]{mappedImage}
+ \caption{the seen lines after they were mapped by the algorithm}
+ \end{figure}
+ }
+\end{frame}
+
+\begin{frame}{\\Comparison\\ \small{Substraction of ground truth and mapped image}}
+\begin{figure}
+\vspace{-0.5cm}
+\includegraphics[scale=0.4]{substracted}
+\caption{difference of both images\\ $824$ of $290,191$ pixels do not fit}
+\end{figure}
+
+\end{frame}
 
 
 
