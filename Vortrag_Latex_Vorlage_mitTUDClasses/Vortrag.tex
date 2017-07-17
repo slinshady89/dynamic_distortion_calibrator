@@ -32,10 +32,10 @@
 \renewcommand{\vec}[1]{\ensuremath{\boldsymbol{#1}}}
 
 \begin{document}
-\title[]{Titel}
-\subtitle{Namen}
+\title[]{Automatic distortion calibration}
+\subtitle{Ahmed Ahsraf, Nils Hamacher, Linghan Qian, Vivica Wirth}
 
-\author[Gruppe X]{Gruppe Acu\~na}
+\author[Gruppe Acu\~na]{Gruppe Acu\~na}
 \institute[Regelungsmethoden und Robotik | Projektseminar Robotik]{Regelungsmethoden und Robotik | Projektseminar Robotik}
 
 
@@ -48,7 +48,25 @@
 %Titelfolie%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{titleframe}
 
+ \leftbox{
+ \vspace{0.5cm}
+ \begin{figure} 
+ \includegraphics[scale=0.15]{rect}
+ \caption{System}%source
+ \end{figure}
+ }
+ \rightbox{
+ \vspace{1cm}
+\textbf{Task:} \\
+Calibrate camera distortion automatically\\
+\textbf{Advantage:}\\
+\textbf{Efficiency}\\
+No human-interaction\\
 
+\textbf{Dense model}\\
+1.	Precise position	\\	
+2.	Non-parametric \\
+ }
 
 
 
@@ -56,7 +74,7 @@
 
 %Hauptfolien%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%
-\begin{frame}{\\Distortion example}
+\begin{frame}{\\Distortion example\\ \small{Source \cite{Villiers}}}
 
  \vspace{-1cm}
  \begin{align*}
@@ -104,23 +122,112 @@ r =~&\sqrt{(x_d-x_c)^2+(y_d-y_c)^2},\\
 
 
  \leftbox{
- \vspace{2cm}
+ \vspace{1.5cm}
  \textbf{Radial distortion:}
  \begin{figure}
  \includegraphics[scale=0.3]{distortions_inline}
- \caption{radial distortions}%source
+ \caption{radial distortions \cite{Mannuru}}%source
  \end{figure}
 }
 \rightbox{
- \vspace{2cm}
+ \vspace{1.5cm}
 \textbf{Tangential distortion:}
  \begin{figure}
  \includegraphics[scale=0.275]{tangential_dist}
- \caption{first order tangential distortion }%source
+ \caption{first order tangential distortion \cite{Ribbens}}%source
  \end{figure}
 
 }
 
+\end{frame}
+
+
+
+\begin{frame}{\\Applying directional filters to extract edges\\ \small{Sobel operator}}
+\begin{columns}
+\column{0.3\textwidth}
+
+\begin{align*}
+Kernel_{vertical}&=\begin{pmatrix}
+-1&0&1\\-2&0&2\\-1&0&1\\\end{pmatrix}\\\\
+Kernel_{horizontal}&= Kernel_{vertical}^T\\
+\end{align*}
+
+\column{0.225\textwidth}
+\vspace{-1.1cm}
+\begin{figure}
+ \includegraphics[scale=.385]{Sobel_1}
+ \caption{Original image\cite{youtube} }
+\end{figure}
+
+\column{0.35\textwidth}
+\vspace{-1.15cm}
+\begin{figure}
+ \includegraphics[scale=.6]{Sobel_4_y}
+ \caption{Vertical edges\cite{youtube} }
+\end{figure}
+\vspace{-.8cm}
+\begin{figure}
+ \includegraphics[scale=.6]{Sobel_4_x}
+ \caption{Horizontal edges\cite{youtube} }
+\end{figure}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{\\Applying directional filters to extract edges\\ \small{Canny operator}}
+\begin{columns}
+
+\column{0.5\textwidth}
+\begin{align*}
+\theta_{orientation}&=\arctan{\frac{\partial I}{\partial y},\frac{\partial I}{\partial x}}\\\\
+|grad(I)|&=\sqrt[2]{\left(\frac{\partial I}{\partial x}\right)^2+\left(\frac{\partial I}{\partial y}\right)^2}
+\end{align*}
+\column{0.5\textwidth}
+\vspace{-1.05cm}
+\begin{figure}
+ \includegraphics[scale=.34]{Sobel_3}
+ \caption{Orientation image\cite{youtube} }
+\end{figure}
+\vspace{-.5cm}
+\begin{figure}
+ \includegraphics[scale=.28]{Canny_2}
+ \caption{Canny image }
+\end{figure}
+
+\column{0.5\textwidth}
+\vspace{-1cm}
+
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{\\Applying directional filters to extract edges\\ \small{Algorithms comparison}}
+
+\begin{columns}
+
+\column{0.3\textwidth}
+\textbf{Original image}
+\begin{figure}
+ \includegraphics[scale=.4]{Sobel_1}
+ \caption{Original image\cite{youtube}}
+\end{figure}
+
+\column{0.3\textwidth}
+\textbf{Sobel operator}
+\begin{figure}
+ \includegraphics[scale=.4]{Sobel_2}
+ \caption{Image with Sobel operator\cite{youtube}}
+\end{figure}
+\column{0.3\textwidth}
+\textbf{Canny operator}
+\vspace{.7cm}
+\begin{figure}
+ \includegraphics[scale=.25]{Canny_2}
+ \caption{Image with Canny operator }
+\end{figure}
+
+\end{columns}
 \end{frame}
 
 
@@ -168,43 +275,9 @@ r =~&\sqrt{(x_d-x_c)^2+(y_d-y_c)^2},\\
 \end{frame}
 
 
-\begin{frame}{\\Results}
-\leftbox{
- %\vspace{2cm}
- \textbf{Ground truth:}
- \begin{figure}
- \includegraphics[scale=0.2]{gt}
- \caption{all white lines that we're drawn and seen on the screen}
-  \end{figure}
-}
-\rightbox{
- %\vspace{2cm}
-\textbf{Mapped Image: }
- \begin{figure}
- \includegraphics[scale=0.2]{mappedImage}
- \caption{the seen lines after they were mapped by the algorithm}
- \end{figure}
- }
-\end{frame}
-
-\begin{frame}{\\Comparison\\ \small{Substraction of ground truth and mapped image}}
-\begin{figure}
-\vspace{-0.5cm}
-\includegraphics[scale=0.4]{substracted}
-\caption{difference of both images\\ $824$ of $290,191$ pixels do not fit}
-\end{figure}
-
-\end{frame}
 
 
-\begin{frame}{\\Overview implementation\\ \small{UML diagramm}}
-\begin{figure}
-\vspace{-0.5cm}
-\includegraphics[scale=0.25]{uml_diagram}
 
-\end{figure}
-
-\end{frame}
 
 \begin{frame}{\\Runtime}
 \begin{itemize}
@@ -312,6 +385,7 @@ Center point \& FOV based:
 
 \begin{align*}\hspace{-1cm}
 rt'(s)&= -\frac{w_s h_s}{3s^3}+\frac{4}{3j} \stackrel{!}{=} 0\\
+\vspace{0.5cm}
 s &= \sqrt[3]{\frac{w_s\cdot h_s\cdot j}{4}}
 \end{align*} 
 
@@ -331,6 +405,44 @@ $s=101 \hspace{0.5cm}\Rightarrow \hspace{0.5cm} rt = 211$\\  %(1920,1080,670,395
 \end{frame}
 
 
+
+\begin{frame}{\\Overview implementation\\ \small{UML diagramm}}
+\begin{figure}
+\vspace{-0.5cm}
+\includegraphics[scale=0.25]{uml_diagram}
+
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{\\Results}
+\leftbox{
+ %\vspace{2cm}
+ \textbf{Ground truth:}
+ \begin{figure}
+ \includegraphics[scale=0.2]{gt}
+ \caption{all white lines that we're drawn and seen on the screen}
+  \end{figure}
+}
+\rightbox{
+ %\vspace{2cm}
+\textbf{Mapped Image: }
+ \begin{figure}
+ \includegraphics[scale=0.2]{mappedImage}
+ \caption{the seen lines after they were mapped by the algorithm}
+ \end{figure}
+ }
+\end{frame}
+
+\begin{frame}{\\Comparison\\ \small{Substraction of ground truth and mapped image}}
+\begin{figure}
+\vspace{-0.5cm}
+\includegraphics[scale=0.4]{substracted}
+\caption{difference of both images\\ $824$ of $290,191$ pixels do not fit}
+\end{figure}
+
+\end{frame}
+
 \begin{frame}{\\Future Work}
 \begin{itemize}
 \item Run mapping in one step with \emph{openframeworks}-version
@@ -341,6 +453,23 @@ $s=101 \hspace{0.5cm}\Rightarrow \hspace{0.5cm} rt = 211$\\  %(1920,1080,670,395
 \item undo statemachine if internal \emph{openframeworks}-timing works
 \end{itemize}
 
+\end{frame}
+
+\begin{frame}
+\begin{thebibliography}{1}
+\bibitem {youtube}
+Computerphile \\
+\url {https://www.youtube.com/watch?v=uihBwtPIBxM}
+15.07.2017.\\
+\url {https://www.youtube.com/watch?v=sRFM5IEqR2w}
+15.07.2017.
+\bibitem{Ribbens}
+B.~Ribbens, V.A.~ Jacobs, C.~Vuye1, J.A.N.~Buytaert, J.J.J.~ Dirckx, and S.~Vanlanduit. \emph{High-resolution temporal profilometry using Fourier estimation}, 2007
+\bibitem{Mannuru}
+S.~Mannuru. \emph{A fully automated geometric lens distortion correction method}, University of Dayton, Ohio 2011
+\bibitem{Villiers}
+J.~P.~de ~Villiers, F.W.~Leuschnerb, R.~Geldenhuys. \emph{Centi-pixel accurate real-time inverse distortion corretion}, University of Pretoria, South Africa 2008
+\end{thebibliography}
 \end{frame}
 
 \end{document}
