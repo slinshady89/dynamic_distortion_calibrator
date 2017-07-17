@@ -278,7 +278,7 @@ In practical life to describe the radial distortion only three coefficients are 
 
 \subsubsection{Calibration with checkerboard}
 \label{sec:checkerboard}
-Based on a popular Toolbox for calibrating cameras, which is presented from Caltech university.By using a chessboard.To pass the images to the toolbox, so they had to use an uncompressed images or loss less compression formats such as PNG. Since the default format of a USB Webcam is JPG, so at first the images need to be converted to PNG format. For best results, 10 to 20 images have to be taken and the chessboard pattern has to be approximately 2 meters from the camera and have to cover as much of the image frame as possible as shown in the following figure.
+The calibration with a checkerboard is a popular toolbox for calibrating cameras by Caltech university. The images taken from the checkerboard have to be passed onto the toolbox uncompressedly. Since the default format of a USB Webcam is JPG, they first have to be converted to PNG format. For best results, 10 to 20 images have to be taken and the chessboard pattern has to be approximately 2 meters from the camera and has to cover as much of the image frame as possible as shown in the following figure.
 %\begin{figure}[h]
 %\begin{center}
 %\includegraphics[scale=0.5]{./pics/chessboardOrientation.png}
@@ -641,7 +641,7 @@ The accuracy of the method depends on the precision of the edge detector and the
 
 
 
-\subsection{Conclusion and evaluation}
+\subsection{Comparison and evaluation}
 \label{sec:conclusion}
 For evaluation the mapping was tested with several jump distances: $1$, $3$ and $5$ pixel size. With jump range the percentage of deviated pixels was $0.287\%$. With range of $3$ pixel size the deviation increased by $10.45\%$ to $0.317\%$. At jump range of $5$ the deviation increases to $0.398\%$. 
 
@@ -654,6 +654,8 @@ For evaluation the mapping was tested with several jump distances: $1$, $3$ and 
 \end{figure}
 
 As seen the most different pixels are in the center. This is because the black and white area must be flipped there. If the white area becomes noticeably smaller, the edge is no longer recognized by Canny. For this reason, the areas are flipped in order to recognize the edge continuously. 
+
+To compare this with other methods the \emph{Stdev} of a pixel was calculated. This deviation should be roughly $0.81\mu m$. This is better than any other method proposed in \cite{Salvi}.
 
 \section{Future work and problems}
 \label{sec:work_probs}
