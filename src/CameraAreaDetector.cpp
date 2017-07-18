@@ -185,7 +185,9 @@ void CameraAreaDetector::draw()
 		// entered capturing state
 
 		// static update of camera
-		_cam.update();
+		for (int i = 0; i < 5; i++) {
+			_cam.update();
+		}
 
 		// get image from camera, conversion happens implicitly
 		_color = _cam.getPixels();
@@ -231,10 +233,10 @@ void CameraAreaDetector::draw()
 				writeLineCorrespondences(true);
 				// increase the distance from the screen
 				_distanceFromScreenX += _jump;
-				_x = _screenWidth - _distanceFromScreenX;
+				_x -= _jump;
 				if (_flippedRectangle == false && _x < _initPos.x) {
-					_distanceFromScreenX++;
-					_x++;
+					//_distanceFromScreenX++;
+					_x -= 2;
 					_flippedRectangle = true;
 				}
 
@@ -252,10 +254,10 @@ void CameraAreaDetector::draw()
 			else if (_secondBorderReached == false) {
 				writeLineCorrespondences(false);
 				_distanceFromScreenY += _jump;
-				_y = _screenHeight - _distanceFromScreenY;
+				_y -= _jump;
 				if (_flippedRectangle == false && _y < _initPos.y) {
-					_distanceFromScreenY++;
-					_y++;
+					//_distanceFromScreenY++;
+					_y -= 2;
 					_flippedRectangle = true;
 				}
 				if (_y <= _upperBorder) {

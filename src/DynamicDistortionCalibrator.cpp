@@ -618,30 +618,30 @@ void DynamicDistortionCalibrator::compareResults(ofImage gt, ofImage resImg, ofI
 
 	// allocate the difference image
 	difference->allocate(width, height, gt.getImageType());
-	
-	// threshold images, as the colours (grayscalue values) may vary
+	difference->setColor(ofColor::black);
+
+	// for each pixel
 	for (int x = 0; x < width; x++) {
 		for (int y = 0; y < height; y++) {
-			// threshold results
-			if (resImg.getColor(x, y).getBrightness() > WHITE_THRESHOLD) {				
-				resImg.setColor(x, y, ofColor::white);
-			}
-			else {
-				resImg.setColor(x, y, ofColor::black);
-			}
-			// threshold ground
-			if (gt.getColor(x, y).getBrightness() > WHITE_THRESHOLD) {
-				gt.setColor(x, y, ofColor::white);
-			}
-			else {
-				gt.setColor(x, y, ofColor::black);
-			}
-			// set difference
-			ofColor color;
-			color.set(gt.getColor(x, y) - resImg.getColor(x, y));
-			difference->setColor(x, y, color);
-
-			if (difference->getColor(x, y).getBrightness() > WHITE_THRESHOLD) {
+			// get differences
+			ofColor color, color1, color2;
+			// gt - res
+			color1.set(gt.getColor(x, y) - resImg.getColor(x, y));
+			// res - gt
+			color2.set(resImg.getColor(x, y) - gt.getColor(x, y));
+			// take the brighter one to get an absolute difference
+			color.set(color1.getBrightness() > color2.getBrightness() ? color1 : color2);
+			// if the difference is greater than 2 *the white threshold
+			// set it in the difference image and count a difference
+			// this thresholding is necessary, because the colours of the gt and the image
+			// can be different. gt displays pure black and white (slighty distorted by
+			// jpg compression), the image takes that filtered through the cameras sensors
+			// so no longer pure white or black, but likely greyish
+			// taking the threshold times 2 is done, because here we're not seeking a 
+			// white pixel in an image, where the background, i.e. brightness was
+			// subtracted, but in an original image without subtraction
+			if (color.getBrightness() > 2*WHITE_THRESHOLD) {
+				difference->setColor(x, y, color);
 				*noDiff += 1;
 			}
 		}
@@ -652,5 +652,5 @@ void DynamicDistortionCalibrator::compareResults(ofImage gt, ofImage resImg, ofI
 	*ratioDiff = *noDiff / (float)(width * height);
 
 	resImg.saveImage("thresholdedImage.jpg", ofImageQualityType::OF_IMAGE_QUALITY_BEST);
-	gt.saveImage("thresholdedGT.jpG");
+	gt.saveImage("thresholdedGT.jpg");
 }
