@@ -1,50 +1,54 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.9.29)  17 JUL 2017 21:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.7.17)  18 JUL 2017 18:51
 entering extended mode
-**./Vortrag.tex
-(Vortrag.tex
-LaTeX2e <2016/03/31> patch level 3
-Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
-(tudbeamer.cls
+**"C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cal
+ibrator/Vortrag_Latex_Vorlage_mitTUDClasses/Vortrag.tex"
+
+("C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses/Vortrag.tex"
+LaTeX2e <2017-04-15>
+Babel <3.10> and hyphenation patterns for 75 language(s) loaded.
+
+("C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses\tudbeamer.cls"
 Document Class: tudbeamer 2009/07/14 1.1 Joe Werner's and Clemens v. Loewenich'
 s TUD-Design-Manual package
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamer.cls"
-Document Class: beamer 2017/01/23 v3.41 A class for typesetting presentations
-("C:\Program Files\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty"
-Package: etoolbox 2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamer.cls"
+Document Class: beamer 2017/07/13 v3.42 A class for typesetting presentations
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbasemodes.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty"
+Package: etoolbox 2017/01/02 v2.4 e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count79
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbasemodes.sty"
 \beamer@tempbox=\box26
 \beamer@tempcount=\count80
 \c@beamerpauses=\count81
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbasedecode.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbasedecode.sty"
 \beamer@slideinframe=\count82
 \beamer@minimum=\count83
 )
 \beamer@commentbox=\box27
 \beamer@modecount=\count84
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
-Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
+("D:\Programme\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
 )
-\headheight=\dimen102
-\headdp=\dimen103
-\footheight=\dimen104
-\sidebarheight=\dimen105
-\beamer@tempdim=\dimen106
-\beamer@finalheight=\dimen107
-\beamer@animht=\dimen108
-\beamer@animdp=\dimen109
-\beamer@animwd=\dimen110
-\beamer@leftmargin=\dimen111
-\beamer@rightmargin=\dimen112
-\beamer@leftsidebar=\dimen113
-\beamer@rightsidebar=\dimen114
-\beamer@boxsize=\dimen115
-\beamer@vboxoffset=\dimen116
-\beamer@descdefault=\dimen117
-\beamer@descriptionwidth=\dimen118
+\headdp=\dimen102
+\footheight=\dimen103
+\sidebarheight=\dimen104
+\beamer@tempdim=\dimen105
+\beamer@finalheight=\dimen106
+\beamer@animht=\dimen107
+\beamer@animdp=\dimen108
+\beamer@animwd=\dimen109
+\beamer@leftmargin=\dimen110
+\beamer@rightmargin=\dimen111
+\beamer@leftsidebar=\dimen112
+\beamer@rightsidebar=\dimen113
+\beamer@boxsize=\dimen114
+\beamer@vboxoffset=\dimen115
+\beamer@descdefault=\dimen116
+\beamer@descriptionwidth=\dimen117
 \beamer@lastskip=\skip41
 \beamer@areabox=\box28
 \beamer@animcurrent=\box29
@@ -71,105 +75,105 @@ Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
 \beamer@sectionadjust=\count101
 \beamer@tocsectionnumber=\count102
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbaseoptions.sty"
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbaseoptions.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 ))
 \beamer@paperwidth=\skip42
 \beamer@paperheight=\skip43
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+("D:\Programme\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
 Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+("D:\Programme\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count103
 \Gm@cntv=\count104
 \c@Gm@tempcnt=\count105
-\Gm@bindingoffset=\dimen119
-\Gm@wd@mp=\dimen120
-\Gm@odd@mp=\dimen121
-\Gm@even@mp=\dimen122
-\Gm@layoutwidth=\dimen123
-\Gm@layoutheight=\dimen124
-\Gm@layouthoffset=\dimen125
-\Gm@layoutvoffset=\dimen126
+\Gm@bindingoffset=\dimen118
+\Gm@wd@mp=\dimen119
+\Gm@odd@mp=\dimen120
+\Gm@even@mp=\dimen121
+\Gm@layoutwidth=\dimen122
+\Gm@layoutheight=\dimen123
+\Gm@layouthoffset=\dimen124
+\Gm@layoutvoffset=\dimen125
 \Gm@dimlist=\toks15
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\size10.clo"
+("D:\Programme\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+("D:\Programme\MiKTeX 2.9\tex\latex\base\size10.clo"
 File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgfcore.sty"
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgfcore.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
-Package: graphics 2016/07/10 v1.0t Standard LaTeX Graphics (DPC,SPQR)
+("D:\Programme\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2017/04/14 v1.1b Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+("D:\Programme\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg"
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
-File: pdftex.def 2016/07/10 v0.06j Graphics/color for pdfTeX
+("D:\Programme\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
+File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+("D:\Programme\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+("D:\Programme\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count106
 ))
-\Gin@req@height=\dimen127
-\Gin@req@width=\dimen128
+\Gin@req@height=\dimen126
+\Gin@req@width=\dimen127
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\systemlayer\pgfsys.sty"
-("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\utilities\pgfrcs.sty"
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-common.tex"
+("D:\Programme\MiKTeX 2.9\tex\latex\pgf\systemlayer\pgfsys.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\pgf\utilities\pgfrcs.sty"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-common.tex"
 \pgfutil@everybye=\toks16
-\pgfutil@tempdima=\dimen129
-\pgfutil@tempdimb=\dimen130
+\pgfutil@tempdima=\dimen128
+\pgfutil@tempdimb=\dimen129
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-common-lists.te
-x")) ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-latex.def"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-common-lists.tex"))
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-latex.def"
 \pgfutil@abb=\box34
-("C:\Program Files\MiKTeX 2.9\tex\latex\ms\everyshi.sty"
+
+("D:\Programme\MiKTeX 2.9\tex\latex\ms\everyshi.sty"
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 ))
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfrcs.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\utilities\pgfrcs.code.tex"
 Package: pgfrcs 2015/08/07 v3.0.1a (rcs-revision 1.31)
 ))
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsys.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsys.code.tex"
 Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfkeys.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\utilities\pgfkeys.code.tex"
 \pgfkeys@pathtoks=\toks17
 \pgfkeys@temptoks=\toks18
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfkeysfiltered.code.te
-x"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\utilities\pgfkeysfiltered.code.tex"
 \pgfkeys@tmptoks=\toks19
 ))
-\pgf@x=\dimen131
-\pgf@y=\dimen132
-\pgf@xa=\dimen133
-\pgf@ya=\dimen134
-\pgf@xb=\dimen135
-\pgf@yb=\dimen136
-\pgf@xc=\dimen137
-\pgf@yc=\dimen138
+\pgf@x=\dimen130
+\pgf@y=\dimen131
+\pgf@xa=\dimen132
+\pgf@ya=\dimen133
+\pgf@xb=\dimen134
+\pgf@yb=\dimen135
+\pgf@xc=\dimen136
+\pgf@yc=\dimen137
 \w@pgf@writea=\write3
 \r@pgf@reada=\read1
 \c@pgf@counta=\count107
@@ -179,31 +183,28 @@ x"
 \t@pgf@toka=\toks20
 \t@pgf@tokb=\toks21
 \t@pgf@tokc=\toks22
- ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgf.cfg"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgf.cfg"
 File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
 )
 Driver file for pgf: pgfsys-pdftex.def
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsys-pdftex.def"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsys-pdftex.def"
 File: pgfsys-pdftex.def 2014/10/11  (rcs-revision 1.35)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsys-common-pdf.def
-"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsys-common-pdf.def"
 File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
-)))
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsyssoftpath.code.t
+))) ("D:\Programme\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsyssoftpath.code.t
 ex"
 File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
 \pgfsyssoftpath@smallbuffer@items=\count111
 \pgfsyssoftpath@bigbuffer@items=\count112
-)
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsysprotocol.code.t
-ex"
+) ("D:\Programme\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsysprotocol.code.tex
+"
 File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
-)) ("C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+)) ("D:\Programme\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+("D:\Programme\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg"
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
@@ -217,146 +218,134 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcore.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcore.code.tex"
 Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmath.code.tex"
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathcalc.code.tex"
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathutil.code.tex")
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathparser.code.tex"
-\pgfmath@dimen=\dimen139
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\math\pgfmath.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\math\pgfmathcalc.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\math\pgfmathutil.code.tex")
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\math\pgfmathparser.code.tex"
+\pgfmath@dimen=\dimen138
 \pgfmath@count=\count113
 \pgfmath@box=\box35
 \pgfmath@toks=\toks23
 \pgfmath@stack@operand=\toks24
 \pgfmath@stack@operation=\toks25
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.code.tex"
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.basic.code.
-tex")
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.trigonometr
-ic.code.tex")
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.random.code
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.basic.code.tex"
+)
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.trigonometric.c
+ode.tex")
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.random.code.tex
+")
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.comparison.code
 .tex")
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.comparison.
-code.tex")
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.base.code.t
-ex")
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.round.code.
-tex")
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.misc.code.t
-ex")
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.integerarit
-hmetics.code.tex")))
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfloat.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.base.code.tex")
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.round.code.tex"
+) ("D:\Programme\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.misc.code.tex
+")
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.integerarithmet
+ics.code.tex")))
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfloat.code.tex"
 \c@pgfmathroundto@lastzeros=\count114
 ))
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepoints.code.tex
-"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepoints.code.tex"
 File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
-\pgf@picminx=\dimen140
-\pgf@picmaxx=\dimen141
-\pgf@picminy=\dimen142
-\pgf@picmaxy=\dimen143
-\pgf@pathminx=\dimen144
-\pgf@pathmaxx=\dimen145
-\pgf@pathminy=\dimen146
-\pgf@pathmaxy=\dimen147
-\pgf@xx=\dimen148
-\pgf@xy=\dimen149
-\pgf@yx=\dimen150
-\pgf@yy=\dimen151
-\pgf@zx=\dimen152
-\pgf@zy=\dimen153
+\pgf@picminx=\dimen139
+\pgf@picmaxx=\dimen140
+\pgf@picminy=\dimen141
+\pgf@picmaxy=\dimen142
+\pgf@pathminx=\dimen143
+\pgf@pathmaxx=\dimen144
+\pgf@pathminy=\dimen145
+\pgf@pathmaxy=\dimen146
+\pgf@xx=\dimen147
+\pgf@xy=\dimen148
+\pgf@yx=\dimen149
+\pgf@yy=\dimen150
+\pgf@zx=\dimen151
+\pgf@zy=\dimen152
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepathconstruct.c
-ode.tex"
-File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
-\pgf@path@lastx=\dimen154
-\pgf@path@lasty=\dimen155
-)
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepathusage.code.
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepathconstruct.code.
 tex"
-File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
-\pgf@shorten@end@additional=\dimen156
-\pgf@shorten@start@additional=\dimen157
+File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
+\pgf@path@lastx=\dimen153
+\pgf@path@lasty=\dimen154
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorescopes.code.tex
-"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepathusage.code.tex"
+File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
+\pgf@shorten@end@additional=\dimen155
+\pgf@shorten@start@additional=\dimen156
+) ("D:\Programme\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorescopes.code.tex"
 File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
 \pgfpic=\box36
 \pgf@hbox=\box37
 \pgf@layerbox@main=\box38
 \pgf@picture@serial@count=\count115
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoregraphicstate.co
-de.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoregraphicstate.code.t
+ex"
 File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
-\pgflinewidth=\dimen158
+\pgflinewidth=\dimen157
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoretransformations
-.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoretransformations.cod
+e.tex"
 File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
-\pgf@pt@x=\dimen159
-\pgf@pt@y=\dimen160
-\pgf@pt@temp=\dimen161
+\pgf@pt@x=\dimen158
+\pgf@pt@y=\dimen159
+\pgf@pt@temp=\dimen160
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorequick.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorequick.code.tex"
 File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreobjects.code.te
-x"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreobjects.code.tex"
 File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepathprocessing.
-code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepathprocessing.code
+.tex"
 File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorearrows.code.tex
-"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorearrows.code.tex"
 File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
-\pgfarrowsep=\dimen162
+\pgfarrowsep=\dimen161
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreshade.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreshade.code.tex"
 File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
-\pgf@max=\dimen163
+\pgf@max=\dimen162
 \pgf@sys@shading@range@num=\count116
-) ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreimage.code.te
-x"
+)
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreimage.code.tex"
 File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreexternal.code.t
-ex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreexternal.code.tex"
 File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
 \pgfexternal@startupbox=\box39
-))
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorelayers.code.tex
-"
+)) ("D:\Programme\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorelayers.code.tex"
 File: pgfcorelayers.code.tex 2013/07/18  (rcs-revision 1.7)
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoretransparency.co
-de.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoretransparency.code.t
+ex"
 File: pgfcoretransparency.code.tex 2013/09/30  (rcs-revision 1.5)
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepatterns.code.t
-ex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepatterns.code.tex"
 File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
-))) ("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\utilities\xxcolor.sty"
+))) ("D:\Programme\MiKTeX 2.9\tex\latex\pgf\utilities\xxcolor.sty"
 Package: xxcolor 2003/10/24 ver 0.1
 \XC@nummixins=\count117
 \XC@countmixins=\count118
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\atbegshi.sty"
+("D:\Programme\MiKTeX 2.9\tex\generic\oberdiek\atbegshi.sty"
 Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
-Package: hyperref 2016/06/24 v6.83q Hypertext links for LaTeX
+("D:\Programme\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
+Package: hyperref 2017/03/14 v6.85a Hypertext links for LaTeX
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
+("D:\Programme\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
 Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
 
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
+("D:\Programme\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
 Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
 Package hobsub Info: Skipping package `infwarerr' (already loaded).
@@ -373,7 +362,7 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO
+Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
@@ -394,56 +383,56 @@ Package hobsub Info: Skipping package `atbegshi' (already loaded).
 Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
 Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
 Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
-\@linkdim=\dimen164
+\@linkdim=\dimen163
 \Hy@linkcounter=\count119
 \Hy@pagecounter=\count120
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
-File: pd1enc.def 2016/06/24 v6.83q Hyperref: PDFDocEncoding definition (HO)
+("D:\Programme\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
+File: pd1enc.def 2017/03/14 v6.85a Hyperref: PDFDocEncoding definition (HO)
 )
 \Hy@SavedSpaceFactor=\count121
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
+("D:\Programme\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
-Package hyperref Info: Option `bookmarks' set `true' on input line 4362.
-Package hyperref Info: Option `bookmarksopen' set `true' on input line 4362.
-Package hyperref Info: Option `pdfpagelabels' set `false' on input line 4362.
-Package hyperref Info: Option `plainpages' set `false' on input line 4362.
-Package hyperref Info: Option `implicit' set `false' on input line 4362.
-Package hyperref Info: Hyper figures OFF on input line 4486.
-Package hyperref Info: Link nesting OFF on input line 4491.
-Package hyperref Info: Hyper index ON on input line 4494.
-Package hyperref Info: Plain pages OFF on input line 4501.
-Package hyperref Info: Backreferencing OFF on input line 4506.
+Package hyperref Info: Option `bookmarks' set `true' on input line 4374.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 4374.
+Package hyperref Info: Option `pdfpagelabels' set `false' on input line 4374.
+Package hyperref Info: Option `plainpages' set `false' on input line 4374.
+Package hyperref Info: Option `implicit' set `false' on input line 4374.
+Package hyperref Info: Hyper figures OFF on input line 4498.
+Package hyperref Info: Link nesting OFF on input line 4503.
+Package hyperref Info: Hyper index ON on input line 4506.
+Package hyperref Info: Plain pages OFF on input line 4513.
+Package hyperref Info: Backreferencing OFF on input line 4518.
 Package hyperref Info: Implicit mode OFF; no redefinition of LaTeX internals.
-Package hyperref Info: Bookmarks ON on input line 4735.
+Package hyperref Info: Bookmarks ON on input line 4751.
 \c@Hy@tempcnt=\count122
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\url\url.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\url\url.sty"
 \Urlmuskip=\muskip10
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 5088.
-\XeTeXLinkMargin=\dimen165
+LaTeX Info: Redefining \url on input line 5104.
+\XeTeXLinkMargin=\dimen164
 \Fld@menulength=\count123
-\Field@Width=\dimen166
-\Fld@charsize=\dimen167
-Package hyperref Info: Hyper figures OFF on input line 6342.
-Package hyperref Info: Link nesting OFF on input line 6347.
-Package hyperref Info: Hyper index ON on input line 6350.
-Package hyperref Info: backreferencing OFF on input line 6357.
-Package hyperref Info: Link coloring OFF on input line 6362.
-Package hyperref Info: Link coloring with OCG OFF on input line 6367.
-Package hyperref Info: PDF/A mode OFF on input line 6372.
-LaTeX Info: Redefining \ref on input line 6412.
-LaTeX Info: Redefining \pageref on input line 6416.
+\Field@Width=\dimen165
+\Fld@charsize=\dimen166
+Package hyperref Info: Hyper figures OFF on input line 6358.
+Package hyperref Info: Link nesting OFF on input line 6363.
+Package hyperref Info: Hyper index ON on input line 6366.
+Package hyperref Info: backreferencing OFF on input line 6373.
+Package hyperref Info: Link coloring OFF on input line 6378.
+Package hyperref Info: Link coloring with OCG OFF on input line 6383.
+Package hyperref Info: PDF/A mode OFF on input line 6388.
+LaTeX Info: Redefining \ref on input line 6428.
+LaTeX Info: Redefining \pageref on input line 6432.
 
 
 Package hyperref Message: Stopped early.
@@ -452,23 +441,23 @@ Package hyperref Message: Stopped early.
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
-File: hpdftex.def 2016/06/24 v6.83q Hyperref driver for pdfTeX
+("D:\Programme\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
+File: hpdftex.def 2017/03/14 v6.85a Hyperref driver for pdfTeX
 \Fld@listcount=\count124
 \c@bookmark@seq@number=\count125
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbaserequires.sty"
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbasecompatibility.sty")
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbasefont.sty"
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbaserequires.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbasecompatibility.sty")
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbasefont.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \@emptytoks=\toks26
 \symAMSa=\mathgroup4
@@ -476,86 +465,85 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\sansmathaccent\sansmathaccent.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\sansmathaccent\sansmathaccent.sty"
 Package: sansmathaccent 2013/03/28
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\filehook\filehook.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\filehook\filehook.sty"
 Package: filehook 2011/10/12 v0.5d Hooks for input files
 )))
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbasetranslator.sty"
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\translator\translator.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbasetranslator.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\translator\translator.sty"
 Package: translator 2010/06/12 ver 1.10
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\translator\translator-language-m
-appings.tex")))
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbasemisc.sty")
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbasetwoscreens.sty")
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbaseoverlay.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\translator\translator-language-mappi
+ngs.tex"))) ("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbasemisc.sty")
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbasetwoscreens.sty")
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbaseoverlay.sty"
 \beamer@argscount=\count126
 \beamer@lastskipcover=\skip44
 \beamer@trivlistdepth=\count127
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbasetitle.sty")
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbasesection.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbasetitle.sty")
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbasesection.sty"
 \c@lecture=\count128
 \c@part=\count129
 \c@section=\count130
 \c@subsection=\count131
 \c@subsubsection=\count132
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbaseframe.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbaseframe.sty"
 \beamer@framebox=\box40
 \beamer@frametitlebox=\box41
 \beamer@zoombox=\box42
 \beamer@zoomcount=\count133
 \beamer@zoomframecount=\count134
-\beamer@frametextheight=\dimen168
+\beamer@frametextheight=\dimen167
 \c@subsectionslide=\count135
 \beamer@frametopskip=\skip45
 \beamer@framebottomskip=\skip46
 \beamer@frametopskipautobreak=\skip47
 \beamer@framebottomskipautobreak=\skip48
 \beamer@envbody=\toks27
-\framewidth=\dimen169
+\framewidth=\dimen168
 \c@framenumber=\count136
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbaseverbatim.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbaseverbatim.sty"
 \beamer@verbatimfileout=\write4
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbaseframesize.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbaseframesize.sty"
 \beamer@splitbox=\box43
 \beamer@autobreakcount=\count137
-\beamer@autobreaklastheight=\dimen170
+\beamer@autobreaklastheight=\dimen169
 \beamer@frametitletoks=\toks28
 \beamer@framesubtitletoks=\toks29
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbaseframecomponents.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbaseframecomponents.sty"
 \beamer@footins=\box44
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbasecolor.sty")
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbasenotes.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbasecolor.sty")
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbasenotes.sty"
 \beamer@frameboxcopy=\box45
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbasetoc.sty")
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbasetemplates.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbasetoc.sty")
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbasetemplates.sty"
 \beamer@sbttoks=\toks30
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbaseauxtemplates.sty"
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbaseboxes.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbaseauxtemplates.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbaseboxes.sty"
 \bmb@box=\box46
 \bmb@colorbox=\box47
 \bmb@boxshadow=\box48
 \bmb@boxshadowball=\box49
 \bmb@boxshadowballlarge=\box50
-\bmb@temp=\dimen171
-\bmb@dima=\dimen172
-\bmb@dimb=\dimen173
-\bmb@prevheight=\dimen174
+\bmb@temp=\dimen170
+\bmb@dima=\dimen171
+\bmb@dimb=\dimen172
+\bmb@prevheight=\dimen173
 )
-\beamer@blockheadheight=\dimen175
+\beamer@blockheadheight=\dimen174
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbaselocalstructure.sty"
-("C:\Program Files\MiKTeX 2.9\tex\latex\tools\enumerate.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbaselocalstructure.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\tools\enumerate.sty"
 Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
 \@enLab=\toks31
 )
@@ -564,45 +552,45 @@ Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbasenavigation.sty"
-\beamer@section@min@dim=\dimen176
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbasenavigation.sty"
+\beamer@section@min@dim=\dimen175
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbasetheorems.sty"
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
-Package: amsmath 2016/06/28 v2.15d AMS math features
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbasetheorems.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2016/11/05 v2.16a AMS math features
 \@mathmargin=\skip51
 
 For additional information on amsmath, use the `?' option.
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
 Package: amstext 2000/06/29 v2.01 AMS text
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks32
-\ex@=\dimen177
+\ex@=\dimen176
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen178
+\pmbraise@=\dimen177
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count140
-LaTeX Info: Redefining \frac on input line 199.
+LaTeX Info: Redefining \frac on input line 213.
 \uproot@=\count141
 \leftroot@=\count142
-LaTeX Info: Redefining \overline on input line 297.
+LaTeX Info: Redefining \overline on input line 375.
 \classnum@=\count143
 \DOTSCASE@=\count144
-LaTeX Info: Redefining \ldots on input line 394.
-LaTeX Info: Redefining \dots on input line 397.
-LaTeX Info: Redefining \cdots on input line 518.
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
 \Mathstrutbox@=\box51
 \strutbox@=\box52
-\big@size=\dimen179
-LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
+\big@size=\dimen178
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 \macc@depth=\count145
 \c@MaxMatrixCols=\count146
 \dotsspace@=\muskip11
@@ -613,20 +601,20 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
 \column@=\count150
 \maxfields@=\count151
 \andhelp@=\toks34
-\eqnshift@=\dimen180
-\alignsep@=\dimen181
-\tagshift@=\dimen182
-\tagwidth@=\dimen183
-\totwidth@=\dimen184
-\lineht@=\dimen185
+\eqnshift@=\dimen179
+\alignsep@=\dimen180
+\tagshift@=\dimen181
+\tagwidth@=\dimen182
+\totwidth@=\dimen183
+\lineht@=\dimen184
 \@envbody=\toks35
 \multlinegap=\skip52
 \multlinetaggap=\skip53
 \mathdisplay@stack=\toks36
-LaTeX Info: Redefining \[ on input line 2739.
-LaTeX Info: Redefining \] on input line 2740.
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\amscls\amsthm.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\amscls\amsthm.sty"
 Package: amsthm 2015/03/04 v2.20.2
 \thm@style=\toks37
 \thm@bodyfont=\toks38
@@ -640,56 +628,59 @@ Package: amsthm 2015/03/04 v2.20.2
 )
 \c@theorem=\count152
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\beamerbasethemes.sty"))
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\themes\theme\beamerthemedefault.
-sty"
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\themes\font\beamerfontthemedefau
-lt.sty")
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\themes\color\beamercolorthemedef
-ault.sty")
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\themes\inner\beamerinnerthemedef
-ault.sty"
-\beamer@dima=\dimen186
-\beamer@dimb=\dimen187
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\beamerbasethemes.sty"))
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\themes\theme\beamerthemedefault.sty"
+
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\themes\font\beamerfontthemedefault.s
+ty")
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\themes\color\beamercolorthemedefault
+.sty")
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\themes\inner\beamerinnerthemedefault
+.sty"
+\beamer@dima=\dimen185
+\beamer@dimb=\dimen186
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\themes\outer\beamerouterthemedef
-ault.sty")))) (beamerthemeTUD.sty
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\themes\outer\beamerouterthemedefault
+.sty"))))
+("C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses\beamerthemeTUD.sty"
 Package: beamerthemeTUD 2009/07/14 1.1 Joe Werner's and Clemens von Loewenich's
  TUD-Design package
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty"
 Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.tex"
-("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkvutils.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\xkeyval\xkvutils.tex"
 \XKV@toks=\toks43
 \XKV@tempa@toks=\toks44
 )
 \XKV@depth=\count153
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
-(beamerfontthemeTUD.sty
+("C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses\beamerfontthemeTUD.sty"
 Package: beamerfontthemeTUD 2009/07/14 1.1 Joe Werner's and Clemens von Loeweni
 ch's TUD-Design package
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\helvet.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\psnfss\helvet.sty"
 Package: helvet 2005/04/12 PSNFSS-v9.2a (WaS) 
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\fix-cm.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\base\fix-cm.sty"
 Package: fix-cm 2015/01/14 v1.1t fixes to LaTeX
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1enc.def"
+("D:\Programme\MiKTeX 2.9\tex\latex\base\ts1enc.def"
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\fontenc.sty"
-Package: fontenc 2016/06/19 v1.99m Standard LaTeX package
+("D:\Programme\MiKTeX 2.9\tex\latex\base\fontenc.sty"
+Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.def"
-File: t1enc.def 2016/06/19 v1.99m Standard LaTeX file
+("D:\Programme\MiKTeX 2.9\tex\latex\base\t1enc.def"
+File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\textcomp.sty"
-Package: textcomp 2016/06/19 v1.99m Standard LaTeX package
+("D:\Programme\MiKTeX 2.9\tex\latex\base\textcomp.sty"
+Package: textcomp 2017/04/05 v2.0i Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
 (textcomp)               5 = only ISO-Adobe without \textcurrency
 (textcomp)               4 = 5 + \texteuro
@@ -704,7 +695,7 @@ Package textcomp Info: Sub-encoding information:
 Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
 Package textcomp Info: Changing ? sub-encoding to TS1/4 on input line 80.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1enc.def"
+("D:\Programme\MiKTeX 2.9\tex\latex\base\ts1enc.def"
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
 )
@@ -835,34 +826,43 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathsl' in version `bold'
 (Font)                  OT1/phv/m/sl --> OT1/phv/m/sl on input line 189.
 )
-(beamercolorthemeTUD.sty
+("C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses\beamercolorthemeTUD.sty"
 Package: beamercolorthemeTUD 2009/02/20 1.0 Joe Werner's and Clemens von Loewen
 ich's TUD-Design package
- (tudcolours.sty
+
+("C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses\tudcolours.sty"
 Package: tudcolours 2009/03/12 1.9 Clemens von Loewenich's and Joe Werner's TUD
 -Design package
- (tudcolours.cfg
+
+("C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses\tudcolours.cfg"
 File: tudcolours.cfg 2008/12/03
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\base\ifthen.sty"
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-)) (tudcolours.def
+))
+("C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses\tudcolours.def"
 File: tudcolours.def 2008/12/03
 ))
 
 Package beamercolorthemeTUD Warning: Option `inverttitle' ignored. on input lin
 e 74.
 
-) (beamerouterthemeTUD.sty
+)
+("C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses\beamerouterthemeTUD.sty"
 Package: beamerouterthemeTUD 2009/07/14 1.1 Joe Werner's and Clemens von Loewen
 ich's TUD-Design package
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\tools\calc.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\tools\calc.sty"
 Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count154
 \calc@Bcount=\count155
-\calc@Adimen=\dimen188
-\calc@Bdimen=\dimen189
+\calc@Adimen=\dimen187
+\calc@Bdimen=\dimen188
 \calc@Askip=\skip57
 \calc@Bskip=\skip58
 LaTeX Info: Redefining \setlength on input line 80.
@@ -901,33 +901,38 @@ Package pdftex.def Info: tud_logo.pdf used on input line 73.
 \TUD@titlebox=\box57
 \TUD@titlepagebox=\box58
 )
-(beamerinnerthemeTUD.sty
+("C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses\beamerinnerthemeTUD.sty"
 Package: beamerinnerthemeTUD 2009/02/20 1.0 Joe Werner's and Clemens von Loewen
 ich's TUD-Design package
-)) (Vortrag.len) (Vortrag.len)
+))
+("C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses\Vortrag.len")
+("C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses\Vortrag.len")
 \tf@len=\write5
 \openout5 = `Vortrag.len'.
 
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\bbding\bbding.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\bbding\bbding.sty"
 Package: bbding 1999/04/15 v1.01 Dingbats symbols
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\units\units.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\units\units.sty"
 Package: units 1998/08/04 v0.9b Typesetting units
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\units\nicefrac.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\units\nicefrac.sty"
 Package: nicefrac 1998/08/04 v0.9b Nice fractions
 \L@UnitsRaiseDisplaystyle=\skip78
 \L@UnitsRaiseTextstyle=\skip79
 \L@UnitsRaiseScriptstyle=\skip80
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\oberdiek\epstopdf.sty"
 Package: epstopdf 2016/05/15 v2.6 Conversion with epstopdf on the fly (HO)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 )
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -937,13 +942,13 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\subfigure\subfigure.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\subfigure\subfigure.sty"
 Package: subfigure 2002/07/30 v2.1.4 subfigure package
 \subfigtopskip=\skip81
 \subfigcapskip=\skip82
-\subfigcaptopadj=\dimen190
+\subfigcaptopadj=\dimen189
 \subfigbottomskip=\skip83
-\subfigcapmargin=\dimen191
+\subfigcapmargin=\dimen190
 \subfiglabelskip=\skip84
 \c@subfigure=\count157
 \c@lofdepth=\count158
@@ -953,23 +958,23 @@ Package: subfigure 2002/07/30 v2.1.4 subfigure package
 ****************************************
 * Local config file subfigure.cfg used *
 ****************************************
-("C:\Program Files\MiKTeX 2.9\tex\latex\subfigure\subfigure.cfg")
+("D:\Programme\MiKTeX 2.9\tex\latex\subfigure\subfigure.cfg")
 \subfig@top=\skip85
 \subfig@bottom=\skip86
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\caption\caption.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\caption\caption.sty"
 Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\caption\caption3.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\caption\caption3.sty"
 Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
-\captionmargin=\dimen192
-\captionmargin@=\dimen193
-\captionwidth=\dimen194
-\caption@tempdima=\dimen195
-\caption@indent=\dimen196
-\caption@parindent=\dimen197
-\caption@hangindent=\dimen198
+\captionmargin=\dimen191
+\captionmargin@=\dimen192
+\captionwidth=\dimen193
+\caption@tempdima=\dimen194
+\caption@indent=\dimen195
+\caption@parindent=\dimen196
+\caption@hangindent=\dimen197
 )
 \c@ContinuedFloat=\count161
 Package caption Info: beamer document class.
@@ -978,87 +983,90 @@ Package caption Info: Hyperref support is turned off
 (caption)             because hyperref has stopped early.
 Package caption Info: subfigure package is loaded.
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\german\ngerman.sty" v2.5e 1998-07-08
-Package: ngerman 1998/07/08 v2.5e Support for writing german texts (br)
-\grmnU@D=\dimen199
-ngerman -- \language number for naustrian undefined, default 45 used.
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\rotating.sty"
-Package: rotating 2016/05/22 v2.16c rotated objects in LaTeX
+("D:\Programme\MiKTeX 2.9\tex\latex\graphics\rotating.sty"
+Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
 \c@r@tfl@t=\count162
 \rotFPtop=\skip87
 \rotFPbot=\skip88
 \rot@float@box=\box59
 \rot@mess@toks=\toks45
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\capt-of\capt-of.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\capt-of\capt-of.sty"
 Package: capt-of 2009/12/29 v0.2 standard captions outside of floats
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\was\gensymb.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\was\gensymb.sty"
 Package: gensymb 2003/07/02 v1.0 (WaS)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\base\inputenc.sty"
 Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks46
 \inpenc@posthook=\toks47
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\latin1.def"
+("D:\Programme\MiKTeX 2.9\tex\latex\base\latin1.def"
 File: latin1.def 2015/03/17 v1.2c Input encoding file
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\fontenc.sty"
-Package: fontenc 2016/06/19 v1.99m Standard LaTeX package
+("D:\Programme\MiKTeX 2.9\tex\latex\base\fontenc.sty"
+Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.def"
-File: t1enc.def 2016/06/19 v1.99m Standard LaTeX file
+("D:\Programme\MiKTeX 2.9\tex\latex\base\t1enc.def"
+File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
-)) (header.tex
-("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\frontendlayer\tikz.sty"
-("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgf.sty"
+))
+("D:\Programme\MiKTeX 2.9\tex\latex\wasysym\wasysym.sty"
+Package: wasysym 2003/10/30 v2.0 Wasy-2 symbol support package
+\symwasy=\mathgroup10
+LaTeX Font Info:    Overwriting symbol font `wasy' in version `bold'
+(Font)                  U/wasy/m/n --> U/wasy/b/n on input line 90.
+)
+("C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses\header.tex"
+("D:\Programme\MiKTeX 2.9\tex\latex\pgf\frontendlayer\tikz.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgf.sty"
 Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\modules\pgfmoduleshapes.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\modules\pgfmoduleshapes.code.tex"
 File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
 \pgfnodeparttextbox=\box60
-) ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\modules\pgfmoduleplot.code.tex"
+)
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\modules\pgfmoduleplot.code.tex"
 File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\compatibility\pgfcomp-version-0-65.
-sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\pgf\compatibility\pgfcomp-version-0-65.sty"
 Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
-\pgf@nodesepstart=\dimen256
-\pgf@nodesepend=\dimen257
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\compatibility\pgfcomp-version-1-18.
-sty"
+\pgf@nodesepstart=\dimen198
+\pgf@nodesepend=\dimen199
+) ("D:\Programme\MiKTeX 2.9\tex\latex\pgf\compatibility\pgfcomp-version-1-18.st
+y"
 Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
-)) ("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\utilities\pgffor.sty"
-("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\utilities\pgfkeys.sty"
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfkeys.code.tex"))
-("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\math\pgfmath.sty"
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmath.code.tex"))
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgffor.code.tex"
+)) ("D:\Programme\MiKTeX 2.9\tex\latex\pgf\utilities\pgffor.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\pgf\utilities\pgfkeys.sty"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\utilities\pgfkeys.code.tex"))
+("D:\Programme\MiKTeX 2.9\tex\latex\pgf\math\pgfmath.sty"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\math\pgfmath.code.tex"))
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\utilities\pgffor.code.tex"
 Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmath.code.tex")
-\pgffor@iter=\dimen258
-\pgffor@skip=\dimen259
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\math\pgfmath.code.tex")
+\pgffor@iter=\dimen256
+\pgffor@skip=\dimen257
 \pgffor@stack=\toks48
 \pgffor@toks=\toks49
 ))
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\tikz.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\tikz.code.tex"
 Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\libraries\pgflibraryplothandlers.
-code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\libraries\pgflibraryplothandlers.code
+.tex"
 File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
 \pgf@plot@mark@count=\count163
-\pgfplotmarksize=\dimen260
+\pgfplotmarksize=\dimen258
 )
-\tikz@lastx=\dimen261
-\tikz@lasty=\dimen262
-\tikz@lastxsaved=\dimen263
-\tikz@lastysaved=\dimen264
-\tikzleveldistance=\dimen265
-\tikzsiblingdistance=\dimen266
+\tikz@lastx=\dimen259
+\tikz@lasty=\dimen260
+\tikz@lastxsaved=\dimen261
+\tikz@lastysaved=\dimen262
+\tikzleveldistance=\dimen263
+\tikzsiblingdistance=\dimen264
 \tikz@figbox=\box61
 \tikz@figbox@bg=\box62
 \tikz@tempbox=\box63
@@ -1068,7 +1076,7 @@ File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
 \tikznumberofcurrentchild=\count166
 \tikz@fig@count=\count167
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\modules\pgfmodulematrix.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\modules\pgfmodulematrix.code.tex"
 File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
 \pgfmatrixcurrentrow=\count168
 \pgfmatrixcurrentcolumn=\count169
@@ -1076,93 +1084,92 @@ File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
 )
 \tikz@expandcount=\count171
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
-librarytopaths.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibr
+arytopaths.code.tex"
 File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
 )))
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
-libraryshapes.geometric.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibr
+aryshapes.geometric.code.tex"
 File: tikzlibraryshapes.geometric.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1
 )
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\libraries\shapes\pgflibraryshapes
-.geometric.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\libraries\shapes\pgflibraryshapes.geo
+metric.code.tex"
 File: pgflibraryshapes.geometric.code.tex 2008/06/26 v3.0.1a (rcs-revision 1.1)
 
 ))
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
-libraryshapes.arrows.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibr
+aryshapes.arrows.code.tex"
 File: tikzlibraryshapes.arrows.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\libraries\shapes\pgflibraryshapes
-.arrows.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\libraries\shapes\pgflibraryshapes.arr
+ows.code.tex"
 File: pgflibraryshapes.arrows.code.tex 2008/06/26 v3.0.1a (rcs-revision 1.1)
 ))
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
-librarydecorations.pathmorphing.code.tex"
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
-librarydecorations.code.tex"
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\modules\pgfmoduledecorations.code
-.tex"
-\pgfdecoratedcompleteddistance=\dimen267
-\pgfdecoratedremainingdistance=\dimen268
-\pgfdecoratedinputsegmentcompleteddistance=\dimen269
-\pgfdecoratedinputsegmentremainingdistance=\dimen270
-\pgf@decorate@distancetomove=\dimen271
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibr
+arydecorations.pathmorphing.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibr
+arydecorations.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\modules\pgfmoduledecorations.code.tex
+"
+\pgfdecoratedcompleteddistance=\dimen265
+\pgfdecoratedremainingdistance=\dimen266
+\pgfdecoratedinputsegmentcompleteddistance=\dimen267
+\pgfdecoratedinputsegmentremainingdistance=\dimen268
+\pgf@decorate@distancetomove=\dimen269
 \pgf@decorate@repeatstate=\count172
-\pgfdecorationsegmentamplitude=\dimen272
-\pgfdecorationsegmentlength=\dimen273
+\pgfdecorationsegmentamplitude=\dimen270
+\pgfdecorationsegmentlength=\dimen271
 )
 \tikz@lib@dec@box=\box65
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\libraries\decorations\pgflibraryd
-ecorations.pathmorphing.code.tex"))
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
-librarymatrix.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\libraries\decorations\pgflibrarydecor
+ations.pathmorphing.code.tex"))
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibr
+arymatrix.code.tex"
 File: tikzlibrarymatrix.code.tex 2013/07/12 v3.0.1a (rcs-revision 1.4)
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
-librarychains.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibr
+arychains.code.tex"
 File: tikzlibrarychains.code.tex 2013/07/15 v3.0.1a (rcs-revision 1.6)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
-librarypositioning.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibr
+arypositioning.code.tex"
 File: tikzlibrarypositioning.code.tex 2008/10/06 v3.0.1a (rcs-revision 1.7)
 ))
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
-libraryscopes.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibr
+aryscopes.code.tex"
 File: tikzlibraryscopes.code.tex 2008/06/27 v3.0.1a (rcs-revision 1.2)
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
-libraryarrows.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibr
+aryarrows.code.tex"
 File: tikzlibraryarrows.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\libraries\pgflibraryarrows.code.t
-ex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\libraries\pgflibraryarrows.code.tex"
 File: pgflibraryarrows.code.tex 2013/09/23 v3.0.1a (rcs-revision 1.16)
-\arrowsize=\dimen274
+\arrowsize=\dimen272
 ))
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
-libraryfit.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibr
+aryfit.code.tex"
 File: tikzlibraryfit.code.tex 2013/07/12 v3.0.1a (rcs-revision 1.5)
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
-librarycalc.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibr
+arycalc.code.tex"
 File: tikzlibrarycalc.code.tex 2013/07/15 v3.0.1a (rcs-revision 1.9)
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
-librarypatterns.code.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibr
+arypatterns.code.tex"
 File: tikzlibrarypatterns.code.tex 2008/01/15 v3.0.1a (rcs-revision 1.2)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\libraries\pgflibrarypatterns.code
-.tex"
+("D:\Programme\MiKTeX 2.9\tex\generic\pgf\libraries\pgflibrarypatterns.code.tex
+"
 File: pgflibrarypatterns.code.tex 2008/03/03 v3.0.1a (rcs-revision 1.13)
-)) ("C:\Program Files\MiKTeX 2.9\tex\latex\fancybox\fancybox.sty"
+)) ("D:\Programme\MiKTeX 2.9\tex\latex\fancybox\fancybox.sty"
 Package: fancybox 2010/05/15 1.4
 
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 \@fancybox=\box66
-\shadowsize=\dimen275
+\shadowsize=\dimen273
 \@Sbox=\box67
 \do@VerbBox=\toks50
 \the@fancyput=\toks51
@@ -1170,59 +1177,62 @@ Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 \EndVerbatimTokens=\toks53
 \Verbatim@Outfile=\write6
 \Verbatim@Infile=\read2
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\tools\bm.sty"
-Package: bm 2016/07/07 v1.2b Bold Symbol Support (DPC/FMi)
-\symboldoperators=\mathgroup10
-\symboldletters=\mathgroup11
-\symboldsymbols=\mathgroup12
-\symboldSFMath=\mathgroup13
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 142.
-LaTeX Info: Redefining \bm on input line 208.
+) ("D:\Programme\MiKTeX 2.9\tex\latex\tools\bm.sty"
+Package: bm 2017/01/16 v1.2c Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup11
+\symboldletters=\mathgroup12
+\symboldsymbols=\mathgroup13
+\symboldSFMath=\mathgroup14
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
+LaTeX Info: Redefining \bm on input line 207.
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\textpos\textpos.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\textpos\textpos.sty"
 Package: textpos 2016/06/07 v1.8
 
 Package: textpos 2016/06/07 1.8, absolute positioning of text on the page
 \TP@textbox=\box68
 \TP@holdbox=\box69
-\TPHorizModule=\dimen276
-\TPVertModule=\dimen277
-\TP@margin=\dimen278
-\TP@absmargin=\dimen279
+\TPHorizModule=\dimen274
+\TPVertModule=\dimen275
+\TP@margin=\dimen276
+\TP@absmargin=\dimen277
 Grid set 16 x 16 = 22.7622pt x 17.07166pt
-\TPboxrulesize=\dimen280
-\TP@ox=\dimen281
-\TP@oy=\dimen282
+\TPboxrulesize=\dimen278
+\TP@ox=\dimen279
+\TP@oy=\dimen280
 \TP@tbargs=\toks54
-\TP@prevdepth=\dimen283
+\TP@prevdepth=\dimen281
 TextBlockOrigin set to 0pt x 0pt
 )
 TextBlockOrigin set to 5mm x 25.5mm
-) (Vortrag.aux)
+)
+("C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses\Vortrag.aux")
 \openout1 = `Vortrag.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Try loading font information for T1+phv on input line 34.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1phv.fd"
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 36.
+
+("D:\Programme\MiKTeX 2.9\tex\latex\psnfss\t1phv.fd"
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 9.40002pt on input line 34.
+(Font)              scaled to size 9.40002pt on input line 36.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1258,272 +1268,294 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+("D:\Programme\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count173
-\scratchdimen=\dimen284
+\scratchdimen=\dimen282
 \scratchbox=\box70
 \nofMPsegments=\count174
 \nofMParguments=\count175
 \everyMPshowfont=\toks55
 \MPscratchCnt=\count176
-\MPscratchDim=\dimen285
+\MPscratchDim=\dimen283
 \MPnumerator=\count177
 \makeMPintoPDFobject=\count178
 \everyMPtoPDFconversion=\toks56
 ) ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box71
-Package hyperref Info: Link coloring OFF on input line 34.
+Package hyperref Info: Link coloring OFF on input line 36.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+("D:\Programme\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
+("D:\Programme\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count179
 )
-LaTeX Info: Redefining \ref on input line 34.
-LaTeX Info: Redefining \pageref on input line 34.
-LaTeX Info: Redefining \nameref on input line 34.
+LaTeX Info: Redefining \ref on input line 36.
+LaTeX Info: Redefining \pageref on input line 36.
+LaTeX Info: Redefining \nameref on input line 36.
 
-(Vortrag.out) (Vortrag.out)
+("C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses\Vortrag.out")
+("C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses\Vortrag.out")
 \@outlinefile=\write7
 \openout7 = `Vortrag.out'.
 
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-basi
-c-dictionary\translator-basic-dictionary-English.dict"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-basic-di
+ctionary\translator-basic-dictionary-English.dict"
 Dictionary: translator-basic-dictionary, Language: English 
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-basi
-c-dictionary\translator-basic-dictionary-German.dict"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-basic-di
+ctionary\translator-basic-dictionary-German.dict"
 Dictionary: translator-basic-dictionary, Language: German 
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-bibl
-iography-dictionary\translator-bibliography-dictionary-English.dict"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-bibliogr
+aphy-dictionary\translator-bibliography-dictionary-English.dict"
 Dictionary: translator-bibliography-dictionary, Language: English 
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-bibl
-iography-dictionary\translator-bibliography-dictionary-German.dict"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-bibliogr
+aphy-dictionary\translator-bibliography-dictionary-German.dict"
 Dictionary: translator-bibliography-dictionary, Language: German 
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-envi
-ronment-dictionary\translator-environment-dictionary-English.dict"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-environm
+ent-dictionary\translator-environment-dictionary-English.dict"
 Dictionary: translator-environment-dictionary, Language: English 
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-envi
-ronment-dictionary\translator-environment-dictionary-German.dict"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-environm
+ent-dictionary\translator-environment-dictionary-German.dict"
 Dictionary: translator-environment-dictionary, Language: German 
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-mont
-hs-dictionary\translator-months-dictionary-English.dict"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-months-d
+ictionary\translator-months-dictionary-English.dict"
 Dictionary: translator-months-dictionary, Language: English 
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-mont
-hs-dictionary\translator-months-dictionary-German.dict"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-months-d
+ictionary\translator-months-dictionary-German.dict"
 Dictionary: translator-months-dictionary, Language: German 
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-numb
-ers-dictionary\translator-numbers-dictionary-English.dict"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-numbers-
+dictionary\translator-numbers-dictionary-English.dict"
 Dictionary: translator-numbers-dictionary, Language: English 
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-numb
-ers-dictionary\translator-numbers-dictionary-German.dict"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-numbers-
+dictionary\translator-numbers-dictionary-German.dict"
 Dictionary: translator-numbers-dictionary, Language: German 
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-theo
-rem-dictionary\translator-theorem-dictionary-English.dict"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-theorem-
+dictionary\translator-theorem-dictionary-English.dict"
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-theo
-rem-dictionary\translator-theorem-dictionary-German.dict"
+("D:\Programme\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-theorem-
+dictionary\translator-theorem-dictionary-German.dict"
 Dictionary: translator-theorem-dictionary, Language: German 
 )
-LaTeX Info: Redefining \includegraphics on input line 34.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\symgns@font=\mathgroup14
+\symgns@font=\mathgroup15
 LaTeX Font Info:    Overwriting symbol font `gns@font' in version `bold'
-(Font)                  TS1/phv/m/n --> TS1/phv/bx/n on input line 34.
-Package gensymb Info: Math companion symbols declared on input line 34.
-LaTeX Info: Redefining \degree on input line 34.
-LaTeX Info: Redefining \celsius on input line 34.
+(Font)                  TS1/phv/m/n --> TS1/phv/bx/n on input line 36.
+Package gensymb Info: Math companion symbols declared on input line 36.
+LaTeX Info: Redefining \degree on input line 36.
+LaTeX Info: Redefining \celsius on input line 36.
 Package gensymb Info: Using text companion symbols for \degree, \celsius and \p
-erthousand on input line 34.
-LaTeX Info: Redefining \ohm on input line 34.
-Package gensymb Info: Using \textohm for \ohm on input line 34.
-Package gensymb Info: Using \textmu for \micro on input line 34.
- (Vortrag.nav)
-LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 4.70001pt on input line 34.
+erthousand on input line 36.
+LaTeX Info: Redefining \ohm on input line 36.
+Package gensymb Info: Using \textohm for \ohm on input line 36.
+Package gensymb Info: Using \textmu for \micro on input line 36.
 
-Underfull \hbox (badness 10000) in paragraph at lines 34--34
+("C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses\Vortrag.nav")
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 4.70001pt on input line 36.
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
 
  []
 
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 34.
-("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1phv.fd"
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 36.
+("D:\Programme\MiKTeX 2.9\tex\latex\psnfss\ot1phv.fd"
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 4.70001pt on input line 34.
-LaTeX Font Info:    Try loading font information for U+msa on input line 34.
+(Font)              scaled to size 4.70001pt on input line 36.
+LaTeX Font Info:    Try loading font information for U+msa on input line 36.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+("D:\Programme\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 34.
+LaTeX Font Info:    Try loading font information for U+msb on input line 36.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+("D:\Programme\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
-(Font)              scaled to size 4.70001pt on input line 34.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <5> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 34.
-LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 4.70001pt on input line 34.
-LaTeX Font Info:    Try loading font information for TS1+phv on input line 34.
+(Font)              scaled to size 4.70001pt on input line 36.
+LaTeX Font Info:    Try loading font information for U+wasy on input line 36.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ts1phv.fd"
+("D:\Programme\MiKTeX 2.9\tex\latex\wasysym\uwasy.fd"
+File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
+)
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <5> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 36.
+LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
+(Font)              scaled to size 4.70001pt on input line 36.
+LaTeX Font Info:    Try loading font information for TS1+phv on input line 36.
+
+("D:\Programme\MiKTeX 2.9\tex\latex\psnfss\ts1phv.fd"
 File: ts1phv.fd 2001/06/04 scalable font definitions for TS1/phv.
 )
 LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
-(Font)              scaled to size 4.70001pt on input line 34.
+(Font)              scaled to size 4.70001pt on input line 36.
 
 
 Package hyperref Warning: Option `pdfauthor' has already been used,
-(hyperref)                setting the option has no effect on input line 38.
+(hyperref)                setting the option has no effect on input line 40.
 
 \TUD@institutelogoboxheight=\skip89
-<bilder/rect.png, id=13, 758.835pt x 721.69624pt>
-File: bilder/rect.png Graphic file (type png)
- <use bilder/rect.png>
-Package pdftex.def Info: bilder/rect.png used on input line 73.
-(pdftex.def)             Requested size: 113.82033pt x 108.24976pt.
+<bilder/distortedImage.png, id=13, 1284.8pt x 722.7pt>
+File: bilder/distortedImage.png Graphic file (type png)
+
+<use bilder/distortedImage.png>
+Package pdftex.def Info: bilder/distortedImage.png used on input line 75.
+(pdftex.def)             Requested size: 40.0pt x 22.4961pt.
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   R
+l.75 \end{titleframe}
+                     
+? 
+LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
+(Font)              scaled to size 9.40002pt on input line 75.
+LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
+(Font)              scaled to size 6.58002pt on input line 75.
+LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
+(Font)              scaled to size 9.40002pt on input line 75.
+LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
+(Font)              scaled to size 6.58002pt on input line 75.
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 75.
+LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
+(Font)              scaled to size 9.40002pt on input line 75.
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <7> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 75.
+LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
+(Font)              scaled to size 6.58002pt on input line 75.
+LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
+(Font)              scaled to size 9.40002pt on input line 75.
+LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
+(Font)              scaled to size 6.58002pt on input line 75.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 8.46002pt on input line 73.
-LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 73.
-LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 9.40002pt on input line 73.
+(Font)              scaled to size 23.38725pt on input line 75.
+<bilder/mappedImage.png, id=15, 764.8575pt x 439.6425pt>
+File: bilder/mappedImage.png Graphic file (type png)
+
+<use bilder/mappedImage.png>
+Package pdftex.def Info: bilder/mappedImage.png used on input line 75.
+(pdftex.def)             Requested size: 40.0pt x 22.98967pt.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 3.76001pt on input line 73.
+(Font)              scaled to size 3.76001pt on input line 75.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 11.28003pt on input line 73.
+(Font)              scaled to size 11.28003pt on input line 75.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 73.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 75.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 11.28003pt on input line 73.
+(Font)              scaled to size 11.28003pt on input line 75.
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 75.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 9.40002pt on input line 75.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 11.28003pt on input line 73.
+(Font)              scaled to size 11.28003pt on input line 75.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 7.52002pt on input line 73.
+(Font)              scaled to size 7.52002pt on input line 75.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 5.64001pt on input line 73.
+(Font)              scaled to size 5.64001pt on input line 75.
 LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
-(Font)              scaled to size 11.28003pt on input line 73.
+(Font)              scaled to size 11.28003pt on input line 75.
 LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
-(Font)              scaled to size 7.52002pt on input line 73.
+(Font)              scaled to size 7.52002pt on input line 75.
 LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
-(Font)              scaled to size 5.64001pt on input line 73.
+(Font)              scaled to size 5.64001pt on input line 75.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 73.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 75.
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 11.28003pt on input line 73.
+(Font)              scaled to size 11.28003pt on input line 75.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 73.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 75.
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 7.52002pt on input line 73.
+(Font)              scaled to size 7.52002pt on input line 75.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <6> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 73.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 75.
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 5.64001pt on input line 73.
+(Font)              scaled to size 5.64001pt on input line 75.
 LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
-(Font)              scaled to size 11.28003pt on input line 73.
+(Font)              scaled to size 11.28003pt on input line 75.
 LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
-(Font)              scaled to size 7.52002pt on input line 73.
+(Font)              scaled to size 7.52002pt on input line 75.
 LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
-(Font)              scaled to size 5.64001pt on input line 73.
+(Font)              scaled to size 5.64001pt on input line 75.
 
 Overfull \hbox (6.00092pt too wide) has occurred while \output is active
 [][] 
  []
 
 Package epstopdf Info: Source file: <rmr2.eps>
-(epstopdf)                    date: 2016-06-15 15:52:26
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 461414 bytes
 (epstopdf)             Output file: <rmr2-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-15 15:22:57
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 14040 bytes
 (epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
 mr2.eps>
-(epstopdf)             \includegraphics on input line 73.
+(epstopdf)             \includegraphics on input line 75.
 Package epstopdf Info: Output file is already uptodate.
-<rmr2-eps-converted-to.pdf, id=15, 130.4875pt x 14.0525pt>
+<rmr2-eps-converted-to.pdf, id=16, 130.4875pt x 14.0525pt>
 File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 73.
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 75.
 (pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
 
  []
 
-[1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
+[1{C:/Users/Vivica/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
- <./tud_logo.pdf> <./rmr2-eps-converted-to.pdf> <./bilder/rect.png>]
-LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 9.40002pt on input line 111.
-LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 6.58002pt on input line 111.
-LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
-(Font)              scaled to size 9.40002pt on input line 111.
-LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
-(Font)              scaled to size 6.58002pt on input line 111.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 111.
-LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 9.40002pt on input line 111.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <7> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 111.
-LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 6.58002pt on input line 111.
-LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
-(Font)              scaled to size 9.40002pt on input line 111.
-LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
-(Font)              scaled to size 6.58002pt on input line 111.
+ <C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses/tud_logo.pdf> <C:/Users/Vivica/Docum
+ents/Visual Studio 2015/Projects/dynamic_distortion_calibrator/Vortrag_Latex_Vo
+rlage_mitTUDClasses/rmr2-eps-converted-to.pdf> <C:/Users/Vivica/Documents/Visua
+l Studio 2015/Projects/dynamic_distortion_calibrator/Vortrag_Latex_Vorlage_mitT
+UDClasses/bilder/distortedImage.png> <C:/Users/Vivica/Documents/Visual Studio 2
+015/Projects/dynamic_distortion_calibrator/Vortrag_Latex_Vorlage_mitTUDClasses/
+bilder/mappedImage.png>] <bilder/rect.png, id=38, 758.835pt x 721.69624pt>
+File: bilder/rect.png Graphic file (type png)
+
+<use bilder/rect.png>
+Package pdftex.def Info: bilder/rect.png used on input line 98.
+(pdftex.def)             Requested size: 113.82033pt x 108.24976pt.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 6.58002pt on input line 111.
-
-Overfull \hbox (0.30554pt too wide) in paragraph at lines 111--111
-[]  
- []
-
-LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <9> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 111.
-LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 8.46002pt on input line 111.
-
-Overfull \vbox (1.5889pt too high) detected at line 111
- []
-
+(Font)              scaled to size 8.46002pt on input line 98.
 Package epstopdf Info: Source file: <rmr2.eps>
-(epstopdf)                    date: 2016-06-15 15:52:26
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 461414 bytes
 (epstopdf)             Output file: <rmr2-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-15 15:22:57
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 14040 bytes
 (epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
 mr2.eps>
-(epstopdf)             \includegraphics on input line 111.
+(epstopdf)             \includegraphics on input line 98.
 Package epstopdf Info: Output file is already uptodate.
 File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
-<use rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 111.
+ <use rmr2-eps-converted-to.pdf>
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 98.
 (pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1532,36 +1564,36 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [2
 
-] <distortions_inline.png, id=46, 568.37344pt x 246.1697pt>
-File: distortions_inline.png Graphic file (type png)
+ <C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses/bilder/rect.png>]
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 6.58002pt on input line 135.
 
-<use distortions_inline.png>
-Package pdftex.def Info: distortions_inline.png used on input line 142.
-(pdftex.def)             Requested size: 170.51334pt x 73.85147pt.
-
-Overfull \hbox (8.3328pt too wide) in paragraph at lines 142--142
- [] 
+Overfull \hbox (0.30554pt too wide) in paragraph at lines 135--135
+[]  
  []
 
-<bilder/tangential_dist.png, id=49, 412.54124pt x 306.14375pt>
-File: bilder/tangential_dist.png Graphic file (type png)
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <9> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 135.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 8.46002pt on input line 135.
 
-<use bilder/tangential_dist.png>
-Package pdftex.def Info: bilder/tangential_dist.png used on input line 142.
-(pdftex.def)             Requested size: 113.44604pt x 84.18744pt.
+Overfull \vbox (12.48189pt too high) detected at line 135
+ []
+
 Package epstopdf Info: Source file: <rmr2.eps>
-(epstopdf)                    date: 2016-06-15 15:52:26
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 461414 bytes
 (epstopdf)             Output file: <rmr2-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-15 15:22:57
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 14040 bytes
 (epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
 mr2.eps>
-(epstopdf)             \includegraphics on input line 142.
+(epstopdf)             \includegraphics on input line 135.
 Package epstopdf Info: Output file is already uptodate.
 File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
- <use rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 142.
+<use rmr2-eps-converted-to.pdf>
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 135.
 (pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1570,47 +1602,36 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [3
 
- <./distortions_inline.png> <./bilder/tangential_dist.png>]
-Overfull \hbox (25.35544pt too wide) in paragraph at lines 176--176
-[]  
+] <distortions_inline.png, id=56, 568.37344pt x 246.1697pt>
+File: distortions_inline.png Graphic file (type png)
+
+<use distortions_inline.png>
+Package pdftex.def Info: distortions_inline.png used on input line 166.
+(pdftex.def)             Requested size: 170.51334pt x 73.85147pt.
+
+Overfull \hbox (8.3328pt too wide) in paragraph at lines 166--166
+ [] 
  []
 
-<bilder/Sobel_1.png, id=61, 198.7425pt x 181.17688pt>
-File: bilder/Sobel_1.png Graphic file (type png)
- <use bilder/Sobel_1.png>
-Package pdftex.def Info: bilder/Sobel_1.png used on input line 176.
-(pdftex.def)             Requested size: 76.51457pt x 69.75192pt.
+<bilder/tangential_dist.png, id=59, 412.54124pt x 306.14375pt>
+File: bilder/tangential_dist.png Graphic file (type png)
 
-<bilder/Sobel_4_y.png, id=64, 121.45375pt x 120.95187pt>
-File: bilder/Sobel_4_y.png Graphic file (type png)
-
-<use bilder/Sobel_4_y.png>
-Package pdftex.def Info: bilder/Sobel_4_y.png used on input line 176.
-(pdftex.def)             Requested size: 72.87279pt x 72.57167pt.
-
-<bilder/Sobel_4_x.png, id=67, 120.95187pt x 117.94063pt>
-File: bilder/Sobel_4_x.png Graphic file (type png)
-
-<use bilder/Sobel_4_x.png>
-Package pdftex.def Info: bilder/Sobel_4_x.png used on input line 176.
-(pdftex.def)             Requested size: 72.57167pt x 70.76491pt.
-
-Overfull \vbox (7.78343pt too high) detected at line 176
- []
-
+<use bilder/tangential_dist.png>
+Package pdftex.def Info: bilder/tangential_dist.png used on input line 166.
+(pdftex.def)             Requested size: 113.44604pt x 84.18744pt.
 Package epstopdf Info: Source file: <rmr2.eps>
-(epstopdf)                    date: 2016-06-15 15:52:26
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 461414 bytes
 (epstopdf)             Output file: <rmr2-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-15 15:22:57
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 14040 bytes
 (epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
 mr2.eps>
-(epstopdf)             \includegraphics on input line 176.
+(epstopdf)             \includegraphics on input line 166.
 Package epstopdf Info: Output file is already uptodate.
 File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
-<use rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 176.
+ <use rmr2-eps-converted-to.pdf>
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 166.
 (pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1619,42 +1640,50 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [4
 
- <./bilder/Sobel_1.png> <./bilder/Sobel_4_y.png> <./bilder/Sobel_4_x.png>]
-<bilder/Sobel_3.png, id=79, 222.33063pt x 208.27812pt>
-File: bilder/Sobel_3.png Graphic file (type png)
-
-<use bilder/Sobel_3.png>
-Package pdftex.def Info: bilder/Sobel_3.png used on input line 203.
-(pdftex.def)             Requested size: 75.5914pt x 70.81361pt.
-
-<bilder/Canny_2.png, id=82, 405.01312pt x 203.25937pt>
-File: bilder/Canny_2.png Graphic file (type png)
-
-<use bilder/Canny_2.png>
-Package pdftex.def Info: bilder/Canny_2.png used on input line 203.
-(pdftex.def)             Requested size: 113.4029pt x 56.91223pt.
-
-Overfull \hbox (152.10498pt too wide) detected at line 203
-[][][] [][][][][][][][][] [][][][][][][][][] [][][][][][][] 
+ <C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses/distortions_inline.png> <C:/Users/Vi
+vica/Documents/Visual Studio 2015/Projects/dynamic_distortion_calibrator/Vortra
+g_Latex_Vorlage_mitTUDClasses/bilder/tangential_dist.png>]
+Overfull \hbox (25.35544pt too wide) in paragraph at lines 200--200
+[]  
  []
 
+<bilder/Sobel_1.png, id=71, 198.7425pt x 181.17688pt>
+File: bilder/Sobel_1.png Graphic file (type png)
+ <use bilder/Sobel_1.png>
+Package pdftex.def Info: bilder/Sobel_1.png used on input line 200.
+(pdftex.def)             Requested size: 76.51457pt x 69.75192pt.
 
-Overfull \vbox (3.55363pt too high) detected at line 203
+<bilder/Sobel_4_y.png, id=74, 121.45375pt x 120.95187pt>
+File: bilder/Sobel_4_y.png Graphic file (type png)
+
+<use bilder/Sobel_4_y.png>
+Package pdftex.def Info: bilder/Sobel_4_y.png used on input line 200.
+(pdftex.def)             Requested size: 72.87279pt x 72.57167pt.
+
+<bilder/Sobel_4_x.png, id=77, 120.95187pt x 117.94063pt>
+File: bilder/Sobel_4_x.png Graphic file (type png)
+
+<use bilder/Sobel_4_x.png>
+Package pdftex.def Info: bilder/Sobel_4_x.png used on input line 200.
+(pdftex.def)             Requested size: 72.57167pt x 70.76491pt.
+
+Overfull \vbox (18.67642pt too high) detected at line 200
  []
 
 Package epstopdf Info: Source file: <rmr2.eps>
-(epstopdf)                    date: 2016-06-15 15:52:26
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 461414 bytes
 (epstopdf)             Output file: <rmr2-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-15 15:22:57
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 14040 bytes
 (epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
 mr2.eps>
-(epstopdf)             \includegraphics on input line 203.
+(epstopdf)             \includegraphics on input line 200.
 Package epstopdf Info: Output file is already uptodate.
 File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
 <use rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 203.
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 200.
 (pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1663,35 +1692,47 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [5
 
- <./bilder/Sobel_3.png> <./bilder/Canny_2.png>]
-File: bilder/Sobel_1.png Graphic file (type png)
- <use bilder/Sobel_1.png>
-Package pdftex.def Info: bilder/Sobel_1.png used on input line 231.
-(pdftex.def)             Requested size: 79.49557pt x 72.46945pt.
+ <C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses/bilder/Sobel_1.png> <C:/Users/Vivica
+/Documents/Visual Studio 2015/Projects/dynamic_distortion_calibrator/Vortrag_La
+tex_Vorlage_mitTUDClasses/bilder/Sobel_4_y.png> <C:/Users/Vivica/Documents/Visu
+al Studio 2015/Projects/dynamic_distortion_calibrator/Vortrag_Latex_Vorlage_mit
+TUDClasses/bilder/Sobel_4_x.png>]
+<bilder/Sobel_3.png, id=89, 222.33063pt x 208.27812pt>
+File: bilder/Sobel_3.png Graphic file (type png)
 
-<bilder/Sobel_2.png, id=92, 200.75pt x 174.6525pt>
-File: bilder/Sobel_2.png Graphic file (type png)
- <use bilder/Sobel_2.png>
-Package pdftex.def Info: bilder/Sobel_2.png used on input line 231.
-(pdftex.def)             Requested size: 80.29857pt x 69.85976pt.
+<use bilder/Sobel_3.png>
+Package pdftex.def Info: bilder/Sobel_3.png used on input line 227.
+(pdftex.def)             Requested size: 75.5914pt x 70.81361pt.
+
+<bilder/Canny_2.png, id=92, 405.01312pt x 203.25937pt>
 File: bilder/Canny_2.png Graphic file (type png)
 
 <use bilder/Canny_2.png>
-Package pdftex.def Info: bilder/Canny_2.png used on input line 231.
-(pdftex.def)             Requested size: 101.25302pt x 50.81471pt.
+Package pdftex.def Info: bilder/Canny_2.png used on input line 227.
+(pdftex.def)             Requested size: 113.4029pt x 56.91223pt.
+
+Overfull \hbox (152.10498pt too wide) detected at line 227
+[][][] [][][][][][][][][] [][][][][][][][][] [][][][][][][] 
+ []
+
+
+Overfull \vbox (14.44662pt too high) detected at line 227
+ []
+
 Package epstopdf Info: Source file: <rmr2.eps>
-(epstopdf)                    date: 2016-06-15 15:52:26
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 461414 bytes
 (epstopdf)             Output file: <rmr2-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-15 15:22:57
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 14040 bytes
 (epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
 mr2.eps>
-(epstopdf)             \includegraphics on input line 231.
+(epstopdf)             \includegraphics on input line 227.
 Package epstopdf Info: Output file is already uptodate.
 File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
- <use rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 231.
+<use rmr2-eps-converted-to.pdf>
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 227.
 (pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1700,33 +1741,38 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [6
 
- <./bilder/Sobel_2.png>]
-<bilder/pixelSizeImg1.png, id=101, 1440.88312pt x 813.0375pt>
-File: bilder/pixelSizeImg1.png Graphic file (type png)
+ <C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses/bilder/Sobel_3.png> <C:/Users/Vivica
+/Documents/Visual Studio 2015/Projects/dynamic_distortion_calibrator/Vortrag_La
+tex_Vorlage_mitTUDClasses/bilder/Canny_2.png>]
+File: bilder/Sobel_1.png Graphic file (type png)
+ <use bilder/Sobel_1.png>
+Package pdftex.def Info: bilder/Sobel_1.png used on input line 255.
+(pdftex.def)             Requested size: 79.49557pt x 72.46945pt.
 
-<use bilder/pixelSizeImg1.png>
-Package pdftex.def Info: bilder/pixelSizeImg1.png used on input line 254.
-(pdftex.def)             Requested size: 144.09674pt x 81.3085pt.
+<bilder/Sobel_2.png, id=102, 200.75pt x 174.6525pt>
+File: bilder/Sobel_2.png Graphic file (type png)
+ <use bilder/Sobel_2.png>
+Package pdftex.def Info: bilder/Sobel_2.png used on input line 255.
+(pdftex.def)             Requested size: 80.29857pt x 69.85976pt.
+File: bilder/Canny_2.png Graphic file (type png)
 
-<bilder/pixelSizeImg2.png, id=102, 1439.3775pt x 813.0375pt>
-File: bilder/pixelSizeImg2.png Graphic file (type png)
-
-<use bilder/pixelSizeImg2.png>
-Package pdftex.def Info: bilder/pixelSizeImg2.png used on input line 254.
-(pdftex.def)             Requested size: 143.94618pt x 81.3085pt.
+<use bilder/Canny_2.png>
+Package pdftex.def Info: bilder/Canny_2.png used on input line 255.
+(pdftex.def)             Requested size: 101.25302pt x 50.81471pt.
 Package epstopdf Info: Source file: <rmr2.eps>
-(epstopdf)                    date: 2016-06-15 15:52:26
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 461414 bytes
 (epstopdf)             Output file: <rmr2-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-15 15:22:57
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 14040 bytes
 (epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
 mr2.eps>
-(epstopdf)             \includegraphics on input line 254.
+(epstopdf)             \includegraphics on input line 255.
 Package epstopdf Info: Output file is already uptodate.
 File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
  <use rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 254.
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 255.
 (pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1735,26 +1781,34 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [7
 
- <./bilder/pixelSizeImg1.png> <./bilder/pixelSizeImg2.png>]
-<bilder/pixelSizeImg2_FOV.png, id=109, 1439.3775pt x 813.0375pt>
-File: bilder/pixelSizeImg2_FOV.png Graphic file (type png)
+ <C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses/bilder/Sobel_2.png>]
+<bilder/pixelSizeImg1.png, id=112, 1440.88312pt x 813.0375pt>
+File: bilder/pixelSizeImg1.png Graphic file (type png)
 
-<use bilder/pixelSizeImg2_FOV.png>
-Package pdftex.def Info: bilder/pixelSizeImg2_FOV.png used on input line 275.
-(pdftex.def)             Requested size: 215.89731pt x 121.95036pt.
+<use bilder/pixelSizeImg1.png>
+Package pdftex.def Info: bilder/pixelSizeImg1.png used on input line 278.
+(pdftex.def)             Requested size: 144.09674pt x 81.3085pt.
+
+<bilder/pixelSizeImg2.png, id=113, 1439.3775pt x 813.0375pt>
+File: bilder/pixelSizeImg2.png Graphic file (type png)
+
+<use bilder/pixelSizeImg2.png>
+Package pdftex.def Info: bilder/pixelSizeImg2.png used on input line 278.
+(pdftex.def)             Requested size: 143.94618pt x 81.3085pt.
 Package epstopdf Info: Source file: <rmr2.eps>
-(epstopdf)                    date: 2016-06-15 15:52:26
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 461414 bytes
 (epstopdf)             Output file: <rmr2-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-15 15:22:57
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 14040 bytes
 (epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
 mr2.eps>
-(epstopdf)             \includegraphics on input line 275.
+(epstopdf)             \includegraphics on input line 278.
 Package epstopdf Info: Output file is already uptodate.
 File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
  <use rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 275.
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 278.
 (pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1763,22 +1817,29 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [8
 
- <./bilder/pixelSizeImg2_FOV.png>]
-LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 7.52002pt on input line 298.
+ <C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses/bilder/pixelSizeImg1.png> <C:/Users/
+Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_calibrator/Vort
+rag_Latex_Vorlage_mitTUDClasses/bilder/pixelSizeImg2.png>]
+<bilder/pixelSizeImg2_FOV.png, id=119, 1439.3775pt x 813.0375pt>
+File: bilder/pixelSizeImg2_FOV.png Graphic file (type png)
+
+<use bilder/pixelSizeImg2_FOV.png>
+Package pdftex.def Info: bilder/pixelSizeImg2_FOV.png used on input line 299.
+(pdftex.def)             Requested size: 215.89731pt x 121.95036pt.
 Package epstopdf Info: Source file: <rmr2.eps>
-(epstopdf)                    date: 2016-06-15 15:52:26
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 461414 bytes
 (epstopdf)             Output file: <rmr2-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-15 15:22:57
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 14040 bytes
 (epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
 mr2.eps>
-(epstopdf)             \includegraphics on input line 298.
+(epstopdf)             \includegraphics on input line 299.
 Package epstopdf Info: Output file is already uptodate.
 File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
  <use rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 298.
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 299.
 (pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1787,25 +1848,24 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [9
 
-] <bilder/distanceandangles.png, id=123, 598.235pt x 423.5825pt>
-File: bilder/distanceandangles.png Graphic file (type png)
-
-<use bilder/distanceandangles.png>
-Package pdftex.def Info: bilder/distanceandangles.png used on input line 319.
-(pdftex.def)             Requested size: 209.38538pt x 148.25609pt.
+ <C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses/bilder/pixelSizeImg2_FOV.png>]
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 7.52002pt on input line 322.
 Package epstopdf Info: Source file: <rmr2.eps>
-(epstopdf)                    date: 2016-06-15 15:52:26
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 461414 bytes
 (epstopdf)             Output file: <rmr2-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-15 15:22:57
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 14040 bytes
 (epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
 mr2.eps>
-(epstopdf)             \includegraphics on input line 319.
+(epstopdf)             \includegraphics on input line 322.
 Package epstopdf Info: Output file is already uptodate.
 File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
- <use rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 319.
+
+<use rmr2-eps-converted-to.pdf>
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 322.
 (pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1814,20 +1874,25 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [10
 
- <./bilder/distanceandangles.png>]
+] <bilder/distanceandangles.png, id=133, 598.235pt x 423.5825pt>
+File: bilder/distanceandangles.png Graphic file (type png)
+
+<use bilder/distanceandangles.png>
+Package pdftex.def Info: bilder/distanceandangles.png used on input line 343.
+(pdftex.def)             Requested size: 209.38538pt x 148.25609pt.
 Package epstopdf Info: Source file: <rmr2.eps>
-(epstopdf)                    date: 2016-06-15 15:52:26
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 461414 bytes
 (epstopdf)             Output file: <rmr2-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-15 15:22:57
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 14040 bytes
 (epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
 mr2.eps>
-(epstopdf)             \includegraphics on input line 366.
+(epstopdf)             \includegraphics on input line 343.
 Package epstopdf Info: Output file is already uptodate.
 File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
  <use rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 366.
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 343.
 (pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1836,30 +1901,22 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [11
 
-]
-LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 8.46002pt on input line 380.
-LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
-(Font)              scaled to size 8.46002pt on input line 380.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 380.
-LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 8.46002pt on input line 380.
-LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
-(Font)              scaled to size 8.46002pt on input line 380.
+ <C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses/bilder/distanceandangles.png>]
 Package epstopdf Info: Source file: <rmr2.eps>
-(epstopdf)                    date: 2016-06-15 15:52:26
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 461414 bytes
 (epstopdf)             Output file: <rmr2-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-15 15:22:57
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 14040 bytes
 (epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
 mr2.eps>
-(epstopdf)             \includegraphics on input line 380.
+(epstopdf)             \includegraphics on input line 390.
 Package epstopdf Info: Output file is already uptodate.
 File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
- <use rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 380.
+
+<use rmr2-eps-converted-to.pdf>
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 390.
 (pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1869,19 +1926,29 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [12
 
 ]
+LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
+(Font)              scaled to size 8.46002pt on input line 404.
+LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
+(Font)              scaled to size 8.46002pt on input line 404.
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 404.
+LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
+(Font)              scaled to size 8.46002pt on input line 404.
+LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
+(Font)              scaled to size 8.46002pt on input line 404.
 Package epstopdf Info: Source file: <rmr2.eps>
-(epstopdf)                    date: 2016-06-15 15:52:26
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 461414 bytes
 (epstopdf)             Output file: <rmr2-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-15 15:22:57
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 14040 bytes
 (epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
 mr2.eps>
-(epstopdf)             \includegraphics on input line 405.
+(epstopdf)             \includegraphics on input line 404.
 Package epstopdf Info: Output file is already uptodate.
 File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
  <use rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 405.
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 404.
 (pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1890,34 +1957,20 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [13
 
-] <bilder/uml_diagram.png, id=148, 1415.2875pt x 682.55pt>
-File: bilder/uml_diagram.png Graphic file (type png)
-
-<use bilder/uml_diagram.png>
-Package pdftex.def Info: bilder/uml_diagram.png used on input line 416.
-(pdftex.def)             Requested size: 353.82101pt x 170.63708pt.
-
-Overfull \hbox (9.62077pt too wide) in paragraph at lines 416--416
- [] 
- []
-
-
-Overfull \vbox (5.34035pt too high) detected at line 416
- []
-
+]
 Package epstopdf Info: Source file: <rmr2.eps>
-(epstopdf)                    date: 2016-06-15 15:52:26
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 461414 bytes
 (epstopdf)             Output file: <rmr2-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-15 15:22:57
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 14040 bytes
 (epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
 mr2.eps>
-(epstopdf)             \includegraphics on input line 416.
+(epstopdf)             \includegraphics on input line 429.
 Package epstopdf Info: Output file is already uptodate.
 File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
-<use rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 416.
+ <use rmr2-eps-converted-to.pdf>
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 429.
 (pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1926,32 +1979,34 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [14
 
- <./bilder/uml_diagram.png (PNG copy)>]
-<bilder/gt.png, id=154, 722.7pt x 410.53375pt>
-File: bilder/gt.png Graphic file (type png)
- <use bilder/gt.png>
-Package pdftex.def Info: bilder/gt.png used on input line 435.
-(pdftex.def)             Requested size: 144.53743pt x 82.10529pt.
+] <bilder/uml_diagram.png, id=158, 1415.2875pt x 682.55pt>
+File: bilder/uml_diagram.png Graphic file (type png)
 
-<bilder/mappedImage.png, id=155, 722.7pt x 410.53375pt>
-File: bilder/mappedImage.png Graphic file (type png)
+<use bilder/uml_diagram.png>
+Package pdftex.def Info: bilder/uml_diagram.png used on input line 440.
+(pdftex.def)             Requested size: 353.82101pt x 170.63708pt.
 
-<use bilder/mappedImage.png>
-Package pdftex.def Info: bilder/mappedImage.png used on input line 435.
-(pdftex.def)             Requested size: 144.53743pt x 82.10529pt.
+Overfull \hbox (9.62077pt too wide) in paragraph at lines 440--440
+ [] 
+ []
+
+
+Overfull \vbox (16.23334pt too high) detected at line 440
+ []
+
 Package epstopdf Info: Source file: <rmr2.eps>
-(epstopdf)                    date: 2016-06-15 15:52:26
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 461414 bytes
 (epstopdf)             Output file: <rmr2-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-15 15:22:57
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 14040 bytes
 (epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
 mr2.eps>
-(epstopdf)             \includegraphics on input line 435.
+(epstopdf)             \includegraphics on input line 440.
 Package epstopdf Info: Output file is already uptodate.
 File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
- <use rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 435.
+<use rmr2-eps-converted-to.pdf>
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 440.
 (pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1960,30 +2015,31 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [15
 
- <./bilder/gt.png> <./bilder/mappedImage.png>]
-<bilder/substracted.jpg, id=161, 722.7pt x 410.53375pt>
-File: bilder/substracted.jpg Graphic file (type jpg)
+ <C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses/bilder/uml_diagram.png (PNG copy)>] 
+<bilder/gt.png, id=164, 764.8575pt x 439.6425pt>
+File: bilder/gt.png Graphic file (type png)
+ <use bilder/gt.png>
+Package pdftex.def Info: bilder/gt.png used on input line 459.
+(pdftex.def)             Requested size: 152.96878pt x 87.92694pt.
+File: bilder/mappedImage.png Graphic file (type png)
 
-<use bilder/substracted.jpg>
-Package pdftex.def Info: bilder/substracted.jpg used on input line 444.
-(pdftex.def)             Requested size: 289.07487pt x 164.21059pt.
-
-Overfull \vbox (22.91385pt too high) detected at line 444
- []
-
+<use bilder/mappedImage.png>
+Package pdftex.def Info: bilder/mappedImage.png used on input line 459.
+(pdftex.def)             Requested size: 152.96878pt x 87.92694pt.
 Package epstopdf Info: Source file: <rmr2.eps>
-(epstopdf)                    date: 2016-06-15 15:52:26
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 461414 bytes
 (epstopdf)             Output file: <rmr2-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-15 15:22:57
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 14040 bytes
 (epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
 mr2.eps>
-(epstopdf)             \includegraphics on input line 444.
+(epstopdf)             \includegraphics on input line 459.
 Package epstopdf Info: Output file is already uptodate.
 File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
-<use rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 444.
+ <use rmr2-eps-converted-to.pdf>
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 459.
 (pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1992,24 +2048,31 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [16
 
- <./bilder/substracted.jpg>]
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 456.
-LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 9.40002pt on input line 456.
+ <C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses/bilder/gt.png>]
+<bilder/substracted.png, id=171, 764.8575pt x 439.6425pt>
+File: bilder/substracted.png Graphic file (type png)
+
+<use bilder/substracted.png>
+Package pdftex.def Info: bilder/substracted.png used on input line 468.
+(pdftex.def)             Requested size: 282.99284pt x 162.66518pt.
+
+Overfull \vbox (32.26143pt too high) detected at line 468
+ []
+
 Package epstopdf Info: Source file: <rmr2.eps>
-(epstopdf)                    date: 2016-06-15 15:52:26
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 461414 bytes
 (epstopdf)             Output file: <rmr2-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-15 15:22:57
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 14040 bytes
 (epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
 mr2.eps>
-(epstopdf)             \includegraphics on input line 456.
+(epstopdf)             \includegraphics on input line 468.
 Package epstopdf Info: Output file is already uptodate.
 File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
- <use rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 456.
+<use rmr2-eps-converted-to.pdf>
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 468.
 (pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -2018,20 +2081,26 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [17
 
-]
+ <C:/Users/Vivica/Documents/Visual Studio 2015/Projects/dynamic_distortion_cali
+brator/Vortrag_Latex_Vorlage_mitTUDClasses/bilder/substracted.png>]
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 480.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 9.40002pt on input line 480.
 Package epstopdf Info: Source file: <rmr2.eps>
-(epstopdf)                    date: 2016-06-15 15:52:26
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 461414 bytes
 (epstopdf)             Output file: <rmr2-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-15 15:22:57
+(epstopdf)                    date: 2017-07-17 22:09:15
 (epstopdf)                    size: 14040 bytes
 (epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
 mr2.eps>
-(epstopdf)             \includegraphics on input line 473.
+(epstopdf)             \includegraphics on input line 480.
 Package epstopdf Info: Output file is already uptodate.
 File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
- <use rmr2-eps-converted-to.pdf>
-Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 473.
+
+<use rmr2-eps-converted-to.pdf>
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 480.
 (pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -2040,7 +2109,51 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [18
 
- <C:/Program Files/MiKTeX 2.9/tex/latex/beamer/art/beamericonarticle.pdf>]
+]
+Package epstopdf Info: Source file: <rmr2.eps>
+(epstopdf)                    date: 2017-07-17 22:09:15
+(epstopdf)                    size: 461414 bytes
+(epstopdf)             Output file: <rmr2-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-07-17 22:09:15
+(epstopdf)                    size: 14040 bytes
+(epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
+mr2.eps>
+(epstopdf)             \includegraphics on input line 489.
+Package epstopdf Info: Output file is already uptodate.
+File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
+ <use rmr2-eps-converted-to.pdf>
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 489.
+(pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+
+ []
+
+[19
+
+]
+Package epstopdf Info: Source file: <rmr2.eps>
+(epstopdf)                    date: 2017-07-17 22:09:15
+(epstopdf)                    size: 461414 bytes
+(epstopdf)             Output file: <rmr2-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-07-17 22:09:15
+(epstopdf)                    size: 14040 bytes
+(epstopdf)             Command: <epstopdf --outfile=rmr2-eps-converted-to.pdf r
+mr2.eps>
+(epstopdf)             \includegraphics on input line 507.
+Package epstopdf Info: Output file is already uptodate.
+File: rmr2-eps-converted-to.pdf Graphic file (type pdf)
+ <use rmr2-eps-converted-to.pdf>
+Package pdftex.def Info: rmr2-eps-converted-to.pdf used on input line 507.
+(pdftex.def)             Requested size: 130.48717pt x 14.05246pt.
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+
+ []
+
+[20
+
+ <D:/Programme/MiKTeX 2.9/tex/latex/beamer/art/beamericonarticle.pdf>]
 \tf@nav=\write8
 \openout8 = `Vortrag.nav'.
 
@@ -2050,38 +2163,38 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 \tf@snm=\write10
 \openout10 = `Vortrag.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 475.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 475.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 509.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 509.
 
 (Vortrag.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 475.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 475.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 509.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 509.
 Package rerunfilecheck Info: File `Vortrag.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 25738 strings out of 493334
- 513385 string characters out of 3139252
- 587861 words of memory out of 3000000
- 28512 multiletter control sequences out of 15000+200000
- 68716 words of font info for 118 fonts, out of 3000000 for 9000
+ 25773 strings out of 493323
+ 516257 string characters out of 3140787
+ 586948 words of memory out of 3000000
+ 28538 multiletter control sequences out of 15000+200000
+ 72161 words of font info for 127 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,22n,96p,849b,868s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\hamac\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\
-ectt1000.pk>{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
-symbols/msam5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symb
-ols/msam7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb>
-<C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on Vortrag.pdf (18 pages, 1539521 bytes).
+ 62i,22n,96p,972b,900s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\Vivica\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600
+\ectt1000.pk>{D:/Programme/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<D:/Programme
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Programme/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/Programme/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmmi7.pfb><D:/Programme/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmmi9.pfb><D:/Programme/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb><D:/Programme/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><D:/Progr
+amme/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam5.pfb><D:/Programme/MiK
+TeX 2.9/fonts/type1/public/amsfonts/symbols/msam7.pfb><D:/Programme/MiKTeX 2.9/
+fonts/type1/urw/helvetic/uhvb8a.pfb><D:/Programme/MiKTeX 2.9/fonts/type1/urw/he
+lvetic/uhvr8a.pfb><D:/Programme/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvro8a.pfb
+><D:/Programme/MiKTeX 2.9/fonts/type1/public/wasy/wasy10.pfb>
+Output written on Vortrag.pdf (20 pages, 1799095 bytes).
 PDF statistics:
- 269 PDF objects out of 1000 (max. 8388607)
- 41 named destinations out of 1000 (max. 500000)
- 138 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 290 PDF objects out of 1000 (max. 8388607)
+ 45 named destinations out of 1000 (max. 500000)
+ 143 words of extra memory for PDF output out of 10000 (max. 10000000)
 
